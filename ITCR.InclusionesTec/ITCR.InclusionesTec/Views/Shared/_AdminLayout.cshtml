@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Inclusiones Tec - @ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Inicio")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <ul id="menu">
+                <li>@Html.ActionLink("Inicio","Index","Estudiante")</li>
+                <li>@Html.ActionLink("Reglas","Reglas","Admin")</li>
+                <li><a href="#">Herramientas</a>
+                <ul class="submenu">
+                    <li>@Html.ActionLink("Periodo", "Periodo", "Admin")</li>
+                    <li>@Html.ActionLink("Cupos", "Cupos", "Admin")</li>
+                    <li>@Html.ActionLink("Asignación", "Asignacion", "Admin")</li>
+                    <li>@Html.ActionLink("Reporte", "Reporte", "Admin")</li>
+                    <li>@Html.ActionLink("Notificaciones", "Notificaciones", "Admin")</li>
+                </ul></li>
+                <li>@Html.ActionLink("Consultas", "Consultas", "Admin")</li>
+            </ul>
+        </nav>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - ITCR - Inclusiones Tec</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
