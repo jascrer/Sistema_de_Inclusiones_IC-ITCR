@@ -271,8 +271,8 @@ nav ul li ul
 	font-weight: normal;
 	color: #ccc;
 	background: #999 transparent;
-	/* RGBa with 0.6 opacity */
-	background: rgba(0, 0, 0, 0.6);
+	/* RGBa with 0.8 opacity */
+	background: rgba(0, 0, 0, 0.8);
 	/* For IE 5.5 - 7*/
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
 	/* For IE 8*/
@@ -289,6 +289,7 @@ nav ul li:hover > ul {
 }
 nav ul li ul li 
 {
+    color: #ccc;
 	border-top: 1px solid #999;
 	position: relative;
 	font-size: small;
