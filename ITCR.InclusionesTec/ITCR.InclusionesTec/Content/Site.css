@@ -187,56 +187,134 @@ footer
 ----------------------------------------------------------*/
 nav 
 {
-	background-color:  #999;
-	/*margin-bottom: -5px;*/
+	/*color: #172E55;*/
+	/*background-color:  #999;*/
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #999999 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #999999 100%);
+
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #999999 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #999999));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #999999 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #999999 100%);
+	/*-----------------------------*/
 	height: 50px;
 	width: 100%;
-	float: left;
 }
-
-ul#menu 
+nav ul 
 {
+	/*font-weight: bold;*/
+	color: #172E55;
 	font-size: 1.2em;
-	text-align: left;
-	width: 100%;
+	text-align: center;
+	max-width: 100%;
 	height: 100%;
-	margin-top: -0.5px;
+	margin: 0 0;
+	display: block;
 }
-
-ul#menu li 
+nav ul li 
 {
-	margin-top: 10px;
+	color: #172E55;
 	display: block;
 	float: left;
 	list-style: none;
-	background-color: Azure;
-	height: 100%;
+	/*height: 100%;*/
+	max-height: 100%;
+	min-height: 100%;
+	margin: 0 0;
 }
-
-ul#menu li a 
-{
-	background-color:  #999;
+nav ul li a {
 	color: #172E55;
 	text-decoration: none;
-	padding: 10px;
+	margin: 0 0;
+	display: block;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	height: 40px;
 }
-
-ul#menu li a:hover 
+nav ul li a:hover 
 {
-	background-color: #efeeef;
-	text-decoration: none;
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #999999 200%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #999999 200%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #999999 200%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(2, #999999));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #999999 200%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #999999 200%);
 }
-
-ul#menu li ul#submenu
+nav ul li a:active 
 {
+	color: #172E55;
+}
+nav ul li ul 
+{
+	font-weight: normal;
+	color: #ccc;
+	background: #999 transparent;
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	display: none;
-	float: left;
-	
+	position: absolute;
+	/*max-width: auto;*/
+	height: auto;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
-
-ul#menu li:hover > ul{
-	display : block;
-
+nav ul li:hover > ul {
+	display: block;
+}
+nav ul li ul li 
+{
+	border-top: 1px solid #999;
+	position: relative;
+	font-size: small;
+	float: none;
+	margin: 0 0 0 -40px;
+}
+nav ul li ul li:hover
+{
+	color: #172E55;
+}
+nav ul li ul li a 
+{
+	color: #ccc;
+}
+nav ul li ul li a:hover 
+{
+	border-left: 0px;
+	border-right: 0px;
+	color: #172E55;
+	background-image: none;
+	background-color: #999;
+}
+nav ul li ul:last-child li:last-child a:hover {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
 /* page elements
 ----------------------------------------------------------*/
@@ -599,6 +677,7 @@ tr.pager td {
 		}
 
 	/* menu */
+	/*
 	nav {
 		margin-bottom: 5px;
 	}
@@ -613,7 +692,7 @@ tr.pager td {
 			margin: 0;
 			padding: 0;
 		}
-
+*/
 
 	/* main layout
 	----------------------------------------------------------*/
