@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ITCR.Inclutec/res/drawable-hdpi/TecID.PNG&apos; to &apos;tecid.PNG&apos;" description="Rename resource &apos;TecID.PNG&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/drawable-hdpi/TecID.PNG" name="tecid.PNG" stamp="1388175304682" updateReferences="true"/>
+</session>

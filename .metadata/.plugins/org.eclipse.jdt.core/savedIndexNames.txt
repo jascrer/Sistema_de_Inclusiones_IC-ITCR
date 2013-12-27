@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\.metadata\.plugins\org.eclipse.jdt.core
+1310341301.index
+3108091942.index
