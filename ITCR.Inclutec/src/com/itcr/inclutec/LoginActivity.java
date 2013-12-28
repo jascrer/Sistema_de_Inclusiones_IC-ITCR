@@ -1,6 +1,8 @@
-package com.example.itcr.inclutec;
+package com.itcr.inclutec;
 
-import com.example.itcr.inclutec.util.SystemUiHider;
+import com.example.itcr.inclutec.R;
+import com.itcr.inclutec.util.SystemUiHider;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

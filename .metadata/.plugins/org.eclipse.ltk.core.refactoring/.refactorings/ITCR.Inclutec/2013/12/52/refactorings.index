@@ -2,3 +2,13 @@
 1388182165456	Rename resource 'TecID.PNG'
 1388182934626	Delete element
 1388182941478	Delete element
+1388259220478	Rename local variable 'result'
+1388259245329	Rename method 'createGroupList'
+1388259267033	Rename field '_sCATEGORIAS'
+1388259680386	Rename package 'com.example.itcr.inclutec'
+1388259695458	Rename package 'com.example.itcr.inclutec.util'
+1388259799484	Rename method 'createChildList'
+1388259820704	Rename local variable 'result'
+1388259832778	Rename local variable '_'
+1388259954471	Rename local variable 'secList'
+1388259977726	Rename local variable 'child'
