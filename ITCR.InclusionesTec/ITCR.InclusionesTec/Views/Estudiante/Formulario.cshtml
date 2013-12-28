@@ -2,4 +2,61 @@
     ViewBag.Title = "Formulario";
 }
 
-<h2>Formulario</h2>
+<hgroup class="title">
+    <h1>Sistema Automatizado de Inclusiones</h1>
+</hgroup>
+
+
+<section>
+    <!-------------------Centrar y Dar Formato------------------------------>
+    <h2>Formulario de Inclusión</h2>
+    <form>
+        <section>
+            <h3>Datos Personales</h3>
+            <br>
+            <b>Nombre Completo: </b>ROJAS VALVERDE JUAN JOSE<br/>
+            <b>Carnet: </b>200813008<br/>
+            <b>Carrera: </b>INGENIERIA EN COMPUTACION<br/>
+            <b>Sede: </b>CARTAGO<br/>
+            <b>Plan: </b>409<br/>
+            <b>Cita de Matrícula: </b>03/02/2014 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 08:00:00<br/>
+            <b>Teléfono Domicilio: </b><input type="tel" name="T_Domicilio"><br/>
+            <b>Teléfono Celular: &nbsp; &nbsp; </b><input type="tel" name="T_Celular"><br/>
+            <b>Correo Electrónico: </b><input type="email" name="Email"><br/>
+        </section>
+        <br>
+        <section>
+            <h3>Información del Curso</h3>
+            <br>
+            <input list="cursos" name="nom_curso">
+            <datalist id="cursos">
+              <option value="Inteligencia Artificial">
+              <option value="Investigación de Operaciones">
+              <option value="Bases de Datos I">
+            </datalist>
+            <input type="submit">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <b>Código de Curso: </b>IC-XXXX<br/>
+            <h4>Grupos Disponibles:</h4>
+            <ul id="sortable">
+                @*<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>*@
+            </ul>
+        </section>
+        <br>
+        <section>
+            <h3>Comentarios Adicionales</h3>
+            <textarea rows="4" cols="100" name="Comentario" ></textarea><br/>
+            <br/>
+            <p>Doy fe que todo lo aquí ingresado es correcto y de detectarse alguna falsedad en esta solicitud doy permiso que no se realice ningún trámite a mi nombre este período.</p>
+        </section>
+        <br/>
+        <!-------------------Centrar------------------------------>
+        <input type="submit">
+    </form>
+</section>
