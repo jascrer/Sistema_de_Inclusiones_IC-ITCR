@@ -37,24 +37,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tecid=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
+        public static final int action_settings=0x7f090009;
         public static final int button1=0x7f090005;
         public static final int checkBox1=0x7f090004;
         public static final int editText1=0x7f090002;
         public static final int editText2=0x7f090003;
+        public static final int expandableListView1=0x7f090006;
         public static final int imageView1=0x7f090000;
-        public static final int linearLayout1=0x7f090006;
-        public static final int progressBar1=0x7f090007;
+        public static final int linearLayout1=0x7f090007;
+        public static final int progressBar1=0x7f090008;
         public static final int textView1=0x7f090001;
     }
     public static final class layout {
         public static final int activity_inicio=0x7f030000;
         public static final int activity_login=0x7f030001;
-        public static final int activity_splash=0x7f030002;
+        public static final int activity_modify=0x7f030002;
+        public static final int activity_splash=0x7f030003;
     }
     public static final class menu {
         public static final int inicio=0x7f080000;
         public static final int login=0x7f080001;
+        public static final int modify=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
@@ -73,6 +76,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int recordarme=0x7f06000a;
         public static final int title_activity_inicio=0x7f06000e;
         public static final int title_activity_login=0x7f060001;
+        public static final int title_activity_modify=0x7f060010;
     }
     public static final class style {
         /** 

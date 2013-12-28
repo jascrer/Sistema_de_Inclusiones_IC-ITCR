@@ -17,5 +17,6 @@
     <string name="logo">Tec Logo</string>
     <string name="title_activity_inicio">InicioActivity</string>
     <string name="no_items">No items</string>
+    <string name="title_activity_modify">ModifyActivity</string>
 
 </resources>
