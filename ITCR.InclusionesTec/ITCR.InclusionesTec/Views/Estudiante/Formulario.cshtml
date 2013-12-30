@@ -3,13 +3,12 @@
 }
 
 <hgroup class="title">
-    <h1>Sistema Automatizado de Inclusiones</h1>
+    <h1>Formulario de Inclusi&oacute;n</h1>
 </hgroup>
 
 <section class="centered">
     <!-------------------Centrar y Dar Formato------------------------------>
-    <h2>Formulario de Inclusión</h2>
-    <form>
+    <form id="frmSolicitud" name="frmSolicitud" action="">
         <fieldset>
             <legend>Datos Personales</legend>
             <!--
@@ -18,56 +17,67 @@
                     txtSede     txtPlan     txtCitaMatricula
              -->
             <label for="txtNombreEstudiante">Nombre Completo:</label>
-            <input type="text" id="txtNombreEstudiante" name="txtNombreEstudiante" value="ROJAS VALVERDE JUAN JOSE" disabled="true" />
+            <input type="text" id="txtNombreEstudiante" name="txtNombreEstudiante" value="ROJAS VALVERDE JUAN JOSE" disabled />
             <label for="txtCarnet">Carnet:</label>
-            <input type="text" id="txtCarnet" name="txtCarnet" value="200813008" disabled="true" />
+            <input type="text" id="txtCarnet" name="txtCarnet" value="200813008" disabled />
             <label for="txtCarrera">Carrera:</label>
-            <input type="text" id="txtCarrera" name="txtCarrera" value="INGENIERIA EN COMPUTACION" disabled="true" />
+            <input type="text" id="txtCarrera" name="txtCarrera" value="INGENIERIA EN COMPUTACION" disabled />
             <label for="txtSede">Sede:</label>
-            <input type="text" id="txtSede" name="txtSede" value="CARTAGO" disabled="true"/>
+            <input type="text" id="txtSede" name="txtSede" value="CARTAGO" disabled/>
             <label for="txtPlan">Plan:</label>
             <input type="text" id="txtPlan" name="txtPlan" value="409" disabled="true"/>
             <label for="txtCitaMatricula">Cita de Matr&iacute;cula:</label>
-            <input type="text" id="txtCitaMatricula" name="txtCitaMatricula" value="08:00:00" disabled="true" />
-            <label for=""></label>
-
-            <b>Teléfono Domicilio: </b><input type="tel" name="T_Domicilio"><br/>
-            <b>Teléfono Celular: &nbsp; &nbsp; </b><input type="tel" name="T_Celular"><br/>
-            <b>Correo Electrónico: </b><input type="email" name="Email"><br/>
+            <input type="text" id="txtCitaMatricula" name="txtCitaMatricula" value="08:00:00" disabled />
+            <label for="txtTelefono">Teléfono Domicilio:</label>
+            <input type="tel" id="txtTelefono" name="txtTelefono" value="22924768" />
+            <label for="textCelular">Teléfono Celular:</label>
+            <input type="tel" id="txtCelular" name="txtCelular" value="85032291" />
+            <label for="txtCorreo">Correo Electrónico:</label>
+            <input type="email" id="txtCorreo" name="txtCorreo" value="anairinac@gmail.com" />
         </fieldset>
-        <br>
-        <section>
-            <h3>Información del Curso</h3>
-            <br>
-            <input list="cursos" name="nom_curso">
-            <datalist id="cursos">
-              <option value="Inteligencia Artificial">
-              <option value="Investigación de Operaciones">
-              <option value="Bases de Datos I">
-            </datalist>
-            <input type="submit">
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            <b>Código de Curso: </b>IC-XXXX<br/>
-            <h4>Grupos Disponibles:</h4>
-            <ul id="sortable">
-                @*<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
-                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>*@
-            </ul>
-        </section>
-        <br>
-        <section>
-            <h3>Comentarios Adicionales</h3>
-            <textarea rows="4" cols="100" name="Comentario" ></textarea><br/>
-            <br/>
-            <p>Doy fe que todo lo aquí ingresado es correcto y de detectarse alguna falsedad en esta solicitud doy permiso que no se realice ningún trámite a mi nombre este período.</p>
-        </section>
-        <br/>
+        <fieldset>
+            <legend>Curso</legend>
+            <div class="ui-widget">
+                <label for="txtCursos" >Curso por solicitar:</label>
+                <input type="text" id="txtCursos" name="txtCursos" class="autocomplete" />
+            </div>
+            <!-- Carga el codigo del curso seleccionado en txtCursos -->
+            <input type="text" id="txtCodigoCurso" name="txtCodigoCurso" value="IC-6200" disabled/>
+            <h4>Grupos disponibles:</h4>
+            <table class="sortable"> 
+                <tr>
+                    <th>Grupo</th><th>Profesor</th><th>Horario</th><th>Sede</th>
+                </tr>
+                <tbody>
+                    <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                    <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                    <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                </tbody>
+                    
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Cursos Matriculados</legend>
+            <table> 
+                    <tr>
+                        <th>Grupo</th><th>Profesor</th><th>Horario</th><th>Sede</th>
+                    </tr>
+                    <tbody>
+                        <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                        <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                        <tr> <td>01</td> <td>Jorge Vargas</td> <td>M V 7:30 - 9:20</td> <td>Cartago</td> </tr>
+                    </tbody>
+        </fieldset>
+        <fieldset>
+            <legend>Comentario Adicional</legend>
+            <!-- Agregar clase scrollable al css -->
+            <textarea class="scrollable" id="txtComentario" name="txtComentario">
+                
+            </textarea>
+        </fieldset>
+        <p class="nota">Doy fe que todo lo aqu&iacute; ingresado es correcto y de detectarse alguna falsedad en esta solicitud doy permiso que no se realice ning&uacute;n tr&aacute;mite a mi nombre en este per&iacute;odo.</p>
+  
         <!-------------------Centrar------------------------------>
-        <input type="submit">
+        <input type="submit" id="txtEnviarSolicitud" name="txtEnviarSolicitud"  form="frmSolicitud" value="Enviar">
     </form>
 </section>

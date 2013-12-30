@@ -7,10 +7,41 @@ $(function () {
 });
 
 $(function () {
-    $("#sortable").sortable();
-    $("#sortable").disableSelection();
+    $(".sortable tbody").sortable();
+    $(".sortable tbody").disableSelection();
 });
 
+/* JQUERY WIDGET: AUTOCOMPLETE */
+$(function () {
+    //Definir esta variable en el formulario !!! Antes de llamar este script
+    var cursosDisponibles = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $(".autocomplete").autocomplete({
+        source: cursosDisponibles
+    });
+});
 //(function ($) {
 
 //    var allPanels = $('.accordion > div').hide();
