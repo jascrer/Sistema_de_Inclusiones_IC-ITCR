@@ -38,6 +38,10 @@
             android:name="com.itcr.inclutec.ModifyActivity"
             android:label="@string/title_activity_modify" >
         </activity>
+        <activity
+            android:name="com.itcr.inclutec.FormularioActivity"
+            android:label="@string/title_activity_formulario" >
+        </activity>
     </application>
 
 </manifest>

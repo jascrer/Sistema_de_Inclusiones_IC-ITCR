@@ -20,6 +20,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int black_overlay=0x7f040000;
+        public static final int white=0x7f040001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -44,24 +45,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int editText2=0x7f090003;
         public static final int expandableListView1=0x7f090006;
         public static final int grp_child=0x7f090009;
-        public static final int imageView1=0x7f090000;
+        public static final int imageView1=0x7f090001;
         public static final int linearLayout1=0x7f090007;
         public static final int progressBar1=0x7f090008;
         public static final int row_name=0x7f09000a;
-        public static final int textView1=0x7f090001;
+        public static final int textView1=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_inicio=0x7f030000;
-        public static final int activity_login=0x7f030001;
-        public static final int activity_modify=0x7f030002;
-        public static final int activity_splash=0x7f030003;
-        public static final int child_row=0x7f030004;
-        public static final int group_row=0x7f030005;
+        public static final int activity_formulario=0x7f030000;
+        public static final int activity_inicio=0x7f030001;
+        public static final int activity_login=0x7f030002;
+        public static final int activity_modify=0x7f030003;
+        public static final int activity_splash=0x7f030004;
+        public static final int child_row=0x7f030005;
+        public static final int group_row=0x7f030006;
     }
     public static final class menu {
-        public static final int inicio=0x7f080000;
-        public static final int login=0x7f080001;
-        public static final int modify=0x7f080002;
+        public static final int formulario=0x7f080000;
+        public static final int inicio=0x7f080001;
+        public static final int login=0x7f080002;
+        public static final int modify=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
@@ -73,11 +76,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int escuela=0x7f060005;
         public static final int hello_world=0x7f060003;
         public static final int ingresar=0x7f06000b;
+        public static final int leyenda=0x7f060012;
         public static final int logo=0x7f06000d;
         public static final int no_items=0x7f06000f;
         public static final int nombre_aplicacion=0x7f060004;
         public static final int password=0x7f060009;
         public static final int recordarme=0x7f06000a;
+        public static final int title_activity_formulario=0x7f060011;
         public static final int title_activity_inicio=0x7f06000e;
         public static final int title_activity_login=0x7f060001;
         public static final int title_activity_modify=0x7f060010;
