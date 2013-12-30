@@ -42,7 +42,7 @@ public class SplashActivity extends Activity {
 
 			@Override
 			public void run() {
-				Intent _iIntent = new Intent(SplashActivity.this, LoginActivity.class);
+				Intent _iIntent = new Intent(SplashActivity.this, FormularioActivity.class);
 				startActivity(_iIntent);
 				finish();
 			}
