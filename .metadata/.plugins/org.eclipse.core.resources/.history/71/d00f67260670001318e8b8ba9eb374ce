@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <TextView
+    	android:id="@+id/grp_child"
+    	android:paddingLeft="50px"
+    	android:focusable="false"
+    	android:textSize="10sp"
+    	android:textStyle="normal"
+    	android:textColor="#ffffff"
+        android:fontFamily="droid_serif"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" />
+
+</LinearLayout>
