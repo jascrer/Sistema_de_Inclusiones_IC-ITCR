@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Inclutec_BDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Inclutec_BDModelStoreContainer">
+    <EntitySet Name="SIFEstudiante" EntityType="Inclutec_BDModel.Store.SIFEstudiante" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIFGrupo" EntityType="Inclutec_BDModel.Store.SIFGrupo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIFGrupo_Por_Solicitud" EntityType="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIFPeriodo" EntityType="Inclutec_BDModel.Store.SIFPeriodo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIFSolicitud" EntityType="Inclutec_BDModel.Store.SIFSolicitud" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="Inclutec_BDModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Grupo_Por_Solicitud_Grupo" Association="Inclutec_BDModel.Store.FK_Grupo_Por_Solicitud_Grupo">
+      <End Role="SIFGrupo" EntitySet="SIFGrupo" />
+      <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grupo_Por_Solicitud_Solicitud" Association="Inclutec_BDModel.Store.FK_Grupo_Por_Solicitud_Solicitud">
+      <End Role="SIFSolicitud" EntitySet="SIFSolicitud" />
+      <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Estudiante" Association="Inclutec_BDModel.Store.FK_Solicitud_Estudiante">
+      <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
+      <End Role="SIFSolicitud" EntitySet="SIFSolicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Periodo" Association="Inclutec_BDModel.Store.FK_Solicitud_Periodo">
+      <End Role="SIFPeriodo" EntitySet="SIFPeriodo" />
+      <End Role="SIFSolicitud" EntitySet="SIFSolicitud" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SIFEstudiante">
+    <Key>
+      <PropertyRef Name="id_Carnet" />
+    </Key>
+    <Property Name="id_Carnet" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="nom_nombre" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="txt_apellido_1" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="txt_apellido_2" Type="varchar" MaxLength="10" />
+    <Property Name="num_telefono" Type="nchar" Nullable="false" MaxLength="8" />
+    <Property Name="num_celular" Type="nchar" Nullable="false" MaxLength="8" />
+    <Property Name="dir_email" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="num_plan_estudios" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SIFGrupo">
+    <Key>
+      <PropertyRef Name="id_Grupo" />
+    </Key>
+    <Property Name="id_Grupo" Type="int" Nullable="false" />
+    <Property Name="num_grupo" Type="int" Nullable="false" />
+    <Property Name="num_cupos_extra" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SIFGrupo_Por_Solicitud">
+    <Key>
+      <PropertyRef Name="id_Grupo_Por_Solicitud" />
+    </Key>
+    <Property Name="id_Grupo_Por_Solicitud" Type="int" Nullable="false" />
+    <Property Name="num_prioridad" Type="int" Nullable="false" />
+    <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
+    <Property Name="FK_Solicitud_idSolicitud" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SIFPeriodo">
+    <Key>
+      <PropertyRef Name="id_Periodo" />
+    </Key>
+    <Property Name="id_Periodo" Type="int" Nullable="false" />
+    <Property Name="fec_inicio" Type="datetime" Nullable="false" />
+    <Property Name="fec_fin" Type="datetime" Nullable="false" />
+    <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="txt_modalidad" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="num_anno" Type="int" Nullable="false" />
+    <Property Name="num_periodo" Type="int" />
+  </EntityType>
+  <EntityType Name="SIFSolicitud">
+    <Key>
+      <PropertyRef Name="id_Solicitud" />
+    </Key>
+    <Property Name="id_Solicitud" Type="int" Nullable="false" />
+    <Property Name="txt_comentario" Type="varchar" MaxLength="350" />
+    <Property Name="txt_curso" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="txt_motivo" Type="varchar" MaxLength="50" />
+    <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="fec_creacion" Type="datetime" Nullable="false" />
+    <Property Name="FK_Estudiante_carnet" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="FK_Periodo_idPeriodo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Grupo_Por_Solicitud_Grupo">
+    <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
+    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SIFGrupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="SIFGrupo_Por_Solicitud">
+        <PropertyRef Name="id_Grupo_Por_Solicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grupo_Por_Solicitud_Solicitud">
+    <End Role="SIFSolicitud" Type="Inclutec_BDModel.Store.SIFSolicitud" Multiplicity="1" />
+    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SIFSolicitud">
+        <PropertyRef Name="id_Solicitud" />
+      </Principal>
+      <Dependent Role="SIFGrupo_Por_Solicitud">
+        <PropertyRef Name="id_Grupo_Por_Solicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Estudiante">
+    <End Role="SIFEstudiante" Type="Inclutec_BDModel.Store.SIFEstudiante" Multiplicity="1" />
+    <End Role="SIFSolicitud" Type="Inclutec_BDModel.Store.SIFSolicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SIFEstudiante">
+        <PropertyRef Name="id_Carnet" />
+      </Principal>
+      <Dependent Role="SIFSolicitud">
+        <PropertyRef Name="FK_Estudiante_carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Periodo">
+    <End Role="SIFPeriodo" Type="Inclutec_BDModel.Store.SIFPeriodo" Multiplicity="1" />
+    <End Role="SIFSolicitud" Type="Inclutec_BDModel.Store.SIFSolicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SIFPeriodo">
+        <PropertyRef Name="id_Periodo" />
+      </Principal>
+      <Dependent Role="SIFSolicitud">
+        <PropertyRef Name="FK_Periodo_idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>
