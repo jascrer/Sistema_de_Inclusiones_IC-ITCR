@@ -7,13 +7,13 @@
     tools:context=".FormularioActivity" >
 
 	<ExpandableListView
-	    android:id="@+id/android:list"
+	    android:id="@+id/listaForm"
 	    android:layout_width="fill_parent"
 	    android:layout_height="318dp"
 	    android:color="#172E55" />
 
 	<TextView
-	    android:id="@+id/textView1"
+	    android:id="@+id/textViewDoyFe"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/leyenda"

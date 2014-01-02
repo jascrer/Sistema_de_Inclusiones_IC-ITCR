@@ -1,90 +1,114 @@
 package com.itcr.inclutec;
 
+import java.util.HashMap;
+import java.util.List;
+
+import com.example.itcr.inclutec.R;
+
 import android.content.Context;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class ELAdapter extends BaseExpandableListAdapter {
+
+	private Context _context;
+	private List<String> _listDataHeader; // header titles
+	// child data in format of header title, child title
+	private HashMap<String, List<String>> _listDataChild;
+
+	public ELAdapter(Context context, List<String> listDataHeader,
+			HashMap<String, List<String>> listChildData) {
+		this._context = context;
+		this._listDataHeader = listDataHeader;
+		this._listDataChild = listChildData;
+	}
+
+	@Override
+	public Object getChild(int groupPosition, int childPosititon) {
+		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+				.get(childPosititon);
+	}
+
+	@Override
+	public long getChildId(int groupPosition, int childPosition) {
+		return childPosition;
+	}
+
+	@Override
+	public View getChildView(int groupPosition, final int childPosition,
+			boolean isLastChild, View convertView, ViewGroup parent) {
+
+		final String childText = (String) getChild(groupPosition, childPosition);
+
+		if (convertView == null) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.telefono_row, null);
+		}
+
+		TextView txtListChild = (TextView) convertView
+				.findViewById(R.id.lblListItem);
+
+		txtListChild.setText(childText);
+		
+		EditText txtEditPhone = (EditText) convertView.findViewById(R.id.editTextTelefono);
+		txtEditPhone.setVisibility(0);
 	
-	Context contexto;
-	String[]padre = {"IC-XXXX Curso de prueba 1", "IC-YYYY Curso de prueba 2"};
-	String[][]hijos = {
-			{"Grupo 1", "Grupo 2"},
-			{"Grupo 3", "Grupo 4"}
-	};
-
-	public ELAdapter(Context con) {
-		// TODO Auto-generated constructor stub
-		this.contexto = con;
+		return convertView;
 	}
 
 	@Override
-	public Object getChild(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public int getChildrenCount(int groupPosition) {
+		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+				.size();
 	}
 
 	@Override
-	public long getChildId(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public View getChildView(int arg0, int arg1, boolean arg2, View arg3,
-			ViewGroup arg4) {
-		// TODO Auto-generated method stub
-		TextView _tv = new TextView(contexto);
-		_tv.setText(hijos[arg0][arg1]);
-		_tv.setTextSize(18);
-		return _tv;
-	}
-
-	@Override
-	public int getChildrenCount(int arg0) {
-		// TODO Auto-generated method stub
-		return hijos[arg0].length;
-	}
-
-	@Override
-	public Object getGroup(int arg0) {
-		// TODO Auto-generated method stub
-		return arg0;
+	public Object getGroup(int groupPosition) {
+		return this._listDataHeader.get(groupPosition);
 	}
 
 	@Override
 	public int getGroupCount() {
-		// TODO Auto-generated method stub
-		return padre.length;
+		return this._listDataHeader.size();
 	}
 
 	@Override
-	public long getGroupId(int arg0) {
-		// TODO Auto-generated method stub
-		return arg0;
+	public long getGroupId(int groupPosition) {
+		return groupPosition;
 	}
 
 	@Override
-	public View getGroupView(int groupPosition, boolean arg1, View arg2, ViewGroup arg3) {
-		// TODO Auto-generated method stub
-		TextView tv = new TextView(contexto);
-		tv.setText(this.padre[groupPosition]);
-		tv.setTextSize(20);
-		return tv;
+	public View getGroupView(int groupPosition, boolean isExpanded,
+			View convertView, ViewGroup parent) {
+		String headerTitle = (String) getGroup(groupPosition);
+		if (convertView == null) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.group_row, null);
+		}
+
+		TextView lblListHeader = (TextView) convertView
+				.findViewById(R.id.row_name);
+		lblListHeader.setTypeface(null, Typeface.BOLD);
+		lblListHeader.setText(headerTitle);
+
+		return convertView;
 	}
 
 	@Override
 	public boolean hasStableIds() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean isChildSelectable(int arg0, int arg1) {
-		// TODO Auto-generated method stub
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
 	}
-	
+
 }

@@ -6,103 +6,135 @@ import java.util.List;
 
 import com.example.itcr.inclutec.R;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
-import android.app.ExpandableListActivity;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.Toast;
 
-public class FormularioActivity extends ExpandableListActivity {
+public class FormularioActivity extends Activity {
 
-	//Arreglo con el nombre de los grupos
-		private final String _sGRUPOS[] = 
-				new String[]{
-				"Datos personales",
-				"Curso",
-				"Cursos matriculados",
-				"Requisitos y otros",
-				"Comentario adicional"};
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_formulario);
-			
-			//Crea el ExpandableListView
-			try{
-				@SuppressWarnings("unchecked")
-				SimpleExpandableListAdapter _adapList =
-						new SimpleExpandableListAdapter(this,
-								crearListaGrupos(),
-								R.layout.group_row,
-								new String[]{"Group Item"},
-								new int[]{R.id.row_name},
-								crearListaItems(),
-								R.layout.child_row,
-								new String[]{"Sub Item"},
-								new int[]{R.id.grp_child});
-				setListAdapter(_adapList);
-			}catch(Exception e){
+	ELAdapter listAdapter;
+	ExpandableListView expListView;
+	List<String> listDataHeader;
+	HashMap<String, List<String>> listDataChild;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_formulario);
+
+		// get the listview
+		expListView = (ExpandableListView) findViewById(R.id.listaForm);
+
+		// preparing list data
+		prepareListData();
+
+		listAdapter = new ELAdapter(this, listDataHeader, listDataChild);
+
+		// setting list adapter
+		expListView.setAdapter(listAdapter);
+
+		// Listview Group click listener
+		expListView.setOnGroupClickListener(new OnGroupClickListener() {
+
+			@Override
+			public boolean onGroupClick(ExpandableListView parent, View v,
+					int groupPosition, long id) {
+				// Toast.makeText(getApplicationContext(),
+				// "Group Clicked " + listDataHeader.get(groupPosition),
+				// Toast.LENGTH_SHORT).show();
+				return false;
 			}
-		}
-		
-		/**
-		 * @return Lista con el nombre de los grupos
-		 */
-		@SuppressWarnings({ "rawtypes", "unchecked" })
-		private List crearListaGrupos(){
-			ArrayList _lListaGrupos = new ArrayList();
-			
-			for(String _sGrupo : _sGRUPOS){
-				HashMap _hmMapa = new HashMap<String,String>();
-				_hmMapa.put("Group Item", _sGrupo);
-				_lListaGrupos.add(_hmMapa);
-			}return (List)_lListaGrupos;
-		}
-		
-		/**
-		 * @return Lista con el nombre de los items
-		 */
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-	    private List crearListaItems() {
-	 
-	        ArrayList _lListaItems = new ArrayList();
-	        for( int i = 0 ; i < _sGRUPOS.length ; ++i ) { // this -15 is the number of groups(Here it's fifteen)
-	          /* each group need each HashMap-Here for each group we have 3 subgroups */
-	          ArrayList _lItems = new ArrayList();
-	          for( int n = 0 ; n < 3 ; n++ ) {
-	            HashMap _hmMapaItem = new HashMap();
-	            /* Aqui se debe cambiar el nombre asignado de "Sub Item" 
-	             * por el nombre de las materias.
-	             * "'Sub Item' + n" por la materia
-	             */
-	            _hmMapaItem.put( "Sub Item", "Sub Item " + n );
-	            _lItems.add( _hmMapaItem );
-	          }
-	         _lListaItems.add( _lItems );
-	        }
-	        return _lListaItems;
-	    }
-		
-		public void  onContentChanged  () {
-	        super.onContentChanged();
-	    }
-		
-		/**
-		 * Con esta funcion se sabe si se hizo click en una materia
-		 */
-	    public boolean onChildClick( ExpandableListView parent, 
-	    		View v, int groupPosition,int childPosition,long id) {
-	        return true;
-	    }
-	 
-	    /**
-	     * Con esta funcion se sabe si un grupo ha sido
-	     * seleccionado
-	     */
-	    public void  onGroupExpand  (int groupPosition) {
-	        try{
-	        }catch(Exception e){
-	        }
-	    }
+		});
 
+		// Listview Group expanded listener
+		expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				Toast.makeText(getApplicationContext(),
+						listDataHeader.get(groupPosition) + " Expanded",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		// Listview Group collasped listener
+		expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
+
+			@Override
+			public void onGroupCollapse(int groupPosition) {
+				Toast.makeText(getApplicationContext(),
+						listDataHeader.get(groupPosition) + " Collapsed",
+						Toast.LENGTH_SHORT).show();
+
+			}
+		});
+
+		// Listview on child click listener
+		expListView.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				// TODO Auto-generated method stub
+				Toast.makeText(
+						getApplicationContext(),
+						listDataHeader.get(groupPosition)
+								+ " : "
+								+ listDataChild.get(
+										listDataHeader.get(groupPosition)).get(
+										childPosition), Toast.LENGTH_SHORT)
+						.show();
+				return false;
+			}
+		});
+	}
+
+	/*
+	 * Preparing the list data
+	 */
+	private void prepareListData() {
+		listDataHeader = new ArrayList<String>();
+		listDataChild = new HashMap<String, List<String>>();
+
+		// Adding child data
+		listDataHeader.add("Datos personales");
+		listDataHeader.add("Curso");
+		listDataHeader.add("Cursos matriculados");
+		listDataHeader.add("Requisitos y otros");
+		listDataHeader.add("Comentario adicional");
+
+		// Adding child data
+		List<String> _datosPersonales = new ArrayList<String>();
+		_datosPersonales.add("Nombre");
+		_datosPersonales.add("Carné");
+		_datosPersonales.add("Teléfono");
+		_datosPersonales.add("Celular");
+		_datosPersonales.add("Correo");
+		_datosPersonales.add("Plan de estudios");
+		_datosPersonales.add("Cita de matrícula");
+
+		List<String> _curso = new ArrayList<String>();
+		_curso.add("IC-XXXX");
+
+		List<String> _cursosMatriculados = new ArrayList<String>();
+		_cursosMatriculados.add("IC-YYYY");
+		
+		List<String> _requisitos = new ArrayList<String>();
+		_requisitos.add("IC-ZZZZ");
+		
+		List<String> _comentario = new ArrayList<String>();
+		_comentario.add("Comentario de inclusión");
+
+		listDataChild.put(listDataHeader.get(0), _datosPersonales); // Header, Child data
+		listDataChild.put(listDataHeader.get(1), _curso);
+		listDataChild.put(listDataHeader.get(2), _cursosMatriculados);
+		listDataChild.put(listDataHeader.get(3), _requisitos);
+		listDataChild.put(listDataHeader.get(4), _comentario);
+	}
 }
