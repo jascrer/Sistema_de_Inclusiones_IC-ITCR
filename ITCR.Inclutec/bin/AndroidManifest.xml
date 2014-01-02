@@ -40,7 +40,8 @@
         </activity>
         <activity
             android:name="com.itcr.inclutec.FormularioActivity"
-            android:label="@string/title_activity_formulario" >
+            android:label="@string/title_activity_formulario" 
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 
