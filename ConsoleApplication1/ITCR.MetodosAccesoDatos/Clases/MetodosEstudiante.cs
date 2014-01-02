@@ -158,7 +158,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _sifSolicitud.txt_estado = pSolicitud.Txt_Estado;
                 _sifSolicitud.txt_motivo = pSolicitud.Txt_Motivo;
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
-                _sifSolicitud.FK_Periodo_idPeriodo=p
+                _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
+
                 return true;
             }catch (Exception)
             {
