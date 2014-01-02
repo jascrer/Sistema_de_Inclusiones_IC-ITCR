@@ -21,6 +21,9 @@ namespace ITCR.InclusionesTec.Controllers
 
         public ActionResult Formulario()
         {
+            //Uso datos login
+            string s_carnetEstudiante = "200966799";
+            
             return View();
         }
 
