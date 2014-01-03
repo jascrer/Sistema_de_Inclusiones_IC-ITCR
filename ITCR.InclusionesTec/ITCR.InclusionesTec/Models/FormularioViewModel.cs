@@ -23,10 +23,10 @@ namespace ITCR.InclusionesTec.Models
     public class FormularioViewModel
     {
         #region Atributos
-        public DatosEstudiante datosEstudiante {get; set;}
+        public Estudiante estudiante { get; set; }
         public List<Curso> cursosInclusion { get; set; }
-        public List<Grupo> gruposInclusion { get; set; }
-        public List<Curso> cursosActuales { get; set; }
+        public List<Grupo> gruposPorCurso { get; set; }
+        public List<Curso> cursosMatriculados { get; set; }
         public Solicitud solicitud { get; set; }
 
         #endregion
