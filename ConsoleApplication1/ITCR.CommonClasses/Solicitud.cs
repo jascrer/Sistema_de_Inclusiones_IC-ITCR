@@ -43,7 +43,7 @@ namespace ITCR.Ado.ClasesComunes
         /// <summary>
         /// Corresponde a la fecha de creacion de la solicitud
         /// </summary>
-        public DateTime Fec_creacion { get; set; }
+        public DateTime Fec_Creacion { get; set; }
 
         /// <summary>
         /// Corresponde al estado de la solicitud
@@ -53,7 +53,7 @@ namespace ITCR.Ado.ClasesComunes
         /// <summary>
         /// Corresponde a la lista de Grupos a matricular
         /// </summary>
-        public LinkedList<Grupo_Por_Solicitud> Grupos { get; set; }
+        public LinkedList<Grupo_Por_Solicitud> Li_Grupos { get; set; }
 
         #endregion
     }
