@@ -49,49 +49,26 @@ public class ELAdapter extends BaseExpandableListAdapter {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			if(groupPosition==0){
-				switch(childPosition){
-				case 2:
-					convertView = infalInflater.inflate(R.layout.telefono_row, null);
-					break;
-				case 3:
-					convertView = infalInflater.inflate(R.layout.cell_row, null);
-					break;
-				case 4:
-					convertView = infalInflater.inflate(R.layout.email_row, null);
-					break;
-				default:
-					convertView = infalInflater.inflate(R.layout.child_row, null);
-					break;
+				if(childPosition == 2){
+					convertView = infalInflater.inflate(R.layout.phone_row, null);
 				}
-			}
-			if(groupPosition==4){
-				convertView = infalInflater.inflate(R.layout.comment_row, null);
+				else if(childPosition == 3){
+					convertView = infalInflater.inflate(R.layout.cell_row, null);
+				}
+				else if(childPosition == 4){
+					convertView = infalInflater.inflate(R.layout.email_row, null);
+				}
+				else{
+					convertView = infalInflater.inflate(R.layout.child_row, null);
+				}
 			}
 			else{
 				convertView = infalInflater.inflate(R.layout.child_row, null);
 			}
 		}
 		
-		if(groupPosition==0){
-			switch(childPosition){
-			case 2: break;
-			case 3: break;
-			case 4: break;
-			default: 
-				TextView txtListChild;
-				txtListChild = (TextView) convertView
-						.findViewById(R.id.grp_child);
-				txtListChild.setText(childText);
-				break;
-			}
-		}
-		if(groupPosition==4){}
-		else {
-			TextView txtListChild;
-			txtListChild = (TextView) convertView
-					.findViewById(R.id.grp_child);
-			txtListChild.setText(childText);
-		}
+		TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+		txtListChild.setText(childText);
 	
 		return convertView;
 	}

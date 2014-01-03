@@ -7,8 +7,11 @@ import java.util.List;
 import com.example.itcr.inclutec.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
@@ -79,6 +82,24 @@ public class FormularioActivity extends Activity {
 				return false;
 			}
 		});
+		
+		final Button _btnIngresar = (Button)findViewById(R.id.buttonSend);
+		
+		_btnIngresar.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				/** 
+				 * Aqui va la parte de la validacion del servicio web
+				 * por ahora solo habra el paso del carne del estudiante.
+				 */
+				//Intent para la creacion de la nueva activity
+				Intent _intInicio = new Intent(FormularioActivity.this,InicioActivity.class);
+				
+				startActivity(_intInicio);
+			}
+			
+		});
 	}
 
 	/*
@@ -101,7 +122,7 @@ public class FormularioActivity extends Activity {
 		_datosPersonales.add("Carné");
 		_datosPersonales.add("Teléfono");
 		_datosPersonales.add("Celular");
-		_datosPersonales.add("Correo");
+		_datosPersonales.add("Correo electrónico");
 		_datosPersonales.add("Plan de estudios");
 		_datosPersonales.add("Cita de matrícula");
 
