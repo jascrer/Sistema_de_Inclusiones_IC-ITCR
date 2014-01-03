@@ -129,13 +129,11 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
                     _objConexionBase.SaveChanges();
 
-                    return true;
                 }
-                else
-                {
-                    //El objeto ya fue creado en la base de datos, no es necesario crearlo de nuevo.
-                    return true;
-                }
+
+                _objConexionBase.Connection.Close();
+
+                return true;
             }catch (Exception) {
                 return false;
             }
@@ -160,6 +158,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
                 _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
 
+                _objConexionBase.Connection.Close();
                 return true;
             }catch (Exception)
             {
@@ -172,6 +171,10 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool ModificiarSolicitud(Solicitud pSolicitud)
         {
+            _objConexionBase = new Inclutec_BDEntities();
+            
+
+
             return true;
         }
 
@@ -180,7 +183,23 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool AnularSolicitud(Solicitud pSolicitud)
         {
-            return true;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                SIFSolicitud _sifSolicitud = (from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                              where _sifSolicitudes.id_Solicitud == pSolicitud.Id_Solicitud
+                                              select _sifSolicitudes).First();
+                _sifSolicitud.txt_estado = _sifSolicitud.txt_estado;
+
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         #endregion
 
