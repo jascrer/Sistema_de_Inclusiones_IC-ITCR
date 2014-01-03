@@ -31,3 +31,6 @@ C:\Users\dekk\Documents\Visual Studio 2010\Projects\ConsoleApplication1\ConsoleA
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
