@@ -28,17 +28,17 @@ namespace ITCR.Ado.ClasesComunes
         /// <summary>
         /// Corresponde al numero de priodidad de Grupo_Por_Solicitud
         /// </summary>
-        public int Num_prioridad { get; set; }
+        public int Num_Prioridad { get; set; }
 
         /// <summary>
         /// Corresponde al estado de Grupo_Por_Solicitud
         /// </summary>
-        public string Txt_estado { get; set; }
+        public string Txt_Estado { get; set; }
 
         /// <summary>
         /// Corresponde al grupo de Grupo_Por_Solicitud
         /// </summary>
-        public Grupo Grupo { get; set; }
+        public Grupo Id_Grupo { get; set; }
 
         #endregion
     }

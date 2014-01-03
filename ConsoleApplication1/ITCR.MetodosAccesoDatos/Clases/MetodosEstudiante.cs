@@ -52,17 +52,17 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
             Estudiante _estEstudiante = new Estudiante();
             _estEstudiante.Id_Carnet = _drEstudiante["IDE_ESTUDIANTE"].ToString();
-            _estEstudiante.Nom_nombre = _strNombreEstudiante[2];
+            _estEstudiante.Nom_Nombre = _strNombreEstudiante[2];
             if (_strNombreEstudiante.Length == 4)
             {
-                _estEstudiante.Nom_nombre += " " + _strNombreEstudiante[3];
+                _estEstudiante.Nom_Nombre += " " + _strNombreEstudiante[3];
             }
-            _estEstudiante.Txt_apellido1 = _strNombreEstudiante[0];
-            _estEstudiante.Txt_apellido2 = _strNombreEstudiante[1];
-            _estEstudiante.Num_telefono = _drEstudiante["NUM_TELEFONO"].ToString();
-            _estEstudiante.Num_celular = _drEstudiante["NUM_CELULAR"].ToString();
-            _estEstudiante.Dir_email = _drEstudiante["DIR_CORREO"].ToString();
-            _estEstudiante.Num_plan_estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
+            _estEstudiante.Txt_Apellido1 = _strNombreEstudiante[0];
+            _estEstudiante.Txt_Apellido2 = _strNombreEstudiante[1];
+            _estEstudiante.Num_Telefono = _drEstudiante["NUM_TELEFONO"].ToString();
+            _estEstudiante.Num_Celular = _drEstudiante["NUM_CELULAR"].ToString();
+            _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
+            _estEstudiante.Num_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
 
             return _estEstudiante;
         }
@@ -118,13 +118,13 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 {
                     SIFEstudiante _sifeEstudiante = new SIFEstudiante();
                     _sifeEstudiante.id_Carnet = pEstudiante.Id_Carnet;
-                    _sifeEstudiante.nom_nombre = pEstudiante.Nom_nombre;
-                    _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_apellido1;
-                    _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_apellido2;
-                    _sifeEstudiante.num_telefono = pEstudiante.Num_telefono;
-                    _sifeEstudiante.num_celular = pEstudiante.Num_celular;
-                    _sifeEstudiante.dir_email = pEstudiante.Dir_email;
-                    _sifeEstudiante.num_plan_estudios = pEstudiante.Num_plan_estudios;
+                    _sifeEstudiante.nom_nombre = pEstudiante.Nom_Nombre;
+                    _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_Apellido1;
+                    _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_Apellido2;
+                    _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
+                    _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
+                    _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
+                    _sifeEstudiante.num_plan_estudios = pEstudiante.Num_Plan_Estudios;
 
                     _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
                     _objConexionBase.SaveChanges();
@@ -152,7 +152,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 SIFSolicitud _sifSolicitud = new SIFSolicitud();
                 _sifSolicitud.id_Solicitud = _objConexionBase.SIFSolicituds.Count();
                 _sifSolicitud.txt_comentario = pSolicitud.Txt_Comentario;
-                _sifSolicitud.txt_curso = pSolicitud.Txt_Curso;
+                _sifSolicitud.txt_curso = pSolicitud.Id_Curso;
                 _sifSolicitud.txt_estado = pSolicitud.Txt_Estado;
                 _sifSolicitud.txt_motivo = pSolicitud.Txt_Motivo;
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;

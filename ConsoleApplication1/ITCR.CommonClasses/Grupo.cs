@@ -28,12 +28,22 @@ namespace ITCR.Ado.ClasesComunes
         /// <summary>
         /// Corresponde al numero del grupo
         /// </summary>
-        public int Num_grupo { get; set; }
+        public int Num_Grupo { get; set; }
 
         /// <summary>
         /// Corresponde al numero de cupos extra del grupo
         /// </summary>
-        public int Num_cupos_extra { get; set; }
+        public int Num_Cupos_Extra { get; set; }
+
+        /// <summary>
+        /// Corresponde al identificador del curso al que pertenece
+        /// </summary>
+        public int Id_Curso { get; set; }
+
+        /// <summary>
+        /// Corresponde a los horario del grupo
+        /// </summary>
+        public LinkedList<Horario> Li_Horarios { get; set; }
 
         #endregion
     }

@@ -33,43 +33,43 @@ namespace ITCR.Ado.ClasesComunes
         /// Corresponde al nombre del estudiante
         /// </summary>
         [DataMember]
-        public string Nom_nombre { get; set; }
+        public string Nom_Nombre { get; set; }
 
         /// <summary>
         /// Corresponde al primer apellido del estudiante
         /// </summary>
         [DataMember]
-        public string Txt_apellido1 { get; set; }
+        public string Txt_Apellido1 { get; set; }
 
         /// <summary>
         /// Corresponde al segundo apellido del estudiante
         /// </summary>
         [DataMember]
-        public string Txt_apellido2 { get; set; }
+        public string Txt_Apellido2 { get; set; }
 
         /// <summary>
         /// Corresponde al numero de telefono del estudiante
         /// </summary>
         [DataMember]
-        public string Num_telefono { get; set; }
+        public string Num_Telefono { get; set; }
 
         /// <summary>
         /// Corresponde al numero de celular del estudiante
         /// </summary>
         [DataMember]
-        public string Num_celular { get; set; }
+        public string Num_Celular { get; set; }
 
         /// <summary>
         /// Corresponde al email del estudiante
         /// </summary>
         [DataMember]
-        public string Dir_email { get; set; }
+        public string Dir_Email { get; set; }
 
         /// <summary>
         /// Corresponde al plan de estudios del estudiante
         /// </summary>
         [DataMember]
-        public int Num_plan_estudios { get; set; }
+        public int Num_Plan_Estudios { get; set; }
 
         #endregion
     }
