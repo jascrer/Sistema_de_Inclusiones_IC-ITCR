@@ -22,8 +22,8 @@ namespace ITCR.InclusionesTec.Controllers
         public ActionResult Formulario()
         {
             //Uso datos login
-            string s_carnetEstudiante = "200966799";
-            
+            string Txt_CarnetEstudiante = "200966799";
+            //Creo el viewmodel
             return View();
         }
 

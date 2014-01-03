@@ -16,6 +16,7 @@ using System.Web;
 #endregion
 
 #region Includes Inclutec
+//using ITCR.Ado.ClasesComunes;
 #endregion
 
 namespace ITCR.InclusionesTec.Models
@@ -23,12 +24,6 @@ namespace ITCR.InclusionesTec.Models
     public class FormularioViewModel
     {
         #region Atributos
-        public Estudiante estudiante { get; set; }
-        public List<Curso> cursosInclusion { get; set; }
-        public List<Grupo> gruposPorCurso { get; set; }
-        public List<Curso> cursosMatriculados { get; set; }
-        public Solicitud solicitud { get; set; }
-
         #endregion
         #region Constructores
         #endregion
@@ -37,6 +32,33 @@ namespace ITCR.InclusionesTec.Models
         #region Constantes
         #endregion
         #region Propiedades
+
+        /// <summary>
+        /// Corresponde a la información del estudiante
+        /// </summary>
+        public Estudiante datosEstudiante { get; set; }
+
+        /// <summary>
+        /// Corresponde a la lista de cursos disponibles para inclusión
+        /// </summary>
+        public LinkedList<Curso> cursosInclusion { get; set; }
+
+        /// <summary>
+        /// Corresponde a la lista de grupos disponibles para inclusión
+        /// </summary>
+        public LinkedList<Grupo> gruposPorCurso { get; set; }
+
+        /// <summary>
+        /// Corresponde a la lista de cursos matriculados actualmente por el estudiante
+        /// </summary>
+        public LinkedList<Curso> cursosMatriculados { get; set; }
+
+        /// <summary>
+        /// Corresponde a la solicitud creada usando el formulario
+        /// </summary>
+        public Solicitud solicitud { get; set; }
+
+
         #endregion
     }
 }
