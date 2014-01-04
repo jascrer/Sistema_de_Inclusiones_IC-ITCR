@@ -7,21 +7,47 @@ import java.util.List;
 import com.example.itcr.inclutec.R;
 
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.Toast;
+import android.annotation.SuppressLint;
 import android.app.ExpandableListActivity;
+import android.content.Intent;
+import android.widget.AdapterView;
 
+@SuppressLint("NewApi")
 public class InicioActivity extends ExpandableListActivity {
 
 	//Arreglo con el nombre de los grupos
 	private final String _sGRUPOS[] = 
-			new String[]{"PENDIENTES","ACEPTADAS","RECHAZADAS"};
+			new String[]{"PENDIENTES","ACEPTADAS","RECHAZADAS", "ANULADAS"};
+	private final String _sNAVEGACION[]=
+			new String[]{"INICIO", "FORMULARIO", "SALIR"};
+	private ActionBarDrawerToggle _Toggle;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inicio);
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+		
+		final ListView _lvDrawer = (ListView)findViewById(R.id.list);
+		final DrawerLayout _dlDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		
+		_lvDrawer.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 
+				android.R.id.text1,_sNAVEGACION));
+		
+		this.crearNavegacion(this, _lvDrawer, _dlDrawerLayout);
 		//Crea el ExpandableListView
 		try{
 			@SuppressWarnings("unchecked")
@@ -78,6 +104,67 @@ public class InicioActivity extends ExpandableListActivity {
         return _lListaItems;
     }
 	
+	@SuppressLint("NewApi")
+	private void crearNavegacion(InicioActivity pParent, ListView pDrawer, final DrawerLayout pLayout){
+		pDrawer.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				if(arg2 == 1){
+					pLayout.closeDrawers();
+					Intent _iIntent = new Intent(InicioActivity.this, FormularioActivity.class);
+					startActivity(_iIntent);
+					finish();
+				
+				}else{
+					Toast.makeText(InicioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
+					pLayout.closeDrawers();
+				}
+				return false;
+			}
+			
+		});
+		
+		// Sombra del panel Navigation Drawer
+        pLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+		
+		_Toggle = new ActionBarDrawerToggle(
+				pParent,
+				pLayout,
+				R.drawable.ic_drawer,
+				R.string.app_name,
+				R.string.app_name){
+				@SuppressLint("NewApi")
+				public void onDrawerClosed(View view){
+					getActionBar().setTitle(
+							getResources().getString(R.string.title_activity_inicio));
+					invalidateOptionsMenu();
+				}
+				public void onDrawerOpened(View view){
+					getActionBar().setTitle("Navegación");
+					invalidateOptionsMenu();
+				}
+		};
+		
+		pLayout.setDrawerListener(_Toggle);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem pItem){
+		if (_Toggle.onOptionsItemSelected(pItem)){
+			return true;
+		}else{
+			return super.onOptionsItemSelected(pItem);
+		}
+	}
+	
+	@Override
+	protected void onPostCreate(Bundle pSavedInstanceState){
+		super.onPostCreate(pSavedInstanceState);
+		_Toggle.syncState();
+	}
+	
 	public void  onContentChanged  () {
         super.onContentChanged();
     }
@@ -99,5 +186,6 @@ public class InicioActivity extends ExpandableListActivity {
         }catch(Exception e){
         }
     }
+    
 
 }

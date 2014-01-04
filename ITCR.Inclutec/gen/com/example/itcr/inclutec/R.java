@@ -33,31 +33,36 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_logo_blanco=0x7f020001;
-        public static final int tecid=0x7f020002;
+        public static final int drawer_shadow=0x7f020000;
+        public static final int ic_drawer=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_logo_blanco=0x7f020003;
+        public static final int tecid=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
-        public static final int button1=0x7f090008;
-        public static final int buttonSend=0x7f090002;
-        public static final int checkBox1=0x7f090007;
-        public static final int editText1=0x7f090005;
-        public static final int editText2=0x7f090006;
-        public static final int editTextCelular=0x7f09000d;
-        public static final int editTextComentario=0x7f09000e;
-        public static final int editTextEmail=0x7f09000f;
-        public static final int editTextTelefono=0x7f090012;
-        public static final int expandableListView1=0x7f090009;
-        public static final int grp_child=0x7f09000c;
-        public static final int imageView1=0x7f090003;
-        public static final int lblListHeader=0x7f090010;
-        public static final int linearLayout1=0x7f09000a;
-        public static final int listaForm=0x7f090000;
-        public static final int progressBar1=0x7f09000b;
-        public static final int row_name=0x7f090011;
-        public static final int textView1=0x7f090004;
-        public static final int textViewDoyFe=0x7f090001;
+        public static final int action_settings=0x7f090016;
+        public static final int button1=0x7f09000b;
+        public static final int buttonSend=0x7f090003;
+        public static final int checkBox1=0x7f09000a;
+        public static final int drawer_layout=0x7f090000;
+        public static final int editText1=0x7f090008;
+        public static final int editText2=0x7f090009;
+        public static final int editTextCelular=0x7f090010;
+        public static final int editTextComentario=0x7f090011;
+        public static final int editTextEmail=0x7f090012;
+        public static final int editTextTelefono=0x7f090015;
+        public static final int expandableListView1=0x7f09000c;
+        public static final int grp_child=0x7f09000f;
+        public static final int imageView1=0x7f090006;
+        public static final int lblListHeader=0x7f090013;
+        public static final int linearLayout1=0x7f09000d;
+        public static final int list=0x7f090005;
+        public static final int list2=0x7f090004;
+        public static final int listaForm=0x7f090001;
+        public static final int progressBar1=0x7f09000e;
+        public static final int row_name=0x7f090014;
+        public static final int textView1=0x7f090007;
+        public static final int textViewDoyFe=0x7f090002;
     }
     public static final class layout {
         public static final int activity_formulario=0x7f030000;

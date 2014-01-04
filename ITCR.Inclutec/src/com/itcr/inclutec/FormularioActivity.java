@@ -6,29 +6,55 @@ import java.util.List;
 
 import com.example.itcr.inclutec.R;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
+@SuppressLint("NewApi")
 public class FormularioActivity extends Activity {
 
 	ELAdapter listAdapter;
 	ExpandableListView expListView;
 	List<String> listDataHeader;
 	HashMap<String, List<String>> listDataChild;
+	private final String _sNAVEGACION[]=
+			new String[]{"INICIO", "FORMULARIO", "SALIR"};
+	private ActionBarDrawerToggle _Toggle;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_formulario);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+		
+		final ListView _lvDrawer = (ListView)findViewById(R.id.list);
+		final DrawerLayout _dlDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		
+		_lvDrawer.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 
+				android.R.id.text1,_sNAVEGACION));
+		
+		crearNavegacion(this, _lvDrawer, _dlDrawerLayout);
 
 		// get the listview
 		expListView = (ExpandableListView) findViewById(R.id.listaForm);
@@ -143,5 +169,58 @@ public class FormularioActivity extends Activity {
 		listDataChild.put(listDataHeader.get(2), _cursosMatriculados);
 		listDataChild.put(listDataHeader.get(3), _requisitos);
 		listDataChild.put(listDataHeader.get(4), _comentario);
+	}
+	
+	@SuppressLint("NewApi")
+	private void crearNavegacion(FormularioActivity pParent, ListView pDrawer, final DrawerLayout pLayout){
+		pDrawer.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				Toast.makeText(FormularioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
+				pLayout.closeDrawers();
+				return false;
+			}
+			
+		});
+		
+		// Sombra del panel Navigation Drawer
+        pLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+		
+		_Toggle = new ActionBarDrawerToggle(
+				pParent,
+				pLayout,
+				R.drawable.ic_drawer,
+				R.string.app_name,
+				R.string.app_name){
+				@SuppressLint("NewApi")
+				public void onDrawerClosed(View view){
+					getActionBar().setTitle(
+							getResources().getString(R.string.title_activity_inicio));
+					invalidateOptionsMenu();
+				}
+				public void onDrawerOpened(View view){
+					getActionBar().setTitle("Navegación");
+					invalidateOptionsMenu();
+				}
+		};
+		
+		pLayout.setDrawerListener(_Toggle);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem pItem){
+		if (_Toggle.onOptionsItemSelected(pItem)){
+			return true;
+		}else{
+			return super.onOptionsItemSelected(pItem);
+		}
+	}
+	
+	@Override
+	protected void onPostCreate(Bundle pSavedInstanceState){
+		super.onPostCreate(pSavedInstanceState);
+		_Toggle.syncState();
 	}
 }

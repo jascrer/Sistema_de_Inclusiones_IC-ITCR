@@ -1,28 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+ 	xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#172E55"
-    android:orientation="vertical"
-    tools:context=".FormularioActivity" >
+	android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
 
-	<ExpandableListView
-	    android:id="@+id/listaForm"
-	    android:layout_width="fill_parent"
-	    android:layout_height="318dp"
-	    android:color="#172E55" />
+	<LinearLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:background="#172E55"
+    	android:orientation="vertical" >
 
-	<TextView
-	    android:id="@+id/textViewDoyFe"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/leyenda"
-	    android:textColor="@color/white" />
+		<ExpandableListView
+	    	android:id="@+id/listaForm"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="318dp"
+	    	android:color="#172E55" />
 
-	<Button
-	    android:id="@+id/buttonSend"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="Enviar" />
+		<TextView
+	    	android:id="@+id/textViewDoyFe"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/leyenda"
+	    	android:textColor="@color/white" />
+
+		<Button
+	    	android:id="@+id/buttonSend"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="Enviar" />
 	
-</LinearLayout>
+	</LinearLayout>
+	
+	<ListView
+    	android:id="@+id/list2"
+    	android:layout_width = "240dp"
+    	android:layout_height= "match_parent"
+    	android:layout_gravity="left"
+    	android:background="#EEE"/>
+
+</android.support.v4.widget.DrawerLayout>
