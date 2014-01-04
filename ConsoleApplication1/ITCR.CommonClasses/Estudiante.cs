@@ -66,10 +66,10 @@ namespace ITCR.Ado.ClasesComunes
         public string Dir_Email { get; set; }
 
         /// <summary>
-        /// Corresponde al plan de estudios del estudiante
+        /// Corresponde al identificador del plan de estudios del estudiante
         /// </summary>
         [DataMember]
-        public int Num_Plan_Estudios { get; set; }
+        public int Id_Plan_Estudios { get; set; }
 
         #endregion
     }

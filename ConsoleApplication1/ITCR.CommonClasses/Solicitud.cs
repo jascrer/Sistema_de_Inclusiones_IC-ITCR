@@ -55,6 +55,11 @@ namespace ITCR.Ado.ClasesComunes
         /// </summary>
         public LinkedList<Grupo_Por_Solicitud> Li_Grupos { get; set; }
 
+        /// <summary>
+        /// Corresponde al grupo aceptado de la solicitud
+        /// </summary>
+        public int Id_GrupoAceptado { get; set; }
+
         #endregion
     }
 }

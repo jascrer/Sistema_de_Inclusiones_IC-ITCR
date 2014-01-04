@@ -31,6 +31,11 @@ namespace ITCR.Ado.ClasesComunes
         public int Num_Grupo { get; set; }
 
         /// <summary>
+        /// Corresponde al numero de cupos del grupo
+        /// </summary>
+        public int Num_Cupos { get; set; }
+
+        /// <summary>
         /// Corresponde al numero de cupos extra del grupo
         /// </summary>
         public int Num_Cupos_Extra { get; set; }
