@@ -48,7 +48,7 @@ public class FormularioActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		
-		final ListView _lvDrawer = (ListView)findViewById(R.id.list);
+		final ListView _lvDrawer = (ListView)findViewById(R.id.listDrawer);
 		final DrawerLayout _dlDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		
 		_lvDrawer.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 
@@ -178,8 +178,16 @@ public class FormularioActivity extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
-				Toast.makeText(FormularioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
-				pLayout.closeDrawers();
+				if(arg2 == 0){
+					pLayout.closeDrawers();
+					Intent _iIntent = new Intent(FormularioActivity.this, InicioActivity.class);
+					startActivity(_iIntent);
+					finish();
+				
+				}else{
+					Toast.makeText(FormularioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
+					pLayout.closeDrawers();
+				}
 				return false;
 			}
 			

@@ -50,24 +50,31 @@ public class ELAdapter extends BaseExpandableListAdapter {
 			if(groupPosition==0){
 				if(childPosition == 2){
 					convertView = infalInflater.inflate(R.layout.phone_row, null);
+					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+					txtListChild.setText(childText);
 				}
 				else if(childPosition == 3){
 					convertView = infalInflater.inflate(R.layout.cell_row, null);
+					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+					txtListChild.setText(childText);
 				}
 				else if(childPosition == 4){
 					convertView = infalInflater.inflate(R.layout.email_row, null);
+					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+					txtListChild.setText(childText);
 				}
 				else{
 					convertView = infalInflater.inflate(R.layout.child_row, null);
+					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+					txtListChild.setText(childText);
 				}
 			}
 			else{
-				convertView = infalInflater.inflate(R.layout.child_row, null);
+			convertView = infalInflater.inflate(R.layout.child_row, null);
+			TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+			txtListChild.setText(childText);
 			}
 		}
-		
-		TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-		txtListChild.setText(childText);
 	
 		return convertView;
 	}

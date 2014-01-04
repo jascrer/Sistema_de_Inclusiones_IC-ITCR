@@ -41,7 +41,7 @@ public class InicioActivity extends ExpandableListActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		
-		final ListView _lvDrawer = (ListView)findViewById(R.id.list);
+		final ListView _lvDrawer = (ListView)findViewById(R.id.listDrawer);
 		final DrawerLayout _dlDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		
 		_lvDrawer.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 

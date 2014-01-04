@@ -25,7 +25,7 @@
 	</LinearLayout>
 	
 	<ListView
-    	android:id="@+id/list"
+    	android:id="@+id/listDrawer"
     	android:layout_width = "240dp"
     	android:layout_height= "match_parent"
     	android:layout_gravity="left"
