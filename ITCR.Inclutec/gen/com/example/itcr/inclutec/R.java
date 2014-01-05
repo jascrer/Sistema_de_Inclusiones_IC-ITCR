@@ -65,24 +65,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textViewDoyFe=0x7f090002;
     }
     public static final class layout {
-        public static final int activity_formulario=0x7f030000;
-        public static final int activity_inicio=0x7f030001;
-        public static final int activity_login=0x7f030002;
-        public static final int activity_modify=0x7f030003;
-        public static final int activity_splash=0x7f030004;
-        public static final int cell_row=0x7f030005;
-        public static final int child_row=0x7f030006;
-        public static final int comment_row=0x7f030007;
-        public static final int email_row=0x7f030008;
-        public static final int group_form_item=0x7f030009;
-        public static final int group_row=0x7f03000a;
-        public static final int phone_row=0x7f03000b;
+        public static final int activity_detalle=0x7f030000;
+        public static final int activity_formulario=0x7f030001;
+        public static final int activity_inicio=0x7f030002;
+        public static final int activity_login=0x7f030003;
+        public static final int activity_modify=0x7f030004;
+        public static final int activity_splash=0x7f030005;
+        public static final int cell_row=0x7f030006;
+        public static final int child_row=0x7f030007;
+        public static final int comment_row=0x7f030008;
+        public static final int email_row=0x7f030009;
+        public static final int group_form_item=0x7f03000a;
+        public static final int group_row=0x7f03000b;
+        public static final int phone_row=0x7f03000c;
     }
     public static final class menu {
-        public static final int formulario=0x7f080000;
-        public static final int inicio=0x7f080001;
-        public static final int login=0x7f080002;
-        public static final int modify=0x7f080003;
+        public static final int detalle=0x7f080000;
+        public static final int formulario=0x7f080001;
+        public static final int inicio=0x7f080002;
+        public static final int login=0x7f080003;
+        public static final int modify=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
@@ -100,6 +102,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int nombre_aplicacion=0x7f060004;
         public static final int password=0x7f060009;
         public static final int recordarme=0x7f06000a;
+        public static final int title_activity_detalle=0x7f060013;
         public static final int title_activity_formulario=0x7f060011;
         public static final int title_activity_inicio=0x7f06000e;
         public static final int title_activity_login=0x7f060001;

@@ -18,7 +18,8 @@
     <string name="title_activity_inicio">Inclutec - Inicio</string>
     <string name="no_items">No items</string>
     <string name="title_activity_modify">ModifyActivity</string>
-    <string name="title_activity_formulario">Inclutec</string>
+    <string name="title_activity_formulario">Inclutec - Formulario</string>
     <string name="leyenda">Doy fe...</string>
+    <string name="title_activity_detalle">Inclutec - Detalle Inclusión</string>
 
 </resources>

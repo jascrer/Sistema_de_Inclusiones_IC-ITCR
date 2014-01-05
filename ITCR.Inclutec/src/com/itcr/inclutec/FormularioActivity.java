@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.itcr.inclutec.R;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,16 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.ListView;
+
+import com.example.itcr.inclutec.R;
 
 @SuppressLint("NewApi")
 public class FormularioActivity extends Activity {
@@ -173,25 +172,31 @@ public class FormularioActivity extends Activity {
 	
 	@SuppressLint("NewApi")
 	private void crearNavegacion(FormularioActivity pParent, ListView pDrawer, final DrawerLayout pLayout){
-		pDrawer.setOnItemLongClickListener(new OnItemLongClickListener(){
+		pDrawer.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				if(arg2 == 0){
-					pLayout.closeDrawers();
-					Intent _iIntent = new Intent(FormularioActivity.this, InicioActivity.class);
-					startActivity(_iIntent);
-					finish();
-				
-				}else{
-					Toast.makeText(FormularioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
-					pLayout.closeDrawers();
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				pLayout.closeDrawers();
+				Intent _iIntent;
+				switch(arg2){
+					case 1:
+						break;
+					case 2:
+						_iIntent = new Intent(FormularioActivity.this, LoginActivity.class);
+						startActivity(_iIntent);
+						finish();
+						break;
+					default:
+						_iIntent = new Intent(FormularioActivity.this, InicioActivity.class);
+						startActivity(_iIntent);
+						finish();
+						break;
 				}
-				return false;
 			}
 			
 		});
+		
 		
 		// Sombra del panel Navigation Drawer
         pLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -205,7 +210,7 @@ public class FormularioActivity extends Activity {
 				@SuppressLint("NewApi")
 				public void onDrawerClosed(View view){
 					getActionBar().setTitle(
-							getResources().getString(R.string.title_activity_inicio));
+							getResources().getString(R.string.title_activity_formulario));
 					invalidateOptionsMenu();
 				}
 				public void onDrawerOpened(View view){

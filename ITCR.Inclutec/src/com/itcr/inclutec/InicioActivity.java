@@ -4,24 +4,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.itcr.inclutec.R;
-
+import android.annotation.SuppressLint;
+import android.app.ExpandableListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
-import android.widget.Toast;
-import android.annotation.SuppressLint;
-import android.app.ExpandableListActivity;
-import android.content.Intent;
-import android.widget.AdapterView;
+
+import com.example.itcr.inclutec.R;
 
 @SuppressLint("NewApi")
 public class InicioActivity extends ExpandableListActivity {
@@ -106,22 +105,27 @@ public class InicioActivity extends ExpandableListActivity {
 	
 	@SuppressLint("NewApi")
 	private void crearNavegacion(InicioActivity pParent, ListView pDrawer, final DrawerLayout pLayout){
-		pDrawer.setOnItemLongClickListener(new OnItemLongClickListener(){
+		pDrawer.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				if(arg2 == 1){
-					pLayout.closeDrawers();
-					Intent _iIntent = new Intent(InicioActivity.this, FormularioActivity.class);
-					startActivity(_iIntent);
-					finish();
-				
-				}else{
-					Toast.makeText(InicioActivity.this, "Pulsado: " + _sNAVEGACION[arg2], Toast.LENGTH_SHORT).show();
-					pLayout.closeDrawers();
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				pLayout.closeDrawers();
+				Intent _iIntent;
+				switch(arg2){
+					case 1:
+						_iIntent = new Intent(InicioActivity.this, FormularioActivity.class);
+						startActivity(_iIntent);
+						finish();
+						break;
+					case 2:
+						_iIntent = new Intent(InicioActivity.this, LoginActivity.class);
+						startActivity(_iIntent);
+						finish();
+						break;
+					default:
+						break;
 				}
-				return false;
 			}
 			
 		});
@@ -186,6 +190,4 @@ public class InicioActivity extends ExpandableListActivity {
         }catch(Exception e){
         }
     }
-    
-
 }
