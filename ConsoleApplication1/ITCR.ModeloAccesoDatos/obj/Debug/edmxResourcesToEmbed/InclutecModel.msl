@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Inclutec_BDModelStoreContainer" CdmEntityContainer="Inclutec_BDEntities">
+    <EntitySetMapping Name="SIFCursoes">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFCurso">
+        <MappingFragment StoreEntitySet="SIFCurso">
+          <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+          <ScalarProperty Name="nom_Curso" ColumnName="nom_Curso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SIFEstudiantes">
       <EntityTypeMapping TypeName="Inclutec_BDModel.SIFEstudiante">
         <MappingFragment StoreEntitySet="SIFEstudiante">
@@ -11,7 +19,7 @@
           <ScalarProperty Name="num_telefono" ColumnName="num_telefono" />
           <ScalarProperty Name="num_celular" ColumnName="num_celular" />
           <ScalarProperty Name="dir_email" ColumnName="dir_email" />
-          <ScalarProperty Name="num_plan_estudios" ColumnName="num_plan_estudios" />
+          <ScalarProperty Name="FK_PlanEstudios_idPlanEstudios" ColumnName="FK_PlanEstudios_idPlanEstudios" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,7 +28,10 @@
         <MappingFragment StoreEntitySet="SIFGrupo">
           <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
           <ScalarProperty Name="num_grupo" ColumnName="num_grupo" />
+          <ScalarProperty Name="num_cupos" ColumnName="num_cupos" />
           <ScalarProperty Name="num_cupos_extra" ColumnName="num_cupos_extra" />
+          <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+          <ScalarProperty Name="FK_Profesor_idProfesor" ColumnName="FK_Profesor_idProfesor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -29,7 +40,6 @@
         <MappingFragment StoreEntitySet="SIFGrupo_Por_Solicitud">
           <ScalarProperty Name="id_Grupo_Por_Solicitud" ColumnName="id_Grupo_Por_Solicitud" />
           <ScalarProperty Name="num_prioridad" ColumnName="num_prioridad" />
-          <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
           <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
           <ScalarProperty Name="FK_Solicitud_idSolicitud" ColumnName="FK_Solicitud_idSolicitud" />
         </MappingFragment>
@@ -48,6 +58,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SIFPlanEstudios">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFPlanEstudio">
+        <MappingFragment StoreEntitySet="SIFPlanEstudios">
+          <ScalarProperty Name="id_PlanEstudios" ColumnName="id_PlanEstudios" />
+          <ScalarProperty Name="nom_carrera" ColumnName="nom_carrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFProfesors">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFProfesor">
+        <MappingFragment StoreEntitySet="SIFProfesor">
+          <ScalarProperty Name="id_Profesor" ColumnName="id_Profesor" />
+          <ScalarProperty Name="nom_profesor" ColumnName="nom_profesor" />
+          <ScalarProperty Name="dir_correo" ColumnName="dir_correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SIFSolicituds">
       <EntityTypeMapping TypeName="Inclutec_BDModel.SIFSolicitud">
         <MappingFragment StoreEntitySet="SIFSolicitud">
@@ -57,8 +84,43 @@
           <ScalarProperty Name="txt_motivo" ColumnName="txt_motivo" />
           <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
           <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+          <ScalarProperty Name="grupo_aceptado" ColumnName="grupo_aceptado" />
           <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
           <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITDatos_Estudiante">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITDatos_Estudiante">
+        <MappingFragment StoreEntitySet="SITDatos_Estudiante">
+          <ScalarProperty Name="id_Datos_Estudiante" ColumnName="id_Datos_Estudiante" />
+          <ScalarProperty Name="num_cursosfaltantes" ColumnName="num_cursosfaltantes" />
+          <ScalarProperty Name="num_creditosactuales" ColumnName="num_creditosactuales" />
+          <ScalarProperty Name="tim_horamatricula" ColumnName="tim_horamatricula" />
+          <ScalarProperty Name="txt_diamatricula" ColumnName="txt_diamatricula" />
+          <ScalarProperty Name="FK_Estudiante_idEstudiante" ColumnName="FK_Estudiante_idEstudiante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITExcepciones">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITExcepcione">
+        <MappingFragment StoreEntitySet="SITExcepciones">
+          <ScalarProperty Name="id_Excepciones" ColumnName="id_Excepciones" />
+          <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
+          <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+          <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
+          <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITHorarios">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITHorario">
+        <MappingFragment StoreEntitySet="SITHorario">
+          <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+          <ScalarProperty Name="txt_dia" ColumnName="txt_dia" />
+          <ScalarProperty Name="tim_hora_inicio" ColumnName="tim_hora_inicio" />
+          <ScalarProperty Name="tim_hora_fin" ColumnName="tim_hora_fin" />
+          <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

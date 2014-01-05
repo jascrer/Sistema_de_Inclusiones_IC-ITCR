@@ -19,9 +19,18 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SIFCurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFCurso), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Curso", "SIFCurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFCurso), "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Datos_Estudiante_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITDatos_Estudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITDatos_Estudiante), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Estudiante_PlanEstudios", "SIFPlanEstudios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPlanEstudio), "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Solicitud_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Solicitud", "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Profesor", "SIFProfesor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFProfesor), "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Horario_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITHorario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITHorario), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Solicitud", "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SIFPeriodo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPeriodo), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Solicitud_Periodo", "SIFPeriodo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPeriodo), "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), true)]
 
 #endregion
@@ -73,6 +82,22 @@ namespace ITCR.Ado.ModeloAcDatos
         #endregion
     
         #region ObjectSet Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SIFCurso> SIFCursoes
+        {
+            get
+            {
+                if ((_SIFCursoes == null))
+                {
+                    _SIFCursoes = base.CreateObjectSet<SIFCurso>("SIFCursoes");
+                }
+                return _SIFCursoes;
+            }
+        }
+        private ObjectSet<SIFCurso> _SIFCursoes;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -141,6 +166,38 @@ namespace ITCR.Ado.ModeloAcDatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<SIFPlanEstudio> SIFPlanEstudios
+        {
+            get
+            {
+                if ((_SIFPlanEstudios == null))
+                {
+                    _SIFPlanEstudios = base.CreateObjectSet<SIFPlanEstudio>("SIFPlanEstudios");
+                }
+                return _SIFPlanEstudios;
+            }
+        }
+        private ObjectSet<SIFPlanEstudio> _SIFPlanEstudios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SIFProfesor> SIFProfesors
+        {
+            get
+            {
+                if ((_SIFProfesors == null))
+                {
+                    _SIFProfesors = base.CreateObjectSet<SIFProfesor>("SIFProfesors");
+                }
+                return _SIFProfesors;
+            }
+        }
+        private ObjectSet<SIFProfesor> _SIFProfesors;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<SIFSolicitud> SIFSolicituds
         {
             get
@@ -153,6 +210,54 @@ namespace ITCR.Ado.ModeloAcDatos
             }
         }
         private ObjectSet<SIFSolicitud> _SIFSolicituds;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SITDatos_Estudiante> SITDatos_Estudiante
+        {
+            get
+            {
+                if ((_SITDatos_Estudiante == null))
+                {
+                    _SITDatos_Estudiante = base.CreateObjectSet<SITDatos_Estudiante>("SITDatos_Estudiante");
+                }
+                return _SITDatos_Estudiante;
+            }
+        }
+        private ObjectSet<SITDatos_Estudiante> _SITDatos_Estudiante;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SITExcepcione> SITExcepciones
+        {
+            get
+            {
+                if ((_SITExcepciones == null))
+                {
+                    _SITExcepciones = base.CreateObjectSet<SITExcepcione>("SITExcepciones");
+                }
+                return _SITExcepciones;
+            }
+        }
+        private ObjectSet<SITExcepcione> _SITExcepciones;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SITHorario> SITHorarios
+        {
+            get
+            {
+                if ((_SITHorarios == null))
+                {
+                    _SITHorarios = base.CreateObjectSet<SITHorario>("SITHorarios");
+                }
+                return _SITHorarios;
+            }
+        }
+        private ObjectSet<SITHorario> _SITHorarios;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -173,6 +278,14 @@ namespace ITCR.Ado.ModeloAcDatos
         #endregion
 
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SIFCursoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSIFCursoes(SIFCurso sIFCurso)
+        {
+            base.AddObject("SIFCursoes", sIFCurso);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the SIFEstudiantes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -207,11 +320,51 @@ namespace ITCR.Ado.ModeloAcDatos
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the SIFPlanEstudios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSIFPlanEstudios(SIFPlanEstudio sIFPlanEstudio)
+        {
+            base.AddObject("SIFPlanEstudios", sIFPlanEstudio);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SIFProfesors EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSIFProfesors(SIFProfesor sIFProfesor)
+        {
+            base.AddObject("SIFProfesors", sIFProfesor);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the SIFSolicituds EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSIFSolicituds(SIFSolicitud sIFSolicitud)
         {
             base.AddObject("SIFSolicituds", sIFSolicitud);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SITDatos_Estudiante EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSITDatos_Estudiante(SITDatos_Estudiante sITDatos_Estudiante)
+        {
+            base.AddObject("SITDatos_Estudiante", sITDatos_Estudiante);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SITExcepciones EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSITExcepciones(SITExcepcione sITExcepcione)
+        {
+            base.AddObject("SITExcepciones", sITExcepcione);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SITHorarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSITHorarios(SITHorario sITHorario)
+        {
+            base.AddObject("SITHorarios", sITHorario);
         }
     
         /// <summary>
@@ -233,6 +386,137 @@ namespace ITCR.Ado.ModeloAcDatos
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SIFCurso")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SIFCurso : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SIFCurso object.
+        /// </summary>
+        /// <param name="id_Curso">Initial value of the id_Curso property.</param>
+        /// <param name="nom_Curso">Initial value of the nom_Curso property.</param>
+        public static SIFCurso CreateSIFCurso(global::System.String id_Curso, global::System.String nom_Curso)
+        {
+            SIFCurso sIFCurso = new SIFCurso();
+            sIFCurso.id_Curso = id_Curso;
+            sIFCurso.nom_Curso = nom_Curso;
+            return sIFCurso;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id_Curso
+        {
+            get
+            {
+                return _id_Curso;
+            }
+            set
+            {
+                if (_id_Curso != value)
+                {
+                    Onid_CursoChanging(value);
+                    ReportPropertyChanging("id_Curso");
+                    _id_Curso = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id_Curso");
+                    Onid_CursoChanged();
+                }
+            }
+        }
+        private global::System.String _id_Curso;
+        partial void Onid_CursoChanging(global::System.String value);
+        partial void Onid_CursoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nom_Curso
+        {
+            get
+            {
+                return _nom_Curso;
+            }
+            set
+            {
+                Onnom_CursoChanging(value);
+                ReportPropertyChanging("nom_Curso");
+                _nom_Curso = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nom_Curso");
+                Onnom_CursoChanged();
+            }
+        }
+        private global::System.String _nom_Curso;
+        partial void Onnom_CursoChanging(global::System.String value);
+        partial void Onnom_CursoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SITExcepciones")]
+        public EntityCollection<SITExcepcione> SITExcepciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Curso", "SITExcepciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Curso", "SITExcepciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Curso", "SIFGrupo")]
+        public EntityCollection<SIFGrupo> SIFGrupoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIFGrupo>("Inclutec_BDModel.FK_Grupo_Curso", "SIFGrupo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFGrupo>("Inclutec_BDModel.FK_Grupo_Curso", "SIFGrupo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SIFEstudiante")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -249,8 +533,8 @@ namespace ITCR.Ado.ModeloAcDatos
         /// <param name="num_telefono">Initial value of the num_telefono property.</param>
         /// <param name="num_celular">Initial value of the num_celular property.</param>
         /// <param name="dir_email">Initial value of the dir_email property.</param>
-        /// <param name="num_plan_estudios">Initial value of the num_plan_estudios property.</param>
-        public static SIFEstudiante CreateSIFEstudiante(global::System.String id_Carnet, global::System.String nom_nombre, global::System.String txt_apellido_1, global::System.String num_telefono, global::System.String num_celular, global::System.String dir_email, global::System.Int32 num_plan_estudios)
+        /// <param name="fK_PlanEstudios_idPlanEstudios">Initial value of the FK_PlanEstudios_idPlanEstudios property.</param>
+        public static SIFEstudiante CreateSIFEstudiante(global::System.String id_Carnet, global::System.String nom_nombre, global::System.String txt_apellido_1, global::System.String num_telefono, global::System.String num_celular, global::System.String dir_email, global::System.Int32 fK_PlanEstudios_idPlanEstudios)
         {
             SIFEstudiante sIFEstudiante = new SIFEstudiante();
             sIFEstudiante.id_Carnet = id_Carnet;
@@ -259,7 +543,7 @@ namespace ITCR.Ado.ModeloAcDatos
             sIFEstudiante.num_telefono = num_telefono;
             sIFEstudiante.num_celular = num_celular;
             sIFEstudiante.dir_email = dir_email;
-            sIFEstudiante.num_plan_estudios = num_plan_estudios;
+            sIFEstudiante.FK_PlanEstudios_idPlanEstudios = fK_PlanEstudios_idPlanEstudios;
             return sIFEstudiante;
         }
 
@@ -443,29 +727,111 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 num_plan_estudios
+        public global::System.Int32 FK_PlanEstudios_idPlanEstudios
         {
             get
             {
-                return _num_plan_estudios;
+                return _FK_PlanEstudios_idPlanEstudios;
             }
             set
             {
-                Onnum_plan_estudiosChanging(value);
-                ReportPropertyChanging("num_plan_estudios");
-                _num_plan_estudios = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("num_plan_estudios");
-                Onnum_plan_estudiosChanged();
+                OnFK_PlanEstudios_idPlanEstudiosChanging(value);
+                ReportPropertyChanging("FK_PlanEstudios_idPlanEstudios");
+                _FK_PlanEstudios_idPlanEstudios = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FK_PlanEstudios_idPlanEstudios");
+                OnFK_PlanEstudios_idPlanEstudiosChanged();
             }
         }
-        private global::System.Int32 _num_plan_estudios;
-        partial void Onnum_plan_estudiosChanging(global::System.Int32 value);
-        partial void Onnum_plan_estudiosChanged();
+        private global::System.Int32 _FK_PlanEstudios_idPlanEstudios;
+        partial void OnFK_PlanEstudios_idPlanEstudiosChanging(global::System.Int32 value);
+        partial void OnFK_PlanEstudios_idPlanEstudiosChanged();
 
         #endregion
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Datos_Estudiante_Estudiante", "SITDatos_Estudiante")]
+        public EntityCollection<SITDatos_Estudiante> SITDatos_Estudiante
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITDatos_Estudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SITDatos_Estudiante");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITDatos_Estudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SITDatos_Estudiante", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Estudiante_PlanEstudios", "SIFPlanEstudios")]
+        public SIFPlanEstudio SIFPlanEstudio
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPlanEstudio>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFPlanEstudios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPlanEstudio>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFPlanEstudios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFPlanEstudio> SIFPlanEstudioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPlanEstudio>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFPlanEstudios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFPlanEstudio>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFPlanEstudios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SITExcepciones")]
+        public EntityCollection<SITExcepcione> SITExcepciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SITExcepciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SITExcepciones", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -508,13 +874,19 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         /// <param name="id_Grupo">Initial value of the id_Grupo property.</param>
         /// <param name="num_grupo">Initial value of the num_grupo property.</param>
+        /// <param name="num_cupos">Initial value of the num_cupos property.</param>
         /// <param name="num_cupos_extra">Initial value of the num_cupos_extra property.</param>
-        public static SIFGrupo CreateSIFGrupo(global::System.Int32 id_Grupo, global::System.Int32 num_grupo, global::System.Int32 num_cupos_extra)
+        /// <param name="fK_Curso_idCurso">Initial value of the FK_Curso_idCurso property.</param>
+        /// <param name="fK_Profesor_idProfesor">Initial value of the FK_Profesor_idProfesor property.</param>
+        public static SIFGrupo CreateSIFGrupo(global::System.Int32 id_Grupo, global::System.Int32 num_grupo, global::System.Int32 num_cupos, global::System.Int32 num_cupos_extra, global::System.String fK_Curso_idCurso, global::System.String fK_Profesor_idProfesor)
         {
             SIFGrupo sIFGrupo = new SIFGrupo();
             sIFGrupo.id_Grupo = id_Grupo;
             sIFGrupo.num_grupo = num_grupo;
+            sIFGrupo.num_cupos = num_cupos;
             sIFGrupo.num_cupos_extra = num_cupos_extra;
+            sIFGrupo.FK_Curso_idCurso = fK_Curso_idCurso;
+            sIFGrupo.FK_Profesor_idProfesor = fK_Profesor_idProfesor;
             return sIFGrupo;
         }
 
@@ -578,6 +950,30 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int32 num_cupos
+        {
+            get
+            {
+                return _num_cupos;
+            }
+            set
+            {
+                Onnum_cuposChanging(value);
+                ReportPropertyChanging("num_cupos");
+                _num_cupos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("num_cupos");
+                Onnum_cuposChanged();
+            }
+        }
+        private global::System.Int32 _num_cupos;
+        partial void Onnum_cuposChanging(global::System.Int32 value);
+        partial void Onnum_cuposChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int32 num_cupos_extra
         {
             get
@@ -596,11 +992,119 @@ namespace ITCR.Ado.ModeloAcDatos
         private global::System.Int32 _num_cupos_extra;
         partial void Onnum_cupos_extraChanging(global::System.Int32 value);
         partial void Onnum_cupos_extraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FK_Curso_idCurso
+        {
+            get
+            {
+                return _FK_Curso_idCurso;
+            }
+            set
+            {
+                OnFK_Curso_idCursoChanging(value);
+                ReportPropertyChanging("FK_Curso_idCurso");
+                _FK_Curso_idCurso = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FK_Curso_idCurso");
+                OnFK_Curso_idCursoChanged();
+            }
+        }
+        private global::System.String _FK_Curso_idCurso;
+        partial void OnFK_Curso_idCursoChanging(global::System.String value);
+        partial void OnFK_Curso_idCursoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FK_Profesor_idProfesor
+        {
+            get
+            {
+                return _FK_Profesor_idProfesor;
+            }
+            set
+            {
+                OnFK_Profesor_idProfesorChanging(value);
+                ReportPropertyChanging("FK_Profesor_idProfesor");
+                _FK_Profesor_idProfesor = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FK_Profesor_idProfesor");
+                OnFK_Profesor_idProfesorChanged();
+            }
+        }
+        private global::System.String _FK_Profesor_idProfesor;
+        partial void OnFK_Profesor_idProfesorChanging(global::System.String value);
+        partial void OnFK_Profesor_idProfesorChanged();
 
         #endregion
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Curso", "SIFCurso")]
+        public SIFCurso SIFCurso
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Grupo_Curso", "SIFCurso").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Grupo_Curso", "SIFCurso").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFCurso> SIFCursoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Grupo_Curso", "SIFCurso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Grupo_Curso", "SIFCurso", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SITExcepciones")]
+        public EntityCollection<SITExcepcione> SITExcepciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Grupo", "SITExcepciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Grupo", "SITExcepciones", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -639,6 +1143,66 @@ namespace ITCR.Ado.ModeloAcDatos
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Profesor", "SIFProfesor")]
+        public SIFProfesor SIFProfesor
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFProfesor>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFProfesor").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFProfesor>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFProfesor").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFProfesor> SIFProfesorReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFProfesor>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFProfesor");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFProfesor>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFProfesor", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Horario_Grupo", "SITHorario")]
+        public EntityCollection<SITHorario> SITHorarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITHorario>("Inclutec_BDModel.FK_Horario_Grupo", "SITHorario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITHorario>("Inclutec_BDModel.FK_Horario_Grupo", "SITHorario", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -659,15 +1223,13 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         /// <param name="id_Grupo_Por_Solicitud">Initial value of the id_Grupo_Por_Solicitud property.</param>
         /// <param name="num_prioridad">Initial value of the num_prioridad property.</param>
-        /// <param name="txt_estado">Initial value of the txt_estado property.</param>
         /// <param name="fK_Grupo_idGrupo">Initial value of the FK_Grupo_idGrupo property.</param>
         /// <param name="fK_Solicitud_idSolicitud">Initial value of the FK_Solicitud_idSolicitud property.</param>
-        public static SIFGrupo_Por_Solicitud CreateSIFGrupo_Por_Solicitud(global::System.Int32 id_Grupo_Por_Solicitud, global::System.Int32 num_prioridad, global::System.String txt_estado, global::System.Int32 fK_Grupo_idGrupo, global::System.Int32 fK_Solicitud_idSolicitud)
+        public static SIFGrupo_Por_Solicitud CreateSIFGrupo_Por_Solicitud(global::System.Int32 id_Grupo_Por_Solicitud, global::System.Int32 num_prioridad, global::System.Int32 fK_Grupo_idGrupo, global::System.Int32 fK_Solicitud_idSolicitud)
         {
             SIFGrupo_Por_Solicitud sIFGrupo_Por_Solicitud = new SIFGrupo_Por_Solicitud();
             sIFGrupo_Por_Solicitud.id_Grupo_Por_Solicitud = id_Grupo_Por_Solicitud;
             sIFGrupo_Por_Solicitud.num_prioridad = num_prioridad;
-            sIFGrupo_Por_Solicitud.txt_estado = txt_estado;
             sIFGrupo_Por_Solicitud.FK_Grupo_idGrupo = fK_Grupo_idGrupo;
             sIFGrupo_Por_Solicitud.FK_Solicitud_idSolicitud = fK_Solicitud_idSolicitud;
             return sIFGrupo_Por_Solicitud;
@@ -727,30 +1289,6 @@ namespace ITCR.Ado.ModeloAcDatos
         private global::System.Int32 _num_prioridad;
         partial void Onnum_prioridadChanging(global::System.Int32 value);
         partial void Onnum_prioridadChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String txt_estado
-        {
-            get
-            {
-                return _txt_estado;
-            }
-            set
-            {
-                Ontxt_estadoChanging(value);
-                ReportPropertyChanging("txt_estado");
-                _txt_estado = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("txt_estado");
-                Ontxt_estadoChanged();
-            }
-        }
-        private global::System.String _txt_estado;
-        partial void Ontxt_estadoChanging(global::System.String value);
-        partial void Ontxt_estadoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1102,6 +1640,28 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SITExcepciones")]
+        public EntityCollection<SITExcepcione> SITExcepciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Periodo", "SITExcepciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Periodo", "SITExcepciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Solicitud_Periodo", "SIFSolicitud")]
         public EntityCollection<SIFSolicitud> SIFSolicituds
         {
@@ -1114,6 +1674,250 @@ namespace ITCR.Ado.ModeloAcDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFSolicitud>("Inclutec_BDModel.FK_Solicitud_Periodo", "SIFSolicitud", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SIFPlanEstudio")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SIFPlanEstudio : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SIFPlanEstudio object.
+        /// </summary>
+        /// <param name="id_PlanEstudios">Initial value of the id_PlanEstudios property.</param>
+        /// <param name="nom_carrera">Initial value of the nom_carrera property.</param>
+        public static SIFPlanEstudio CreateSIFPlanEstudio(global::System.Int32 id_PlanEstudios, global::System.String nom_carrera)
+        {
+            SIFPlanEstudio sIFPlanEstudio = new SIFPlanEstudio();
+            sIFPlanEstudio.id_PlanEstudios = id_PlanEstudios;
+            sIFPlanEstudio.nom_carrera = nom_carrera;
+            return sIFPlanEstudio;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_PlanEstudios
+        {
+            get
+            {
+                return _id_PlanEstudios;
+            }
+            set
+            {
+                if (_id_PlanEstudios != value)
+                {
+                    Onid_PlanEstudiosChanging(value);
+                    ReportPropertyChanging("id_PlanEstudios");
+                    _id_PlanEstudios = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_PlanEstudios");
+                    Onid_PlanEstudiosChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_PlanEstudios;
+        partial void Onid_PlanEstudiosChanging(global::System.Int32 value);
+        partial void Onid_PlanEstudiosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nom_carrera
+        {
+            get
+            {
+                return _nom_carrera;
+            }
+            set
+            {
+                Onnom_carreraChanging(value);
+                ReportPropertyChanging("nom_carrera");
+                _nom_carrera = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nom_carrera");
+                Onnom_carreraChanged();
+            }
+        }
+        private global::System.String _nom_carrera;
+        partial void Onnom_carreraChanging(global::System.String value);
+        partial void Onnom_carreraChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Estudiante_PlanEstudios", "SIFEstudiante")]
+        public EntityCollection<SIFEstudiante> SIFEstudiantes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIFEstudiante>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFEstudiante");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFEstudiante>("Inclutec_BDModel.FK_Estudiante_PlanEstudios", "SIFEstudiante", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SIFProfesor")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SIFProfesor : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SIFProfesor object.
+        /// </summary>
+        /// <param name="id_Profesor">Initial value of the id_Profesor property.</param>
+        /// <param name="nom_profesor">Initial value of the nom_profesor property.</param>
+        /// <param name="dir_correo">Initial value of the dir_correo property.</param>
+        public static SIFProfesor CreateSIFProfesor(global::System.String id_Profesor, global::System.String nom_profesor, global::System.String dir_correo)
+        {
+            SIFProfesor sIFProfesor = new SIFProfesor();
+            sIFProfesor.id_Profesor = id_Profesor;
+            sIFProfesor.nom_profesor = nom_profesor;
+            sIFProfesor.dir_correo = dir_correo;
+            return sIFProfesor;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id_Profesor
+        {
+            get
+            {
+                return _id_Profesor;
+            }
+            set
+            {
+                if (_id_Profesor != value)
+                {
+                    Onid_ProfesorChanging(value);
+                    ReportPropertyChanging("id_Profesor");
+                    _id_Profesor = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id_Profesor");
+                    Onid_ProfesorChanged();
+                }
+            }
+        }
+        private global::System.String _id_Profesor;
+        partial void Onid_ProfesorChanging(global::System.String value);
+        partial void Onid_ProfesorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nom_profesor
+        {
+            get
+            {
+                return _nom_profesor;
+            }
+            set
+            {
+                Onnom_profesorChanging(value);
+                ReportPropertyChanging("nom_profesor");
+                _nom_profesor = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nom_profesor");
+                Onnom_profesorChanged();
+            }
+        }
+        private global::System.String _nom_profesor;
+        partial void Onnom_profesorChanging(global::System.String value);
+        partial void Onnom_profesorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String dir_correo
+        {
+            get
+            {
+                return _dir_correo;
+            }
+            set
+            {
+                Ondir_correoChanging(value);
+                ReportPropertyChanging("dir_correo");
+                _dir_correo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("dir_correo");
+                Ondir_correoChanged();
+            }
+        }
+        private global::System.String _dir_correo;
+        partial void Ondir_correoChanging(global::System.String value);
+        partial void Ondir_correoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Profesor", "SIFGrupo")]
+        public EntityCollection<SIFGrupo> SIFGrupoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIFGrupo>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFGrupo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFGrupo>("Inclutec_BDModel.FK_Grupo_Profesor", "SIFGrupo", value);
                 }
             }
         }
@@ -1139,15 +1943,17 @@ namespace ITCR.Ado.ModeloAcDatos
         /// <param name="txt_curso">Initial value of the txt_curso property.</param>
         /// <param name="txt_estado">Initial value of the txt_estado property.</param>
         /// <param name="fec_creacion">Initial value of the fec_creacion property.</param>
+        /// <param name="grupo_aceptado">Initial value of the grupo_aceptado property.</param>
         /// <param name="fK_Estudiante_carnet">Initial value of the FK_Estudiante_carnet property.</param>
         /// <param name="fK_Periodo_idPeriodo">Initial value of the FK_Periodo_idPeriodo property.</param>
-        public static SIFSolicitud CreateSIFSolicitud(global::System.Int32 id_Solicitud, global::System.String txt_curso, global::System.String txt_estado, global::System.DateTime fec_creacion, global::System.String fK_Estudiante_carnet, global::System.Int32 fK_Periodo_idPeriodo)
+        public static SIFSolicitud CreateSIFSolicitud(global::System.Int32 id_Solicitud, global::System.String txt_curso, global::System.String txt_estado, global::System.DateTime fec_creacion, global::System.Int32 grupo_aceptado, global::System.String fK_Estudiante_carnet, global::System.Int32 fK_Periodo_idPeriodo)
         {
             SIFSolicitud sIFSolicitud = new SIFSolicitud();
             sIFSolicitud.id_Solicitud = id_Solicitud;
             sIFSolicitud.txt_curso = txt_curso;
             sIFSolicitud.txt_estado = txt_estado;
             sIFSolicitud.fec_creacion = fec_creacion;
+            sIFSolicitud.grupo_aceptado = grupo_aceptado;
             sIFSolicitud.FK_Estudiante_carnet = fK_Estudiante_carnet;
             sIFSolicitud.FK_Periodo_idPeriodo = fK_Periodo_idPeriodo;
             return sIFSolicitud;
@@ -1309,6 +2115,30 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int32 grupo_aceptado
+        {
+            get
+            {
+                return _grupo_aceptado;
+            }
+            set
+            {
+                Ongrupo_aceptadoChanging(value);
+                ReportPropertyChanging("grupo_aceptado");
+                _grupo_aceptado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("grupo_aceptado");
+                Ongrupo_aceptadoChanged();
+            }
+        }
+        private global::System.Int32 _grupo_aceptado;
+        partial void Ongrupo_aceptadoChanging(global::System.Int32 value);
+        partial void Ongrupo_aceptadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.String FK_Estudiante_carnet
         {
             get
@@ -1402,33 +2232,17 @@ namespace ITCR.Ado.ModeloAcDatos
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud")]
-        public SIFGrupo_Por_Solicitud SIFGrupo_Por_Solicitud
+        public EntityCollection<SIFGrupo_Por_Solicitud> SIFGrupo_Por_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SIFGrupo_Por_Solicitud> SIFGrupo_Por_SolicitudReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud", "SIFGrupo_Por_Solicitud", value);
                 }
             }
         }
@@ -1467,6 +2281,755 @@ namespace ITCR.Ado.ModeloAcDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Solicitud_Periodo", "SIFPeriodo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SITDatos_Estudiante")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SITDatos_Estudiante : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SITDatos_Estudiante object.
+        /// </summary>
+        /// <param name="id_Datos_Estudiante">Initial value of the id_Datos_Estudiante property.</param>
+        /// <param name="num_cursosfaltantes">Initial value of the num_cursosfaltantes property.</param>
+        /// <param name="num_creditosactuales">Initial value of the num_creditosactuales property.</param>
+        /// <param name="tim_horamatricula">Initial value of the tim_horamatricula property.</param>
+        /// <param name="txt_diamatricula">Initial value of the txt_diamatricula property.</param>
+        /// <param name="fK_Estudiante_idEstudiante">Initial value of the FK_Estudiante_idEstudiante property.</param>
+        public static SITDatos_Estudiante CreateSITDatos_Estudiante(global::System.Int32 id_Datos_Estudiante, global::System.Int32 num_cursosfaltantes, global::System.Int32 num_creditosactuales, global::System.TimeSpan tim_horamatricula, global::System.String txt_diamatricula, global::System.String fK_Estudiante_idEstudiante)
+        {
+            SITDatos_Estudiante sITDatos_Estudiante = new SITDatos_Estudiante();
+            sITDatos_Estudiante.id_Datos_Estudiante = id_Datos_Estudiante;
+            sITDatos_Estudiante.num_cursosfaltantes = num_cursosfaltantes;
+            sITDatos_Estudiante.num_creditosactuales = num_creditosactuales;
+            sITDatos_Estudiante.tim_horamatricula = tim_horamatricula;
+            sITDatos_Estudiante.txt_diamatricula = txt_diamatricula;
+            sITDatos_Estudiante.FK_Estudiante_idEstudiante = fK_Estudiante_idEstudiante;
+            return sITDatos_Estudiante;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_Datos_Estudiante
+        {
+            get
+            {
+                return _id_Datos_Estudiante;
+            }
+            set
+            {
+                if (_id_Datos_Estudiante != value)
+                {
+                    Onid_Datos_EstudianteChanging(value);
+                    ReportPropertyChanging("id_Datos_Estudiante");
+                    _id_Datos_Estudiante = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_Datos_Estudiante");
+                    Onid_Datos_EstudianteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_Datos_Estudiante;
+        partial void Onid_Datos_EstudianteChanging(global::System.Int32 value);
+        partial void Onid_Datos_EstudianteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 num_cursosfaltantes
+        {
+            get
+            {
+                return _num_cursosfaltantes;
+            }
+            set
+            {
+                Onnum_cursosfaltantesChanging(value);
+                ReportPropertyChanging("num_cursosfaltantes");
+                _num_cursosfaltantes = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("num_cursosfaltantes");
+                Onnum_cursosfaltantesChanged();
+            }
+        }
+        private global::System.Int32 _num_cursosfaltantes;
+        partial void Onnum_cursosfaltantesChanging(global::System.Int32 value);
+        partial void Onnum_cursosfaltantesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 num_creditosactuales
+        {
+            get
+            {
+                return _num_creditosactuales;
+            }
+            set
+            {
+                Onnum_creditosactualesChanging(value);
+                ReportPropertyChanging("num_creditosactuales");
+                _num_creditosactuales = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("num_creditosactuales");
+                Onnum_creditosactualesChanged();
+            }
+        }
+        private global::System.Int32 _num_creditosactuales;
+        partial void Onnum_creditosactualesChanging(global::System.Int32 value);
+        partial void Onnum_creditosactualesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan tim_horamatricula
+        {
+            get
+            {
+                return _tim_horamatricula;
+            }
+            set
+            {
+                Ontim_horamatriculaChanging(value);
+                ReportPropertyChanging("tim_horamatricula");
+                _tim_horamatricula = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("tim_horamatricula");
+                Ontim_horamatriculaChanged();
+            }
+        }
+        private global::System.TimeSpan _tim_horamatricula;
+        partial void Ontim_horamatriculaChanging(global::System.TimeSpan value);
+        partial void Ontim_horamatriculaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String txt_diamatricula
+        {
+            get
+            {
+                return _txt_diamatricula;
+            }
+            set
+            {
+                Ontxt_diamatriculaChanging(value);
+                ReportPropertyChanging("txt_diamatricula");
+                _txt_diamatricula = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("txt_diamatricula");
+                Ontxt_diamatriculaChanged();
+            }
+        }
+        private global::System.String _txt_diamatricula;
+        partial void Ontxt_diamatriculaChanging(global::System.String value);
+        partial void Ontxt_diamatriculaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FK_Estudiante_idEstudiante
+        {
+            get
+            {
+                return _FK_Estudiante_idEstudiante;
+            }
+            set
+            {
+                OnFK_Estudiante_idEstudianteChanging(value);
+                ReportPropertyChanging("FK_Estudiante_idEstudiante");
+                _FK_Estudiante_idEstudiante = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FK_Estudiante_idEstudiante");
+                OnFK_Estudiante_idEstudianteChanged();
+            }
+        }
+        private global::System.String _FK_Estudiante_idEstudiante;
+        partial void OnFK_Estudiante_idEstudianteChanging(global::System.String value);
+        partial void OnFK_Estudiante_idEstudianteChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Datos_Estudiante_Estudiante", "SIFEstudiante")]
+        public SIFEstudiante SIFEstudiante
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SIFEstudiante").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SIFEstudiante").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFEstudiante> SIFEstudianteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SIFEstudiante");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Datos_Estudiante_Estudiante", "SIFEstudiante", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SITExcepcione")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SITExcepcione : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SITExcepcione object.
+        /// </summary>
+        /// <param name="id_Excepciones">Initial value of the id_Excepciones property.</param>
+        /// <param name="fK_Estudiante_carnet">Initial value of the FK_Estudiante_carnet property.</param>
+        /// <param name="fK_Curso_idCurso">Initial value of the FK_Curso_idCurso property.</param>
+        /// <param name="fK_Grupo_idGrupo">Initial value of the FK_Grupo_idGrupo property.</param>
+        /// <param name="fK_Periodo_idPeriodo">Initial value of the FK_Periodo_idPeriodo property.</param>
+        public static SITExcepcione CreateSITExcepcione(global::System.Int32 id_Excepciones, global::System.String fK_Estudiante_carnet, global::System.String fK_Curso_idCurso, global::System.Int32 fK_Grupo_idGrupo, global::System.Int32 fK_Periodo_idPeriodo)
+        {
+            SITExcepcione sITExcepcione = new SITExcepcione();
+            sITExcepcione.id_Excepciones = id_Excepciones;
+            sITExcepcione.FK_Estudiante_carnet = fK_Estudiante_carnet;
+            sITExcepcione.FK_Curso_idCurso = fK_Curso_idCurso;
+            sITExcepcione.FK_Grupo_idGrupo = fK_Grupo_idGrupo;
+            sITExcepcione.FK_Periodo_idPeriodo = fK_Periodo_idPeriodo;
+            return sITExcepcione;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_Excepciones
+        {
+            get
+            {
+                return _id_Excepciones;
+            }
+            set
+            {
+                if (_id_Excepciones != value)
+                {
+                    Onid_ExcepcionesChanging(value);
+                    ReportPropertyChanging("id_Excepciones");
+                    _id_Excepciones = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_Excepciones");
+                    Onid_ExcepcionesChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_Excepciones;
+        partial void Onid_ExcepcionesChanging(global::System.Int32 value);
+        partial void Onid_ExcepcionesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FK_Estudiante_carnet
+        {
+            get
+            {
+                return _FK_Estudiante_carnet;
+            }
+            set
+            {
+                OnFK_Estudiante_carnetChanging(value);
+                ReportPropertyChanging("FK_Estudiante_carnet");
+                _FK_Estudiante_carnet = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FK_Estudiante_carnet");
+                OnFK_Estudiante_carnetChanged();
+            }
+        }
+        private global::System.String _FK_Estudiante_carnet;
+        partial void OnFK_Estudiante_carnetChanging(global::System.String value);
+        partial void OnFK_Estudiante_carnetChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FK_Curso_idCurso
+        {
+            get
+            {
+                return _FK_Curso_idCurso;
+            }
+            set
+            {
+                OnFK_Curso_idCursoChanging(value);
+                ReportPropertyChanging("FK_Curso_idCurso");
+                _FK_Curso_idCurso = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FK_Curso_idCurso");
+                OnFK_Curso_idCursoChanged();
+            }
+        }
+        private global::System.String _FK_Curso_idCurso;
+        partial void OnFK_Curso_idCursoChanging(global::System.String value);
+        partial void OnFK_Curso_idCursoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FK_Grupo_idGrupo
+        {
+            get
+            {
+                return _FK_Grupo_idGrupo;
+            }
+            set
+            {
+                OnFK_Grupo_idGrupoChanging(value);
+                ReportPropertyChanging("FK_Grupo_idGrupo");
+                _FK_Grupo_idGrupo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FK_Grupo_idGrupo");
+                OnFK_Grupo_idGrupoChanged();
+            }
+        }
+        private global::System.Int32 _FK_Grupo_idGrupo;
+        partial void OnFK_Grupo_idGrupoChanging(global::System.Int32 value);
+        partial void OnFK_Grupo_idGrupoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FK_Periodo_idPeriodo
+        {
+            get
+            {
+                return _FK_Periodo_idPeriodo;
+            }
+            set
+            {
+                OnFK_Periodo_idPeriodoChanging(value);
+                ReportPropertyChanging("FK_Periodo_idPeriodo");
+                _FK_Periodo_idPeriodo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FK_Periodo_idPeriodo");
+                OnFK_Periodo_idPeriodoChanged();
+            }
+        }
+        private global::System.Int32 _FK_Periodo_idPeriodo;
+        partial void OnFK_Periodo_idPeriodoChanging(global::System.Int32 value);
+        partial void OnFK_Periodo_idPeriodoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SIFCurso")]
+        public SIFCurso SIFCurso
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFCurso> SIFCursoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SIFEstudiante")]
+        public SIFEstudiante SIFEstudiante
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFEstudiante> SIFEstudianteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SIFGrupo")]
+        public SIFGrupo SIFGrupo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFGrupo> SIFGrupoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SIFPeriodo")]
+        public SIFPeriodo SIFPeriodo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFPeriodo> SIFPeriodoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SITHorario")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SITHorario : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SITHorario object.
+        /// </summary>
+        /// <param name="id_Horario">Initial value of the id_Horario property.</param>
+        /// <param name="txt_dia">Initial value of the txt_dia property.</param>
+        /// <param name="tim_hora_inicio">Initial value of the tim_hora_inicio property.</param>
+        /// <param name="tim_hora_fin">Initial value of the tim_hora_fin property.</param>
+        /// <param name="fK_Grupo_idGrupo">Initial value of the FK_Grupo_idGrupo property.</param>
+        public static SITHorario CreateSITHorario(global::System.Int32 id_Horario, global::System.String txt_dia, global::System.TimeSpan tim_hora_inicio, global::System.TimeSpan tim_hora_fin, global::System.Int32 fK_Grupo_idGrupo)
+        {
+            SITHorario sITHorario = new SITHorario();
+            sITHorario.id_Horario = id_Horario;
+            sITHorario.txt_dia = txt_dia;
+            sITHorario.tim_hora_inicio = tim_hora_inicio;
+            sITHorario.tim_hora_fin = tim_hora_fin;
+            sITHorario.FK_Grupo_idGrupo = fK_Grupo_idGrupo;
+            return sITHorario;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_Horario
+        {
+            get
+            {
+                return _id_Horario;
+            }
+            set
+            {
+                if (_id_Horario != value)
+                {
+                    Onid_HorarioChanging(value);
+                    ReportPropertyChanging("id_Horario");
+                    _id_Horario = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_Horario");
+                    Onid_HorarioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_Horario;
+        partial void Onid_HorarioChanging(global::System.Int32 value);
+        partial void Onid_HorarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String txt_dia
+        {
+            get
+            {
+                return _txt_dia;
+            }
+            set
+            {
+                Ontxt_diaChanging(value);
+                ReportPropertyChanging("txt_dia");
+                _txt_dia = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("txt_dia");
+                Ontxt_diaChanged();
+            }
+        }
+        private global::System.String _txt_dia;
+        partial void Ontxt_diaChanging(global::System.String value);
+        partial void Ontxt_diaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan tim_hora_inicio
+        {
+            get
+            {
+                return _tim_hora_inicio;
+            }
+            set
+            {
+                Ontim_hora_inicioChanging(value);
+                ReportPropertyChanging("tim_hora_inicio");
+                _tim_hora_inicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("tim_hora_inicio");
+                Ontim_hora_inicioChanged();
+            }
+        }
+        private global::System.TimeSpan _tim_hora_inicio;
+        partial void Ontim_hora_inicioChanging(global::System.TimeSpan value);
+        partial void Ontim_hora_inicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan tim_hora_fin
+        {
+            get
+            {
+                return _tim_hora_fin;
+            }
+            set
+            {
+                Ontim_hora_finChanging(value);
+                ReportPropertyChanging("tim_hora_fin");
+                _tim_hora_fin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("tim_hora_fin");
+                Ontim_hora_finChanged();
+            }
+        }
+        private global::System.TimeSpan _tim_hora_fin;
+        partial void Ontim_hora_finChanging(global::System.TimeSpan value);
+        partial void Ontim_hora_finChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FK_Grupo_idGrupo
+        {
+            get
+            {
+                return _FK_Grupo_idGrupo;
+            }
+            set
+            {
+                OnFK_Grupo_idGrupoChanging(value);
+                ReportPropertyChanging("FK_Grupo_idGrupo");
+                _FK_Grupo_idGrupo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FK_Grupo_idGrupo");
+                OnFK_Grupo_idGrupoChanged();
+            }
+        }
+        private global::System.Int32 _FK_Grupo_idGrupo;
+        partial void OnFK_Grupo_idGrupoChanging(global::System.Int32 value);
+        partial void OnFK_Grupo_idGrupoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Horario_Grupo", "SIFGrupo")]
+        public SIFGrupo SIFGrupo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Horario_Grupo", "SIFGrupo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Horario_Grupo", "SIFGrupo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SIFGrupo> SIFGrupoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Horario_Grupo", "SIFGrupo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Horario_Grupo", "SIFGrupo", value);
                 }
             }
         }

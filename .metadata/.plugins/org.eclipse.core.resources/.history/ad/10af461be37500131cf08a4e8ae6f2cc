@@ -1,0 +1,57 @@
+package com.itcr.inclutec;
+
+import com.example.itcr.inclutec.R;
+import com.itcr.inclutec.util.SystemUiHider;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
+
+/**
+ * An example full-screen activity that shows and hides the system UI (i.e.
+ * status bar and navigation/system bar) with user interaction.
+ * 
+ * @see SystemUiHider
+ */
+public class SplashActivity extends Activity {
+
+	private static final int SEGUNDOS=3000;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
+		this.getWindow().setFlags(
+				WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		setContentView(R.layout.activity_splash);
+		
+		Handler _hHandler = new Handler();
+		_hHandler.postDelayed(Login(), SplashActivity.getSegundos());
+
+	}
+	
+	private Runnable Login(){
+		
+		Runnable _rLogin = new Runnable(){
+
+			@Override
+			public void run() {
+				Intent _iIntent = new Intent(SplashActivity.this, InicioActivity.class);
+				startActivity(_iIntent);
+				finish();
+			}
+			
+		};
+		return _rLogin;
+	}
+
+	public static int getSegundos() {
+		return SEGUNDOS;
+	}
+}

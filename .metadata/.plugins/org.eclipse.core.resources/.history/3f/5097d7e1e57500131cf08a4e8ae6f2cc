@@ -1,0 +1,24 @@
+package com.itcr.inclutec;
+
+import com.example.itcr.inclutec.R;
+
+import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.ExpandableListActivity;
+
+@SuppressLint("NewApi")
+public class DetalleActivity extends ExpandableListActivity {
+
+	@SuppressLint("NewApi")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detalle);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+		
+		
+	}
+
+}

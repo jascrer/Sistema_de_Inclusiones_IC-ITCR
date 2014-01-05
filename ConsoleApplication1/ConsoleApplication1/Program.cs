@@ -32,51 +32,46 @@ namespace ConsoleApplication1
              * Manager de la conexion
              * Siempre debe haber uno para que se de la conexion con la base de datos.
              * Ya sea para leer o escribir es necesario.
-             * 
+             * */
             Inclutec_BDEntities _dbManager = new Inclutec_BDEntities();
             
             /*
              * Escritura en la base de datos.
-             * 
+             **/
 
             //Paso 1: Se crea el objeto y se llena la informacion del mismo.
-            SIFEstudiante _sifeEstudiante = new SIFEstudiante();
-            _sifeEstudiante.id_Carnet = "201030612";
-            _sifeEstudiante.nom_nombre = "Arnoldo";
-            _sifeEstudiante.txt_apellido_1 = "Segura";
-            _sifeEstudiante.txt_apellido_2 = "Campos";
-            _sifeEstudiante.num_telefono = "25771122";
-            _sifeEstudiante.num_celular = "83370577";
-            _sifeEstudiante.dir_email = "jarnoldo2809@gmail.com";
-            _sifeEstudiante.num_plan_estudios = 409;
+            SIFPlanEstudio plan = new SIFPlanEstudio();
+            plan.id_PlanEstudios = 1;
+            plan.nom_carrera = "Compu";
+            //_sifeEstudiante.num_plan_estudios = 409;
 
             //Paso 2: Se guarda el objeto, usando el metodo correspondiente 
             //        del manager y a continuacion se invoca el metodo 
             //        SaveChanges() que ejecuta el commit de la operacion.
-            _dbManager.AddToSIFEstudiantes(_sifeEstudiante);
+            _dbManager.AddToSIFPlanEstudios(plan);
             _dbManager.SaveChanges();
 
             /*
              * Lectura de la base de datos
              * Solo se deben hacer lecturas simples, nada complicadas.
-             * 
+             **/
 
             //Se utiliza una lectura en Linq que se aplica en el property deseado del
             //Manager
             //Ejemplos: http://msdn.microsoft.com/es-es/library/vstudio/bb397933(v=vs.100).aspx
-            var _PruebaLinq = from estudiantes in _dbManager.SIFEstudiantes 
-                              select estudiantes;
+            var _PruebaLinq = from planes in _dbManager.SIFPlanEstudios 
+                              select planes;
 
             //Escritura de comprobacion
-            foreach (SIFEstudiante student in _PruebaLinq)
+            foreach (SIFPlanEstudio planc in _PruebaLinq)
             {
-                Console.WriteLine(student.id_Carnet + "-" + student.nom_nombre);
+                Console.WriteLine(planc.nom_carrera);
             }
 
             //Crea una espera de teclado para terminar la aplicacion
-            Console.ReadLine();*/
+            Console.ReadLine();
 
-            wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
+            /*wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
             DataSet _PruebaDatos = _darManager.IEMAFCURRI_Buscar("201030612","CA","S","2","2012");
             foreach (DataRow dr in _PruebaDatos.Tables[0].Rows)
             {
@@ -86,12 +81,12 @@ namespace ConsoleApplication1
                     "\n" + dr["IDE_PER_MOD"].ToString() + " - " + dr["IDE_GRUPO"].ToString() +
                     "\n" + dr["IDE_SED_GRU"].ToString() + " - " + dr["NUM_NOTA"].ToString() +
                     "\n" + dr["IDE_EST_CUR"].ToString());
-            }
+            }*/
 
             //IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
 
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }

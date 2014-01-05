@@ -3,3 +3,8 @@ C:\Users\dekk\documents\visual studio 2010\Projects\ConsoleApplication1\ITCR.Com
 C:\Users\dekk\documents\visual studio 2010\Projects\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.ClasesComunes.csprojResolveAssemblyReference.cache
 C:\Users\dekk\documents\visual studio 2010\Projects\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
 C:\Users\dekk\documents\visual studio 2010\Projects\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.dll
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.pdb
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.ClasesComunes.csprojResolveAssemblyReference.cache
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb

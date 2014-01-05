@@ -1,0 +1,21 @@
+package com.itcr.inclutec;
+
+import com.example.itcr.inclutec.R;
+
+import android.os.Bundle;
+import android.app.ExpandableListActivity;
+
+public class DetalleActivity extends ExpandableListActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detalle);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+		
+		
+	}
+
+}

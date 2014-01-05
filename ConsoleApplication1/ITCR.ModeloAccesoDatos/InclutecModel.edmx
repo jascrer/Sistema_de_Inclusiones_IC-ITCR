@@ -6,12 +6,46 @@
     <edmx:StorageModels>
       <Schema Namespace="Inclutec_BDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="Inclutec_BDModelStoreContainer">
+          <EntitySet Name="SIFCurso" EntityType="Inclutec_BDModel.Store.SIFCurso" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SIFEstudiante" EntityType="Inclutec_BDModel.Store.SIFEstudiante" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SIFGrupo" EntityType="Inclutec_BDModel.Store.SIFGrupo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SIFGrupo_Por_Solicitud" EntityType="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SIFPeriodo" EntityType="Inclutec_BDModel.Store.SIFPeriodo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SIFPlanEstudios" EntityType="Inclutec_BDModel.Store.SIFPlanEstudios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SIFProfesor" EntityType="Inclutec_BDModel.Store.SIFProfesor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SIFSolicitud" EntityType="Inclutec_BDModel.Store.SIFSolicitud" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITDatos_Estudiante" EntityType="Inclutec_BDModel.Store.SITDatos_Estudiante" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITExcepciones" EntityType="Inclutec_BDModel.Store.SITExcepciones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITHorario" EntityType="Inclutec_BDModel.Store.SITHorario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="Inclutec_BDModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Datos_Estudiante_Estudiante" Association="Inclutec_BDModel.Store.FK_Datos_Estudiante_Estudiante">
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
+            <End Role="SITDatos_Estudiante" EntitySet="SITDatos_Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_PlanEstudios" Association="Inclutec_BDModel.Store.FK_Estudiante_PlanEstudios">
+            <End Role="SIFPlanEstudios" EntitySet="SIFPlanEstudios" />
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Curso" Association="Inclutec_BDModel.Store.FK_Excepciones_Curso">
+            <End Role="SIFCurso" EntitySet="SIFCurso" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Estudiante" Association="Inclutec_BDModel.Store.FK_Excepciones_Estudiante">
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Grupo" Association="Inclutec_BDModel.Store.FK_Excepciones_Grupo">
+            <End Role="SIFGrupo" EntitySet="SIFGrupo" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Periodo" Association="Inclutec_BDModel.Store.FK_Excepciones_Periodo">
+            <End Role="SIFPeriodo" EntitySet="SIFPeriodo" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Curso" Association="Inclutec_BDModel.Store.FK_Grupo_Curso">
+            <End Role="SIFCurso" EntitySet="SIFCurso" />
+            <End Role="SIFGrupo" EntitySet="SIFGrupo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Grupo_Por_Solicitud_Grupo" Association="Inclutec_BDModel.Store.FK_Grupo_Por_Solicitud_Grupo">
             <End Role="SIFGrupo" EntitySet="SIFGrupo" />
             <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
@@ -19,6 +53,14 @@
           <AssociationSet Name="FK_Grupo_Por_Solicitud_Solicitud" Association="Inclutec_BDModel.Store.FK_Grupo_Por_Solicitud_Solicitud">
             <End Role="SIFSolicitud" EntitySet="SIFSolicitud" />
             <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Profesor" Association="Inclutec_BDModel.Store.FK_Grupo_Profesor">
+            <End Role="SIFProfesor" EntitySet="SIFProfesor" />
+            <End Role="SIFGrupo" EntitySet="SIFGrupo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Grupo" Association="Inclutec_BDModel.Store.FK_Horario_Grupo">
+            <End Role="SIFGrupo" EntitySet="SIFGrupo" />
+            <End Role="SITHorario" EntitySet="SITHorario" />
           </AssociationSet>
           <AssociationSet Name="FK_Solicitud_Estudiante" Association="Inclutec_BDModel.Store.FK_Solicitud_Estudiante">
             <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
@@ -29,6 +71,13 @@
             <End Role="SIFSolicitud" EntitySet="SIFSolicitud" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SIFCurso">
+          <Key>
+            <PropertyRef Name="id_Curso" />
+          </Key>
+          <Property Name="id_Curso" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="nom_Curso" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
         <EntityType Name="SIFEstudiante">
           <Key>
             <PropertyRef Name="id_Carnet" />
@@ -40,7 +89,7 @@
           <Property Name="num_telefono" Type="nchar" Nullable="false" MaxLength="8" />
           <Property Name="num_celular" Type="nchar" Nullable="false" MaxLength="8" />
           <Property Name="dir_email" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="num_plan_estudios" Type="int" Nullable="false" />
+          <Property Name="FK_PlanEstudios_idPlanEstudios" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SIFGrupo">
           <Key>
@@ -48,7 +97,10 @@
           </Key>
           <Property Name="id_Grupo" Type="int" Nullable="false" />
           <Property Name="num_grupo" Type="int" Nullable="false" />
+          <Property Name="num_cupos" Type="int" Nullable="false" />
           <Property Name="num_cupos_extra" Type="int" Nullable="false" />
+          <Property Name="FK_Curso_idCurso" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="FK_Profesor_idProfesor" Type="varchar" Nullable="false" MaxLength="9" />
         </EntityType>
         <EntityType Name="SIFGrupo_Por_Solicitud">
           <Key>
@@ -56,7 +108,6 @@
           </Key>
           <Property Name="id_Grupo_Por_Solicitud" Type="int" Nullable="false" />
           <Property Name="num_prioridad" Type="int" Nullable="false" />
-          <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="25" />
           <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
           <Property Name="FK_Solicitud_idSolicitud" Type="int" Nullable="false" />
         </EntityType>
@@ -72,6 +123,21 @@
           <Property Name="num_anno" Type="int" Nullable="false" />
           <Property Name="num_periodo" Type="int" />
         </EntityType>
+        <EntityType Name="SIFPlanEstudios">
+          <Key>
+            <PropertyRef Name="id_PlanEstudios" />
+          </Key>
+          <Property Name="id_PlanEstudios" Type="int" Nullable="false" />
+          <Property Name="nom_carrera" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SIFProfesor">
+          <Key>
+            <PropertyRef Name="id_Profesor" />
+          </Key>
+          <Property Name="id_Profesor" Type="varchar" Nullable="false" MaxLength="9" />
+          <Property Name="nom_profesor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="dir_correo" Type="varchar" Nullable="false" MaxLength="40" />
+        </EntityType>
         <EntityType Name="SIFSolicitud">
           <Key>
             <PropertyRef Name="id_Solicitud" />
@@ -82,8 +148,40 @@
           <Property Name="txt_motivo" Type="varchar" MaxLength="50" />
           <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="fec_creacion" Type="datetime" Nullable="false" />
+          <Property Name="grupo_aceptado" Type="int" Nullable="false" />
           <Property Name="FK_Estudiante_carnet" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="FK_Periodo_idPeriodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SITDatos_Estudiante">
+          <Key>
+            <PropertyRef Name="id_Datos_Estudiante" />
+          </Key>
+          <Property Name="id_Datos_Estudiante" Type="int" Nullable="false" />
+          <Property Name="num_cursosfaltantes" Type="int" Nullable="false" />
+          <Property Name="num_creditosactuales" Type="int" Nullable="false" />
+          <Property Name="tim_horamatricula" Type="time" Nullable="false" />
+          <Property Name="txt_diamatricula" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="FK_Estudiante_idEstudiante" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SITExcepciones">
+          <Key>
+            <PropertyRef Name="id_Excepciones" />
+          </Key>
+          <Property Name="id_Excepciones" Type="int" Nullable="false" />
+          <Property Name="FK_Estudiante_carnet" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="FK_Curso_idCurso" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
+          <Property Name="FK_Periodo_idPeriodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SITHorario">
+          <Key>
+            <PropertyRef Name="id_Horario" />
+          </Key>
+          <Property Name="id_Horario" Type="int" Nullable="false" />
+          <Property Name="txt_dia" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="tim_hora_inicio" Type="time" Nullable="false" />
+          <Property Name="tim_hora_fin" Type="time" Nullable="false" />
+          <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -95,6 +193,90 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_Datos_Estudiante_Estudiante">
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.Store.SIFEstudiante" Multiplicity="1" />
+          <End Role="SITDatos_Estudiante" Type="Inclutec_BDModel.Store.SITDatos_Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFEstudiante">
+              <PropertyRef Name="id_Carnet" />
+            </Principal>
+            <Dependent Role="SITDatos_Estudiante">
+              <PropertyRef Name="FK_Estudiante_idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_PlanEstudios">
+          <End Role="SIFPlanEstudios" Type="Inclutec_BDModel.Store.SIFPlanEstudios" Multiplicity="1" />
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.Store.SIFEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFPlanEstudios">
+              <PropertyRef Name="id_PlanEstudios" />
+            </Principal>
+            <Dependent Role="SIFEstudiante">
+              <PropertyRef Name="FK_PlanEstudios_idPlanEstudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Curso">
+          <End Role="SIFCurso" Type="Inclutec_BDModel.Store.SIFCurso" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFCurso">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Curso_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Estudiante">
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.Store.SIFEstudiante" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFEstudiante">
+              <PropertyRef Name="id_Carnet" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Estudiante_carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Grupo">
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFGrupo">
+              <PropertyRef Name="id_Grupo" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Grupo_idGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Periodo">
+          <End Role="SIFPeriodo" Type="Inclutec_BDModel.Store.SIFPeriodo" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFPeriodo">
+              <PropertyRef Name="id_Periodo" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Periodo_idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Curso">
+          <End Role="SIFCurso" Type="Inclutec_BDModel.Store.SIFCurso" Multiplicity="1" />
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFCurso">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="SIFGrupo">
+              <PropertyRef Name="FK_Curso_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Grupo_Por_Solicitud_Grupo">
           <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
           <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
@@ -109,13 +291,37 @@
         </Association>
         <Association Name="FK_Grupo_Por_Solicitud_Solicitud">
           <End Role="SIFSolicitud" Type="Inclutec_BDModel.Store.SIFSolicitud" Multiplicity="1" />
-          <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+          <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SIFSolicitud">
               <PropertyRef Name="id_Solicitud" />
             </Principal>
             <Dependent Role="SIFGrupo_Por_Solicitud">
-              <PropertyRef Name="id_Grupo_Por_Solicitud" />
+              <PropertyRef Name="FK_Solicitud_idSolicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Profesor">
+          <End Role="SIFProfesor" Type="Inclutec_BDModel.Store.SIFProfesor" Multiplicity="1" />
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFProfesor">
+              <PropertyRef Name="id_Profesor" />
+            </Principal>
+            <Dependent Role="SIFGrupo">
+              <PropertyRef Name="FK_Profesor_idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Grupo">
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
+          <End Role="SITHorario" Type="Inclutec_BDModel.Store.SITHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFGrupo">
+              <PropertyRef Name="id_Grupo" />
+            </Principal>
+            <Dependent Role="SITHorario">
+              <PropertyRef Name="FK_Grupo_idGrupo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -180,29 +386,80 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Inclutec_BDModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="Inclutec_BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SIFCursoes" EntityType="Inclutec_BDModel.SIFCurso" />
           <EntitySet Name="SIFEstudiantes" EntityType="Inclutec_BDModel.SIFEstudiante" />
           <EntitySet Name="SIFGrupoes" EntityType="Inclutec_BDModel.SIFGrupo" />
           <EntitySet Name="SIFGrupo_Por_Solicitud" EntityType="Inclutec_BDModel.SIFGrupo_Por_Solicitud" />
           <EntitySet Name="SIFPeriodoes" EntityType="Inclutec_BDModel.SIFPeriodo" />
+          <EntitySet Name="SIFPlanEstudios" EntityType="Inclutec_BDModel.SIFPlanEstudio" />
+          <EntitySet Name="SIFProfesors" EntityType="Inclutec_BDModel.SIFProfesor" />
           <EntitySet Name="SIFSolicituds" EntityType="Inclutec_BDModel.SIFSolicitud" />
+          <EntitySet Name="SITDatos_Estudiante" EntityType="Inclutec_BDModel.SITDatos_Estudiante" />
+          <EntitySet Name="SITExcepciones" EntityType="Inclutec_BDModel.SITExcepcione" />
+          <EntitySet Name="SITHorarios" EntityType="Inclutec_BDModel.SITHorario" />
           <EntitySet Name="sysdiagrams" EntityType="Inclutec_BDModel.sysdiagram" />
+          <AssociationSet Name="FK_Excepciones_Curso" Association="Inclutec_BDModel.FK_Excepciones_Curso">
+            <End Role="SIFCurso" EntitySet="SIFCursoes" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Curso" Association="Inclutec_BDModel.FK_Grupo_Curso">
+            <End Role="SIFCurso" EntitySet="SIFCursoes" />
+            <End Role="SIFGrupo" EntitySet="SIFGrupoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Datos_Estudiante_Estudiante" Association="Inclutec_BDModel.FK_Datos_Estudiante_Estudiante">
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiantes" />
+            <End Role="SITDatos_Estudiante" EntitySet="SITDatos_Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_PlanEstudios" Association="Inclutec_BDModel.FK_Estudiante_PlanEstudios">
+            <End Role="SIFPlanEstudios" EntitySet="SIFPlanEstudios" />
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Estudiante" Association="Inclutec_BDModel.FK_Excepciones_Estudiante">
+            <End Role="SIFEstudiante" EntitySet="SIFEstudiantes" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+          </AssociationSet>
           <AssociationSet Name="FK_Solicitud_Estudiante" Association="Inclutec_BDModel.FK_Solicitud_Estudiante">
             <End Role="SIFEstudiante" EntitySet="SIFEstudiantes" />
             <End Role="SIFSolicitud" EntitySet="SIFSolicituds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Grupo" Association="Inclutec_BDModel.FK_Excepciones_Grupo">
+            <End Role="SIFGrupo" EntitySet="SIFGrupoes" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Grupo_Por_Solicitud_Grupo" Association="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo">
             <End Role="SIFGrupo" EntitySet="SIFGrupoes" />
             <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
           </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Profesor" Association="Inclutec_BDModel.FK_Grupo_Profesor">
+            <End Role="SIFProfesor" EntitySet="SIFProfesors" />
+            <End Role="SIFGrupo" EntitySet="SIFGrupoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Grupo" Association="Inclutec_BDModel.FK_Horario_Grupo">
+            <End Role="SIFGrupo" EntitySet="SIFGrupoes" />
+            <End Role="SITHorario" EntitySet="SITHorarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_Grupo_Por_Solicitud_Solicitud" Association="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud">
             <End Role="SIFSolicitud" EntitySet="SIFSolicituds" />
             <End Role="SIFGrupo_Por_Solicitud" EntitySet="SIFGrupo_Por_Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Excepciones_Periodo" Association="Inclutec_BDModel.FK_Excepciones_Periodo">
+            <End Role="SIFPeriodo" EntitySet="SIFPeriodoes" />
+            <End Role="SITExcepciones" EntitySet="SITExcepciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Solicitud_Periodo" Association="Inclutec_BDModel.FK_Solicitud_Periodo">
             <End Role="SIFPeriodo" EntitySet="SIFPeriodoes" />
             <End Role="SIFSolicitud" EntitySet="SIFSolicituds" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SIFCurso">
+          <Key>
+            <PropertyRef Name="id_Curso" />
+          </Key>
+          <Property Name="id_Curso" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="nom_Curso" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SITExcepciones" Relationship="Inclutec_BDModel.FK_Excepciones_Curso" FromRole="SIFCurso" ToRole="SITExcepciones" />
+          <NavigationProperty Name="SIFGrupoes" Relationship="Inclutec_BDModel.FK_Grupo_Curso" FromRole="SIFCurso" ToRole="SIFGrupo" />
+        </EntityType>
         <EntityType Name="SIFEstudiante">
           <Key>
             <PropertyRef Name="id_Carnet" />
@@ -214,7 +471,10 @@
           <Property Name="num_telefono" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="true" />
           <Property Name="num_celular" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="true" />
           <Property Name="dir_email" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="num_plan_estudios" Type="Int32" Nullable="false" />
+          <Property Name="FK_PlanEstudios_idPlanEstudios" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SITDatos_Estudiante" Relationship="Inclutec_BDModel.FK_Datos_Estudiante_Estudiante" FromRole="SIFEstudiante" ToRole="SITDatos_Estudiante" />
+          <NavigationProperty Name="SIFPlanEstudio" Relationship="Inclutec_BDModel.FK_Estudiante_PlanEstudios" FromRole="SIFEstudiante" ToRole="SIFPlanEstudios" />
+          <NavigationProperty Name="SITExcepciones" Relationship="Inclutec_BDModel.FK_Excepciones_Estudiante" FromRole="SIFEstudiante" ToRole="SITExcepciones" />
           <NavigationProperty Name="SIFSolicituds" Relationship="Inclutec_BDModel.FK_Solicitud_Estudiante" FromRole="SIFEstudiante" ToRole="SIFSolicitud" />
         </EntityType>
         <EntityType Name="SIFGrupo">
@@ -223,8 +483,15 @@
           </Key>
           <Property Name="id_Grupo" Type="Int32" Nullable="false" />
           <Property Name="num_grupo" Type="Int32" Nullable="false" />
+          <Property Name="num_cupos" Type="Int32" Nullable="false" />
           <Property Name="num_cupos_extra" Type="Int32" Nullable="false" />
+          <Property Name="FK_Curso_idCurso" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="FK_Profesor_idProfesor" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIFCurso" Relationship="Inclutec_BDModel.FK_Grupo_Curso" FromRole="SIFGrupo" ToRole="SIFCurso" />
+          <NavigationProperty Name="SITExcepciones" Relationship="Inclutec_BDModel.FK_Excepciones_Grupo" FromRole="SIFGrupo" ToRole="SITExcepciones" />
           <NavigationProperty Name="SIFGrupo_Por_Solicitud" Relationship="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo" FromRole="SIFGrupo" ToRole="SIFGrupo_Por_Solicitud" />
+          <NavigationProperty Name="SIFProfesor" Relationship="Inclutec_BDModel.FK_Grupo_Profesor" FromRole="SIFGrupo" ToRole="SIFProfesor" />
+          <NavigationProperty Name="SITHorarios" Relationship="Inclutec_BDModel.FK_Horario_Grupo" FromRole="SIFGrupo" ToRole="SITHorario" />
         </EntityType>
         <EntityType Name="SIFGrupo_Por_Solicitud">
           <Key>
@@ -232,7 +499,6 @@
           </Key>
           <Property Name="id_Grupo_Por_Solicitud" Type="Int32" Nullable="false" />
           <Property Name="num_prioridad" Type="Int32" Nullable="false" />
-          <Property Name="txt_estado" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
           <Property Name="FK_Grupo_idGrupo" Type="Int32" Nullable="false" />
           <Property Name="FK_Solicitud_idSolicitud" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SIFGrupo" Relationship="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo" FromRole="SIFGrupo_Por_Solicitud" ToRole="SIFGrupo" />
@@ -249,7 +515,25 @@
           <Property Name="txt_modalidad" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="num_anno" Type="Int32" Nullable="false" />
           <Property Name="num_periodo" Type="Int32" />
+          <NavigationProperty Name="SITExcepciones" Relationship="Inclutec_BDModel.FK_Excepciones_Periodo" FromRole="SIFPeriodo" ToRole="SITExcepciones" />
           <NavigationProperty Name="SIFSolicituds" Relationship="Inclutec_BDModel.FK_Solicitud_Periodo" FromRole="SIFPeriodo" ToRole="SIFSolicitud" />
+        </EntityType>
+        <EntityType Name="SIFPlanEstudio">
+          <Key>
+            <PropertyRef Name="id_PlanEstudios" />
+          </Key>
+          <Property Name="id_PlanEstudios" Type="Int32" Nullable="false" />
+          <Property Name="nom_carrera" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIFEstudiantes" Relationship="Inclutec_BDModel.FK_Estudiante_PlanEstudios" FromRole="SIFPlanEstudios" ToRole="SIFEstudiante" />
+        </EntityType>
+        <EntityType Name="SIFProfesor">
+          <Key>
+            <PropertyRef Name="id_Profesor" />
+          </Key>
+          <Property Name="id_Profesor" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="nom_profesor" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="dir_correo" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIFGrupoes" Relationship="Inclutec_BDModel.FK_Grupo_Profesor" FromRole="SIFProfesor" ToRole="SIFGrupo" />
         </EntityType>
         <EntityType Name="SIFSolicitud">
           <Key>
@@ -261,11 +545,49 @@
           <Property Name="txt_motivo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="txt_estado" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="fec_creacion" Type="DateTime" Nullable="false" />
+          <Property Name="grupo_aceptado" Type="Int32" Nullable="false" />
           <Property Name="FK_Estudiante_carnet" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="FK_Periodo_idPeriodo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SIFEstudiante" Relationship="Inclutec_BDModel.FK_Solicitud_Estudiante" FromRole="SIFSolicitud" ToRole="SIFEstudiante" />
           <NavigationProperty Name="SIFGrupo_Por_Solicitud" Relationship="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud" FromRole="SIFSolicitud" ToRole="SIFGrupo_Por_Solicitud" />
           <NavigationProperty Name="SIFPeriodo" Relationship="Inclutec_BDModel.FK_Solicitud_Periodo" FromRole="SIFSolicitud" ToRole="SIFPeriodo" />
+        </EntityType>
+        <EntityType Name="SITDatos_Estudiante">
+          <Key>
+            <PropertyRef Name="id_Datos_Estudiante" />
+          </Key>
+          <Property Name="id_Datos_Estudiante" Type="Int32" Nullable="false" />
+          <Property Name="num_cursosfaltantes" Type="Int32" Nullable="false" />
+          <Property Name="num_creditosactuales" Type="Int32" Nullable="false" />
+          <Property Name="tim_horamatricula" Type="Time" Nullable="false" />
+          <Property Name="txt_diamatricula" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="FK_Estudiante_idEstudiante" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SIFEstudiante" Relationship="Inclutec_BDModel.FK_Datos_Estudiante_Estudiante" FromRole="SITDatos_Estudiante" ToRole="SIFEstudiante" />
+        </EntityType>
+        <EntityType Name="SITExcepcione">
+          <Key>
+            <PropertyRef Name="id_Excepciones" />
+          </Key>
+          <Property Name="id_Excepciones" Type="Int32" Nullable="false" />
+          <Property Name="FK_Estudiante_carnet" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FK_Curso_idCurso" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="FK_Grupo_idGrupo" Type="Int32" Nullable="false" />
+          <Property Name="FK_Periodo_idPeriodo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SIFCurso" Relationship="Inclutec_BDModel.FK_Excepciones_Curso" FromRole="SITExcepciones" ToRole="SIFCurso" />
+          <NavigationProperty Name="SIFEstudiante" Relationship="Inclutec_BDModel.FK_Excepciones_Estudiante" FromRole="SITExcepciones" ToRole="SIFEstudiante" />
+          <NavigationProperty Name="SIFGrupo" Relationship="Inclutec_BDModel.FK_Excepciones_Grupo" FromRole="SITExcepciones" ToRole="SIFGrupo" />
+          <NavigationProperty Name="SIFPeriodo" Relationship="Inclutec_BDModel.FK_Excepciones_Periodo" FromRole="SITExcepciones" ToRole="SIFPeriodo" />
+        </EntityType>
+        <EntityType Name="SITHorario">
+          <Key>
+            <PropertyRef Name="id_Horario" />
+          </Key>
+          <Property Name="id_Horario" Type="Int32" Nullable="false" />
+          <Property Name="txt_dia" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="tim_hora_inicio" Type="Time" Nullable="false" />
+          <Property Name="tim_hora_fin" Type="Time" Nullable="false" />
+          <Property Name="FK_Grupo_idGrupo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SIFGrupo" Relationship="Inclutec_BDModel.FK_Horario_Grupo" FromRole="SITHorario" ToRole="SIFGrupo" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -277,6 +599,66 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Excepciones_Curso">
+          <End Role="SIFCurso" Type="Inclutec_BDModel.SIFCurso" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.SITExcepcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFCurso">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Curso_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Curso">
+          <End Role="SIFCurso" Type="Inclutec_BDModel.SIFCurso" Multiplicity="1" />
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.SIFGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFCurso">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="SIFGrupo">
+              <PropertyRef Name="FK_Curso_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Datos_Estudiante_Estudiante">
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.SIFEstudiante" Multiplicity="1" />
+          <End Role="SITDatos_Estudiante" Type="Inclutec_BDModel.SITDatos_Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFEstudiante">
+              <PropertyRef Name="id_Carnet" />
+            </Principal>
+            <Dependent Role="SITDatos_Estudiante">
+              <PropertyRef Name="FK_Estudiante_idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_PlanEstudios">
+          <End Role="SIFPlanEstudios" Type="Inclutec_BDModel.SIFPlanEstudio" Multiplicity="1" />
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.SIFEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFPlanEstudios">
+              <PropertyRef Name="id_PlanEstudios" />
+            </Principal>
+            <Dependent Role="SIFEstudiante">
+              <PropertyRef Name="FK_PlanEstudios_idPlanEstudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Estudiante">
+          <End Role="SIFEstudiante" Type="Inclutec_BDModel.SIFEstudiante" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.SITExcepcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFEstudiante">
+              <PropertyRef Name="id_Carnet" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Estudiante_carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Solicitud_Estudiante">
           <End Role="SIFEstudiante" Type="Inclutec_BDModel.SIFEstudiante" Multiplicity="1" />
           <End Role="SIFSolicitud" Type="Inclutec_BDModel.SIFSolicitud" Multiplicity="*" />
@@ -286,6 +668,18 @@
             </Principal>
             <Dependent Role="SIFSolicitud">
               <PropertyRef Name="FK_Estudiante_carnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Grupo">
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.SIFGrupo" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.SITExcepcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFGrupo">
+              <PropertyRef Name="id_Grupo" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Grupo_idGrupo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -301,15 +695,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Grupo_Profesor">
+          <End Role="SIFProfesor" Type="Inclutec_BDModel.SIFProfesor" Multiplicity="1" />
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.SIFGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFProfesor">
+              <PropertyRef Name="id_Profesor" />
+            </Principal>
+            <Dependent Role="SIFGrupo">
+              <PropertyRef Name="FK_Profesor_idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Grupo">
+          <End Role="SIFGrupo" Type="Inclutec_BDModel.SIFGrupo" Multiplicity="1" />
+          <End Role="SITHorario" Type="Inclutec_BDModel.SITHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFGrupo">
+              <PropertyRef Name="id_Grupo" />
+            </Principal>
+            <Dependent Role="SITHorario">
+              <PropertyRef Name="FK_Grupo_idGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Grupo_Por_Solicitud_Solicitud">
           <End Role="SIFSolicitud" Type="Inclutec_BDModel.SIFSolicitud" Multiplicity="1" />
-          <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+          <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SIFSolicitud">
               <PropertyRef Name="id_Solicitud" />
             </Principal>
             <Dependent Role="SIFGrupo_Por_Solicitud">
-              <PropertyRef Name="id_Grupo_Por_Solicitud" />
+              <PropertyRef Name="FK_Solicitud_idSolicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Excepciones_Periodo">
+          <End Role="SIFPeriodo" Type="Inclutec_BDModel.SIFPeriodo" Multiplicity="1" />
+          <End Role="SITExcepciones" Type="Inclutec_BDModel.SITExcepcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIFPeriodo">
+              <PropertyRef Name="id_Periodo" />
+            </Principal>
+            <Dependent Role="SITExcepciones">
+              <PropertyRef Name="FK_Periodo_idPeriodo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -331,6 +761,14 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Inclutec_BDModelStoreContainer" CdmEntityContainer="Inclutec_BDEntities">
+          <EntitySetMapping Name="SIFCursoes">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SIFCurso">
+              <MappingFragment StoreEntitySet="SIFCurso">
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="nom_Curso" ColumnName="nom_Curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SIFEstudiantes">
             <EntityTypeMapping TypeName="Inclutec_BDModel.SIFEstudiante">
               <MappingFragment StoreEntitySet="SIFEstudiante">
@@ -341,7 +779,7 @@
                 <ScalarProperty Name="num_telefono" ColumnName="num_telefono" />
                 <ScalarProperty Name="num_celular" ColumnName="num_celular" />
                 <ScalarProperty Name="dir_email" ColumnName="dir_email" />
-                <ScalarProperty Name="num_plan_estudios" ColumnName="num_plan_estudios" />
+                <ScalarProperty Name="FK_PlanEstudios_idPlanEstudios" ColumnName="FK_PlanEstudios_idPlanEstudios" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -350,7 +788,10 @@
               <MappingFragment StoreEntitySet="SIFGrupo">
                 <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
                 <ScalarProperty Name="num_grupo" ColumnName="num_grupo" />
+                <ScalarProperty Name="num_cupos" ColumnName="num_cupos" />
                 <ScalarProperty Name="num_cupos_extra" ColumnName="num_cupos_extra" />
+                <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+                <ScalarProperty Name="FK_Profesor_idProfesor" ColumnName="FK_Profesor_idProfesor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -359,7 +800,6 @@
               <MappingFragment StoreEntitySet="SIFGrupo_Por_Solicitud">
                 <ScalarProperty Name="id_Grupo_Por_Solicitud" ColumnName="id_Grupo_Por_Solicitud" />
                 <ScalarProperty Name="num_prioridad" ColumnName="num_prioridad" />
-                <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
                 <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
                 <ScalarProperty Name="FK_Solicitud_idSolicitud" ColumnName="FK_Solicitud_idSolicitud" />
               </MappingFragment>
@@ -378,6 +818,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SIFPlanEstudios">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SIFPlanEstudio">
+              <MappingFragment StoreEntitySet="SIFPlanEstudios">
+                <ScalarProperty Name="id_PlanEstudios" ColumnName="id_PlanEstudios" />
+                <ScalarProperty Name="nom_carrera" ColumnName="nom_carrera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIFProfesors">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SIFProfesor">
+              <MappingFragment StoreEntitySet="SIFProfesor">
+                <ScalarProperty Name="id_Profesor" ColumnName="id_Profesor" />
+                <ScalarProperty Name="nom_profesor" ColumnName="nom_profesor" />
+                <ScalarProperty Name="dir_correo" ColumnName="dir_correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SIFSolicituds">
             <EntityTypeMapping TypeName="Inclutec_BDModel.SIFSolicitud">
               <MappingFragment StoreEntitySet="SIFSolicitud">
@@ -387,8 +844,43 @@
                 <ScalarProperty Name="txt_motivo" ColumnName="txt_motivo" />
                 <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
                 <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+                <ScalarProperty Name="grupo_aceptado" ColumnName="grupo_aceptado" />
                 <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
                 <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SITDatos_Estudiante">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SITDatos_Estudiante">
+              <MappingFragment StoreEntitySet="SITDatos_Estudiante">
+                <ScalarProperty Name="id_Datos_Estudiante" ColumnName="id_Datos_Estudiante" />
+                <ScalarProperty Name="num_cursosfaltantes" ColumnName="num_cursosfaltantes" />
+                <ScalarProperty Name="num_creditosactuales" ColumnName="num_creditosactuales" />
+                <ScalarProperty Name="tim_horamatricula" ColumnName="tim_horamatricula" />
+                <ScalarProperty Name="txt_diamatricula" ColumnName="txt_diamatricula" />
+                <ScalarProperty Name="FK_Estudiante_idEstudiante" ColumnName="FK_Estudiante_idEstudiante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SITExcepciones">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SITExcepcione">
+              <MappingFragment StoreEntitySet="SITExcepciones">
+                <ScalarProperty Name="id_Excepciones" ColumnName="id_Excepciones" />
+                <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
+                <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+                <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
+                <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SITHorarios">
+            <EntityTypeMapping TypeName="Inclutec_BDModel.SITHorario">
+              <MappingFragment StoreEntitySet="SITHorario">
+                <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+                <ScalarProperty Name="txt_dia" ColumnName="txt_dia" />
+                <ScalarProperty Name="tim_hora_inicio" ColumnName="tim_hora_inicio" />
+                <ScalarProperty Name="tim_hora_fin" ColumnName="tim_hora_fin" />
+                <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -424,30 +916,103 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="InclutecModel">
-        <EntityTypeShape EntityType="Inclutec_BDModel.SIFEstudiante" Width="1.5" PointX="0.75" PointY="1.125" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inclutec_BDModel.SIFGrupo" Width="1.5" PointX="3" PointY="5.625" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Width="1.5" PointX="5.25" PointY="1.375" Height="2.3648893229166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inclutec_BDModel.SIFPeriodo" Width="1.5" PointX="0.75" PointY="5.25" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inclutec_BDModel.SIFSolicitud" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833331" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inclutec_BDModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFCurso" Width="1.5" PointX="0.75" PointY="5.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFEstudiante" Width="1.5" PointX="3" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFGrupo" Width="1.5" PointX="3" PointY="4.875" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Width="1.5" PointX="8.25" PointY="5.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFPeriodo" Width="1.5" PointX="3" PointY="8.875" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFPlanEstudio" Width="1.5" PointX="0.75" PointY="2.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFProfesor" Width="1.5" PointX="0.75" PointY="8.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SIFSolicitud" Width="1.5" PointX="6" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SITDatos_Estudiante" Width="1.5" PointX="5.25" PointY="12.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SITExcepcione" Width="1.5" PointX="5.25" PointY="5" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.SITHorario" Width="1.5" PointX="5.25" PointY="9.25" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inclutec_BDModel.sysdiagram" Width="1.5" PointX="7.75" PointY="8.625" Height="1.9802864583333317" IsExpanded="true" />
+        <AssociationConnector Association="Inclutec_BDModel.FK_Excepciones_Curso" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.3939925130208328" />
+          <ConnectorPoint PointX="2.75" PointY="6.3939925130208328" />
+          <ConnectorPoint PointX="2.75" PointY="4.625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.6249999999999991" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.625" />
+          <ConnectorPoint PointX="6" PointY="4.625" />
+          <ConnectorPoint PointX="6" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Grupo_Curso" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.8844962565104169" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="5.884496256510416" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="5.8844962565104169" />
+          <ConnectorPoint PointX="3" PointY="5.8844962565104169" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Datos_Estudiante_Estudiante" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.4757692307692309" PointY="4.076396484375" />
+          <ConnectorPoint PointX="4.875" PointY="4.4756272536057686" />
+          <ConnectorPoint PointX="4.875" PointY="13.682444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="13.682444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Estudiante_PlanEstudios" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.4131982421875" />
+          <ConnectorPoint PointX="3" PointY="3.4131982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Excepciones_Estudiante" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.0198570228365371" />
+          <ConnectorPoint PointX="5.03125" PointY="4.5511070228365371" />
+          <ConnectorPoint PointX="5.03125" PointY="6.3747460937500016" />
+          <ConnectorPoint PointX="5.25" PointY="6.3747460937500016" />
+        </AssociationConnector>
         <AssociationConnector Association="Inclutec_BDModel.FK_Solicitud_Estudiante" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.49974609375" />
-          <ConnectorPoint PointX="3" PointY="2.49974609375" />
+          <ConnectorPoint PointX="4.5" PointY="2.3536760114182678" />
+          <ConnectorPoint PointX="6" PointY="2.3536760114182678" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Excepciones_Grupo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.6248730468750008" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.624873046875" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="5.6248730468750008" />
+          <ConnectorPoint PointX="5.25" PointY="5.6248730468750008" />
         </AssociationConnector>
         <AssociationConnector Association="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="7.1028857421875" />
-          <ConnectorPoint PointX="5.46875" PointY="7.1028857421875" />
-          <ConnectorPoint PointX="5.46875" PointY="3.7398893229166656" />
+          <ConnectorPoint PointX="4.5" PointY="7.9105436197916683" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="7.9105436197916674" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="7.9105436197916683" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.9105436197916674" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.9105436197916683" />
+          <ConnectorPoint PointX="9" PointY="7.9105436197916683" />
+          <ConnectorPoint PointX="9" PointY="7.547587890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Grupo_Profesor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.5011528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="8.1261528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="8.3840950520833335" />
+          <ConnectorPoint PointX="3" PointY="8.0090950520833335" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Horario_Grupo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.9467863597756407" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="8.26286079467676" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="8.4432119248745181" />
+          <ConnectorPoint PointX="5.0625" PointY="8.50928635977564" />
+          <ConnectorPoint PointX="5.0625" PointY="10.336293945312502" />
+          <ConnectorPoint PointX="5.25" PointY="10.336293945312502" />
         </AssociationConnector>
         <AssociationConnector Association="Inclutec_BDModel.FK_Grupo_Por_Solicitud_Solicitud" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.5574446614583328" />
-          <ConnectorPoint PointX="5.25" PointY="2.5574446614583328" />
+          <ConnectorPoint PointX="7.5" PointY="2.4131982421875" />
+          <ConnectorPoint PointX="9" PointY="2.4131982421875" />
+          <ConnectorPoint PointX="9" PointY="5.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Inclutec_BDModel.FK_Excepciones_Periodo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.93846053846154" />
+          <ConnectorPoint PointX="4.8160744349011209" PointY="8.6223861035604177" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="8.5045349733626612" />
+          <ConnectorPoint PointX="4.9375" PointY="8.50096053846154" />
+          <ConnectorPoint PointX="4.9375" PointY="7.0933711406250026" />
+          <ConnectorPoint PointX="5.25" PointY="7.0933711406250026" />
         </AssociationConnector>
         <AssociationConnector Association="Inclutec_BDModel.FK_Solicitud_Periodo" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.25" />
-          <ConnectorPoint PointX="2.625" PointY="4.875" />
-          <ConnectorPoint PointX="2.625" PointY="3.3481725729166674" />
-          <ConnectorPoint PointX="3" PointY="3.3481725729166674" />
+          <ConnectorPoint PointX="4.5" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="7.15625" PointY="9.0942327692307714" />
+          <ConnectorPoint PointX="7.15625" PointY="4.076396484375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

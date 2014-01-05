@@ -40,7 +40,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public Estudiante ObtenerDatosEstudiante(string pCarnet) 
         {
-            _objConexionWS = new wsDar.AdmisionyRegistro();
+            /*_objConexionWS = new wsDar.AdmisionyRegistro();
            
             DataSet _dsDatosEstudiante = _objConexionWS.IESCDATOSESTUDIANTE_Buscar(pCarnet);
             DataRow _drEstudiante = _dsDatosEstudiante.Tables[0].Rows[0];
@@ -64,7 +64,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
             _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
             _estEstudiante.Num_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
 
-            return _estEstudiante;
+            return _estEstudiante;*/
+            return null;
         }
 
         /**
@@ -106,7 +107,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool GuardarDatosEstudiantes(Estudiante pEstudiante)
         {
-            try 
+            /*try 
             {
                 _objConexionBase = new Inclutec_BDEntities();
 
@@ -136,7 +137,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 return true;
             }catch (Exception) {
                 return false;
-            }
+            } */return true;
         }
 
         /**
@@ -145,7 +146,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         public bool GuardarSolicitud(string pEstudiante, int pPeriodo, 
             Solicitud pSolicitud)
         {
-            try
+            /*try
             {
                 _objConexionBase = new Inclutec_BDEntities();
 
@@ -163,7 +164,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
             }catch (Exception)
             {
                 return false;
-            }
+            }*/
+            return true;
         }
 
         /**
