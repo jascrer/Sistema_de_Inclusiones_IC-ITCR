@@ -16,7 +16,7 @@ using System.Text;
 
 namespace ITCR.Ado.ClasesComunes
 {
-    class Excepcion
+    public class Excepcion
     {
         
         #region Propiedades

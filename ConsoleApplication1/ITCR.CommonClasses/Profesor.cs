@@ -15,7 +15,7 @@ using System.Text;
 
 namespace ITCR.Ado.ClasesComunes
 {
-    class Profesor
+    public class Profesor
     {
         #region Propiedades
 

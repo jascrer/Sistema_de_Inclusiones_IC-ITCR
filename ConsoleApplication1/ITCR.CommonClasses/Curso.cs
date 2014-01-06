@@ -19,7 +19,7 @@ using System.Runtime.Serialization;
 namespace ITCR.Ado.ClasesComunes
 {
     [DataContract]
-    class Curso
+    public class Curso
     {
         #region Propiedades
 

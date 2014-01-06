@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.itcr.inclutec.R;
-
+import android.annotation.SuppressLint;
+import android.app.ExpandableListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
-import android.widget.Toast;
-import android.annotation.SuppressLint;
-import android.app.ExpandableListActivity;
+
+import com.example.itcr.inclutec.R;
 
 @SuppressLint("NewApi")
 public class DetalleActivity extends ExpandableListActivity {
@@ -29,7 +30,8 @@ public class DetalleActivity extends ExpandableListActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		
-		
+		Bundle _bunInformacion = this.getIntent().getExtras();
+		_Curso = _bunInformacion.getString("NOMBRE");
 		//Crea el ExpandableListView
 		try{
 			@SuppressWarnings("unchecked")
@@ -44,6 +46,10 @@ public class DetalleActivity extends ExpandableListActivity {
 							new String[]{"Sub Item"},
 							new int[]{R.id.grp_child});
 			setListAdapter(_adapList);
+			
+			ExpandableListView _elvLista=(ExpandableListView) findViewById(android.R.id.list);
+			_elvLista.expandGroup(0);
+			
 		}catch(Exception e){
 		}
 	}
@@ -70,7 +76,7 @@ public class DetalleActivity extends ExpandableListActivity {
         ArrayList _lListaItems = new ArrayList();
         
 	    ArrayList _lItems = new ArrayList();
-	    for( int n = 0 ; n < 3 ; n++ ) {
+	    for( int n = 0 ; n < _Profesores.length ; n++ ) {
 	      HashMap _hmMapaItem = new HashMap();
 	      /* Aqui se debe cambiar el nombre asignado de "Sub Item" 
 	       * por el nombre de las materias.
@@ -105,4 +111,17 @@ public class DetalleActivity extends ExpandableListActivity {
         }catch(Exception e){
         }
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem pItem){
+		switch(pItem.getItemId()){
+			case android.R.id.home:
+				Intent _intIntent = new Intent(DetalleActivity.this, InicioActivity.class);
+				startActivity(_intIntent);
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(pItem);
+		}
+	}
 }

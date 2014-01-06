@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.TextView;
 
 import com.example.itcr.inclutec.R;
 
@@ -61,6 +62,8 @@ public class InicioActivity extends ExpandableListActivity {
 							new String[]{"Sub Item"},
 							new int[]{R.id.grp_child});
 			setListAdapter(_adapList);
+			
+			
 		}catch(Exception e){
 		}
 	}
@@ -176,8 +179,19 @@ public class InicioActivity extends ExpandableListActivity {
 	/**
 	 * Con esta funcion se sabe si se hizo click en una materia
 	 */
-    public boolean onChildClick( ExpandableListView parent, 
+    @SuppressLint("ShowToast")
+	public boolean onChildClick( ExpandableListView parent, 
     		View v, int groupPosition,int childPosition,long id) {
+		Intent _intDetalle = new Intent(InicioActivity.this, DetalleActivity.class);
+		String _sMateria = ((TextView)v.findViewById(R.id.grp_child))
+							.getText().toString();
+		
+		Bundle _bunInformacion = new Bundle();
+		_bunInformacion.putString("NOMBRE",_sMateria);
+		_intDetalle.putExtras(_bunInformacion);
+		
+		startActivity(_intDetalle);
+		finish();
         return true;
     }
  

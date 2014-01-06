@@ -15,7 +15,7 @@ using System.Text;
 
 namespace ITCR.Ado.ClasesComunes
 {
-    class PlanEstudios
+    public class PlanEstudios
     {
         #region Propiedades
 

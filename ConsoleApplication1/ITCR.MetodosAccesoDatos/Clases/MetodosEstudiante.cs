@@ -35,37 +35,109 @@ namespace ITCR.MetodosAccesoDatos.Clases
         #endregion
 
         #region Metodos
+
+        /**
+         * Retorna true si el Estudiante existe en la base de la aplicacion
+         * Retorna false en caso contrario.
+         **/
+        public bool EstudianteExiste(string pCarnet)
+        {
+            _objConexionBase = new Inclutec_BDEntities();
+
+            int _iExiste = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                            where _sifEstudiantes.id_Carnet == pCarnet
+                            select _sifEstudiantes).Count();
+
+            _objConexionBase.Connection.Close();
+            switch (_iExiste)
+            {
+                case 0:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
         /**
          * Retorna los datos del Estudiante especificado mediante el Carnet
          **/
-        public Estudiante ObtenerDatosEstudiante(string pCarnet) 
+        public Estudiante ObtenerDatosEstudiante(string pCarnet, bool pExisteBase) 
         {
-            /*_objConexionWS = new wsDar.AdmisionyRegistro();
-           
-            DataSet _dsDatosEstudiante = _objConexionWS.IESCDATOSESTUDIANTE_Buscar(pCarnet);
-            DataRow _drEstudiante = _dsDatosEstudiante.Tables[0].Rows[0];
-
-            DataSet _dsDatosPlanEstudiante = _objConexionWS.DATOS_ESTUDIANTE(pCarnet);
-            DataRow _drPlanEstudiante = _dsDatosPlanEstudiante.Tables[0].Rows[0];
-
-            String[] _strNombreEstudiante = _drEstudiante["NOM_ESTUDIANTE"].ToString().Split(' ');
-
             Estudiante _estEstudiante = new Estudiante();
-            _estEstudiante.Id_Carnet = _drEstudiante["IDE_ESTUDIANTE"].ToString();
-            _estEstudiante.Nom_Nombre = _strNombreEstudiante[2];
-            if (_strNombreEstudiante.Length == 4)
-            {
-                _estEstudiante.Nom_Nombre += " " + _strNombreEstudiante[3];
-            }
-            _estEstudiante.Txt_Apellido1 = _strNombreEstudiante[0];
-            _estEstudiante.Txt_Apellido2 = _strNombreEstudiante[1];
-            _estEstudiante.Num_Telefono = _drEstudiante["NUM_TELEFONO"].ToString();
-            _estEstudiante.Num_Celular = _drEstudiante["NUM_CELULAR"].ToString();
-            _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
-            _estEstudiante.Num_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
 
-            return _estEstudiante;*/
-            return null;
+            if (pExisteBase)
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                SIFEstudiante _sifEstudiante = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                                where _sifEstudiantes.id_Carnet == pCarnet
+                                                select _sifEstudiantes).First();
+
+                _objConexionBase.Connection.Close();
+
+                _estEstudiante.Id_Carnet = _sifEstudiante.id_Carnet;
+                _estEstudiante.Nom_Nombre = _sifEstudiante.nom_nombre;
+                _estEstudiante.Num_Celular = _sifEstudiante.num_celular;
+                _estEstudiante.Num_Telefono = _sifEstudiante.num_telefono;
+                _estEstudiante.Txt_Apellido1 = _sifEstudiante.txt_apellido_1;
+                _estEstudiante.Txt_Apellido2 = _sifEstudiante.txt_apellido_2;
+                _estEstudiante.Dir_Email = _sifEstudiante.dir_email;
+
+            }
+            else
+            {
+                _objConexionWS = new wsDar.AdmisionyRegistro();
+
+                DataSet _dsDatosEstudiante = _objConexionWS.IESCDATOSESTUDIANTE_Buscar(pCarnet);
+                DataRow _drEstudiante = _dsDatosEstudiante.Tables[0].Rows[0];
+
+                String[] _strNombreEstudiante = _drEstudiante["NOM_ESTUDIANTE"].ToString().Split(' ');
+
+                _estEstudiante.Id_Carnet = _drEstudiante["IDE_ESTUDIANTE"].ToString();
+                _estEstudiante.Nom_Nombre = _strNombreEstudiante[2];
+                if (_strNombreEstudiante.Length == 4)
+                {
+                    _estEstudiante.Nom_Nombre += " " + _strNombreEstudiante[3];
+                }
+                _estEstudiante.Txt_Apellido1 = _strNombreEstudiante[0];
+                _estEstudiante.Txt_Apellido2 = _strNombreEstudiante[1];
+                _estEstudiante.Num_Telefono = _drEstudiante["NUM_TELEFONO"].ToString();
+                _estEstudiante.Num_Celular = _drEstudiante["NUM_CELULAR"].ToString();
+                _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
+
+            }
+            return _estEstudiante;
+        }
+
+        /**
+         * Retorna el plan asociado al estudiante
+         **/
+        public PlanEstudios ObtenerPlanEstudios(string pCarnet, bool pExisteBase)
+        {
+            PlanEstudios _planEstudios = new PlanEstudios();
+
+            if (pExisteBase)
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                SIFPlanEstudio _sifPlanEstudios = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                                   where _sifEstudiantes.id_Carnet == pCarnet
+                                                   select _sifEstudiantes.SIFPlanEstudio).First();
+
+                _objConexionBase.Connection.Close();
+                _planEstudios.Id_Plan_Estudios = _sifPlanEstudios.id_PlanEstudios;
+                _planEstudios.Nom_Carrera = _sifPlanEstudios.nom_carrera;
+            }
+            else
+            {
+                DataSet _dsDatosPlanEstudiante = _objConexionWS.DATOS_ESTUDIANTE(pCarnet);
+                DataRow _drPlanEstudiante = _dsDatosPlanEstudiante.Tables[0].Rows[0];
+
+                _planEstudios.Id_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
+                _planEstudios.Nom_Carrera = _drPlanEstudiante["DSC_PLAN"].ToString();
+            }
+
+            return _planEstudios;
         }
 
         /**

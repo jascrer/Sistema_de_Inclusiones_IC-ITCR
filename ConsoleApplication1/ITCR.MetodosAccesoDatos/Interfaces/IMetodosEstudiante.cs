@@ -21,9 +21,25 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
     public interface IMetodosEstudiante
     {
         /**
+         * Retorna true si el Estudiante existe en la base de la aplicacion
+         * Retorna false en caso contrario.
+         **/
+        bool EstudianteExiste(string pCarnet);
+
+        /**
          * Retorna los datos del Estudiante especificado mediante el Carnet
          **/
-        Estudiante ObtenerDatosEstudiante(string pCarnet);
+        Estudiante ObtenerDatosEstudiante(string pCarnet, bool pExisteBase);
+
+        /**
+         * Retorna el plan asociado al estudiante
+         **/
+        PlanEstudios ObtenerPlanEstudios(string pCarnet, bool pExisteBase);
+
+        /**
+         * Retorna la cita de matricula del estudiante
+         **/
+
 
         /**
          * Retorna los cursos matriculados del _sifeEstudiante

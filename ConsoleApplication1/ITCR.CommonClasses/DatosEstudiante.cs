@@ -19,7 +19,7 @@ using System.Runtime.Serialization;
 namespace ITCR.Ado.ClasesComunes
 {
     [DataContract]
-    class DatosEstudiante
+    public class DatosEstudiante
     {
         #region
 
@@ -34,12 +34,6 @@ namespace ITCR.Ado.ClasesComunes
         /// </summary>
         [DataMember]
         public int Num_Cursos_Faltantes { get; set; }
-
-        /// <summary>
-        /// Corresponde a la cantidad de creditos actuales
-        /// </summary>
-        [DataMember]
-        public int Num_Creditos_Actuales { get; set; }
 
         /// <summary>
         /// Corresponde a la cantidad de creditos actuales

@@ -32,12 +32,12 @@ namespace ConsoleApplication1
              * Manager de la conexion
              * Siempre debe haber uno para que se de la conexion con la base de datos.
              * Ya sea para leer o escribir es necesario.
-             * */
+             * 
             Inclutec_BDEntities _dbManager = new Inclutec_BDEntities();
             
             /*
              * Escritura en la base de datos.
-             **/
+             *
 
             //Paso 1: Se crea el objeto y se llena la informacion del mismo.
             SIFPlanEstudio plan = new SIFPlanEstudio();
@@ -54,7 +54,7 @@ namespace ConsoleApplication1
             /*
              * Lectura de la base de datos
              * Solo se deben hacer lecturas simples, nada complicadas.
-             **/
+             *
 
             //Se utiliza una lectura en Linq que se aplica en el property deseado del
             //Manager
@@ -69,24 +69,24 @@ namespace ConsoleApplication1
             }
 
             //Crea una espera de teclado para terminar la aplicacion
-            Console.ReadLine();
+            Console.ReadLine();*/
 
-            /*wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
-            DataSet _PruebaDatos = _darManager.IEMAFCURRI_Buscar("201030612","CA","S","2","2012");
+            wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
+            DataSet _PruebaDatos = _darManager.CITASMATRICULA_Buscar("201030612", "O", null, "2013", "S", "1");
             foreach (DataRow dr in _PruebaDatos.Tables[0].Rows)
             {
-                Console.WriteLine(dr["IDE_ESTUDIANTE"].ToString() + " - " + dr["IDE_SEDE"].ToString() +
-                    "\n" + dr["IDE_PLAN"].ToString() + " - " + dr["IDE_MATERIA"].ToString() +
-                    "\n" + dr["NUM_ANO"].ToString() + " - " + dr["IDE_MODALIDAD"].ToString() +
-                    "\n" + dr["IDE_PER_MOD"].ToString() + " - " + dr["IDE_GRUPO"].ToString() +
-                    "\n" + dr["IDE_SED_GRU"].ToString() + " - " + dr["NUM_NOTA"].ToString() +
-                    "\n" + dr["IDE_EST_CUR"].ToString());
-            }*/
+                Console.WriteLine(dr["IDE_ESTUDIANTE"].ToString() + " - " + dr["IDE_MATRICULA"].ToString() +
+                    "\n" + dr["FEC_MATRICULA"].ToString() + " - " + dr["NUM_PROMEDIO"].ToString() +
+                    "\n" + dr["NUM_DIFGAN_PER"].ToString() + " - " + dr["NUM_GANADOS"].ToString() +
+                    "\n" + dr["NUM_PERDIDOS"].ToString() + " - " + dr["NUM_ANO"].ToString() +
+                    "\n" + dr["IDE_MODALIDAD"].ToString() + " - " + dr["IDE_PER_MOD"].ToString() +
+                    "\n" + dr["FEC_GENERACION"].ToString() + " - " + dr["IDE_USUARIO"].ToString());
+            }
 
             //IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
 
 
-            //Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
