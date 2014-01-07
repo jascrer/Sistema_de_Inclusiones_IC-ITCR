@@ -1,0 +1,46 @@
+package com.itcr.inclutec;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.example.itcr.inclutec.R;
+import com.example.itcr.inclutec.R.id;
+import com.example.itcr.inclutec.R.layout;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class Detalle2Activity extends Activity {
+
+	private String _Solicitud;
+	private String _CodigoCurso;
+	private String _NombreCurso;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detalle2);
+		
+		//Toma los datos que recibe la pantalla
+		Bundle _bunInformacion = this.getIntent().getExtras();
+		_Solicitud = _bunInformacion.getString("SOLICITUD");
+		_CodigoCurso = _bunInformacion.getString("CODIGO");
+		_NombreCurso = _bunInformacion.getString("NOMBRE");
+		
+		//Asignamos valores a textviews de titulo
+		final TextView txt_CodigoCurso = (TextView)findViewById(R.id.lbl_CodigoCurso);
+		final TextView txt_NombreCurso = (TextView)findViewById(R.id.lbl_NombreCurso);
+		
+		txt_CodigoCurso.setText(_CodigoCurso);
+		txt_NombreCurso.setText(_NombreCurso);
+		
+	}
+	
+}

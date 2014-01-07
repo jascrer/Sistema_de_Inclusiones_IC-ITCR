@@ -1,0 +1,21 @@
+package com.example.itcr.inclutec;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.ListView;
+
+public class Detalle2Activity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detalle2);
+		
+		final ListView _listView = (ListView) findViewById(R.id.listview);
+		
+		
+	}
+
+
+}

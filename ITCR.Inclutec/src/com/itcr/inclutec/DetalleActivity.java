@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,13 +43,20 @@ public class DetalleActivity extends ExpandableListActivity {
 							new String[]{"Group Item"},
 							new int[]{R.id.row_name},
 							crearListaItems(),
-							R.layout.child_row,
+							R.layout.detail_child_row,
 							new String[]{"Sub Item"},
 							new int[]{R.id.grp_child});
 			setListAdapter(_adapList);
 			
 			ExpandableListView _elvLista=(ExpandableListView) findViewById(android.R.id.list);
+			
+			
+			
 			_elvLista.expandGroup(0);
+			
+			
+			this.getExpandableListView().setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
+			
 			
 		}catch(Exception e){
 		}
@@ -97,9 +105,26 @@ public class DetalleActivity extends ExpandableListActivity {
 	/**
 	 * Con esta funcion se sabe si se hizo click en una materia
 	 */
+	/*
     public boolean onChildClick( ExpandableListView parent, 
     		View v, int groupPosition,int childPosition,long id) {
         return true;
+    }*/
+    /**
+     * Con esta funcion se sabe si se hizo click largo en un grupo
+     */
+    public boolean onChildLongClick( ExpandableListView parent,
+    		View v, int groupPosition,int childPosition,long id){
+    	
+    	//Abrir context
+    	AlertDialog.Builder _dialItemSeleccionado = new AlertDialog.Builder(DetalleActivity.this);
+    	_dialItemSeleccionado.setTitle("Seleccionado");
+    	_dialItemSeleccionado.setMessage("Desea eliminar el grupo " + 
+    					childPosition+" de la solicitud?");
+    	_dialItemSeleccionado.setNegativeButton("Cancelar", null);
+    	_dialItemSeleccionado.setPositiveButton("OK", null);
+    	
+    	return true;
     }
  
     /**

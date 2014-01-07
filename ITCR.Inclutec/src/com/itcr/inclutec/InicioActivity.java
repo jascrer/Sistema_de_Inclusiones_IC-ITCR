@@ -183,12 +183,14 @@ public class InicioActivity extends ExpandableListActivity {
     @SuppressLint("ShowToast")
 	public boolean onChildClick( ExpandableListView parent, 
     		View v, int groupPosition,int childPosition,long id) {
-		Intent _intDetalle = new Intent(InicioActivity.this, DetalleActivity.class);
+		Intent _intDetalle = new Intent(InicioActivity.this, Detalle2Activity.class);
 		String _sMateria = ((TextView)v.findViewById(R.id.grp_child))
 							.getText().toString();
 		
 		Bundle _bunInformacion = new Bundle();
-		_bunInformacion.putString("NOMBRE",_sMateria);
+		_bunInformacion.putString("SOLICITUD",_sMateria);
+		_bunInformacion.putString("CODIGO","IC6200");
+		_bunInformacion.putString("NOMBRE", "Inteligencia Artificial");
 		_intDetalle.putExtras(_bunInformacion);
 		
 		startActivity(_intDetalle);

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -46,6 +46,10 @@
         <activity
             android:name="com.itcr.inclutec.DetalleActivity"
             android:label="@string/title_activity_detalle" >
+        </activity>
+        <activity
+            android:name="com.itcr.inclutec.Detalle2Activity"
+            android:label="@string/title_activity_detalle2" >
         </activity>
     </application>
 
