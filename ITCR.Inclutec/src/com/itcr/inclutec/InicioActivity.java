@@ -98,7 +98,8 @@ public class InicioActivity extends ExpandableListActivity {
              * por el nombre de las materias.
              * "'Sub Item' + n" por la materia
              */
-            _hmMapaItem.put( "Sub Item", "Sub Item " + n );
+            //_hmMapaItem.put( "Sub Item", "Sub Item " + n );
+            _hmMapaItem.put("Sub Item", "Solicitud " + n);
             _lItems.add( _hmMapaItem );
           }
          _lListaItems.add( _lItems );

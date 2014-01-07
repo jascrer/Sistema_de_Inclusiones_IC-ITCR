@@ -18,6 +18,7 @@ import com.example.itcr.inclutec.R;
 @SuppressLint("NewApi")
 public class DetalleActivity extends ExpandableListActivity {
 
+	private String _Solicitud;
 	private String _Curso = "Inteligencia Artificial";
 	private String _Profesores[] = new String[]{"Jorge Vargas","Jose Castro"};
 	
@@ -26,7 +27,6 @@ public class DetalleActivity extends ExpandableListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle);
-		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		

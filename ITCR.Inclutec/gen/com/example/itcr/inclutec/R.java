@@ -37,7 +37,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_drawer=0x7f020001;
         public static final int ic_launcher=0x7f020002;
         public static final int ic_logo_blanco=0x7f020003;
-        public static final int tecid=0x7f020004;
+        public static final int icmpmove=0x7f020004;
+        public static final int tecid=0x7f020005;
     }
     public static final class id {
         public static final int action_settings=0x7f090016;
@@ -74,10 +75,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int cell_row=0x7f030006;
         public static final int child_row=0x7f030007;
         public static final int comment_row=0x7f030008;
-        public static final int email_row=0x7f030009;
-        public static final int group_form_item=0x7f03000a;
-        public static final int group_row=0x7f03000b;
-        public static final int phone_row=0x7f03000c;
+        public static final int detail_child_row=0x7f030009;
+        public static final int email_row=0x7f03000a;
+        public static final int group_form_item=0x7f03000b;
+        public static final int group_row=0x7f03000c;
+        public static final int phone_row=0x7f03000d;
     }
     public static final class menu {
         public static final int detalle=0x7f080000;
@@ -140,8 +142,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int AppTheme=0x7f070001;
         public static final int ButtonBar=0x7f070003;
         public static final int ButtonBarButton=0x7f070004;
-        public static final int FullscreenActionBarStyle=0x7f070005;
+        public static final int FullscreenActionBarStyle=0x7f070006;
         public static final int FullscreenTheme=0x7f070002;
+        public static final int activated=0x7f070005;
     }
     public static final class styleable {
         /** 
