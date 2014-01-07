@@ -30,7 +30,7 @@ import com.example.itcr.inclutec.R;
 @SuppressLint("NewApi")
 public class FormularioActivity extends Activity {
 
-	ELAdapter listAdapter;
+	ELFormularioAdapter listAdapter;
 	ExpandableListView expListView;
 	List<String> listDataHeader;
 	HashMap<String, List<String>> listDataChild;
@@ -61,7 +61,7 @@ public class FormularioActivity extends Activity {
 		// preparing list data
 		prepareListData();
 
-		listAdapter = new ELAdapter(this, listDataHeader, listDataChild);
+		listAdapter = new ELFormularioAdapter(this, listDataHeader, listDataChild);
 
 		// setting list adapter
 		expListView.setAdapter(listAdapter);
