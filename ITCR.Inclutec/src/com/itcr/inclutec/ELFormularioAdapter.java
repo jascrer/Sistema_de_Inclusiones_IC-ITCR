@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-public class ELAdapter extends BaseExpandableListAdapter {
+public class ELFormularioAdapter extends BaseExpandableListAdapter {
 
 	private Context _context;
 	private List<String> _listDataHeader; // header titles
 	// child data in format of header title, child title
 	private HashMap<String, List<String>> _listDataChild;
 
-	public ELAdapter(Context context, List<String> listDataHeader,
+	public ELFormularioAdapter(Context context, List<String> listDataHeader,
 			HashMap<String, List<String>> listChildData) {
 		this._context = context;
 		this._listDataHeader = listDataHeader;
@@ -42,39 +42,39 @@ public class ELAdapter extends BaseExpandableListAdapter {
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 
+		int _gp = groupPosition;
+		int _cp = childPosition;
 		final String childText = (String) getChild(groupPosition, childPosition);
+		
 
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			if(groupPosition==0){
-				if(childPosition == 2){
+			switch(_gp){
+			case 0:
+				switch(_cp){
+				case 2:
 					convertView = infalInflater.inflate(R.layout.phone_row, null);
-					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-					txtListChild.setText(childText);
-				}
-				else if(childPosition == 3){
+					break;
+				case 3:
 					convertView = infalInflater.inflate(R.layout.cell_row, null);
-					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-					txtListChild.setText(childText);
-				}
-				else if(childPosition == 4){
+					break;
+				case 4:
 					convertView = infalInflater.inflate(R.layout.email_row, null);
-					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-					txtListChild.setText(childText);
-				}
-				else{
+					break;
+				default:
 					convertView = infalInflater.inflate(R.layout.child_row, null);
-					TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-					txtListChild.setText(childText);
+					break;
 				}
+				break;
+			default:
+				convertView = infalInflater.inflate(R.layout.child_row, null);
+				break;
 			}
-			else{
-			convertView = infalInflater.inflate(R.layout.child_row, null);
-			TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
-			txtListChild.setText(childText);
-			}
+			
 		}
+		TextView txtListChild = (TextView) convertView.findViewById(R.id.grp_child);
+		txtListChild.setText(childText);
 	
 		return convertView;
 	}

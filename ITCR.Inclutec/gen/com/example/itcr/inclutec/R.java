@@ -41,7 +41,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tecid=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090016;
+        public static final int action_settings=0x7f090015;
         public static final int button1=0x7f09000a;
         public static final int buttonSend=0x7f090003;
         public static final int checkBox1=0x7f090009;
@@ -51,12 +51,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int editTextCelular=0x7f09000f;
         public static final int editTextComentario=0x7f090010;
         public static final int editTextEmail=0x7f090011;
-        public static final int editTextTelefono=0x7f090015;
+        public static final int editTextTelefono=0x7f090014;
         public static final int expandableListView1=0x7f09000b;
         public static final int grp_child=0x7f09000e;
         public static final int imageView1=0x7f090005;
         public static final int lblListHeader=0x7f090012;
-        public static final int lblTel=0x7f090014;
         public static final int linearLayout1=0x7f09000c;
         public static final int listDrawer=0x7f090004;
         public static final int listaForm=0x7f090001;

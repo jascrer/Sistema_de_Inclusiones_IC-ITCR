@@ -24,6 +24,6 @@
     	android:paddingLeft="50dp"
     	android:textSize="12sp"
         android:inputType="textWebEmailAddress"
-        android:hint="Correo electrónico" />"
+        android:hint="Correo electrónico" />
 
 </LinearLayout>
