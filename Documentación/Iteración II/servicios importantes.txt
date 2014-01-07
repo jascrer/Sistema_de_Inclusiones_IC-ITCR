@@ -1,0 +1,7 @@
+consulta para el plan del estudiante
+DataSet _dsDatosPlanEstudiante = _objConexionWS.DATOS_ESTUDIANTE(pCarnet);
+                DataRow _drPlanEstudiante = _dsDatosPlanEstudiante.Tables[0].Rows[0];
+
+
+            wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
+            DataSet _PruebaDatos = _darManager.IEMAFCURRI_Buscar("201030612","CA","S","2","2012");

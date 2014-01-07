@@ -1,0 +1,35 @@
+1.1.	¿Qué necesidades originaron el sistema?¿Quién lo solicitó?
+1.2.	¿A quién afecta el problema?¿Quienes son los interesados en que el sistema se desarrolle?
+1.3.	¿Qué sistemas se ven afectados por el desarrollo de este sistema?
+1.4.	¿Cuáles partes del sistema son las más claves?
+
+2.1.	¿A quién está dirigido el producto?
+2.2.	¿Cuales oportunidades se están aprovechando?
+2.3.	¿Cuál sería el nombre del producto?
+2.4.	¿Por qué se desea crear el producto?
+2.5.	¿Cuáles otras alternativas hay?
+2.6.	¿En qué se diferencia el producto de las alternativas?
+2.7.	¿Cuáles son las caracterísiticas principales del producto?
+2.8.	¿Cuáles suposiciones se pueden hacer con respecto al sistema? ¿De qué depende el producto?
+2.9.	¿Cuál sería el costo estimado?
+2.10.	¿Hay licencias o requerimientos de instalación?
+
+
+3.1.    ¿Cuáles son las funcionalidades principales que debería presentar el producto? Describa dichas funcionalidades.
+3.2.    ¿Cuáles reportes en pantalla se espera obtener del sistema?
+3.3.    ¿Cuáles reportes impresos se espera obtener del sistema?
+3.4.    En caso de un eventual contratiempo en la ejecución del proyecto, ¿qué funcionalidades de las anteriormente descritas considera usted que deberían ser excluídas del producto en su versión inicial?
+3.5.    Tomando como premisa una posible nueva versión del producto, ¿cuáles funcionalidades esperaría que fueran incluídas en esta nueva versión?
+3.6.    ¿Existe algún aspecto tecnológico (equipo, software, conexión remota) que limite el desarrollo del proyecto?
+3.7.    ¿Existe algún aspecto no tecnológico (por ejemplo, el horario en caso de ser un trabajo restringido a una locación física permanente) que limite el desarrollo del proyecto en cuestión?
+
+
+4.1	¿Cuales son todos los tipos de cliente que va a tener el sistema? (Perfiles)
+4.2	¿Qué beneficios del producto obtendrá cada perfil de interesado?
+4.3	¿Cuál es el valor percibido de cada interesado?
+4.4	¿Cuales son las prioridades en cuanto a tiempo?
+4.5	¿Cuales son las prioridades en cuanto a funcionalidades?
+4.6	¿Cuales son las prioridades en cuanto a calidad?
+4.7	¿Cuales son las prioridades en cuanto a costos?
+4.8	¿Cuales son los requerimientos de rendimiento, integridad, confiabilidad, seguridad, accesibilidad?
+4.9	¿Comunicación entre todas las partes del sistema?

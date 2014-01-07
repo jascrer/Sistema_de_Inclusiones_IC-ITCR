@@ -1,0 +1,33 @@
+Iteración I --------------------------------------------------------------------
+
+	CU-01 Crear Solicitud
+	CU-02 Revisar Estado de Solicitudes (Cambiar nombre a Ver Solicitudes?)
+	CU-03 Definir Período de Recepción de Solicitudes
+	CU-04 Modificar Solicitud de Grupo
+	CU-05 Anular Solicitud
+
+Iteración II --------------------------------------------------------------------
+
+Nina	CU-06 Crear Solicitud
+Andy	CU-07 Revisar Estado de Solicitudes (Cambiar nombre a Ver Solicitudes?)
+Jota	CU-08 Gestionar Excepciones de Proceso (CRUD)
+Nold	CU-09 Modificar Solicitud (Anular y Modificar Grupos)
+
+Iteración III -------------------------------------------------------------------
+
+Pool de CUs ---------------------------------------------------------------------
+
+
+CU-__ Agregar Regla
+CU-__ Cambiar Estado de Regla
+CU-__ Cambiar Prioridad de Reglas
+CU-__ Eliminar Regla de Negocio
+
+CU-__ Agregar Cupos Adicionales a Grupo
+CU-__ Ejecutar Asignación Automática de Cupos
+CU-__ Enviar Reporte de Proceso
+CU-__ Enviar Notificaciones
+
+CU-__ Consultar Solicitudes (Incluye Imprimir)
+CU-__ Consultar Sugerencias (Incluye Imprimir)
+CU-__ Consultar Estudiantes Sugeridos para Grupo Nuevo

@@ -1,0 +1,12 @@
+Carta de aceptación que indique que:
+	- el usuario revisó la ejecución del programa
+	- que está de acuerdo con el mismo
+	- que el software resultante de la iteración
+	  está instalado en una computadora del usuario
+Informe de ejecución de pruebas de la iteración
+Manual de usuario al usuario y al profesor
+Bitácora Nina
+Bitácora Jota
+Bitácora Noldy
+Bitácora Andrés
+Minutas firmadas (impresas)

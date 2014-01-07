@@ -1,0 +1,27 @@
+Cargar por defecto:
+
+Nombre completo
+Carné
+Teléfono MODIFICABLE
+Celular MODIFICABLE
+Correo electronico MODIFICABLE
+Plan en el que esta matriculado
+Cita de matrícula
+
+Dinámico
+
+Código de Curso
+Curso
+Diseñar cómo escoger el curso (combo es muy grande)
+
+Opciones de grupo Grid con los grupos ordenados en prioridad
+Número de Grupo 
+Toma el horario del curso
+
+Cursos que ya tiene matriculados
+Warnings de Tiene Requisitos, Tiene choque de horario, Tiene RN
+
+Comentario adicional Plzzzzzzz
+
+Leyenda de "Doy fe"
+

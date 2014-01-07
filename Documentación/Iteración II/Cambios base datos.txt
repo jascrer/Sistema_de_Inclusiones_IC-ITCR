@@ -1,0 +1,45 @@
+Tabla Excepciones
+	-Carnet
+	-idCurso
+	-idGrupo
+	-idPeriodo
+
+Tabla Cursos
+	- idCurso
+	- nombreCurso
+
+Tabla Grupos
+	-Num_Cupos
+	- idCurso
+
+Tabla Horario
+	-dia
+	-horarioinicio
+	-horariofin
+
+Tabla Profesor
+	-idProfesor
+	-correoprofesor
+	-nombreprofesor
+
+Tabla Solicitud
+	-grupo_aceptado
+
+Tabla Grupo_por_Solicitud
+	-eliminar txt_estado
+
+Tabla Estudiante
+	-elimina plan de estudios
+	-añade fk de plan de estudios
+
+Tabla Plan de estudios
+	-idNumPlanEstudios
+	-Nombre Carrera
+
+Tabla Datos Estudiante
+	-idDatos.....
+	-numcusosfaltantes
+	-cantidad creditos actuales
+	-HoraMatricula
+	-DiaMatricula
+
