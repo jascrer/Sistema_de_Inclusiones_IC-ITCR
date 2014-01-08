@@ -1,0 +1,69 @@
+package com.itcr.inclutec;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.example.itcr.inclutec.R;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class LVAdapter extends BaseAdapter {
+
+	private Activity _actividad;
+	private ArrayList<HashMap<String,String>> _items;
+	private static LayoutInflater _inflater = null;
+	
+	public LVAdapter(Activity p_actividad, ArrayList<HashMap<String,String>> p_items) {
+		
+		_actividad = p_actividad;
+		_items = p_items;
+		_inflater = (LayoutInflater)_actividad.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+	}
+	
+	public long getItemId(int p_posicion) {
+		return p_posicion;
+	}
+	
+	public int getCount() {
+		return _items.size();
+	}
+	
+	public Object getItem(int p_posicion) {
+		return p_posicion;
+	}
+	
+	
+	public View getView(int p_posicion, View p_convertView, ViewGroup p_parent) {
+        View vi=p_convertView;
+        if(p_convertView==null)
+            vi = _inflater.inflate(R.layout.detail_child_row, null);
+        
+        TextView _txtForGrupo = (TextView)vi.findViewById(R.id.lbl_ForGrupo); // fijo de label Grupo
+        TextView _txtGrupo = (TextView)vi.findViewById(R.id.lbl_Grupo);
+        TextView _txtProfesor = (TextView)vi.findViewById(R.id.lbl_Profesor);
+        TextView _txtHorario = (TextView)vi.findViewById(R.id.lbl_Horario);
+        TextView _txtSede = (TextView)vi.findViewById(R.id.lbl_Sede);
+        
+        HashMap<String, String> item = new HashMap<String,String>();
+        item = _items.get(p_posicion);
+        
+        //Asigno valores al item
+        _txtForGrupo.setText("Grupo");
+        _txtGrupo.setText(item.get("NUMGRUPO"));
+        //_txtProfesor.setText("Profesor: " + item.get("PROFESOR"));
+        //_txtHorario.setText("Horario: " + item.get("HORARIO"));
+        //_txtSede.setText("Sede: " + item.get("SEDE"));
+        
+        return vi;
+    }
+	
+}
+
+	

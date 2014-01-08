@@ -50,14 +50,48 @@ public class Detalle2Activity extends Activity {
 		final ListView _lvGrupos = (ListView)findViewById(R.id.lv_Grupos);
 		
 		//Creo arreglo de grupos
-		//ArrayList<Grupo_Por_Solicitud> _arrGrupos = new ArrayList<Grupo_Por_Solicitud>;
+		ArrayList<HashMap<String,String>> _arrGrupos = new ArrayList<HashMap<String,String>>();
 		
-		String [] numGrupo = new String[] {"01", "02", "03"};
-		String [] profesores = new String[] {"Jorge Vargas", "Jose Castro", "Jose Helo"};
-		String [] horarios = new String[] {"L J 7:30 - 9:20 am", "K J 7:30 - 9:20 am", "M V 7:30 - 9:20 am"};
-		String [] sedes = new String [] {"Cartago", "Cartago", "Centro Academico"};
+		HashMap<String,String> item1 = new HashMap<String,String>();
+		item1.put("NUMGRUPO", "01");
+		item1.put("PROFESOR", "Jorge Vargas");
+		item1.put("HORARIO", "L J 7:30 - 9:20 am");
+		item1.put("SEDE", "Cartago");
+		//item1.put("PRIORIDAD", value);
+		_arrGrupos.add(item1);
 		
-		//final _adapListaGrupos = new _adapListaGrupos
+		HashMap<String,String> item2 = new HashMap<String,String>();
+		item2.put("NUMGRUPO", "02");
+		item2.put("PROFESOR", "Jose Castro");
+		item2.put("HORARIO", "K J 7:30 - 9:20 am");
+		item2.put("SEDE", "Cartago");
+		//item1.put("PRIORIDAD", value);
+		_arrGrupos.add(item2);
+		
+		HashMap<String,String> item3 = new HashMap<String,String>();
+		item3.put("NUMGRUPO", "03");
+		item3.put("PROFESOR", "Jose Helo");
+		item3.put("HORARIO", "M V 7:30 - 9:20 am");
+		item3.put("SEDE", "Centro Academico");
+		//item1.put("PRIORIDAD", value);
+		_arrGrupos.add(item3);
+		
+		
+		LVAdapter _adapGrupos = new LVAdapter(this,_arrGrupos);
+		_lvGrupos.setAdapter(_adapGrupos);
+		
+		//final TextView _txtForGrupo = (TextView)findViewById(R.id.lbl_ForGrupo);
+		//_lvGrupos.setAdapter(new ArrayAdapter<String>(this,R.layout.detail_child_row,R.id.lbl_Grupo,numGrupo));
+		
+		/**
+		 * Crear el listener para el click en un item de la lista
+		 */
+		_lvGrupos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+				
+			}
+		});
 		
 		
 		

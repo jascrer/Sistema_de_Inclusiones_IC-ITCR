@@ -11,3 +11,7 @@
 1389055615771	Delete element
 1389103304648	Move compilation unit
 1389103316904	Delete element
+1389149165295	Rename local variable 'position'
+1389149177708	Rename local variable 'convertView'
+1389149188780	Rename local variable 'parent'
+1389152712099	Rename field '_inflater'

@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     style="@style/activated"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="5dip">
+    
     <!-- android:background="@android:attr/activatedBackgroundIndicator"-->
     
     <!-- Grupo -->
     
-    <LinearLayout 
-        android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-        <TextView 
+    <TextView 
             android:id="@+id/lbl_ForGrupo"
             android:focusable="false"
 	    	android:textSize="12sp"
+	    	android:padding="3dip"
 	    	android:textStyle="normal"
 	    	android:textColor="#ffffff"
 	        android:fontFamily="droid_serif"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"/>
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentLeft="true"/>
         
-        <TextView 
+    <TextView 
             android:id="@+id/lbl_Grupo"
             android:focusable="false"
 	    	android:textSize="30sp"
+	    	android:padding="3dip"
 	    	android:textStyle="normal"
 	    	android:textColor="#ffffff"
 	        android:fontFamily="droid_serif"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"/>
-        
-    </LinearLayout>
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentLeft="true"
+	    	android:layout_below="@+id/lbl_ForGrupo"/>
     
-    <LinearLayout 
-        android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <!-- Profesor -->
         
-        <!-- Profesor -->
-        
-        <TextView 
+    <TextView 
             android:id="@+id/lbl_Profesor"
             android:focusable="false"
 	    	android:textSize="16sp"
 	    	android:textStyle="normal"
 	    	android:textColor="#ffffff"
+	    	android:padding="3dip"
+	    	android:layout_marginLeft="20dip"
 	        android:fontFamily="droid_serif"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"/>
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_toEndOf="@+id/lbl_Grupo"
+	    	android:layout_toRightOf="@+id/lbl_ForGrupo"/>
         
-	    <!-- Horario -->
-	    <TextView 
+	<!-- Horario -->
+	<TextView 
             android:id="@+id/lbl_Horario"
             android:focusable="false"
 	    	android:textSize="16sp"
+	    	android:padding="3dip"
+	    	android:layout_marginLeft="10dip"
 	    	android:textStyle="normal"
 	    	android:textColor="#ffffff"
 	        android:fontFamily="droid_serif"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"/>
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_below="@+id/lbl_Profesor"
+	    	android:layout_alignLeft="@+id/lbl_Profesor"
+	    	android:layout_toRightOf="@+id/lbl_ForGrupo"
+	    	android:layout_margin="1dip"/>
 	    
-	    <!-- Sede -->
-        <TextView 
+	<!-- Sede -->
+    <TextView 
             android:id="@+id/lbl_Sede"
             android:focusable="false"
 	    	android:textSize="16sp"
+	    	android:padding="3dip"
+	    	android:layout_marginLeft="10dip"
 	    	android:textStyle="normal"
 	    	android:textColor="#ffffff"
 	        android:fontFamily="droid_serif"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"/>
-        
-    </LinearLayout>
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_below="@+id/lbl_Horario"
+	    	android:layout_alignLeft="@+id/lbl_Profesor"
+	    	android:layout_toRightOf="@+id/lbl_ForGrupo"
+	    	android:layout_margin="1dip"/>
     
-</LinearLayout>
+        
+</RelativeLayout>
