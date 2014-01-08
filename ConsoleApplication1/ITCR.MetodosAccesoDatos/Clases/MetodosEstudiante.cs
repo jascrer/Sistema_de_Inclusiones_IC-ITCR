@@ -143,19 +143,49 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /**
          * Retorna los cursos matriculados del _sifeEstudiante
          **/
-        public LinkedList<string> ObtenerCursosEstudiante(string pCarnet, string pModalidad)
+        public LinkedList<Curso> ObtenerCursosEstudiante(string pCarnet, string pModalidad)
         {
-
-            return null;
+            _objConexionBase = new Inclutec_BDEntities();
+            var _objCursosInclusion = from _sifCursos in _objConexionBase.SIFCursoes
+                                      select _sifCursos;
+            LinkedList<Curso> _sifCursoLista = new LinkedList<Curso>();
+            foreach (SIFCurso _sifCurso in _objCursosInclusion)
+            {
+                Curso _curso = new Curso();
+                _curso.Id_Curso = _sifCurso.id_Curso;
+                _curso.Cod_Curso = _sifCurso.cod_Curso;
+                _curso.Txt_Curso = _sifCurso.nom_Curso;
+                _sifCursoLista.AddLast(_curso);
+            }
+            _objConexionBase.Connection.Close();
+            return _sifCursoLista;
         }
 
 
         /**
          * Retorna la lista con los grupos a los que se le puede hacer inclusion
          **/
-        public LinkedList<string> ObtenerGruposParaInclusion(string pCarnet)
+        public LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso)
         {
-            return null;
+            _objConexionBase = new Inclutec_BDEntities();
+            var _Grupos = from _sifGrupos in _objConexionBase.SIFGrupoes
+                          where _sifGrupos.FK_Curso_idCurso == pCurso
+                          select _sifGrupos;
+
+            LinkedList<Grupo> _sifGrupoLista = new LinkedList<Grupo>();
+            foreach (SIFGrupo _sifGrupo in _Grupos)
+            {
+                Grupo _grupo = new Grupo();
+                _grupo.Id_Grupo = _sifGrupo.id_Grupo;
+                _grupo.Num_Cupos = _sifGrupo.num_cupos;
+                _grupo.Num_Cupos_Extra = _sifGrupo.num_cupos_extra;
+                _grupo.Num_Grupo = _sifGrupo.num_grupo;
+
+                /*var _liHorario = from _sitHorarios in _objConexionBase.AddToSITHorarios
+                                 where _sitHorarios.*/
+            }
+            _objConexionBase.Connection.Close();
+            return _sifGrupoLista;
         }
 
         /**
@@ -177,39 +207,49 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /**
          * Guarda los datos del Estudiante en la base de datos
          **/
-        public bool GuardarDatosEstudiantes(Estudiante pEstudiante)
+        public bool GuardarDatosEstudiantes(Estudiante pEstudiante, PlanEstudios pPlanEstudios)
         {
-            /*try 
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            if (_metEstudiante.EstudianteExiste(pEstudiante.Id_Carnet)) 
             {
-                _objConexionBase = new Inclutec_BDEntities();
-
-                var _Verificacion = from _sifEstudiantes in _objConexionBase.SIFEstudiantes
-                                    where _sifEstudiantes.id_Carnet == pEstudiante.Id_Carnet
-                                    select _sifEstudiantes;
-
-                if (_Verificacion.Count() == 0)
-                {
-                    SIFEstudiante _sifeEstudiante = new SIFEstudiante();
-                    _sifeEstudiante.id_Carnet = pEstudiante.Id_Carnet;
-                    _sifeEstudiante.nom_nombre = pEstudiante.Nom_Nombre;
-                    _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_Apellido1;
-                    _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_Apellido2;
-                    _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
-                    _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
-                    _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
-                    _sifeEstudiante.num_plan_estudios = pEstudiante.Num_Plan_Estudios;
-
-                    _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
-                    _objConexionBase.SaveChanges();
-
-                }
-
-                _objConexionBase.Connection.Close();
-
                 return true;
-            }catch (Exception) {
-                return false;
-            } */return true;
+            }
+            else
+            {
+                try
+                {
+                    _objConexionBase = new Inclutec_BDEntities();
+
+                    var _Verificacion = from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                        where _sifEstudiantes.id_Carnet == pEstudiante.Id_Carnet
+                                        select _sifEstudiantes;
+
+                    if (_Verificacion.Count() == 0)
+                    {
+                        SIFEstudiante _sifeEstudiante = new SIFEstudiante();
+                        _sifeEstudiante.id_Carnet = pEstudiante.Id_Carnet;
+                        _sifeEstudiante.nom_nombre = pEstudiante.Nom_Nombre;
+                        _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_Apellido1;
+                        _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_Apellido2;
+                        _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
+                        _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
+                        _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
+                        _sifeEstudiante.FK_PlanEstudios_idPlanEstudios = pPlanEstudios.Id_Plan_Estudios;
+
+                        _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
+                        _objConexionBase.SaveChanges();
+
+                    }
+
+                    _objConexionBase.Connection.Close();
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
 
         /**

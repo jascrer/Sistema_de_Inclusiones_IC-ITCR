@@ -33,13 +33,18 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool VerificarEstudiante(string pUsuario, string pPassword, int FuncionarioEstudiante)
         {
-            wsDar.AdmisionyRegistro _objConexionDar = new wsDar.AdmisionyRegistro();
+            //wsDar.AdmisionyRegistro _objConexionDar = new wsDar.AdmisionyRegistro();
 
             switch(FuncionarioEstudiante){
                 case 0:
-                    return _objConexionDar.ESTUDIANTE_EXISTE(pUsuario, pPassword);
+                    IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+                    return _metEstudiante.EstudianteExiste(pUsuario);
+                    //Temporalmente fuera de servicio
+                    //return _objConexionDar.ESTUDIANTE_EXISTE(pUsuario, pPassword);
                 case 1:
-                    return _objConexionDar.FUNCIONARIO_EXISTE(pUsuario, pPassword);
+                    return true;
+                    //Temporalmente fuera de servicio
+                    //return _objConexionDar.FUNCIONARIO_EXISTE(pUsuario, pPassword);
                 default:
                     return false;
             }

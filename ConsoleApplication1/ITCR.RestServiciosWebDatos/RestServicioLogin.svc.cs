@@ -21,10 +21,13 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 #endregion
 
+using ITCR.MetodosAccesoDatos.Interfaces;
+using ITCR.MetodosAccesoDatos.Clases;
+
 namespace ITCR.RestServiciosWebDatos
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RestServicioLogin" in code, svc and config file together.
-    class RestServicioLogin 
+    public class RestServicioLogin : IRestServicioLogin
     {
         #region Atributos
         #endregion
@@ -39,11 +42,10 @@ namespace ITCR.RestServiciosWebDatos
          * base de datos del Departamento de Admision y Registro mediante
          * los servicio wsDAR.
          **/
-        bool VerificarEstudiante(string pCarne, string pPin)
+        public bool VerificarEstudiante(string pCarne, string pPin)
         {
-            wsDar.AdmisionyRegistro _objConexionDar = new wsDar.AdmisionyRegistro();
-
-            return _objConexionDar.ESTUDIANTE_EXISTE(pCarne,pPin);
+            IMetodosLogin _metLogin = new MetodosLogin();
+            return _metLogin.VerificarEstudiante(pCarne,pPin,0);
         }
 
         #endregion

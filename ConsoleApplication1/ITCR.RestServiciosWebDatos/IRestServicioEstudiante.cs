@@ -40,7 +40,7 @@ namespace ITCR.RestServiciosWebDatos
          **/
         [OperationContract]
         [WebInvoke(UriTemplate = "/estudiante", Method = "POST")]
-        bool CrearEstudiante(Estudiante pEstudiante);
+        bool CrearEstudiante(Estudiante pEstudiante, PlanEstudios pPlanEstudios);
 
         /**
          * Devuelve la informacion del estudiante al que 
@@ -50,7 +50,7 @@ namespace ITCR.RestServiciosWebDatos
         [WebGet(UriTemplate = "/estudiante/?id={pId}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
-        string ObtenerInformacionEstudiante(int pId);
+        Estudiante ObtenerInformacionEstudiante(string pId);
 
         /**
          * Actualiza los datos de contacto del estudiante especificado.
@@ -60,5 +60,14 @@ namespace ITCR.RestServiciosWebDatos
         [OperationContract]
         [WebInvoke(UriTemplate = "/estudiante", Method = "PUT")]
         bool ActualizarContacto(Estudiante pEstudiante);
+
+        /**
+         * Devuelve la lista de cursos del semestre
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/cursos",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Curso> ObtenerCursos();
     }
 }

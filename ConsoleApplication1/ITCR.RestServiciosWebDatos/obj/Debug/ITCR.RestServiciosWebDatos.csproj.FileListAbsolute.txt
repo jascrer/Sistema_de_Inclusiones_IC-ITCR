@@ -40,3 +40,5 @@ C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.csprojResolveAssemblyReference.cache
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.dll
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.pdb
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.RestServiciosWebDatos\bin\ITCR.MetodosAccesoDatos.dll
+C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ConsoleApplication1\ITCR.RestServiciosWebDatos\bin\ITCR.MetodosAccesoDatos.pdb

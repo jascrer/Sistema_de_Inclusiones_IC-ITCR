@@ -23,7 +23,8 @@ using System.ServiceModel.Activation;
 
 #region Librerias Inclutec
 using ITCR.Ado.ClasesComunes;
-using ITCR.Ado.ModeloAcDatos;
+using ITCR.MetodosAccesoDatos.Clases;
+using ITCR.MetodosAccesoDatos.Interfaces;
 #endregion
 
 namespace ITCR.RestServiciosWebDatos
@@ -46,7 +47,7 @@ namespace ITCR.RestServiciosWebDatos
          * ya exitia en la base de datos: retorna verdadero.
          * Si no retorna falso.
          **/
-        public bool CrearEstudiante(Estudiante pEstudiante)
+        public bool CrearEstudiante(Estudiante pEstudiante, PlanEstudios pPlanEstudios)
         {
             return true;
         }
@@ -55,9 +56,10 @@ namespace ITCR.RestServiciosWebDatos
          * Devuelve la informacion del estudiante al que 
          * pertenece el carnet indicado
          **/
-        public string ObtenerInformacionEstudiante(int id)
+        public Estudiante ObtenerInformacionEstudiante(string pId)
         {
-            return null;
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerDatosEstudiante(pId, _metEstudiante.EstudianteExiste(pId));
         }
 
         /**
@@ -68,6 +70,16 @@ namespace ITCR.RestServiciosWebDatos
         public bool ActualizarContacto(Estudiante pEstudiante)
         {
             return true;
+        }
+
+        /**
+         * Devuelve la lista de cursos del semestre
+         **/
+        public LinkedList<Curso> ObtenerCursos()
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            //Temporalmente tiene "" como parametros.
+            return _metEstudiante.ObtenerCursosEstudiante("","");
         }
         #endregion
 

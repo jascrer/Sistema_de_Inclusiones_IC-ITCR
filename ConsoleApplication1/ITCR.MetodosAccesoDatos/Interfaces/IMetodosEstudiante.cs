@@ -44,12 +44,12 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Retorna los cursos matriculados del _sifeEstudiante
          **/
-        LinkedList<string> ObtenerCursosEstudiante(string pCarnet, string pModalidad);
+        LinkedList<Curso> ObtenerCursosEstudiante(string pCarnet, string pModalidad);
 
         /**
          * Retorna la lista con los grupos a los que se le puede hacer inclusion
          **/
-        LinkedList<string> ObtenerGruposParaInclusion(string pCarnet);
+        LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso);
 
         /**
          * Retorna las solicitudes hechas por el _sifeEstudiante
@@ -64,7 +64,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Guarda los datos del Estudiante en la base de datos
          **/
-        bool GuardarDatosEstudiantes(Estudiante pEstudiante);
+        bool GuardarDatosEstudiantes(Estudiante pEstudiante, PlanEstudios pPlanEstudios);
 
         /**
          * Guarda la solicitud creada por el _sifeEstudiante
