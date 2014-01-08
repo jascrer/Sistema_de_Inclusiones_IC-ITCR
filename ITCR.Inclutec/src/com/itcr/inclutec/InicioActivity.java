@@ -118,7 +118,7 @@ public class InicioActivity extends ExpandableListActivity {
 				Intent _iIntent;
 				switch(arg2){
 					case 1:
-						_iIntent = new Intent(InicioActivity.this, FormularioActivity.class);
+						_iIntent = new Intent(InicioActivity.this, FormularioDPActivity.class);
 						startActivity(_iIntent);
 						finish();
 						break;
