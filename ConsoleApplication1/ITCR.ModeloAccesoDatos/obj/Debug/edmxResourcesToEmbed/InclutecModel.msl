@@ -5,6 +5,7 @@
       <EntityTypeMapping TypeName="Inclutec_BDModel.SIFCurso">
         <MappingFragment StoreEntitySet="SIFCurso">
           <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+          <ScalarProperty Name="cod_Curso" ColumnName="cod_Curso" />
           <ScalarProperty Name="nom_Curso" ColumnName="nom_Curso" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -102,10 +103,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SITExcepciones">
-      <EntityTypeMapping TypeName="Inclutec_BDModel.SITExcepcione">
-        <MappingFragment StoreEntitySet="SITExcepciones">
-          <ScalarProperty Name="id_Excepciones" ColumnName="id_Excepciones" />
+    <EntitySetMapping Name="SITExcepcions">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITExcepcion">
+        <MappingFragment StoreEntitySet="SITExcepcion">
+          <ScalarProperty Name="id_Excepcion" ColumnName="id_Excepcion" />
           <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
           <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
           <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />

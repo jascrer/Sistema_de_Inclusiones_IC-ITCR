@@ -39,7 +39,7 @@
             android:label="@string/title_activity_modify" >
         </activity>
         <activity
-            android:name="com.itcr.inclutec.FormularioActivity"
+            android:name="com.itcr.inclutec.FormularioDPActivity"
             android:label="@string/title_activity_formulario"
             android:windowSoftInputMode="adjustPan" >
         </activity>
@@ -50,6 +50,26 @@
         <activity
             android:name="com.itcr.inclutec.Detalle2Activity"
             android:label="@string/title_activity_detalle2" >
+        </activity>
+        <activity
+            android:name="com.itcr.inclutec.FormularioCursosActivity"
+            android:label="@string/title_activity_formulario_cursos"
+            android:parentActivityName="com.itcr.inclutec.FormularioDPActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.itcr.inclutec.FormularioDPActivity" />
+        </activity>
+        <activity
+            android:name="com.itcr.inclutec.FormularioRestriccionesActivity"
+            android:label="@string/title_activity_formulario_restricciones" >
+        </activity>
+        <activity
+            android:name="com.itcr.inclutec.FormularioRestriccionesActivity"
+            android:label="@string/title_activity_formulario_restricciones"
+            android:parentActivityName="com.itcr.inclutec.FormularioCursosActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.itcr.inclutec.FormularioCursosActivity" />
         </activity>
     </application>
 

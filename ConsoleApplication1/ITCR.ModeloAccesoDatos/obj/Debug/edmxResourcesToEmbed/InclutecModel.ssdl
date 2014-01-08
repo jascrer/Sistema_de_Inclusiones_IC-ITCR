@@ -10,7 +10,7 @@
     <EntitySet Name="SIFProfesor" EntityType="Inclutec_BDModel.Store.SIFProfesor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SIFSolicitud" EntityType="Inclutec_BDModel.Store.SIFSolicitud" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SITDatos_Estudiante" EntityType="Inclutec_BDModel.Store.SITDatos_Estudiante" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SITExcepciones" EntityType="Inclutec_BDModel.Store.SITExcepciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SITExcepcion" EntityType="Inclutec_BDModel.Store.SITExcepcion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SITHorario" EntityType="Inclutec_BDModel.Store.SITHorario" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="sysdiagrams" EntityType="Inclutec_BDModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Datos_Estudiante_Estudiante" Association="Inclutec_BDModel.Store.FK_Datos_Estudiante_Estudiante">
@@ -21,21 +21,21 @@
       <End Role="SIFPlanEstudios" EntitySet="SIFPlanEstudios" />
       <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
     </AssociationSet>
-    <AssociationSet Name="FK_Excepciones_Curso" Association="Inclutec_BDModel.Store.FK_Excepciones_Curso">
+    <AssociationSet Name="FK_Excepcion_Curso" Association="Inclutec_BDModel.Store.FK_Excepcion_Curso">
       <End Role="SIFCurso" EntitySet="SIFCurso" />
-      <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+      <End Role="SITExcepcion" EntitySet="SITExcepcion" />
     </AssociationSet>
-    <AssociationSet Name="FK_Excepciones_Estudiante" Association="Inclutec_BDModel.Store.FK_Excepciones_Estudiante">
+    <AssociationSet Name="FK_Excepcion_Estudiante" Association="Inclutec_BDModel.Store.FK_Excepcion_Estudiante">
       <End Role="SIFEstudiante" EntitySet="SIFEstudiante" />
-      <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+      <End Role="SITExcepcion" EntitySet="SITExcepcion" />
     </AssociationSet>
-    <AssociationSet Name="FK_Excepciones_Grupo" Association="Inclutec_BDModel.Store.FK_Excepciones_Grupo">
+    <AssociationSet Name="FK_Excepcion_Grupo" Association="Inclutec_BDModel.Store.FK_Excepcion_Grupo">
       <End Role="SIFGrupo" EntitySet="SIFGrupo" />
-      <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+      <End Role="SITExcepcion" EntitySet="SITExcepcion" />
     </AssociationSet>
-    <AssociationSet Name="FK_Excepciones_Periodo" Association="Inclutec_BDModel.Store.FK_Excepciones_Periodo">
+    <AssociationSet Name="FK_Excepcion_Periodo" Association="Inclutec_BDModel.Store.FK_Excepcion_Periodo">
       <End Role="SIFPeriodo" EntitySet="SIFPeriodo" />
-      <End Role="SITExcepciones" EntitySet="SITExcepciones" />
+      <End Role="SITExcepcion" EntitySet="SITExcepcion" />
     </AssociationSet>
     <AssociationSet Name="FK_Grupo_Curso" Association="Inclutec_BDModel.Store.FK_Grupo_Curso">
       <End Role="SIFCurso" EntitySet="SIFCurso" />
@@ -70,38 +70,39 @@
     <Key>
       <PropertyRef Name="id_Curso" />
     </Key>
-    <Property Name="id_Curso" Type="varchar" Nullable="false" MaxLength="8" />
-    <Property Name="nom_Curso" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="id_Curso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cod_Curso" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="nom_Curso" Type="varchar" Nullable="false" MaxLength="60" />
   </EntityType>
   <EntityType Name="SIFEstudiante">
     <Key>
       <PropertyRef Name="id_Carnet" />
     </Key>
     <Property Name="id_Carnet" Type="varchar" Nullable="false" MaxLength="15" />
-    <Property Name="nom_nombre" Type="varchar" Nullable="false" MaxLength="20" />
-    <Property Name="txt_apellido_1" Type="varchar" Nullable="false" MaxLength="10" />
-    <Property Name="txt_apellido_2" Type="varchar" MaxLength="10" />
+    <Property Name="nom_nombre" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="txt_apellido_1" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="txt_apellido_2" Type="varchar" MaxLength="20" />
     <Property Name="num_telefono" Type="nchar" Nullable="false" MaxLength="8" />
     <Property Name="num_celular" Type="nchar" Nullable="false" MaxLength="8" />
-    <Property Name="dir_email" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="dir_email" Type="varchar" Nullable="false" MaxLength="60" />
     <Property Name="FK_PlanEstudios_idPlanEstudios" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SIFGrupo">
     <Key>
       <PropertyRef Name="id_Grupo" />
     </Key>
-    <Property Name="id_Grupo" Type="int" Nullable="false" />
+    <Property Name="id_Grupo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="num_grupo" Type="int" Nullable="false" />
     <Property Name="num_cupos" Type="int" Nullable="false" />
     <Property Name="num_cupos_extra" Type="int" Nullable="false" />
-    <Property Name="FK_Curso_idCurso" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="FK_Curso_idCurso" Type="int" Nullable="false" />
     <Property Name="FK_Profesor_idProfesor" Type="varchar" Nullable="false" MaxLength="9" />
   </EntityType>
   <EntityType Name="SIFGrupo_Por_Solicitud">
     <Key>
       <PropertyRef Name="id_Grupo_Por_Solicitud" />
     </Key>
-    <Property Name="id_Grupo_Por_Solicitud" Type="int" Nullable="false" />
+    <Property Name="id_Grupo_Por_Solicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="num_prioridad" Type="int" Nullable="false" />
     <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
     <Property Name="FK_Solicitud_idSolicitud" Type="int" Nullable="false" />
@@ -110,7 +111,7 @@
     <Key>
       <PropertyRef Name="id_Periodo" />
     </Key>
-    <Property Name="id_Periodo" Type="int" Nullable="false" />
+    <Property Name="id_Periodo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="fec_inicio" Type="datetime" Nullable="false" />
     <Property Name="fec_fin" Type="datetime" Nullable="false" />
     <Property Name="txt_estado" Type="varchar" Nullable="false" MaxLength="10" />
@@ -137,7 +138,7 @@
     <Key>
       <PropertyRef Name="id_Solicitud" />
     </Key>
-    <Property Name="id_Solicitud" Type="int" Nullable="false" />
+    <Property Name="id_Solicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="txt_comentario" Type="varchar" MaxLength="350" />
     <Property Name="txt_curso" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="txt_motivo" Type="varchar" MaxLength="50" />
@@ -158,13 +159,13 @@
     <Property Name="txt_diamatricula" Type="varchar" Nullable="false" MaxLength="1" />
     <Property Name="FK_Estudiante_idEstudiante" Type="varchar" Nullable="false" MaxLength="15" />
   </EntityType>
-  <EntityType Name="SITExcepciones">
+  <EntityType Name="SITExcepcion">
     <Key>
-      <PropertyRef Name="id_Excepciones" />
+      <PropertyRef Name="id_Excepcion" />
     </Key>
-    <Property Name="id_Excepciones" Type="int" Nullable="false" />
+    <Property Name="id_Excepcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_Estudiante_carnet" Type="varchar" Nullable="false" MaxLength="15" />
-    <Property Name="FK_Curso_idCurso" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="FK_Curso_idCurso" Type="int" Nullable="false" />
     <Property Name="FK_Grupo_idGrupo" Type="int" Nullable="false" />
     <Property Name="FK_Periodo_idPeriodo" Type="int" Nullable="false" />
   </EntityType>
@@ -212,50 +213,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Excepciones_Curso">
+  <Association Name="FK_Excepcion_Curso">
     <End Role="SIFCurso" Type="Inclutec_BDModel.Store.SIFCurso" Multiplicity="1" />
-    <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+    <End Role="SITExcepcion" Type="Inclutec_BDModel.Store.SITExcepcion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFCurso">
         <PropertyRef Name="id_Curso" />
       </Principal>
-      <Dependent Role="SITExcepciones">
+      <Dependent Role="SITExcepcion">
         <PropertyRef Name="FK_Curso_idCurso" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Excepciones_Estudiante">
+  <Association Name="FK_Excepcion_Estudiante">
     <End Role="SIFEstudiante" Type="Inclutec_BDModel.Store.SIFEstudiante" Multiplicity="1" />
-    <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+    <End Role="SITExcepcion" Type="Inclutec_BDModel.Store.SITExcepcion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFEstudiante">
         <PropertyRef Name="id_Carnet" />
       </Principal>
-      <Dependent Role="SITExcepciones">
+      <Dependent Role="SITExcepcion">
         <PropertyRef Name="FK_Estudiante_carnet" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Excepciones_Grupo">
+  <Association Name="FK_Excepcion_Grupo">
     <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
-    <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+    <End Role="SITExcepcion" Type="Inclutec_BDModel.Store.SITExcepcion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFGrupo">
         <PropertyRef Name="id_Grupo" />
       </Principal>
-      <Dependent Role="SITExcepciones">
+      <Dependent Role="SITExcepcion">
         <PropertyRef Name="FK_Grupo_idGrupo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Excepciones_Periodo">
+  <Association Name="FK_Excepcion_Periodo">
     <End Role="SIFPeriodo" Type="Inclutec_BDModel.Store.SIFPeriodo" Multiplicity="1" />
-    <End Role="SITExcepciones" Type="Inclutec_BDModel.Store.SITExcepciones" Multiplicity="*" />
+    <End Role="SITExcepcion" Type="Inclutec_BDModel.Store.SITExcepcion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFPeriodo">
         <PropertyRef Name="id_Periodo" />
       </Principal>
-      <Dependent Role="SITExcepciones">
+      <Dependent Role="SITExcepcion">
         <PropertyRef Name="FK_Periodo_idPeriodo" />
       </Dependent>
     </ReferentialConstraint>
@@ -344,6 +345,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="SIT_SP_Insertar_Auto_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+    <Parameter Name="cod_Curso" Type="varchar" Mode="In" />
+    <Parameter Name="nom_Curso" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SIT_SP_Insertar_Auto_Estudiantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+    <Parameter Name="Apellido1" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido2" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SIT_SP_Insertar_Auto_Grupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner" />
+  <Function Name="SIT_SP_Insertar_Auto_Plan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+    <Parameter Name="id_Plan" Type="int" Mode="In" />
+    <Parameter Name="nom_Carrera" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SIT_SP_Insertar_Auto_Profesor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+    <Parameter Name="Apellido1" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido2" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SIT_SP_Insertar_Estudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+    <Parameter Name="id_Carnet" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido1" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido2" Type="varchar" Mode="In" />
+    <Parameter Name="TelCasa" Type="nchar" Mode="In" />
+    <Parameter Name="TelCelular" Type="nchar" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="id_Plan" Type="int" Mode="In" />
+  </Function>
   <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />

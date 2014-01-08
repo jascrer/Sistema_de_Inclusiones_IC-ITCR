@@ -70,7 +70,7 @@ namespace ConsoleApplication1
 
             //Crea una espera de teclado para terminar la aplicacion
             Console.ReadLine();*/
-
+            /*
             wsDar.AdmisionyRegistro _darManager = new wsDar.AdmisionyRegistro();
             DataSet _PruebaDatos = _darManager.CITASMATRICULA_Buscar("201030612", "O", null, "2013", "S", "1");
             foreach (DataRow dr in _PruebaDatos.Tables[0].Rows)
@@ -82,9 +82,10 @@ namespace ConsoleApplication1
                     "\n" + dr["IDE_MODALIDAD"].ToString() + " - " + dr["IDE_PER_MOD"].ToString() +
                     "\n" + dr["FEC_GENERACION"].ToString() + " - " + dr["IDE_USUARIO"].ToString());
             }
-
-            //IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
-
+            */
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            PlanEstudios plan = _metEstudiante.ObtenerPlanEstudios("201030612", true);
+            Console.WriteLine(plan.Id_Plan_Estudios);
 
             Console.ReadLine();
         }
