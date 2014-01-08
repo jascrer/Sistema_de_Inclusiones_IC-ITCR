@@ -430,6 +430,39 @@ aside {
 	font-weight: bold;
 }
 
+
+.formulario fieldset label 
+{
+	display: block;
+	margin: 10px;
+}
+
+
+.formulario fieldset .formItem {
+	display: block;
+	margin: 10px;
+}
+
+.formulario fieldset .formItem label {
+	display: inline;
+}
+
+.formulario fieldset .formItem input[type="text"] {
+	display: inline;
+}
+
+.formulario fieldset .formItem2 {
+	display: block;
+	margin 10px;
+}
+
+.formulario fieldset .formItem2 div {
+	display: inline;
+}
+.formulario fieldset .formItem2 label {
+	display: inline;
+}
+
 input[type="submit"],
 input[type="button"],
 button {

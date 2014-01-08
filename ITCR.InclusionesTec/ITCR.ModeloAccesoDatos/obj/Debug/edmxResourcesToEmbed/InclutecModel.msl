@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Inclutec_BDModelStoreContainer" CdmEntityContainer="Inclutec_BDEntities">
+    <EntitySetMapping Name="SIFCursoes">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFCurso">
+        <MappingFragment StoreEntitySet="SIFCurso">
+          <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+          <ScalarProperty Name="nom_Curso" ColumnName="nom_Curso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFEstudiantes">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFEstudiante">
+        <MappingFragment StoreEntitySet="SIFEstudiante">
+          <ScalarProperty Name="id_Carnet" ColumnName="id_Carnet" />
+          <ScalarProperty Name="nom_nombre" ColumnName="nom_nombre" />
+          <ScalarProperty Name="txt_apellido_1" ColumnName="txt_apellido_1" />
+          <ScalarProperty Name="txt_apellido_2" ColumnName="txt_apellido_2" />
+          <ScalarProperty Name="num_telefono" ColumnName="num_telefono" />
+          <ScalarProperty Name="num_celular" ColumnName="num_celular" />
+          <ScalarProperty Name="dir_email" ColumnName="dir_email" />
+          <ScalarProperty Name="FK_PlanEstudios_idPlanEstudios" ColumnName="FK_PlanEstudios_idPlanEstudios" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFGrupoes">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFGrupo">
+        <MappingFragment StoreEntitySet="SIFGrupo">
+          <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
+          <ScalarProperty Name="num_grupo" ColumnName="num_grupo" />
+          <ScalarProperty Name="num_cupos" ColumnName="num_cupos" />
+          <ScalarProperty Name="num_cupos_extra" ColumnName="num_cupos_extra" />
+          <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+          <ScalarProperty Name="FK_Profesor_idProfesor" ColumnName="FK_Profesor_idProfesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFGrupo_Por_Solicitud">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFGrupo_Por_Solicitud">
+        <MappingFragment StoreEntitySet="SIFGrupo_Por_Solicitud">
+          <ScalarProperty Name="id_Grupo_Por_Solicitud" ColumnName="id_Grupo_Por_Solicitud" />
+          <ScalarProperty Name="num_prioridad" ColumnName="num_prioridad" />
+          <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
+          <ScalarProperty Name="FK_Solicitud_idSolicitud" ColumnName="FK_Solicitud_idSolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFPeriodoes">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFPeriodo">
+        <MappingFragment StoreEntitySet="SIFPeriodo">
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="fec_inicio" ColumnName="fec_inicio" />
+          <ScalarProperty Name="fec_fin" ColumnName="fec_fin" />
+          <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
+          <ScalarProperty Name="txt_modalidad" ColumnName="txt_modalidad" />
+          <ScalarProperty Name="num_anno" ColumnName="num_anno" />
+          <ScalarProperty Name="num_periodo" ColumnName="num_periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFPlanEstudios">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFPlanEstudio">
+        <MappingFragment StoreEntitySet="SIFPlanEstudios">
+          <ScalarProperty Name="id_PlanEstudios" ColumnName="id_PlanEstudios" />
+          <ScalarProperty Name="nom_carrera" ColumnName="nom_carrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFProfesors">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFProfesor">
+        <MappingFragment StoreEntitySet="SIFProfesor">
+          <ScalarProperty Name="id_Profesor" ColumnName="id_Profesor" />
+          <ScalarProperty Name="nom_profesor" ColumnName="nom_profesor" />
+          <ScalarProperty Name="dir_correo" ColumnName="dir_correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIFSolicituds">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SIFSolicitud">
+        <MappingFragment StoreEntitySet="SIFSolicitud">
+          <ScalarProperty Name="id_Solicitud" ColumnName="id_Solicitud" />
+          <ScalarProperty Name="txt_comentario" ColumnName="txt_comentario" />
+          <ScalarProperty Name="txt_curso" ColumnName="txt_curso" />
+          <ScalarProperty Name="txt_motivo" ColumnName="txt_motivo" />
+          <ScalarProperty Name="txt_estado" ColumnName="txt_estado" />
+          <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+          <ScalarProperty Name="grupo_aceptado" ColumnName="grupo_aceptado" />
+          <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
+          <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITDatos_Estudiante">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITDatos_Estudiante">
+        <MappingFragment StoreEntitySet="SITDatos_Estudiante">
+          <ScalarProperty Name="id_Datos_Estudiante" ColumnName="id_Datos_Estudiante" />
+          <ScalarProperty Name="num_cursosfaltantes" ColumnName="num_cursosfaltantes" />
+          <ScalarProperty Name="num_creditosactuales" ColumnName="num_creditosactuales" />
+          <ScalarProperty Name="tim_horamatricula" ColumnName="tim_horamatricula" />
+          <ScalarProperty Name="txt_diamatricula" ColumnName="txt_diamatricula" />
+          <ScalarProperty Name="FK_Estudiante_idEstudiante" ColumnName="FK_Estudiante_idEstudiante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITExcepciones">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITExcepcione">
+        <MappingFragment StoreEntitySet="SITExcepciones">
+          <ScalarProperty Name="id_Excepciones" ColumnName="id_Excepciones" />
+          <ScalarProperty Name="FK_Estudiante_carnet" ColumnName="FK_Estudiante_carnet" />
+          <ScalarProperty Name="FK_Curso_idCurso" ColumnName="FK_Curso_idCurso" />
+          <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
+          <ScalarProperty Name="FK_Periodo_idPeriodo" ColumnName="FK_Periodo_idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SITHorarios">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.SITHorario">
+        <MappingFragment StoreEntitySet="SITHorario">
+          <ScalarProperty Name="id_Horario" ColumnName="id_Horario" />
+          <ScalarProperty Name="txt_dia" ColumnName="txt_dia" />
+          <ScalarProperty Name="tim_hora_inicio" ColumnName="tim_hora_inicio" />
+          <ScalarProperty Name="tim_hora_fin" ColumnName="tim_hora_fin" />
+          <ScalarProperty Name="FK_Grupo_idGrupo" ColumnName="FK_Grupo_idGrupo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Inclutec_BDModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -16,7 +16,8 @@ using System.Web;
 #endregion
 
 #region Includes Inclutec
-//using ITCR.Ado.ClasesComunes;
+using ITCR.Ado.ClasesComunes;
+using ITCR.MetodosAccesoDatos;
 #endregion
 
 namespace ITCR.InclusionesTec.Models

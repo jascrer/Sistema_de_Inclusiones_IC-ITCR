@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="cb0a6916-be8f-45be-8ef2-3dfc8b13bebd" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="d93a8f56-b1b0-4cde-9e8f-1c50f0425c21" name="Vista">
+      <comments>
+        <comment Id="fef43c38-9a7f-48ff-94e4-0b19503fe400" name="Comment1">
+          <body>MVC4</body>
+        </comment>
+        <comment Id="43075202-0304-4a3a-9902-0736d5bd5641" name="Comment2">
+          <body>ASP.NET</body>
+        </comment>
+      </comments>
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="a4a4ccb1-37fa-402d-8655-142fb66aad30" direction="Forward">
+          <layerMoniker Id="bba207c6-d406-4c18-bf6e-263dc132af8d" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="78fa392a-4b58-417b-b802-95d6fc56ee21" direction="Forward">
+          <layerMoniker Id="d315e9b5-470a-4f2e-8474-bff6f61b02fd" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="d315e9b5-470a-4f2e-8474-bff6f61b02fd" name="Controlador">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="fc491e0c-db77-4663-9134-32d5e390107d" direction="Forward">
+          <layerMoniker Id="bba207c6-d406-4c18-bf6e-263dc132af8d" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="54f0cbf0-3da4-4b50-b458-3d160d34e37b" direction="Bidirectional">
+          <layerMoniker Id="8d77bebb-7134-4598-b62b-4a3809537f37" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="8d77bebb-7134-4598-b62b-4a3809537f37" name="Modelo">
+      <comments>
+        <comment Id="159966ac-d127-45d2-9747-83c81da4f70e" name="Comment1">
+          <body>ADO.NET</body>
+        </comment>
+        <comment Id="b4912437-72b9-4034-9b1c-155201f16e67" name="Comment2">
+          <body>wsDar</body>
+        </comment>
+      </comments>
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="19c13666-fcd2-41f2-a0da-5237f60ebac1" direction="Forward">
+          <layerMoniker Id="bba207c6-d406-4c18-bf6e-263dc132af8d" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="bba207c6-d406-4c18-bf6e-263dc132af8d" name="Clases Comunes">
+      <comments>
+        <comment Id="2ac3c7c7-a327-47f8-aa9e-9f3ced6222cc" name="Comment1">
+          <body>Entities</body>
+        </comment>
+      </comments>
+    </layer>
+  </layers>
+</layerModel>

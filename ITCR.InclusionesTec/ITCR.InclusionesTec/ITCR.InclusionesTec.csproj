@@ -331,6 +331,16 @@
   <ItemGroup>
     <Content Include="Views\Admin\_ViewStart.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITCR.CommonClasses\ITCR.ClasesComunes.csproj">
+      <Project>{146288B6-4D66-4A4A-851D-7F444EF3550F}</Project>
+      <Name>ITCR.ClasesComunes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITCR.MetodosAccesoDatos\ITCR.MetodosAccesoDatos.csproj">
+      <Project>{D7D02D6B-4CEE-4754-B772-641B7C8AB036}</Project>
+      <Name>ITCR.MetodosAccesoDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -16,34 +16,47 @@
                     txtNombreEstudiante     txtCarnet       txtCarrera
                     txtSede     txtPlan     txtCitaMatricula
              -->
-            <label for="txtNombreEstudiante">Nombre Completo:</label>
-            <input type="text" id="txtNombreEstudiante" name="txtNombreEstudiante" value="ROJAS VALVERDE JUAN JOSE" disabled />
-            <label for="txtCarnet">Carnet:</label>
-            <input type="text" id="txtCarnet" name="txtCarnet" value="200813008" disabled />
-            <label for="txtCarrera">Carrera:</label>
-            <input type="text" id="txtCarrera" name="txtCarrera" value="INGENIERIA EN COMPUTACION" disabled />
-            <label for="txtSede">Sede:</label>
-            <input type="text" id="txtSede" name="txtSede" value="CARTAGO" disabled/>
-            <label for="txtPlan">Plan:</label>
-            <input type="text" id="txtPlan" name="txtPlan" value="409" disabled="true"/>
-            <label for="txtCitaMatricula">Cita de Matr&iacute;cula:</label>
-            <input type="text" id="txtCitaMatricula" name="txtCitaMatricula" value="08:00:00" disabled />
-            <label for="txtTelefono">Teléfono Domicilio:</label>
-            <input type="tel" id="txtTelefono" name="txtTelefono" value="22924768" />
-            <label for="textCelular">Teléfono Celular:</label>
-            <input type="tel" id="txtCelular" name="txtCelular" value="85032291" />
-            <label for="txtCorreo">Correo Electrónico:</label>
-            <input type="email" id="txtCorreo" name="txtCorreo" value="anairinac@gmail.com" />
+
+             <!--
+             ROJAS VALVERDE JUAN JOSE
+             200813008
+             INGENIERIA EN COMPUTACION
+             CARTAGO
+             409
+             08:00:00
+
+             -->
+            <label id="lblNombreEstudiante">Nombre Completo: ROJAS VALVERDE JUAN JOSE</label>
+            <label id="lblCarnet">Carnet: 200813008</label>
+            <label id="lblCarrera">Carrera: INGENIERIA EN COMPUTACION</label>
+            <label id="lblSede">Sede: CARTAGO</label>
+            <label id="lblPlan">Plan: 409</label>
+            <label id="lblCitaMatricula">Cita de Matr&iacute;cula: 08:00:00</label>
+            <div class="formItem">
+                <label for="txtTelefono">Teléfono Domicilio:</label>
+                <input type="tel" id="txtTelefono" name="txtTelefono" value="22924768" />
+            </div>
+            <div class="formItem">
+                <label for="textCelular">Teléfono Celular:</label>
+                <input type="tel" id="txtCelular" name="txtCelular" value="85032291" />
+            </div>
+            <div class="formItem">
+                <label for="txtCorreo">Correo Electrónico:</label>
+                <input type="email" id="txtCorreo" name="txtCorreo" value="anairinac@gmail.com" />
+            </div>
+            
         </fieldset>
         <fieldset>
             <legend>Curso</legend>
             <!-- Crear lista de cursos y crear variable que la contenga-->
-            <div class="ui-widget">
-                <label for="txtCursos" >Curso por solicitar:</label>
-                <input type="text" id="txtCursos" name="txtCursos" class="autocomplete" />
+            <div class="formItem2">
+                <div class="ui-widget">
+                    <label for="txtCursos" >Curso por solicitar:</label>
+                    <input type="text" id="txtCursos" name="txtCursos" class="autocomplete" />
+                </div>
+                <!-- Carga el codigo del curso seleccionado en txtCursos -->
+                <label id="lblCodigoCursoSeleccionado">C&oacute;digo: IC-6200</label>
             </div>
-            <!-- Carga el codigo del curso seleccionado en txtCursos -->
-            <input type="text" id="txtCodigoCurso" name="txtCodigoCurso" value="IC-6200" disabled/>
 
             <h4>Grupos disponibles:</h4>
             
