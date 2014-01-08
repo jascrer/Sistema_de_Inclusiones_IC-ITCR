@@ -1,10 +1,12 @@
-﻿@{
+﻿@Model ITCR.InclusionesTec.Models.FormularioViewModel
+@{
     ViewBag.Title = "Formulario";
 }
 
 <hgroup class="title">
     <h1>Formulario de Inclusi&oacute;n</h1>
 </hgroup>
+
 
 <section class="centered">
     <!-------------------Centrar y Dar Formato------------------------------>
@@ -26,7 +28,7 @@
              08:00:00
 
              -->
-            <label id="lblNombreEstudiante">Nombre Completo: ROJAS VALVERDE JUAN JOSE</label>
+            <label id="lblNombreEstudiante">Nombre Completo: @Model </label>
             <label id="lblCarnet">Carnet: 200813008</label>
             <label id="lblCarrera">Carrera: INGENIERIA EN COMPUTACION</label>
             <label id="lblSede">Sede: CARTAGO</label>

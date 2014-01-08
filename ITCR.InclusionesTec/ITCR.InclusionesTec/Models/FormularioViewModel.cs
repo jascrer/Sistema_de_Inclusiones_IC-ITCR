@@ -18,6 +18,7 @@ using System.Web;
 #region Includes Inclutec
 using ITCR.Ado.ClasesComunes;
 using ITCR.MetodosAccesoDatos;
+using ITCR.MetodosAccesoDatos.Clases;
 #endregion
 
 namespace ITCR.InclusionesTec.Models
@@ -27,17 +28,38 @@ namespace ITCR.InclusionesTec.Models
         #region Atributos
         #endregion
         #region Constructores
+
+        /**
+         * Constructor del viewmodel
+         **/
+        public FormularioViewModel(string p_carnet)
+        {
+            MetodosEstudiante _conexion = new MetodosEstudiante();
+
+            //Obtenemos los datos iniciales del estudiante
+            bool _estudianteExiste = _conexion.EstudianteExiste(p_carnet);
+            Estudiante _estudiante = _conexion.ObtenerDatosEstudiante(p_carnet, _estudianteExiste);
+            this.estudiante = _estudiante;
+        }
+
         #endregion
         #region Metodos
+
+
         #endregion
         #region Constantes
         #endregion
         #region Propiedades
 
         /// <summary>
-        /// Corresponde a la información del estudiante
+        /// Corresponde a la información basica del estudiante
         /// </summary>
-        //public Estudiante datosEstudiante { get; set; }
+        public Estudiante estudiante { get; set; }
+
+        /// <summary>
+        /// Corresponde a la información basica del estudiante
+        /// </summary>
+        //public DatosEstudiante datosEstudiante { get; set; }
 
         /// <summary>
         /// Corresponde a la lista de cursos disponibles para inclusión

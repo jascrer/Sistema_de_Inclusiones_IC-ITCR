@@ -4,6 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+#region Includes Inclutec
+using ITCR.InclusionesTec.Models;
+using ITCR.Ado.ClasesComunes;
+using ITCR.MetodosAccesoDatos;
+using ITCR.MetodosAccesoDatos.Clases;
+#endregion
+
 namespace ITCR.InclusionesTec.Controllers
 {
     /// <summary>
@@ -24,7 +31,9 @@ namespace ITCR.InclusionesTec.Controllers
             //Uso datos login
             string Txt_CarnetEstudiante = "200966799";
             //Creo el viewmodel
-            return View();
+            var viewModel = new FormularioViewModel(Txt_CarnetEstudiante);
+            
+            return View(viewModel);
         }
 
     }
