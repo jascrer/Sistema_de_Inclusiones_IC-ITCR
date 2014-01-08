@@ -36,27 +36,27 @@ namespace ITCR.InclusionesTec.Models
         /// <summary>
         /// Corresponde a la información del estudiante
         /// </summary>
-        public Estudiante datosEstudiante { get; set; }
+        //public Estudiante datosEstudiante { get; set; }
 
         /// <summary>
         /// Corresponde a la lista de cursos disponibles para inclusión
         /// </summary>
-        public LinkedList<Curso> cursosInclusion { get; set; }
+        //public LinkedList<Curso> cursosInclusion { get; set; }
 
         /// <summary>
         /// Corresponde a la lista de grupos disponibles para inclusión
         /// </summary>
-        public LinkedList<Grupo> gruposPorCurso { get; set; }
+        //public LinkedList<Grupo> gruposPorCurso { get; set; }
 
         /// <summary>
         /// Corresponde a la lista de cursos matriculados actualmente por el estudiante
         /// </summary>
-        public LinkedList<Curso> cursosMatriculados { get; set; }
+        //public LinkedList<Curso> cursosMatriculados { get; set; }
 
         /// <summary>
         /// Corresponde a la solicitud creada usando el formulario
         /// </summary>
-        public Solicitud solicitud { get; set; }
+        //public Solicitud solicitud { get; set; }
 
 
         #endregion
