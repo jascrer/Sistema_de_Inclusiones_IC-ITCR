@@ -7,39 +7,97 @@ GO
 SET ANSI_PADDING ON
 GO
 
----------------------
--- Tabla Requisito --
----------------------
-CREATE TABLE SITRequisito
-(
-	id_Requisito int IDENTITY(1,1) NOT NULL,
-	FK_Curso_id_Curso varchar(8) NOT NULL,
-	FK_Curso_id_Curso_Requisito varchar(8) NOT NULL
-)
+
+CREATE PROCEDURE SIT_SP_Insertar_Estudiante
+	@id_Carnet varchar(15),
+	@Nombre varchar(40),
+	@Apellido1 varchar(20),
+	@Apellido2 varchar(20),
+	@TelCasa nchar(8),
+	@TelCelular nchar(8),
+	@Correo varchar(60),
+	@id_Plan int
+AS
+BEGIN
+	BEGIN TRANSACTION
+		SET NOCOUNT ON 
+		IF NOT EXISTS (SELECT * FROM SIFEstudiante  WHERE SIFEstudiante.id_Carnet = @id_Carnet)
+		BEGIN 
+			INSERT INTO SIFEstudiante
+				( 
+					id_Carnet,
+					nom_nombre,
+					txt_apellido_1,
+					txt_apellido_2,
+					num_telefono,
+					num_celular,
+					dir_email,
+					FK_PlanEstudios_idPlanEstudios
+				) 
+			VALUES
+				(
+					@id_Carnet,
+					@Nombre,
+					@Apellido1,
+					@Apellido2,
+					@TelCasa,
+					@TelCelular,
+					@Correo,
+					@id_Plan
+				)
+			COMMIT TRANSACTION
+		END
+		ELSE
+			BEGIN 
+				ROLLBACK TRANSACTION 
+				PRINT 'ERROR: Estudiante ya Existente...'
+			END
+		-- Datos Personales --
+		DECLARE @Cursos_Faltantes INT;
+		DECLARE @Creditos_Actuales INT;
+		DECLARE @Hora_Matricula time(7);
+		DECLARE @Dia_Matricula varchar(1);
+		DECLARE @Ex INT;
+		DECLARE @Max INT;
+		DECLARE @Min INT
+		SET @Min = 1
+		SET @Max = 44
+		SELECT @Cursos_Faltantes = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		SET @Min = 0
+		SET @Max = 21
+		SELECT @Creditos_Actuales = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		SELECT @Hora_Matricula = DATEADD(MILLISECOND, CAST(CAST(CAST(28800000 * RAND() AS INT) / 600000 AS INT) * 600000 AS int), convert(time, '08:00'))
+		SET @Min = 0
+		SET @Max = 2
+		SELECT @Ex = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		IF @Ex = 0
+		BEGIN
+			SET @Dia_Matricula = 'L'
+		END
+		ELSE
+			BEGIN
+				SET @Dia_Matricula = 'K'
+			END
+		
+		INSERT INTO SITDatos_Estudiante
+			(
+				num_cursosfaltantes,
+				num_creditosactuales,
+				tim_horamatricula,
+				txt_diamatricula,
+				FK_Estudiante_idEstudiante
+			)
+		VALUES
+			(
+				@Cursos_Faltantes,
+				@Creditos_Actuales,
+				@Hora_Matricula,
+				@Dia_Matricula,
+				@id_Carnet
+			)
+		SET NOCOUNT OFF
+END 	
 GO
-
-------------------------
--- Tabla Correquisito --
-------------------------
-CREATE TABLE SITCorrequisito
-(
-	id_Correquisito int IDENTITY(1,1) NOT NULL,
-	FK_Curso_id_Curso varchar(8) NOT NULL,
-	FK_Curso_id_Curso_Correquisito varchar(8) NOT NULL
-)
-GO
-
-ALTER TABLE SITRequisito ADD CONSTRAINT PK_Requisito PRIMARY KEY (id_Requisito)
-ALTER TABLE SITRequisito ADD CONSTRAINT FK_Requisito_Curso FOREIGN KEY(FK_Curso_id_Curso) REFERENCES SIFCurso(id_Curso)
-ALTER TABLE SITRequisito ADD CONSTRAINT FK_Requisito_Curso_Requisito FOREIGN KEY(FK_Curso_id_Curso_Requisito) REFERENCES SIFCurso(id_Curso)
-GO
-
-ALTER TABLE SITCorrequisito ADD CONSTRAINT PK_Correquisito PRIMARY KEY (id_Correquisito)
-ALTER TABLE SITCorrequisito ADD CONSTRAINT FK_Correquisito_Curso FOREIGN KEY(FK_Curso_id_Curso) REFERENCES SIFCurso(id_Curso)
-ALTER TABLE SITCorrequisito ADD CONSTRAINT FK_Correquisito_Curso_Correquisito FOREIGN KEY(FK_Curso_id_Curso_Correquisito) REFERENCES SIFCurso(id_Curso)
-GO
-
-
 
 CREATE PROCEDURE SIT_SP_Insertar_Auto_Estudiantes
 	@Apellido1 varchar(20),
@@ -50,7 +108,6 @@ BEGIN
 	SET NOCOUNT ON 
     DECLARE @Anno INT;
     DECLARE @NCarnet INT;
-    DECLARE @Ex INT;
     DECLARE @NTelCasa INT;
     DECLARE @NTelCelular INT;
     DECLARE @NPlan INT;
@@ -58,6 +115,7 @@ BEGIN
     DECLARE @TelCelular nchar(8);
     DECLARE @Carnet varchar(15);
     DECLARE @Correo varchar(60);
+    DECLARE @Ex INT;
     DECLARE @Max INT;
 	DECLARE @Min INT
 	SET @Ex = 0
@@ -121,78 +179,9 @@ BEGIN
 	SELECT @NPlan = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
 	
 	-- Guardar Tupla --
-	INSERT INTO SIFEstudiante
-		( 
-			id_Carnet,
-			nom_nombre,
-			txt_apellido_1,
-			txt_apellido_2,
-			num_telefono,
-			num_celular,
-			dir_email,
-			FK_PlanEstudios_idPlanEstudios
-		) 
-	VALUES
-		(
-			@Carnet,
-			@Nombre,
-			@Apellido1,
-			@Apellido2,
-			@TelCasa,
-			@TelCelular,
-			@Correo,
-			@NPlan
-		)	
+	EXEC SIT_SP_Insertar_Estudiante @Carnet,@Nombre,@Apellido1,@Apellido2,@TelCasa,@TelCelular,@Correo,@NPlan
+	
 	SET NOCOUNT OFF
-END 	
-GO
-
-CREATE PROCEDURE SIT_SP_Insertar_Estudiante
-	@id_Carnet varchar(15),
-	@Nombre varchar(40),
-	@Apellido1 varchar(20),
-	@Apellido2 varchar(20),
-	@TelCasa nchar(8),
-	@TelCelular nchar(8),
-	@Correo varchar(60),
-	@id_Plan int
-AS
-BEGIN
-	BEGIN TRANSACTION
-		SET NOCOUNT ON 
-		IF NOT EXISTS (SELECT * FROM SIFEstudiante  WHERE SIFEstudiante.id_Carnet = @id_Carnet)
-		BEGIN 
-			INSERT INTO SIFEstudiante
-				( 
-					id_Carnet,
-					nom_nombre,
-					txt_apellido_1,
-					txt_apellido_2,
-					num_telefono,
-					num_celular,
-					dir_email,
-					FK_PlanEstudios_idPlanEstudios
-				) 
-			VALUES
-				(
-					@id_Carnet,
-					@Nombre,
-					@Apellido1,
-					@Apellido2,
-					@TelCasa,
-					@TelCelular,
-					@Correo,
-					@id_Plan
-				)
-			COMMIT TRANSACTION
-		END
-		ELSE
-			BEGIN 
-				ROLLBACK TRANSACTION 
-				PRINT 'ERROR: Estudiante ya Existente...'
-			END
-		
-		SET NOCOUNT OFF
 END 	
 GO
 
@@ -227,6 +216,138 @@ BEGIN
 END 	
 GO
 
+CREATE PROCEDURE SIT_SP_Insertar_Auto_Curso
+	@cod_Curso varchar(8),
+	@nom_Curso varchar(60)
+AS
+BEGIN
+	SET NOCOUNT ON
+	INSERT INTO SIFCurso
+		( 
+			cod_Curso,
+			nom_Curso
+		) 
+	VALUES
+		(
+			@cod_Curso,
+			@nom_Curso
+		)
+	SET NOCOUNT OFF
+END 	
+GO
+
+CREATE PROCEDURE SIT_SP_Insertar_Auto_Profesor
+	@Apellido1 varchar(20),
+	@Apellido2 varchar(20),
+	@Nombre varchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON 
+    DECLARE @Correo varchar(60);
+    DECLARE @Id varchar(9);
+    DECLARE @NId int;
+    DECLARE @Max INT;
+	DECLARE @Min INT
+    
+    -- Asignación Automática Identificación --
+    SET @Min = 100000000
+	SET @Max = 709991000
+	SELECT @NId = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+	SET @Id = CAST(@NId AS varchar(9))
+    
+	-- Asignación Automática de Correos Electrónicos --
+	SET @Correo = LOWER(LEFT(@Nombre,1) + @Apellido1 + '.' + @Apellido2 + '@ic-itcr.ac.cr')
+	
+	SET @Nombre = @Apellido1 + ' ' + @Apellido2 + ' ' + @Nombre
+	
+	-- Guardar Tupla --
+	INSERT INTO SIFProfesor
+		( 
+			id_Profesor,
+			nom_profesor,
+			dir_correo
+		) 
+	VALUES
+		(
+			@Id,
+			@Nombre,
+			@Correo
+		)	
+	SET NOCOUNT OFF
+END 	
+GO
+
+CREATE PROCEDURE SIT_SP_Insertar_Auto_Grupo
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Contador INT;
+	DECLARE @Ex INT;
+	DECLARE @Num_Grupo INT;
+	DECLARE @NIdCurso INT;
+	DECLARE @Num_Cupos INT;
+	DECLARE @Num_Cupos_Extra INT;
+	DECLARE @IdProfesor varchar(9);
+	DECLARE @Seed INT;
+	DECLARE @Max INT;
+	DECLARE @Min INT
+	
+	SET @Contador = 1
+	WHILE @Contador <= 30
+	BEGIN
+		SET @Ex = 0
+		SET @Num_Grupo = 1
+		SET @Min = 1
+		SET @Max = 27
+		SELECT @NIdCurso = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		SET @Min = 1
+		SET @Max = 1000
+		SELECT @Seed = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		SET @Seed = CAST(@Seed % 10 AS INT)
+		SELECT @IdProfesor = id_Profesor FROM
+			(
+				SELECT ROW_NUMBER() OVER (ORDER BY id_Profesor) AS Orden, id_Profesor
+				FROM SIFProfesor
+			) SIFProfesor
+			WHERE Orden = @Seed
+		SET @Min = 0
+		SET @Max = 32
+		SELECT @Num_Cupos = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		SET @Min = 0
+		SET @Max = 10
+		SELECT @Num_Cupos_Extra = ROUND(((@Max - @Min - 1) * RAND() + @Min), 0)
+		WHILE @Ex = 0
+		BEGIN
+			IF NOT EXISTS (SELECT * FROM SIFGrupo  WHERE (SIFGrupo.FK_Curso_idCurso = @NIdCurso AND SIFGrupo.num_grupo = @Num_Grupo))
+			BEGIN
+				INSERT INTO SIFGrupo
+					( 
+						num_grupo,
+						num_cupos,
+						num_cupos_extra,
+						FK_Curso_idCurso,
+						FK_Profesor_idProfesor
+					) 
+				VALUES
+					(
+						@Num_Grupo,
+						@Num_Cupos,
+						@Num_Cupos_Extra,
+						@NIdCurso,
+						@IdProfesor
+					)
+				SET @Ex = 1
+			END
+			ELSE
+				BEGIN
+					SET @Num_Grupo = @Num_Grupo + 1
+				END
+		END
+		SET @Contador = @Contador + 1
+	END
+	SET NOCOUNT OFF
+END 	
+GO
 
 
 
@@ -494,3 +615,43 @@ EXEC SIT_SP_Insertar_Auto_Estudiantes 'ZHENG','MA','WEI HUA'
 EXEC SIT_SP_Insertar_Auto_Estudiantes 'ZUMBADO','SOLANO','MARION ALEJANDRA'
 EXEC SIT_SP_Insertar_Auto_Estudiantes 'ZUÑIGA','CALDERON','ALEJANDRO'
 EXEC SIT_SP_Insertar_Auto_Estudiantes 'ZUÑIGA','CHAVES','TATIANA MARIA'
+
+EXEC SIT_SP_Insertar_Auto_Curso 'IC1800','INTRODUCCION A LA PROGRAMACION'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC1801','TALLER DE PROGRAMACION'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC2000','ALGORITMOS Y ESTRUCTURAS DE DATOS I'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC2100','ORGANIZACION DE COMPUTADORES Y LENGUAJE ENSAMBLADOR'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC3001','ALGORITMOS Y ESTRUCTURAS DE DATOS II'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC3101','ARQUITECTURA DE COMPUTADORES'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC4300','BASES DE DATOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC4700','LENGUAJES DE PROGRAMACION'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC4810','ADMINISTRACION DE PROYECTOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC5701','COMPILADORES E INTERPRETES'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC5820','ESPECIFICACIONES DE SOFTWARE'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6200','INTELIGENCIA ARTIFICIAL'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6400','INVESTIGACION DE OPERACIONES'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6600','PRINCIPIOS DE SISTEMAS OPERATIVOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6821','DISEÑO DE SOFTWARE'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6830','SISTEMAS DE INFORMACION ADMINISTRATIVOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC7601','REDES LOCALES'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC7811','ADMINISTRACION DE LA FUNCION DE INFORMACION'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC7840','PROYECTO'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC7900','COMPUTACION Y SOCIEDAD'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC8841','PRACTICA DE ESPECIALIDAD'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC1100','FUNDAMENTOS DE ORGANIZACIÓN DE COMPUTADORAS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC2802','PROGRAMACION ORIENTADA A OBJETOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC3001','ANALISIS DE ALGORITMOS'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC5820','REQUERIMIENTOS DE SOFTWARE'
+EXEC SIT_SP_Insertar_Auto_Curso 'IC6840','ASEGURAMIENTO DE LA CALIDAD DEL SOFTWARE'
+
+EXEC SIT_SP_Insertar_Auto_Profesor 'VARGAS','CALVO','JORGE'
+EXEC SIT_SP_Insertar_Auto_Profesor 'GATJENS','SOTO','KIRSTEIN'
+EXEC SIT_SP_Insertar_Auto_Profesor 'CORTES','MORALES','ROBERTO'
+EXEC SIT_SP_Insertar_Auto_Profesor 'CERDAS','QUESADA','IVANNIA'
+EXEC SIT_SP_Insertar_Auto_Profesor 'HELO','GUZMAN','JOSE ELIAS'
+EXEC SIT_SP_Insertar_Auto_Profesor 'MARIN','SCHUMANN','ERICKA'
+EXEC SIT_SP_Insertar_Auto_Profesor 'TORRES','ROJAS','FRANCISCO JOSE'
+EXEC SIT_SP_Insertar_Auto_Profesor 'MONTOYA','POITEVIEN','LUIS'
+EXEC SIT_SP_Insertar_Auto_Profesor 'CASTRO','MORA','JOSE'
+EXEC SIT_SP_Insertar_Auto_Profesor 'MORA','ROJAS','DIEGO'
+
+EXEC SIT_SP_Insertar_Auto_Grupo
