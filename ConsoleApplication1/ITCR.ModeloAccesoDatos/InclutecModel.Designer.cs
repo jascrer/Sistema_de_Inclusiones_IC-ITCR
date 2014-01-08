@@ -19,18 +19,18 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SIFCurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFCurso), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Curso", "SIFCurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFCurso), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Curso", "SIFCurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFCurso), "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Datos_Estudiante_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITDatos_Estudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITDatos_Estudiante), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Estudiante_PlanEstudios", "SIFPlanEstudios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPlanEstudio), "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), true)]
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Solicitud_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), true)]
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Profesor", "SIFProfesor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFProfesor), "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Horario_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITHorario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITHorario), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Solicitud", "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SIFPeriodo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPeriodo), "SITExcepciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcione), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Periodo", "SIFPeriodo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPeriodo), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Solicitud_Periodo", "SIFPeriodo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFPeriodo), "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), true)]
 
 #endregion
@@ -230,18 +230,18 @@ namespace ITCR.Ado.ModeloAcDatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<SITExcepcione> SITExcepciones
+        public ObjectSet<SITExcepcion> SITExcepcions
         {
             get
             {
-                if ((_SITExcepciones == null))
+                if ((_SITExcepcions == null))
                 {
-                    _SITExcepciones = base.CreateObjectSet<SITExcepcione>("SITExcepciones");
+                    _SITExcepcions = base.CreateObjectSet<SITExcepcion>("SITExcepcions");
                 }
-                return _SITExcepciones;
+                return _SITExcepcions;
             }
         }
-        private ObjectSet<SITExcepcione> _SITExcepciones;
+        private ObjectSet<SITExcepcion> _SITExcepcions;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -352,11 +352,11 @@ namespace ITCR.Ado.ModeloAcDatos
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the SITExcepciones EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the SITExcepcions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToSITExcepciones(SITExcepcione sITExcepcione)
+        public void AddToSITExcepcions(SITExcepcion sITExcepcion)
         {
-            base.AddObject("SITExcepciones", sITExcepcione);
+            base.AddObject("SITExcepcions", sITExcepcion);
         }
     
         /// <summary>
@@ -397,11 +397,13 @@ namespace ITCR.Ado.ModeloAcDatos
         /// Create a new SIFCurso object.
         /// </summary>
         /// <param name="id_Curso">Initial value of the id_Curso property.</param>
+        /// <param name="cod_Curso">Initial value of the cod_Curso property.</param>
         /// <param name="nom_Curso">Initial value of the nom_Curso property.</param>
-        public static SIFCurso CreateSIFCurso(global::System.String id_Curso, global::System.String nom_Curso)
+        public static SIFCurso CreateSIFCurso(global::System.Int32 id_Curso, global::System.String cod_Curso, global::System.String nom_Curso)
         {
             SIFCurso sIFCurso = new SIFCurso();
             sIFCurso.id_Curso = id_Curso;
+            sIFCurso.cod_Curso = cod_Curso;
             sIFCurso.nom_Curso = nom_Curso;
             return sIFCurso;
         }
@@ -415,7 +417,7 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String id_Curso
+        public global::System.Int32 id_Curso
         {
             get
             {
@@ -427,15 +429,39 @@ namespace ITCR.Ado.ModeloAcDatos
                 {
                     Onid_CursoChanging(value);
                     ReportPropertyChanging("id_Curso");
-                    _id_Curso = StructuralObject.SetValidValue(value, false);
+                    _id_Curso = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("id_Curso");
                     Onid_CursoChanged();
                 }
             }
         }
-        private global::System.String _id_Curso;
-        partial void Onid_CursoChanging(global::System.String value);
+        private global::System.Int32 _id_Curso;
+        partial void Onid_CursoChanging(global::System.Int32 value);
         partial void Onid_CursoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String cod_Curso
+        {
+            get
+            {
+                return _cod_Curso;
+            }
+            set
+            {
+                Oncod_CursoChanging(value);
+                ReportPropertyChanging("cod_Curso");
+                _cod_Curso = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("cod_Curso");
+                Oncod_CursoChanged();
+            }
+        }
+        private global::System.String _cod_Curso;
+        partial void Oncod_CursoChanging(global::System.String value);
+        partial void Oncod_CursoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -472,18 +498,18 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SITExcepciones")]
-        public EntityCollection<SITExcepcione> SITExcepciones
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Curso", "SITExcepcion")]
+        public EntityCollection<SITExcepcion> SITExcepcions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Curso", "SITExcepciones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Curso", "SITExcepcion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Curso", "SITExcepciones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Curso", "SITExcepcion", value);
                 }
             }
         }
@@ -817,18 +843,18 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SITExcepciones")]
-        public EntityCollection<SITExcepcione> SITExcepciones
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Estudiante", "SITExcepcion")]
+        public EntityCollection<SITExcepcion> SITExcepcions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SITExcepciones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SITExcepcion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SITExcepciones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SITExcepcion", value);
                 }
             }
         }
@@ -878,7 +904,7 @@ namespace ITCR.Ado.ModeloAcDatos
         /// <param name="num_cupos_extra">Initial value of the num_cupos_extra property.</param>
         /// <param name="fK_Curso_idCurso">Initial value of the FK_Curso_idCurso property.</param>
         /// <param name="fK_Profesor_idProfesor">Initial value of the FK_Profesor_idProfesor property.</param>
-        public static SIFGrupo CreateSIFGrupo(global::System.Int32 id_Grupo, global::System.Int32 num_grupo, global::System.Int32 num_cupos, global::System.Int32 num_cupos_extra, global::System.String fK_Curso_idCurso, global::System.String fK_Profesor_idProfesor)
+        public static SIFGrupo CreateSIFGrupo(global::System.Int32 id_Grupo, global::System.Int32 num_grupo, global::System.Int32 num_cupos, global::System.Int32 num_cupos_extra, global::System.Int32 fK_Curso_idCurso, global::System.String fK_Profesor_idProfesor)
         {
             SIFGrupo sIFGrupo = new SIFGrupo();
             sIFGrupo.id_Grupo = id_Grupo;
@@ -998,7 +1024,7 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FK_Curso_idCurso
+        public global::System.Int32 FK_Curso_idCurso
         {
             get
             {
@@ -1008,13 +1034,13 @@ namespace ITCR.Ado.ModeloAcDatos
             {
                 OnFK_Curso_idCursoChanging(value);
                 ReportPropertyChanging("FK_Curso_idCurso");
-                _FK_Curso_idCurso = StructuralObject.SetValidValue(value, false);
+                _FK_Curso_idCurso = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FK_Curso_idCurso");
                 OnFK_Curso_idCursoChanged();
             }
         }
-        private global::System.String _FK_Curso_idCurso;
-        partial void OnFK_Curso_idCursoChanging(global::System.String value);
+        private global::System.Int32 _FK_Curso_idCurso;
+        partial void OnFK_Curso_idCursoChanging(global::System.Int32 value);
         partial void OnFK_Curso_idCursoChanged();
     
         /// <summary>
@@ -1090,18 +1116,18 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SITExcepciones")]
-        public EntityCollection<SITExcepcione> SITExcepciones
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Grupo", "SITExcepcion")]
+        public EntityCollection<SITExcepcion> SITExcepcions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Grupo", "SITExcepciones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Grupo", "SITExcepcion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Grupo", "SITExcepciones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Grupo", "SITExcepcion", value);
                 }
             }
         }
@@ -1640,18 +1666,18 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SITExcepciones")]
-        public EntityCollection<SITExcepcione> SITExcepciones
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Periodo", "SITExcepcion")]
+        public EntityCollection<SITExcepcion> SITExcepcions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Periodo", "SITExcepciones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Periodo", "SITExcepcion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcione>("Inclutec_BDModel.FK_Excepciones_Periodo", "SITExcepciones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SITExcepcion>("Inclutec_BDModel.FK_Excepcion_Periodo", "SITExcepcion", value);
                 }
             }
         }
@@ -2521,30 +2547,30 @@ namespace ITCR.Ado.ModeloAcDatos
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SITExcepcione")]
+    [EdmEntityTypeAttribute(NamespaceName="Inclutec_BDModel", Name="SITExcepcion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class SITExcepcione : EntityObject
+    public partial class SITExcepcion : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new SITExcepcione object.
+        /// Create a new SITExcepcion object.
         /// </summary>
-        /// <param name="id_Excepciones">Initial value of the id_Excepciones property.</param>
+        /// <param name="id_Excepcion">Initial value of the id_Excepcion property.</param>
         /// <param name="fK_Estudiante_carnet">Initial value of the FK_Estudiante_carnet property.</param>
         /// <param name="fK_Curso_idCurso">Initial value of the FK_Curso_idCurso property.</param>
         /// <param name="fK_Grupo_idGrupo">Initial value of the FK_Grupo_idGrupo property.</param>
         /// <param name="fK_Periodo_idPeriodo">Initial value of the FK_Periodo_idPeriodo property.</param>
-        public static SITExcepcione CreateSITExcepcione(global::System.Int32 id_Excepciones, global::System.String fK_Estudiante_carnet, global::System.String fK_Curso_idCurso, global::System.Int32 fK_Grupo_idGrupo, global::System.Int32 fK_Periodo_idPeriodo)
+        public static SITExcepcion CreateSITExcepcion(global::System.Int32 id_Excepcion, global::System.String fK_Estudiante_carnet, global::System.Int32 fK_Curso_idCurso, global::System.Int32 fK_Grupo_idGrupo, global::System.Int32 fK_Periodo_idPeriodo)
         {
-            SITExcepcione sITExcepcione = new SITExcepcione();
-            sITExcepcione.id_Excepciones = id_Excepciones;
-            sITExcepcione.FK_Estudiante_carnet = fK_Estudiante_carnet;
-            sITExcepcione.FK_Curso_idCurso = fK_Curso_idCurso;
-            sITExcepcione.FK_Grupo_idGrupo = fK_Grupo_idGrupo;
-            sITExcepcione.FK_Periodo_idPeriodo = fK_Periodo_idPeriodo;
-            return sITExcepcione;
+            SITExcepcion sITExcepcion = new SITExcepcion();
+            sITExcepcion.id_Excepcion = id_Excepcion;
+            sITExcepcion.FK_Estudiante_carnet = fK_Estudiante_carnet;
+            sITExcepcion.FK_Curso_idCurso = fK_Curso_idCurso;
+            sITExcepcion.FK_Grupo_idGrupo = fK_Grupo_idGrupo;
+            sITExcepcion.FK_Periodo_idPeriodo = fK_Periodo_idPeriodo;
+            return sITExcepcion;
         }
 
         #endregion
@@ -2556,27 +2582,27 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 id_Excepciones
+        public global::System.Int32 id_Excepcion
         {
             get
             {
-                return _id_Excepciones;
+                return _id_Excepcion;
             }
             set
             {
-                if (_id_Excepciones != value)
+                if (_id_Excepcion != value)
                 {
-                    Onid_ExcepcionesChanging(value);
-                    ReportPropertyChanging("id_Excepciones");
-                    _id_Excepciones = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id_Excepciones");
-                    Onid_ExcepcionesChanged();
+                    Onid_ExcepcionChanging(value);
+                    ReportPropertyChanging("id_Excepcion");
+                    _id_Excepcion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_Excepcion");
+                    Onid_ExcepcionChanged();
                 }
             }
         }
-        private global::System.Int32 _id_Excepciones;
-        partial void Onid_ExcepcionesChanging(global::System.Int32 value);
-        partial void Onid_ExcepcionesChanged();
+        private global::System.Int32 _id_Excepcion;
+        partial void Onid_ExcepcionChanging(global::System.Int32 value);
+        partial void Onid_ExcepcionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2607,7 +2633,7 @@ namespace ITCR.Ado.ModeloAcDatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FK_Curso_idCurso
+        public global::System.Int32 FK_Curso_idCurso
         {
             get
             {
@@ -2617,13 +2643,13 @@ namespace ITCR.Ado.ModeloAcDatos
             {
                 OnFK_Curso_idCursoChanging(value);
                 ReportPropertyChanging("FK_Curso_idCurso");
-                _FK_Curso_idCurso = StructuralObject.SetValidValue(value, false);
+                _FK_Curso_idCurso = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FK_Curso_idCurso");
                 OnFK_Curso_idCursoChanged();
             }
         }
-        private global::System.String _FK_Curso_idCurso;
-        partial void OnFK_Curso_idCursoChanging(global::System.String value);
+        private global::System.Int32 _FK_Curso_idCurso;
+        partial void OnFK_Curso_idCursoChanging(global::System.Int32 value);
         partial void OnFK_Curso_idCursoChanged();
     
         /// <summary>
@@ -2685,16 +2711,16 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Curso", "SIFCurso")]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Curso", "SIFCurso")]
         public SIFCurso SIFCurso
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepcion_Curso", "SIFCurso").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepcion_Curso", "SIFCurso").Value = value;
             }
         }
         /// <summary>
@@ -2706,13 +2732,13 @@ namespace ITCR.Ado.ModeloAcDatos
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepcion_Curso", "SIFCurso");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepciones_Curso", "SIFCurso", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFCurso>("Inclutec_BDModel.FK_Excepcion_Curso", "SIFCurso", value);
                 }
             }
         }
@@ -2723,16 +2749,16 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Estudiante", "SIFEstudiante")]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Estudiante", "SIFEstudiante")]
         public SIFEstudiante SIFEstudiante
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SIFEstudiante").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SIFEstudiante").Value = value;
             }
         }
         /// <summary>
@@ -2744,13 +2770,13 @@ namespace ITCR.Ado.ModeloAcDatos
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SIFEstudiante");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepciones_Estudiante", "SIFEstudiante", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFEstudiante>("Inclutec_BDModel.FK_Excepcion_Estudiante", "SIFEstudiante", value);
                 }
             }
         }
@@ -2761,16 +2787,16 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Grupo", "SIFGrupo")]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Grupo", "SIFGrupo")]
         public SIFGrupo SIFGrupo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepcion_Grupo", "SIFGrupo").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepcion_Grupo", "SIFGrupo").Value = value;
             }
         }
         /// <summary>
@@ -2782,13 +2808,13 @@ namespace ITCR.Ado.ModeloAcDatos
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepcion_Grupo", "SIFGrupo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepciones_Grupo", "SIFGrupo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo>("Inclutec_BDModel.FK_Excepcion_Grupo", "SIFGrupo", value);
                 }
             }
         }
@@ -2799,16 +2825,16 @@ namespace ITCR.Ado.ModeloAcDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepciones_Periodo", "SIFPeriodo")]
+        [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Excepcion_Periodo", "SIFPeriodo")]
         public SIFPeriodo SIFPeriodo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepcion_Periodo", "SIFPeriodo").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepcion_Periodo", "SIFPeriodo").Value = value;
             }
         }
         /// <summary>
@@ -2820,13 +2846,13 @@ namespace ITCR.Ado.ModeloAcDatos
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepcion_Periodo", "SIFPeriodo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepciones_Periodo", "SIFPeriodo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFPeriodo>("Inclutec_BDModel.FK_Excepcion_Periodo", "SIFPeriodo", value);
                 }
             }
         }
