@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.itcr.inclutec.R;
 
@@ -26,6 +27,8 @@ public class FormularioDPActivity extends Activity {
 
 	private final String _sNAVEGACION[]=
 			new String[]{"INICIO", "FORMULARIO", "SALIR"};
+	private final String _PERSONALES[]=
+			new String[]{"201016317", "ANDRES EDUARDO", "GONZALEZ", "ORTIZ", "22853948", "87068224", "ANDGONZALEZ@IC-ITCR.AC.CR", "409"};
 	private ActionBarDrawerToggle _Toggle;
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
 
@@ -46,14 +49,26 @@ public class FormularioDPActivity extends Activity {
 		
 		crearNavegacion(this, _lvDrawer, _dlDrawerLayout);
 		
+		final TextView _tvNombre = (TextView)findViewById(R.id.textViewNombre);
+		_tvNombre.setText(_PERSONALES[1] + " " +_PERSONALES[2] + " " + _PERSONALES[3]);
+		final TextView _tvCarnet = (TextView)findViewById(R.id.textViewCarnet);
+		_tvCarnet.setText(_PERSONALES[0]);
+		
+		final EditText _edtTelefono = (EditText)findViewById(R.id.editTextTelefono);
+		final EditText _edtCelular = (EditText)findViewById(R.id.editTextCelular);
+		final EditText _edtEmail = (EditText)findViewById(R.id.editTextEmail);
+		_edtTelefono.setText(_PERSONALES[4]);
+		_edtCelular.setText(_PERSONALES[5]);
+		_edtEmail.setText(_PERSONALES[6]);
+		
+		final TextView _tvPlan = (TextView)findViewById(R.id.textViewPlan);
+		_tvPlan.setText(_PERSONALES[7]);
+		
 		final Button _btnIngresar = (Button)findViewById(R.id.buttonSend);
 		_btnIngresar.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
-				final EditText _edtTelefono = (EditText)findViewById(R.id.editTextTelefono);
-				final EditText _edtCelular = (EditText)findViewById(R.id.editTextCelular);
-				final EditText _edtEmail = (EditText)findViewById(R.id.editTextEmail);
  
 				String _sTel = _edtTelefono.getText().toString();
 				String _sCel = _edtCelular.getText().toString();
