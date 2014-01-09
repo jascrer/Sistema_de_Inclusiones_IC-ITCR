@@ -135,9 +135,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int password=0x7f060009;
         public static final int recordarme=0x7f06000a;
         public static final int title_activity_detalle=0x7f060013;
-        public static final int title_activity_detalle2=0x7f060014;
+        public static final int title_activity_detalle2=0x7f060015;
         public static final int title_activity_formulario=0x7f060011;
-        public static final int title_activity_formulario_cursos=0x7f060015;
+        public static final int title_activity_formulario_cursos=0x7f060014;
         public static final int title_activity_formulario_restricciones=0x7f060016;
         public static final int title_activity_inicio=0x7f06000e;
         public static final int title_activity_login=0x7f060001;
