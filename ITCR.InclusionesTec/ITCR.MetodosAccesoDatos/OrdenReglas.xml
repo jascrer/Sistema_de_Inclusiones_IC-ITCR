@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Reglas>
   <Regla posicion="1" nombre="Carnet de Oro" storedprocedure="" >
-    <param name="" />
+    <param name="" tipo=""/>
   </Regla>
   <Regla posicion="2" nombre="Próximo a graduación" storedprocedure="" />
   <Regla posicion="3" nombre="Cursos insuficientes" storedprocedure="" />
