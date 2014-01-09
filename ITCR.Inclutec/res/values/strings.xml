@@ -21,8 +21,8 @@
     <string name="title_activity_formulario">Inclutec - Formulario</string>
     <string name="leyenda">Doy fe...</string>
     <string name="title_activity_detalle">Inclutec - Detalle Inclusión</string>
-    <string name="title_activity_detalle2">Detalle2Activity</string>
-    <string name="title_activity_formulario_cursos">FormularioCursosActivity</string>
+    
+    <string name="title_activity_formulario_cursos">FormularioCursosActivity</string><string name="title_activity_detalle2">Inclutec - Detalle</string>
     <string name="title_activity_formulario_restricciones">FormularioRestriccionesActivity</string>
 
 </resources>

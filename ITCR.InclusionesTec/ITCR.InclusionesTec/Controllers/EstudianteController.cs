@@ -29,11 +29,11 @@ namespace ITCR.InclusionesTec.Controllers
         public ActionResult Formulario()
         {
             //Uso datos login
-            string Txt_CarnetEstudiante = "200966799";
+            //string Txt_CarnetEstudiante = "200966799";
             //Creo el viewmodel
-            var viewModel = new FormularioViewModel(Txt_CarnetEstudiante);
+            //var viewModel = new FormularioViewModel(Txt_CarnetEstudiante);
             
-            return View(viewModel);
+            return View();
         }
 
     }

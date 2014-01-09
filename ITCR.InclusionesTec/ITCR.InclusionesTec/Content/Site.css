@@ -19,23 +19,6 @@ body {
 	padding: 0;
 }
 
-a {
-	color: #333;
-	outline: none;
-	padding-left: 3px;
-	padding-right: 3px;
-	text-decoration: underline;
-}
-
-	a:link, a:visited,
-	a:active, a:hover {
-		color: #333;
-	}
-
-	a:hover {
-		background-color: #c7d1d6;
-	}
-
 header, footer, hgroup,
 nav, section {
 	display: block;
@@ -259,6 +242,12 @@ nav ul li a:hover {
 nav ul li a:active {
 	color: #172E55;
 }
+
+nav ul li:hover > ul {
+	display: block;
+	color: #ccc;
+}
+
 nav ul li ul {
 	font-weight: normal;
 	color: #ccc;
@@ -276,9 +265,7 @@ nav ul li ul {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-nav ul li:hover > ul {
-	display: block;
-}
+
 nav ul li ul li {
 	color: #ccc;
 	border-top: 1px solid #999;
@@ -287,12 +274,15 @@ nav ul li ul li {
 	float: none;
 	margin: 0 0 0 -40px;
 }
+
 nav ul li ul li:hover {
 	color: #172E55;
 }
+
 nav ul li ul li a {
 	color: #ccc;
 }
+
 nav ul li ul li a:hover {
 	border-left: 0px;
 	border-right: 0px;

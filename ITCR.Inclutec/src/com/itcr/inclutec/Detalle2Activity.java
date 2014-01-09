@@ -9,9 +9,12 @@ import com.example.itcr.inclutec.R.id;
 import com.example.itcr.inclutec.R.layout;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,6 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+@SuppressLint("NewApi")
 public class Detalle2Activity extends Activity {
 
 	private String _Solicitud;
@@ -30,6 +34,8 @@ public class Detalle2Activity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle2);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
 		
 		//Toma los datos que recibe la pantalla
 		Bundle _bunInformacion = this.getIntent().getExtras();
@@ -97,6 +103,18 @@ public class Detalle2Activity extends Activity {
 		
 	}
 
-	
+
+    @Override
+	public boolean onOptionsItemSelected(MenuItem pItem){
+		switch(pItem.getItemId()){
+			case android.R.id.home:
+				Intent _intIntent = new Intent(Detalle2Activity.this, InicioActivity.class);
+				startActivity(_intIntent);
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(pItem);
+		}
+	}
 	
 }
