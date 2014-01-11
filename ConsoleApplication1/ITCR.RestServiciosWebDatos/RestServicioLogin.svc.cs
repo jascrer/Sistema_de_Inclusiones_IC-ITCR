@@ -26,7 +26,6 @@ using ITCR.MetodosAccesoDatos.Clases;
 
 namespace ITCR.RestServiciosWebDatos
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RestServicioLogin" in code, svc and config file together.
     public class RestServicioLogin : IRestServicioLogin
     {
         #region Atributos

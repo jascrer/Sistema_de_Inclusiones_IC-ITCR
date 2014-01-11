@@ -126,7 +126,9 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -139,7 +141,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OrdenReglas.xml">
+    <Content Include="Clases\OrdenReglas.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
