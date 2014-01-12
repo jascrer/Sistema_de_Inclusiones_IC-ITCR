@@ -47,9 +47,10 @@ namespace ITCR.RestServiciosWebDatos
          * ya exitia en la base de datos: retorna verdadero.
          * Si no retorna falso.
          **/
-        public bool CrearEstudiante(Estudiante pEstudiante, PlanEstudios pPlanEstudios)
+        public bool CrearEstudiante(Estudiante pEstudiante, int pPlanEstudios)
         {
-            return true;
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.GuardarDatosEstudiantes(pEstudiante,pPlanEstudios);
         }
 
         /**

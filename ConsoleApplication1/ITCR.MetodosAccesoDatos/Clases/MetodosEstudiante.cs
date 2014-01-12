@@ -42,19 +42,26 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool EstudianteExiste(string pCarnet)
         {
-            _objConexionBase = new Inclutec_BDEntities();
-
-            int _iExiste = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
-                            where _sifEstudiantes.id_Carnet == pCarnet
-                            select _sifEstudiantes).Count();
-
-            _objConexionBase.Connection.Close();
-            switch (_iExiste)
+            try
             {
-                case 0:
-                    return false;
-                default:
-                    return true;
+                _objConexionBase = new Inclutec_BDEntities();
+
+                int _iExiste = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                where _sifEstudiantes.id_Carnet == pCarnet
+                                select _sifEstudiantes).Count();
+
+                _objConexionBase.Connection.Close();
+                switch (_iExiste)
+                {
+                    case 0:
+                        return false;
+                    default:
+                        return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -63,50 +70,57 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public Estudiante ObtenerDatosEstudiante(string pCarnet, bool pExisteBase) 
         {
-            Estudiante _estEstudiante = new Estudiante();
-
-            if (pExisteBase)
+            try
             {
-                _objConexionBase = new Inclutec_BDEntities();
+                Estudiante _estEstudiante = new Estudiante();
 
-                SIFEstudiante _sifEstudiante = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
-                                                where _sifEstudiantes.id_Carnet == pCarnet
-                                                select _sifEstudiantes).First();
-
-                _objConexionBase.Connection.Close();
-
-                _estEstudiante.Id_Carnet = _sifEstudiante.id_Carnet;
-                _estEstudiante.Nom_Nombre = _sifEstudiante.nom_nombre;
-                _estEstudiante.Num_Celular = _sifEstudiante.num_celular;
-                _estEstudiante.Num_Telefono = _sifEstudiante.num_telefono;
-                _estEstudiante.Txt_Apellido1 = _sifEstudiante.txt_apellido_1;
-                _estEstudiante.Txt_Apellido2 = _sifEstudiante.txt_apellido_2;
-                _estEstudiante.Dir_Email = _sifEstudiante.dir_email;
-
-            }
-            else
-            {
-                _objConexionWS = new wsDar.AdmisionyRegistro();
-
-                DataSet _dsDatosEstudiante = _objConexionWS.IESCDATOSESTUDIANTE_Buscar(pCarnet);
-                DataRow _drEstudiante = _dsDatosEstudiante.Tables[0].Rows[0];
-
-                String[] _strNombreEstudiante = _drEstudiante["NOM_ESTUDIANTE"].ToString().Split(' ');
-
-                _estEstudiante.Id_Carnet = _drEstudiante["IDE_ESTUDIANTE"].ToString();
-                _estEstudiante.Nom_Nombre = _strNombreEstudiante[2];
-                if (_strNombreEstudiante.Length == 4)
+                if (pExisteBase)
                 {
-                    _estEstudiante.Nom_Nombre += " " + _strNombreEstudiante[3];
-                }
-                _estEstudiante.Txt_Apellido1 = _strNombreEstudiante[0];
-                _estEstudiante.Txt_Apellido2 = _strNombreEstudiante[1];
-                _estEstudiante.Num_Telefono = _drEstudiante["NUM_TELEFONO"].ToString();
-                _estEstudiante.Num_Celular = _drEstudiante["NUM_CELULAR"].ToString();
-                _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
+                    _objConexionBase = new Inclutec_BDEntities();
 
+                    SIFEstudiante _sifEstudiante = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                                    where _sifEstudiantes.id_Carnet == pCarnet
+                                                    select _sifEstudiantes).First();
+
+                    _objConexionBase.Connection.Close();
+
+                    _estEstudiante.Id_Carnet = _sifEstudiante.id_Carnet;
+                    _estEstudiante.Nom_Nombre = _sifEstudiante.nom_nombre;
+                    _estEstudiante.Num_Celular = _sifEstudiante.num_celular;
+                    _estEstudiante.Num_Telefono = _sifEstudiante.num_telefono;
+                    _estEstudiante.Txt_Apellido1 = _sifEstudiante.txt_apellido_1;
+                    _estEstudiante.Txt_Apellido2 = _sifEstudiante.txt_apellido_2;
+                    _estEstudiante.Dir_Email = _sifEstudiante.dir_email;
+
+                }
+                else
+                {
+                    _objConexionWS = new wsDar.AdmisionyRegistro();
+
+                    DataSet _dsDatosEstudiante = _objConexionWS.IESCDATOSESTUDIANTE_Buscar(pCarnet);
+                    DataRow _drEstudiante = _dsDatosEstudiante.Tables[0].Rows[0];
+
+                    String[] _strNombreEstudiante = _drEstudiante["NOM_ESTUDIANTE"].ToString().Split(' ');
+
+                    _estEstudiante.Id_Carnet = _drEstudiante["IDE_ESTUDIANTE"].ToString();
+                    _estEstudiante.Nom_Nombre = _strNombreEstudiante[2];
+                    if (_strNombreEstudiante.Length == 4)
+                    {
+                        _estEstudiante.Nom_Nombre += " " + _strNombreEstudiante[3];
+                    }
+                    _estEstudiante.Txt_Apellido1 = _strNombreEstudiante[0];
+                    _estEstudiante.Txt_Apellido2 = _strNombreEstudiante[1];
+                    _estEstudiante.Num_Telefono = _drEstudiante["NUM_TELEFONO"].ToString();
+                    _estEstudiante.Num_Celular = _drEstudiante["NUM_CELULAR"].ToString();
+                    _estEstudiante.Dir_Email = _drEstudiante["DIR_CORREO"].ToString();
+
+                }
+                return _estEstudiante;
             }
-            return _estEstudiante;
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /**
@@ -114,51 +128,66 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public PlanEstudios ObtenerPlanEstudios(string pCarnet, bool pExisteBase)
         {
-            PlanEstudios _planEstudios = new PlanEstudios();
-
-            if (pExisteBase)
+            try
             {
-                _objConexionBase = new Inclutec_BDEntities();
+                PlanEstudios _planEstudios = new PlanEstudios();
 
-                SIFPlanEstudio _sifPlanEstudios = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
-                                                   where _sifEstudiantes.id_Carnet == pCarnet
-                                                   select _sifEstudiantes.SIFPlanEstudio).First();
+                if (pExisteBase)
+                {
+                    _objConexionBase = new Inclutec_BDEntities();
 
-                _objConexionBase.Connection.Close();
-                _planEstudios.Id_Plan_Estudios = _sifPlanEstudios.id_PlanEstudios;
-                _planEstudios.Nom_Carrera = _sifPlanEstudios.nom_carrera;
+                    SIFPlanEstudio _sifPlanEstudios = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                                       where _sifEstudiantes.id_Carnet == pCarnet
+                                                       select _sifEstudiantes.SIFPlanEstudio).First();
+
+                    _objConexionBase.Connection.Close();
+                    _planEstudios.Id_Plan_Estudios = _sifPlanEstudios.id_PlanEstudios;
+                    _planEstudios.Nom_Carrera = _sifPlanEstudios.nom_carrera;
+                }
+                else
+                {
+                    DataSet _dsDatosPlanEstudiante = _objConexionWS.DATOS_ESTUDIANTE(pCarnet);
+                    DataRow _drPlanEstudiante = _dsDatosPlanEstudiante.Tables[0].Rows[0];
+
+                    _planEstudios.Id_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
+                    _planEstudios.Nom_Carrera = _drPlanEstudiante["DSC_PLAN"].ToString();
+                }
+
+                return _planEstudios;
             }
-            else
+            catch (Exception)
             {
-                DataSet _dsDatosPlanEstudiante = _objConexionWS.DATOS_ESTUDIANTE(pCarnet);
-                DataRow _drPlanEstudiante = _dsDatosPlanEstudiante.Tables[0].Rows[0];
-
-                _planEstudios.Id_Plan_Estudios = Int32.Parse(_drPlanEstudiante["IDE_PLAN"].ToString());
-                _planEstudios.Nom_Carrera = _drPlanEstudiante["DSC_PLAN"].ToString();
+                return null;
             }
-
-            return _planEstudios;
         }
 
         /**
          * Retorna los cursos matriculados del _sifeEstudiante
+         * Temporalmente retorna todos los cursos de la carrera
          **/
         public LinkedList<Curso> ObtenerCursosEstudiante(string pCarnet, string pModalidad)
         {
-            _objConexionBase = new Inclutec_BDEntities();
-            var _objCursosInclusion = from _sifCursos in _objConexionBase.SIFCursoes
-                                      select _sifCursos;
-            LinkedList<Curso> _sifCursoLista = new LinkedList<Curso>();
-            foreach (SIFCurso _sifCurso in _objCursosInclusion)
+            try
             {
-                Curso _curso = new Curso();
-                _curso.Id_Curso = _sifCurso.id_Curso;
-                _curso.Cod_Curso = _sifCurso.cod_Curso;
-                _curso.Txt_Curso = _sifCurso.nom_Curso;
-                _sifCursoLista.AddLast(_curso);
+                _objConexionBase = new Inclutec_BDEntities();
+                var _objCursosInclusion = from _sifCursos in _objConexionBase.SIFCursoes
+                                          select _sifCursos;
+                LinkedList<Curso> _sifCursoLista = new LinkedList<Curso>();
+                foreach (SIFCurso _sifCurso in _objCursosInclusion)
+                {
+                    Curso _curso = new Curso();
+                    _curso.Id_Curso = _sifCurso.id_Curso;
+                    _curso.Cod_Curso = _sifCurso.cod_Curso;
+                    _curso.Txt_Curso = _sifCurso.nom_Curso;
+                    _sifCursoLista.AddLast(_curso);
+                }
+                _objConexionBase.Connection.Close();
+                return _sifCursoLista;
             }
-            _objConexionBase.Connection.Close();
-            return _sifCursoLista;
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
 
@@ -167,33 +196,69 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso)
         {
-            _objConexionBase = new Inclutec_BDEntities();
-            var _Grupos = from _sifGrupos in _objConexionBase.SIFGrupoes
-                          where _sifGrupos.FK_Curso_idCurso == pCurso
-                          select _sifGrupos;
-
-            LinkedList<Grupo> _sifGrupoLista = new LinkedList<Grupo>();
-            foreach (SIFGrupo _sifGrupo in _Grupos)
+            try
             {
-                Grupo _grupo = new Grupo();
-                _grupo.Id_Grupo = _sifGrupo.id_Grupo;
-                _grupo.Num_Cupos = _sifGrupo.num_cupos;
-                _grupo.Num_Cupos_Extra = _sifGrupo.num_cupos_extra;
-                _grupo.Num_Grupo = _sifGrupo.num_grupo;
+                _objConexionBase = new Inclutec_BDEntities();
+                var _Grupos = from _sifGrupos in _objConexionBase.SIFGrupoes
+                              where _sifGrupos.FK_Curso_idCurso == pCurso
+                              select _sifGrupos;
 
-                /*var _liHorario = from _sitHorarios in _objConexionBase.AddToSITHorarios
-                                 where _sitHorarios.*/
+                LinkedList<Grupo> _sifGrupoLista = new LinkedList<Grupo>();
+                foreach (SIFGrupo _sifGrupo in _Grupos)
+                {
+                    Grupo _grupo = new Grupo();
+                    _grupo.Id_Grupo = _sifGrupo.id_Grupo;
+                    _grupo.Num_Cupos = _sifGrupo.num_cupos;
+                    _grupo.Num_Cupos_Extra = _sifGrupo.num_cupos_extra;
+                    _grupo.Num_Grupo = _sifGrupo.num_grupo;
+
+                    /*var _liHorario = from _sitHorarios in _objConexionBase.AddToSITHorarios
+                                     where _sitHorarios.*/
+                }
+                _objConexionBase.Connection.Close();
+                return _sifGrupoLista;
             }
-            _objConexionBase.Connection.Close();
-            return _sifGrupoLista;
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /**
          * Retorna las solicitudes hechas por el _sifeEstudiante
+         * y que se encuentran pendientes.
          **/
-        public LinkedList<string> ObtenerSolicitudesEstudiante(string pCarnet)
+        public LinkedList<Solicitud> ObtenerSolicitudesEstudiante(string pCarnet)
         {
-            return null;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                var _dataSolicitudes = from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                       where _sifSolicitudes.FK_Estudiante_carnet == pCarnet
+                                       && _sifSolicitudes.txt_estado == "PENDIENTE"
+                                       select _sifSolicitudes;
+
+                LinkedList<Solicitud> _liSolicitudes = new LinkedList<Solicitud>();
+
+                foreach (SIFSolicitud _sifSolicitud in _dataSolicitudes)
+                {
+                    Solicitud _solicitud = new Solicitud();
+                    _solicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                    _solicitud.Fec_Creacion = _sifSolicitud.fec_creacion;
+                    _solicitud.Txt_Comentario = _sifSolicitud.txt_comentario;
+                    _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
+                    _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
+                    _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                }
+
+                _objConexionBase.Connection.Close();
+                return _liSolicitudes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /**
@@ -207,7 +272,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /**
          * Guarda los datos del Estudiante en la base de datos
          **/
-        public bool GuardarDatosEstudiantes(Estudiante pEstudiante, PlanEstudios pPlanEstudios)
+        public bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             if (_metEstudiante.EstudianteExiste(pEstudiante.Id_Carnet)) 
@@ -234,7 +299,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                         _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
                         _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
                         _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
-                        _sifeEstudiante.FK_PlanEstudios_idPlanEstudios = pPlanEstudios.Id_Plan_Estudios;
+                        _sifeEstudiante.FK_PlanEstudios_idPlanEstudios = pPlanEstudios;
 
                         _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
                         _objConexionBase.SaveChanges();
@@ -258,16 +323,16 @@ namespace ITCR.MetodosAccesoDatos.Clases
         public bool GuardarSolicitud(string pEstudiante, int pPeriodo, 
             Solicitud pSolicitud)
         {
-            /*try
+            try
             {
                 _objConexionBase = new Inclutec_BDEntities();
 
                 SIFSolicitud _sifSolicitud = new SIFSolicitud();
-                _sifSolicitud.id_Solicitud = _objConexionBase.SIFSolicituds.Count();
                 _sifSolicitud.txt_comentario = pSolicitud.Txt_Comentario;
-                _sifSolicitud.txt_curso = pSolicitud.Id_Curso;
+                _sifSolicitud.txt_curso = pSolicitud.txt_Curso;
                 _sifSolicitud.txt_estado = pSolicitud.Txt_Estado;
                 _sifSolicitud.txt_motivo = pSolicitud.Txt_Motivo;
+                _sifSolicitud.grupo_aceptado = 0;
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
                 _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
 
@@ -276,8 +341,19 @@ namespace ITCR.MetodosAccesoDatos.Clases
             }catch (Exception)
             {
                 return false;
-            }*/
-            return true;
+            }
+        }
+        public bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
+        {
+            try
+            {
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /**

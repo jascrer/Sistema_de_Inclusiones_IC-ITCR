@@ -13,8 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Runtime.Serialization;
+
 namespace ITCR.Ado.ClasesComunes
 {
+    [DataContract]
     public class PlanEstudios
     {
         #region Propiedades
@@ -22,11 +25,13 @@ namespace ITCR.Ado.ClasesComunes
         /// <summary>
         /// Corresponde al identificador de plan de estudios
         /// </summary>
+        [DataMember]
         public int Id_Plan_Estudios { get; set; }
 
         /// <summary>
         /// Corresponde al nombre de la carrera
         /// </summary>
+        [DataMember]
         public string Nom_Carrera { get; set; }
 
         #endregion

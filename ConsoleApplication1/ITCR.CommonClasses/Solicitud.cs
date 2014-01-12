@@ -31,9 +31,9 @@ namespace ITCR.Ado.ClasesComunes
         public string Txt_Comentario { get; set; }
 
         /// <summary>
-        /// Corresponde al identificador del curso de la solicitud
+        /// Corresponde al nombre del curso de la solicitud
         /// </summary>
-        public int Id_Curso { get; set; }
+        public string txt_Curso { get; set; }
 
         /// <summary>
         /// Corresponde al motivo de la solicitud

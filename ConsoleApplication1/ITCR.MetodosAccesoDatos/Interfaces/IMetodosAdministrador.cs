@@ -45,7 +45,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Modifica el estado del periodo.
          **/
-        bool ModificarEstadoPeriodo(string pEstado);
+        bool ModificarEstadoPeriodo(int pPeriodo, string pEstado);
         
         /**
          * Modifica el orden de las reglas establecido

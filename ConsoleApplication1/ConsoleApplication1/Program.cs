@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 #region Imported Libraries
 using System.Data;
@@ -82,10 +83,19 @@ namespace ConsoleApplication1
                     "\n" + dr["IDE_MODALIDAD"].ToString() + " - " + dr["IDE_PER_MOD"].ToString() +
                     "\n" + dr["FEC_GENERACION"].ToString() + " - " + dr["IDE_USUARIO"].ToString());
             }
-            */
+            
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             PlanEstudios plan = _metEstudiante.ObtenerPlanEstudios("201030612", true);
-            Console.WriteLine(plan.Id_Plan_Estudios);
+            Console.WriteLine(plan.Id_Plan_Estudios);*/
+
+            XmlDocument _xmlEditor = new XmlDocument();
+            _xmlEditor.Load("OrdenReglas.xml");
+
+            XmlNodeList nodeList = _xmlEditor.SelectNodes("//param");
+            foreach (XmlNode node in nodeList)
+            {
+                Console.WriteLine(node.Attributes["nombre"].Value);
+            }
 
             Console.ReadLine();
         }

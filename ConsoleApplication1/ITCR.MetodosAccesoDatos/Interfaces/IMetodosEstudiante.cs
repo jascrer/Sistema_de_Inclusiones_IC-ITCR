@@ -54,7 +54,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Retorna las solicitudes hechas por el _sifeEstudiante
          **/
-        LinkedList<string> ObtenerSolicitudesEstudiante(string pCarnet);
+        LinkedList<Solicitud> ObtenerSolicitudesEstudiante(string pCarnet);
 
         /**
          * Retorna los grupos especificados en una inclusion
@@ -64,7 +64,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Guarda los datos del Estudiante en la base de datos
          **/
-        bool GuardarDatosEstudiantes(Estudiante pEstudiante, PlanEstudios pPlanEstudios);
+        bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios);
 
         /**
          * Guarda la solicitud creada por el _sifeEstudiante
