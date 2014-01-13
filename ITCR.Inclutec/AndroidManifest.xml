@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -59,10 +60,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.itcr.inclutec.FormularioDPActivity" />
-        </activity>
-        <activity
-            android:name="com.itcr.inclutec.FormularioRestriccionesActivity"
-            android:label="@string/title_activity_formulario_restricciones" >
         </activity>
         <activity
             android:name="com.itcr.inclutec.FormularioRestriccionesActivity"

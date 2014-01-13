@@ -1,11 +1,29 @@
 package com.itcr.inclutec;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
 import com.example.itcr.inclutec.R;
 import com.itcr.inclutec.util.SystemUiHider;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -34,6 +52,9 @@ public class LoginActivity extends Activity {
 		//Boton de ingreso
 		final Button _btnIngresar = (Button)findViewById(R.id.button1);
 		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+		
 		_btnIngresar.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -42,17 +63,44 @@ public class LoginActivity extends Activity {
 				 * Aqui va la parte de la validacion del servicio web
 				 * por ahora solo habra el paso del carne del estudiante.
 				 */
-				//Intent para la creacion de la nueva activity
-				Intent _intInicio = new Intent(LoginActivity.this,InicioActivity.class);
+				String _sCarne = _txtCarne.getText().toString();
+				boolean _bExiste = callWebErvice(_sCarne);
 				
-				//Bundle para el paso de informacion entre activities
-				Bundle _bunInformacion = new Bundle();
-				_bunInformacion.putString("CARNE", _txtCarne.getText().toString());
-				_intInicio.putExtras(_bunInformacion);
+				if(_bExiste){
+					//Intent para la creacion de la nueva activity
+					Intent _intInicio = new Intent(LoginActivity.this,InicioActivity.class);
+					
+					//Bundle para el paso de informacion entre activities
+					Bundle _bunInformacion = new Bundle();
+					_bunInformacion.putString("CARNE", _txtCarne.getText().toString());
+					_intInicio.putExtras(_bunInformacion);
+					
+					startActivity(_intInicio);
+				}
+				else{
+					
+				}
 				
-				startActivity(_intInicio);
 			}
 			
 		});
+	}
+	boolean callWebErvice(String _sCarne){
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpGet del =
+		    new HttpGet("http://10.0.2.2:3740/RestServicioLogin.svc/login/?carne="+_sCarne+"&pin=0000");
+		
+		try
+		{
+		        HttpResponse resp = httpClient.execute(del);
+		        String respStr = EntityUtils.toString(resp.getEntity());
+		        Log.e("ServicioRest",respStr);
+		}
+		catch(Exception ex)
+		{
+		        Log.e("ServicioRest","Error!", ex);
+		}
+		
+		return true;
 	}
 }
