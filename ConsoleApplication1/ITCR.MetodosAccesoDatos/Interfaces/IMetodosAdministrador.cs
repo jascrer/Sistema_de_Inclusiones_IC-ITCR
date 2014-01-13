@@ -9,7 +9,6 @@
 ////////////////////////////////////////////////////////////////////////////
 #endregion
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +33,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Agrega una regla al negocio.
          **/
-        bool AgregarRegla(int pPosicion, string pNombreRegla, 
-            string pNombreProcedimiento, string pProcedimiento);
+        bool AgregarRegla(Regla pRegla);
 
         /**
          * Define un periodo para la aceptacion de solicitudes.
@@ -51,17 +49,17 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Modifica el orden de las reglas establecido
          * en el archivo OrdenReglas.xml.
          **/
-        bool ModificarOrdenReglas(LinkedList<string> pReglas);
+        bool ModificarOrdenReglas(LinkedList<Regla> pReglas);
 
         /**
          * Modifica el procedimiento de una regla del negocio.
          **/
-        bool ModificarProcedimientoRegla(string pNombreProcedimiento, string pProcedimiento);
+        bool ModificarProcedimientoRegla(Regla pNombreProcedimiento, string pProcedimiento);
 
         /**
          * Elimina una regla del negocio.
          **/
-        bool EliminarRegla(string pRegla);
+        bool EliminarRegla(Regla pRegla);
         
     }
 }

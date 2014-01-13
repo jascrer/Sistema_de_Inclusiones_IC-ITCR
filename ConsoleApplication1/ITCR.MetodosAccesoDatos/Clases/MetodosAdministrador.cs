@@ -104,7 +104,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
             XmlDocument _xmlEditor = new XmlDocument();
             _xmlEditor.Load("OrdenReglas.xml");
 
-            XmlElement _xmlElemento = _xmlEditor.CreateElement(_sNODOSXML[0]);
+            //XmlElement _xmlElemento = _xmlEditor.CreateElement(_sNODOSXML[0]);
 
             //XmlAttribute _xmlAtributo = _xmlEditor.CreateAttribute();
             return true;
@@ -121,6 +121,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
             XmlNode _xmlNodo = _xmlEditor.DocumentElement;
 
+            
             return true;
         }
 

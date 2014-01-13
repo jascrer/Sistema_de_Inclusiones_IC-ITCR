@@ -72,12 +72,11 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 {
                     if (_regla.Attributes[_sATRIBUTOSREGLA[1]].Equals(_rRegla.Nombre))
                     {
-                        _regla.Attributes[_sATRIBUTOSREGLA[0]] = _rRegla.Posicion;
+                        _regla.Attributes[_sATRIBUTOSREGLA[0]].Value = _rRegla.Posicion.ToString();
                         break;
                     }
                 }
-            }
-            this.GuardarCambios();
+            } this.GuardarCambios();
         }
 
         /// <summary>
@@ -87,6 +86,15 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /// <param name="pProcedimiento"></param>
         public void ModificarProcedureRegla(Regla pRegla, string pProcedimiento)
         {
+            XmlNodeList _liReglas = _xmlEditor.SelectNodes(_sNODOSXML[0]);
+            foreach (XmlNode _regla in _liReglas)
+            {
+                if (_regla.Attributes[_sATRIBUTOSREGLA[1]].Equals(pRegla.Nombre))
+                {
+                    _regla.Attributes[_sATRIBUTOSREGLA[2]].Value = pRegla.StoredProcedure;
+                    break;
+                }
+            } this.GuardarCambios();
         }
 
         /// <summary>
@@ -98,12 +106,13 @@ namespace ITCR.MetodosAccesoDatos.Clases
             XmlNodeList _liReglas = _xmlEditor.SelectNodes(_sNODOSXML[0]);
             foreach (XmlNode _regla in _liReglas)
             {
-                if (_regla.Nombre.Equals(pRegla.Nombre))
+                if (_regla.Attributes[_sATRIBUTOSREGLA[1]].Equals(pRegla.Nombre))
                 {
-                    _regla.Re
+                    _regla.RemoveAll();
+                    _xmlEditor.RemoveChild(_regla);
                     break;
                 }
-            }
+            } this.GuardarCambios();
         }
         #endregion
 

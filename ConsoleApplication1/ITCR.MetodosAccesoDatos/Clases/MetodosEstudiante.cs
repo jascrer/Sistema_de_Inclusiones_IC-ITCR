@@ -211,9 +211,22 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _grupo.Num_Cupos = _sifGrupo.num_cupos;
                     _grupo.Num_Cupos_Extra = _sifGrupo.num_cupos_extra;
                     _grupo.Num_Grupo = _sifGrupo.num_grupo;
+                    _grupo.Li_Horarios = new LinkedList<Horario>();
 
-                    /*var _liHorario = from _sitHorarios in _objConexionBase.AddToSITHorarios
-                                     where _sitHorarios.*/
+                    //Agrega todos los horarios de ese grupo
+                    var _liHorario = from _sitHorarios in _objConexionBase.SITHorarios
+                                     where _sitHorarios.FK_Grupo_idGrupo == _grupo.Id_Grupo
+                                     select _sitHorarios;
+
+                    foreach (SITHorario _sitHorario in _liHorario)
+                    {
+                        Horario _objHorario = new Horario();
+                        _objHorario.Id_Horario = _sitHorario.id_Horario;
+                        _objHorario.Txt_Dia = _sitHorario.txt_dia;
+                        _objHorario.Txt_Hora_Final = _sitHorario.tim_hora_fin.ToString();
+                        _objHorario.Txt_Hora_Inicio = _sitHorario.tim_hora_inicio.ToString();
+                        _grupo.Li_Horarios.AddLast(_objHorario);
+                    }
                 }
                 _objConexionBase.Connection.Close();
                 return _sifGrupoLista;
@@ -262,11 +275,70 @@ namespace ITCR.MetodosAccesoDatos.Clases
         }
 
         /**
-         * Retorna los grupos especificados en una inclusion
+         * Retorna los grupos especificados en una solicitud de inclusion
          **/
-        public LinkedList<string> ObtenerGruposInclusion(Solicitud pSolicitud)
+        public LinkedList<Grupo_Por_Solicitud> ObtenerGruposInclusion(Solicitud pSolicitud)
         {
-            return null;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                var _liGruposSolicitud = from _sifGruposSolicitud in _objConexionBase.SIFGrupo_Por_Solicitud
+                                         where _sifGruposSolicitud.FK_Solicitud_idSolicitud == pSolicitud.Id_Solicitud
+                                         select _sifGruposSolicitud;
+
+                LinkedList<Grupo_Por_Solicitud> _liGrupos = new LinkedList<Grupo_Por_Solicitud>();
+
+                foreach(SIFGrupo_Por_Solicitud _sifGrupoSolicitud in _liGruposSolicitud){
+
+                    //Obtiene el grupo por solicitud
+                    Grupo_Por_Solicitud _gpsGrupo = new Grupo_Por_Solicitud();
+                    _gpsGrupo.Id_Grupo_Por_Solicitud = _sifGrupoSolicitud.id_Grupo_Por_Solicitud;
+                    _gpsGrupo.Num_Prioridad = _sifGrupoSolicitud.num_prioridad;
+
+                    //Obtiene el grupo
+                    SIFGrupo _sifGrupo = (from _sifGrupos in _objConexionBase.SIFGrupoes
+                                        where _sifGrupos.id_Grupo == _sifGrupoSolicitud.FK_Grupo_idGrupo
+                                        select _sifGrupos).First();
+
+                    Grupo _gGrupo = new Grupo();
+                    _gGrupo.Id_Curso = _sifGrupo.FK_Curso_idCurso;
+                    _gGrupo.Id_Grupo = _sifGrupo.id_Grupo;
+                    _gGrupo.Num_Cupos = _sifGrupo.num_cupos;
+                    _gGrupo.Num_Cupos_Extra = _sifGrupo.num_cupos_extra;
+                    _gGrupo.Num_Grupo = _sifGrupo.num_grupo;
+
+                    //Define los horarios para los grupos
+                    var _liHorarios = from _sitHorarios in _objConexionBase.SITHorarios
+                                      where _sitHorarios.FK_Grupo_idGrupo == _gGrupo.Id_Grupo
+                                      select _sitHorarios;
+
+                    _gGrupo.Li_Horarios = new LinkedList<Horario>();
+
+                    foreach (SITHorario _sitHorario in _liHorarios)
+                    {
+                        Horario _hHorario = new Horario();
+                        _hHorario.Id_Horario = _sitHorario.id_Horario;
+                        _hHorario.Txt_Dia = _sitHorario.txt_dia;
+                        _hHorario.Txt_Hora_Final = _sitHorario.tim_hora_fin.ToString();
+                        _hHorario.Txt_Hora_Inicio = _sitHorario.tim_hora_inicio.ToString();
+                        _gGrupo.Li_Horarios.AddLast(_hHorario);
+                    }
+
+                    //Define el grupo de grupo por solicitud
+                    _gpsGrupo.Id_Grupo = _gGrupo;
+
+                    //Agrega grupo por solicitud a la lista
+                    _liGrupos.AddLast(_gpsGrupo);
+                }
+
+                _objConexionBase.Connection.Close();
+                return _liGrupos;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /**
@@ -325,8 +397,6 @@ namespace ITCR.MetodosAccesoDatos.Clases
         {
             try
             {
-                _objConexionBase = new Inclutec_BDEntities();
-
                 SIFSolicitud _sifSolicitud = new SIFSolicitud();
                 _sifSolicitud.txt_comentario = pSolicitud.Txt_Comentario;
                 _sifSolicitud.txt_curso = pSolicitud.txt_Curso;
@@ -336,6 +406,9 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
                 _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
 
+                _objConexionBase = new Inclutec_BDEntities();
+                _objConexionBase.AddToSIFSolicituds(_sifSolicitud);
+                _objConexionBase.SaveChanges();
                 _objConexionBase.Connection.Close();
                 return true;
             }catch (Exception)
@@ -343,11 +416,32 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 return false;
             }
         }
+
+        /// <summary>
+        /// Guarda los grupos de una solicitud
+        /// </summary>
+        /// <param name="pSolicitud"></param>
+        /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
+        /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
+        /// <returns></returns>
         public bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
         {
             try
             {
+                int _iPrioridad = 1;
+                _objConexionBase = new Inclutec_BDEntities();
+                foreach(Grupo _gGrupo in pGrupos)
+                {
+                    SIFGrupo_Por_Solicitud _sifGrupo = new SIFGrupo_Por_Solicitud();
+                    _sifGrupo.num_prioridad = _iPrioridad;
+                    _sifGrupo.FK_Grupo_idGrupo = _gGrupo.Id_Grupo;
+                    _sifGrupo.FK_Solicitud_idSolicitud = pSolicitud.Id_Solicitud;
+                    _objConexionBase.AddToSIFGrupo_Por_Solicitud(_sifGrupo);
+                    _iPrioridad++;
+                }
 
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
                 return true;
             }
             catch (Exception)
@@ -356,15 +450,43 @@ namespace ITCR.MetodosAccesoDatos.Clases
             }
         }
 
-        /**
-         * Modifica los grupos especificados en una solicitud
-         **/
-        public bool ModificiarSolicitud(Solicitud pSolicitud)
+        /// <summary>
+        /// Modifica los grupos especificados en una solicitud
+        /// </summary>
+        /// <param name="pSolicitud"></param>
+        /// <param name="pEliminados">Contiene los ids de los grupos por solicitud eliminados</param>
+        /// <returns></returns>
+        public bool ModificiarSolicitud(Solicitud pSolicitud, LinkedList<int> pEliminados)
         {
             _objConexionBase = new Inclutec_BDEntities();
-            
 
+            //Obtiene los grupos por solicitud de la solicitud
+            var _sifGrupos = from _sifGPS in _objConexionBase.SIFGrupo_Por_Solicitud
+                             where _sifGPS.FK_Solicitud_idSolicitud == pSolicitud.Id_Solicitud
+                             select _sifGPS;
 
+            //Asigna las nuevas prioridades y elimina los grupos marcados a eliminar
+            foreach (SIFGrupo_Por_Solicitud _sifGPS in _sifGrupos)
+            {
+                if (pEliminados.Contains(_sifGPS.id_Grupo_Por_Solicitud))
+                {
+                    _objConexionBase.DeleteObject(_sifGPS);
+                }
+                else
+                {
+                    foreach (Grupo_Por_Solicitud _gpsGrupo in pSolicitud.Li_Grupos)
+                    {
+                        if (_sifGPS.id_Grupo_Por_Solicitud == _gpsGrupo.Id_Grupo_Por_Solicitud)
+                        {
+                            _sifGPS.num_prioridad = _gpsGrupo.Num_Prioridad;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            _objConexionBase.SaveChanges();
+            _objConexionBase.Connection.Close();
             return true;
         }
 

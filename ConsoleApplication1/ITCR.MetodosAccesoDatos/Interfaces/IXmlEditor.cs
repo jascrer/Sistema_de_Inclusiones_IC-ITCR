@@ -13,7 +13,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// <summary>
         /// Guarda los cambios hechos al documento.
         /// </summary>
-        private void GuardarCambios();
+        //void GuardarCambios();
 
         /// <summary>
         /// Agrega una regla al archivo xml.

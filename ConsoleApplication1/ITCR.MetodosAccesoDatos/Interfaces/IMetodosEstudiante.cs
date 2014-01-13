@@ -59,7 +59,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Retorna los grupos especificados en una inclusion
          **/
-        LinkedList<string> ObtenerGruposInclusion(Solicitud pSolicitud);
+        LinkedList<Grupo_Por_Solicitud> ObtenerGruposInclusion(Solicitud pSolicitud);
 
         /**
          * Guarda los datos del Estudiante en la base de datos
@@ -74,7 +74,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Modifica los grupos especificados en una solicitud
          **/
-        bool ModificiarSolicitud(Solicitud pSolicitud);
+        bool ModificiarSolicitud(Solicitud pSolicitud, LinkedList<int> pEliminados);
 
         /**
          * Anula la solicitud especificada
