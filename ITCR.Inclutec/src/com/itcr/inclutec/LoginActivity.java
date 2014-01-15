@@ -89,18 +89,25 @@ public class LoginActivity extends Activity {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet del =
 		    new HttpGet("http://10.0.2.2:3740/RestServicioLogin.svc/login/?carne="+_sCarne+"&pin=0000");
+		del.setHeader("content-type", "application/json");
+		
+		boolean resultCli = false;
 		
 		try
 		{
 		        HttpResponse resp = httpClient.execute(del);
 		        String respStr = EntityUtils.toString(resp.getEntity());
 		        Log.e("ServicioRest",respStr);
+		        
+		        JSONObject respJSON = new JSONObject(respStr);
+		        
+		        resultCli = respJSON.getBoolean("VerificarEstudianteResult");
 		}
 		catch(Exception ex)
 		{
 		        Log.e("ServicioRest","Error!", ex);
 		}
 		
-		return true;
+		return resultCli;
 	}
 }

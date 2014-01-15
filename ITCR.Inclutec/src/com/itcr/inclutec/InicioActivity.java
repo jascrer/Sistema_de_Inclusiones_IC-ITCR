@@ -32,11 +32,15 @@ public class InicioActivity extends ExpandableListActivity {
 	private final String _sNAVEGACION[]=
 			new String[]{"INICIO", "FORMULARIO", "SALIR"};
 	private ActionBarDrawerToggle _Toggle;
+	String _sCarnet;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inicio);
+		
+		Intent _intentAnterior = getIntent();
+        _sCarnet = _intentAnterior.getStringExtra("CARNE");
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
@@ -119,6 +123,11 @@ public class InicioActivity extends ExpandableListActivity {
 				switch(arg2){
 					case 1:
 						_iIntent = new Intent(InicioActivity.this, FormularioDPActivity.class);
+						
+						Bundle _bunCarne = new Bundle();
+						_bunCarne.putString("CARNE", _sCarnet);
+						_iIntent.putExtras(_bunCarne);
+						
 						startActivity(_iIntent);
 						finish();
 						break;

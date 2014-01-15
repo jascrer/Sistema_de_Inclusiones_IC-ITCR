@@ -34,13 +34,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int drawer_shadow=0x7f020000;
-        public static final int ic_drawer=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int ic_logo_blanco=0x7f020003;
-        public static final int icmpmove=0x7f020004;
-        public static final int tecid=0x7f020005;
+        public static final int ic_anular=0x7f020001;
+        public static final int ic_drawer=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int ic_logo_blanco=0x7f020004;
+        public static final int icmpmove=0x7f020005;
+        public static final int tecid=0x7f020006;
     }
     public static final class id {
+        public static final int action_anular=0x7f09002e;
         public static final int action_settings=0x7f09002d;
         public static final int autoCompleteTextView1=0x7f090009;
         public static final int button1=0x7f09000e;
@@ -111,12 +113,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class menu {
         public static final int detalle=0x7f080000;
         public static final int detalle2=0x7f080001;
-        public static final int formulario=0x7f080002;
-        public static final int formulario_cursos=0x7f080003;
-        public static final int formulario_restricciones=0x7f080004;
-        public static final int inicio=0x7f080005;
-        public static final int login=0x7f080006;
-        public static final int modify=0x7f080007;
+        public static final int detallemenu=0x7f080002;
+        public static final int formulario=0x7f080003;
+        public static final int formulario_cursos=0x7f080004;
+        public static final int formulario_restricciones=0x7f080005;
+        public static final int inicio=0x7f080006;
+        public static final int login=0x7f080007;
+        public static final int modify=0x7f080008;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;

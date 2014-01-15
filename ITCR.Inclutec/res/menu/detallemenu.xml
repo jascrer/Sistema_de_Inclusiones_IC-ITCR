@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_anular"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_anular"
+        android:title="Anular"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:showAsAction="never"
+        >
+    </item>
+
+</menu>

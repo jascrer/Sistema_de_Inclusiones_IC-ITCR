@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Detalle2Activity extends Activity {
@@ -102,6 +104,13 @@ public class Detalle2Activity extends Activity {
 		
 		
 	}
+	
+	@Override
+	  public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.detallemenu, menu);
+	    return true;
+	  }
 
 
     @Override
@@ -112,6 +121,14 @@ public class Detalle2Activity extends Activity {
 				startActivity(_intIntent);
 				finish();
 				return true;
+			case R.id.action_anular:
+			      Toast.makeText(this, "Action anular selected", Toast.LENGTH_SHORT)
+			          .show();
+			      return true;
+			    case R.id.action_settings:
+			      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+			          .show();
+			      return true;
 			default:
 				return super.onOptionsItemSelected(pItem);
 		}
