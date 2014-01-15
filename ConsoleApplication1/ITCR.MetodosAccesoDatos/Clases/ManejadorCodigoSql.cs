@@ -37,7 +37,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /// <summary>
         /// Crea un procedimiento almacenado en la base de datos
         /// </summary>
-        /// <param name="pProcedimiento"></param>
+        /// <param name="pParametros"></param>
         /// <param name="pConnectionString"></param>
         public void CrearProcedimiento(string pProcedimiento, string pConnectionString)
         {
@@ -46,7 +46,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /// <summary>
         /// Recibe codigo sql y modifica el procedimiento en la base de datos
         /// </summary>
-        /// <param name="pProcedimiento">Debe iniciar con Alter Procedure</param>
+        /// <param name="pParametros">Debe iniciar con Alter Procedure</param>
         /// <param name="pConnectionString"></param>
         public void ModificarProcedimiento(string pProcedimiento, string pConnectionString)
         {

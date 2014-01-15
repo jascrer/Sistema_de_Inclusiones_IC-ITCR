@@ -35,6 +35,11 @@ namespace ITCR.Ado.ClasesComunes
         string _sStoredProcedure;
 
         /// <summary>
+        /// Representa el estado de la regla.
+        /// </summary>
+        string _sEstado;
+
+        /// <summary>
         /// Lista de parametros del procedure.
         /// </summary>
         LinkedList<Parametro> _liParametros;
@@ -127,13 +132,28 @@ namespace ITCR.Ado.ClasesComunes
         }
 
         /// <summary>
+        /// Retorna y modifica el estado de la regla.
+        /// </summary>
+        public string Estado
+        {
+            get
+            {
+                return _sEstado;
+            }
+            set
+            {
+                _sEstado = value;
+            }
+        }
+
+        /// <summary>
         /// Retorna la lista de parametros del procedure
         /// </summary>
         public LinkedList<Parametro> Parametros
         {
             get
             {
-                return Parametros;
+                return _liParametros;
             }
         }
         #endregion
