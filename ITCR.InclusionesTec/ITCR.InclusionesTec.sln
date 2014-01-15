@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCR.AdoModeloAcDatos", "IT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCR.RestServiciosWebDatos", "ITCR.RestServiciosWebDatos\ITCR.RestServiciosWebDatos.csproj", "{6605BBA9-79B4-4F5B-91EA-26CCC6B372DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCR.InclusionesWeb", "..\..\..\Visual Studio 2010\Projects\WebApplication1\WebApplication1\ITCR.InclusionesWeb.csproj", "{4F238E1B-63F1-4325-B7BC-369C61432E87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{6605BBA9-79B4-4F5B-91EA-26CCC6B372DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6605BBA9-79B4-4F5B-91EA-26CCC6B372DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6605BBA9-79B4-4F5B-91EA-26CCC6B372DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F238E1B-63F1-4325-B7BC-369C61432E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F238E1B-63F1-4325-B7BC-369C61432E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F238E1B-63F1-4325-B7BC-369C61432E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F238E1B-63F1-4325-B7BC-369C61432E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
