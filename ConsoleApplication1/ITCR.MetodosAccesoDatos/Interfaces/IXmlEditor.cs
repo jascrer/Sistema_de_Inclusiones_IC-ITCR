@@ -19,7 +19,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// Agrega una regla al archivo xml.
         /// </summary>
         /// <param name="pRegla"></param>
-        void AgregarRegla(Regla pRegla, string pProcedimiento);
+        void AgregarRegla(Regla pRegla);
 
         /// <summary>
         /// Modifica el orden de las reglas establecido
@@ -32,14 +32,21 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// Modifica el procedimiento de una regla del negocio.
         /// </summary>
         /// <param name="pRegla"></param>
-        /// <param name="pProcedimiento"></param>
-        void ModificarProcedureRegla(Regla pRegla, string pProcedimiento);
+        /// <param name="pParametros"></param>
+        void ModificarProcedureRegla(Regla pRegla);
 
         /// <summary>
-        /// Elimina una regla del negocio.
+        /// Habilita una regla del negocio
+        /// </summary>
+        /// <param name="regla"></param>
+        /// <returns></returns>
+        bool HabilitarRegla(Regla pRegla);
+
+        /// <summary>
+        /// Deshabilita una regla del negocio.
         /// </summary>
         /// <param name="pRegla"></param>
-        void EliminarRegla(Regla pRegla);
+        bool DeshabilitarRegla(Regla pRegla);
         #endregion
     }
 }
