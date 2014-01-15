@@ -157,6 +157,33 @@ namespace ITCR.InclusionesWeb.Estudiante {
         protected global::System.Web.UI.WebControls.Table tblGrupos;
         
         /// <summary>
+        /// Control chkHabilitado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkHabilitado;
+        
+        /// <summary>
+        /// Control butDown.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butDown;
+        
+        /// <summary>
+        /// Control butUp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butUp;
+        
+        /// <summary>
         /// Control tblCursosMatriculados.
         /// </summary>
         /// <remarks>

@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="Formulario de inclusión" Language="C#" MasterPageFile="~/Student.master" AutoEventWireup="true" CodeBehind="Formulario.aspx.cs" Inherits="ITCR.InclusionesWeb.Estudiante.Formulario" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -57,19 +59,23 @@
             <asp:Label ID="lblCodicoCursoSeleccionado" runat="server">IC-6200</asp:Label>
         </div>
         <p>
-            <h4>Grupos disponibles:</h4>
-            <asp:Table ID="tblGrupos" runat="server" >
+            <h4>Grupos Disponibles:</h4>
+            <asp:Table ID="tblGrupos" runat="server" Width="100%">
                 <asp:TableHeaderRow>
-                    <asp:TableHeaderCell Text="Grupo" />
-                    <asp:TableHeaderCell Text="Profesor" />
-                    <asp:TableHeaderCell Text="Horario" />
-                    <asp:TableHeaderCell Text="Sede" />
+                    <asp:TableHeaderCell Text="Grupo" Width="10%"/>
+                    <asp:TableHeaderCell Text="Profesor" Width="10%"/>
+                    <asp:TableHeaderCell Text="Horario" Width="10%"/>
+                    <asp:TableHeaderCell Text="Sede" Width="10%"/>
+                    <asp:TableHeaderCell Text="Habilitar Grupo" Width="10%"/>
+                    <asp:TableHeaderCell Text="Cambiar Orden" Width="10%"/>
                 </asp:TableHeaderRow>
                 <asp:TableRow>
                     <asp:TableCell Text="01" />
                     <asp:TableCell Text="Jorge Vargas" />
                     <asp:TableCell Text="M V 7:30 - 9:20" />
                     <asp:TableCell Text="Cartago" />
+                    <asp:TableCell> <asp:CheckBox ID="chkHabilitado" runat="server" Checked="True"/> </asp:TableCell>
+                    <asp:TableCell> <asp:Button runat="server" ID="butDown" Text="Bajar" /> <asp:Button runat="server" ID="butUp" Text="Subir" /> </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell Text="02" />
@@ -78,6 +84,7 @@
                     <asp:TableCell Text="Cartago" />
                 </asp:TableRow>
             </asp:Table>
+            
 
         </p>
     </fieldset>
