@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Student.master.cs" Inherits="ITCR.InclusionesWeb.Student" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="NavContent" runat="server">
+    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+        <Items>
+            <asp:MenuItem NavigateUrl="~/Estudiante/Default.aspx" Text="Inicio"/>
+            <asp:MenuItem NavigateUrl="~/Estudiante/Formulario.aspx" Text="Formulario"/>
+        </Items>
+    </asp:Menu>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

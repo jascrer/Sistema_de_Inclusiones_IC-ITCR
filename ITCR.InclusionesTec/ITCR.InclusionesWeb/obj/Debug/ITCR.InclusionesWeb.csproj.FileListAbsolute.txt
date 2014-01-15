@@ -1,0 +1,8 @@
+C:\Users\Irina\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\ITCR.InclusionesWeb.dll
+C:\Users\Irina\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\ITCR.InclusionesWeb.pdb
+C:\Users\Irina\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\ITCR.InclusionesWeb.dll
+C:\Users\Irina\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\ITCR.InclusionesWeb.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\ITCR.InclusionesWeb.dll
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\ITCR.InclusionesWeb.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\obj\Debug\ITCR.InclusionesWeb.dll
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\obj\Debug\ITCR.InclusionesWeb.pdb
