@@ -5,8 +5,10 @@ using System.Text;
 
 using System.Xml;
 
+#region Librerias Inclutec
 using ITCR.Ado.ClasesComunes;
 using ITCR.MetodosAccesoDatos.Interfaces;
+#endregion
 
 namespace ITCR.MetodosAccesoDatos.Clases
 {

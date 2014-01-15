@@ -24,20 +24,14 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// </summary>
         /// <param name="pParametros"></param>
         /// <param name="pConnectionString"></param>
-        void CrearProcedimiento(string pProcedimiento, string pConnectionString);
+        void CrearProcedimiento(string pProcedimiento);
 
         /// <summary>
         /// Recibe codigo sql y modifica el procedimiento en la base de datos
         /// </summary>
         /// <param name="pParametros">Debe iniciar con Alter Procedure</param>
         /// <param name="pConnectionString"></param>
-        void ModificarProcedimiento(string pProcedimiento, string pConnectionString);
+        void ModificarProcedimiento(string pProcedimiento);
 
-        /// <summary>
-        /// Elimina un procedimiento almacenado.
-        /// </summary>
-        /// <param name="pNombreProcedimiento"></param>
-        /// <param name="pConnectionString"></param>
-        void EliminarProcedimiento(string pNombreProcedimiento, string pConnectionString);
     }
 }

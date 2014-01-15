@@ -30,9 +30,21 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Regla pRegla = new Regla(8, "nuevos", "nuevo()");
-            XmlEditor _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            _xmlEditor.AgregarRegla(pRegla);
+            try
+            {
+                string pProcedure = "USE INCLUTEC" +
+                                    "CREATE PROCEDURE SP_ObtenerDatosEstudiante AS" +
+                                    "BEGIN" +
+                                    "SELECT * FROM Datos_Estudiante" +
+                                    "END";
+                IManejadorCodigoSql _Codigo = new ManejadorCodigoSql("Initial Catalog=Inclutec_BD;User Id=InclutecAdmin;Password=inclutec_proyecto");
+                _Codigo.CrearProcedimiento(pProcedure);
+                Console.WriteLine("Terminado");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "\n" + ex.Source + "\n" + ex.StackTrace + "\n" + ex.InnerException);
+            }
             Console.ReadLine();
         }
     }
