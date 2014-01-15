@@ -19,8 +19,8 @@
             <p>
                 <asp:Label ID="lblTipoUsuario" runat="server" AssociatedControlID="ddlTipoUsuario">Tipo de usuario:</asp:Label>
                 <asp:DropDownList ID="ddlTipoUsuario" runat="server">
-                    <asp:ListItem Selected="True">Funcionario</asp:ListItem>
-                    <asp:ListItem>Estudiante</asp:ListItem>
+                    <asp:ListItem Selected="True" Value="0" >Estudiante</asp:ListItem>
+                    <asp:ListItem Value="1">Funcionario</asp:ListItem>
                 </asp:DropDownList>
             </p>
             <p>
@@ -43,7 +43,7 @@
             </p>
         </fieldset>
         <p class="submitButton">
-            <asp:Button ID="btnInicioSesion" runat="server" CssClass="center" CommandName="Login" Text="Iniciar sesión" ValidationGroup="valInicioSesion"/>
+            <asp:Button ID="btnInicioSesion" runat="server" CssClass="submitInput" CommandName="Login" Text="Iniciar sesión" ValidationGroup="valInicioSesion"/>
         </p>
     </div>
 </asp:Content>
