@@ -130,22 +130,22 @@ namespace ITCR.InclusionesWeb.Estudiante {
         protected global::System.Web.UI.WebControls.Label lblCursos;
         
         /// <summary>
-        /// Control txtCursos.
+        /// Control ddlCursos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCursos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCursos;
         
         /// <summary>
-        /// Control lblCodicoCursoSeleccionado.
+        /// Control lblCodigoCursoSeleccionado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodicoCursoSeleccionado;
+        protected global::System.Web.UI.WebControls.Label lblCodigoCursoSeleccionado;
         
         /// <summary>
         /// Control tblGrupos.

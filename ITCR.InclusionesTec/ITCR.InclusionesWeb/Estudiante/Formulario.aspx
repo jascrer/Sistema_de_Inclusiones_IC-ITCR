@@ -52,12 +52,12 @@
     <fieldset>
         <legend>Curso</legend>
         <!-- Crear lista de cursos y crear variable que la contenga-->
-        <div class="ui-widget">
-            <asp:Label ID="lblCursos" runat="server" AssociatedControlID="txtCursos" >Curso por solicitar: </asp:Label>
-            <asp:TextBox ID="txtCursos" runat="server" CssClass="autocomplete" ></asp:TextBox>
-            
-            <asp:Label ID="lblCodicoCursoSeleccionado" runat="server">IC-6200</asp:Label>
-        </div>
+        <p>
+            <asp:Label ID="lblCursos" runat="server" AssociatedControlID="ddlCursos" >Curso por solicitar: </asp:Label>
+            <asp:DropDownList ID="ddlCursos" runat="server" 
+                onselectedindexchanged="ddlCursos_SelectedIndexChanged" ></asp:DropDownList>
+            <asp:Label ID="lblCodigoCursoSeleccionado" runat="server"></asp:Label>
+        </p>
         <p>
             <h4>Grupos Disponibles:</h4>
             <asp:Table ID="tblGrupos" runat="server" Width="100%">

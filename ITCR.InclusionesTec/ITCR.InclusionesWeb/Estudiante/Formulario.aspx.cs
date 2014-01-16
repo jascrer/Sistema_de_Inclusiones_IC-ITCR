@@ -35,14 +35,8 @@ namespace ITCR.InclusionesWeb.Estudiante
             }
 
             //Datos de backup
-            string Txt_Nombre = "ROJAS VALVERDE JUAN JOSE";
-            string Txt_Carrera = "INGENIERIA EN COMPUTACION";
             string Txt_Sede = "CARTAGO";
-            int Num_Plan = 409;
             string Txt_CitaMatricula = "08:00:00";
-            string Txt_Telefono = "22924768";
-            string Txt_Celular = "85032291";
-            string Txt_CorreoElectronico = "acalvo@gmail.com";
 
             //Asigna datos estudiante a controles
             lblNombreCompleto.Text = _estudianteNuevo.Txt_Apellido1 + " " + _estudianteNuevo.Txt_Apellido2 + " " + _estudianteNuevo.Nom_Nombre;
@@ -56,7 +50,32 @@ namespace ITCR.InclusionesWeb.Estudiante
             txtCorreo.Text = _estudianteNuevo.Dir_Email;
 
             //Encuentra cursos y llena el autocomplete
-            
+            LinkedList<Curso> _cursos = new LinkedList<Curso>();
+            _cursos = _metEstudiante.ObtenerCursosEstudiante(Txt_Carnet, null);
+
+            foreach (var _cursoActual in _cursos)
+            {
+                ListItem _item = new ListItem();
+                _item.Value = _cursoActual.Cod_Curso;
+                _item.Text = _cursoActual.Txt_Curso;
+                ddlCursos.Items.Add(_item);
+            }
+            ddlCursos.Items.FindByText("INTRODUCCION A LA PROGRAMACION").Selected = true;
+            //lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
         }
+
+        protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*if (!Page.IsPostBack)
+            {
+                lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
+            }*/
+            lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
+
+            //Mostrar codigo del curso
+
+            //Mostrar tabla de grupos del curso
+        }   
+            
     }
 }
