@@ -172,7 +172,7 @@
     <Key>
       <PropertyRef Name="id_Datos_Estudiante" />
     </Key>
-    <Property Name="id_Datos_Estudiante" Type="Int32" Nullable="false" />
+    <Property Name="id_Datos_Estudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="num_cursosfaltantes" Type="Int32" Nullable="false" />
     <Property Name="num_creditosactuales" Type="Int32" Nullable="false" />
     <Property Name="tim_horamatricula" Type="Time" Nullable="false" />
@@ -301,13 +301,13 @@
   </Association>
   <Association Name="FK_Grupo_Por_Solicitud_Grupo">
     <End Role="SIFGrupo" Type="Inclutec_BDModel.SIFGrupo" Multiplicity="1" />
-    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.SIFGrupo_Por_Solicitud" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFGrupo">
         <PropertyRef Name="id_Grupo" />
       </Principal>
       <Dependent Role="SIFGrupo_Por_Solicitud">
-        <PropertyRef Name="id_Grupo_Por_Solicitud" />
+        <PropertyRef Name="FK_Grupo_idGrupo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

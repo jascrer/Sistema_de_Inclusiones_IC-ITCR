@@ -26,7 +26,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Solicitud_Estudiante", "SIFEstudiante", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFEstudiante), "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Excepcion_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITExcepcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITExcepcion), true)]
-[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Profesor", "SIFProfesor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFProfesor), "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Horario_Grupo", "SIFGrupo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo), "SITHorario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SITHorario), true)]
 [assembly: EdmRelationshipAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Solicitud", "SIFSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ITCR.Ado.ModeloAcDatos.SIFSolicitud), "SIFGrupo_Por_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ITCR.Ado.ModeloAcDatos.SIFGrupo_Por_Solicitud), true)]
@@ -1139,33 +1139,17 @@ namespace ITCR.Ado.ModeloAcDatos
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Inclutec_BDModel", "FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud")]
-        public SIFGrupo_Por_Solicitud SIFGrupo_Por_Solicitud
+        public EntityCollection<SIFGrupo_Por_Solicitud> SIFGrupo_Por_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SIFGrupo_Por_Solicitud> SIFGrupo_Por_SolicitudReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SIFGrupo_Por_Solicitud>("Inclutec_BDModel.FK_Grupo_Por_Solicitud_Grupo", "SIFGrupo_Por_Solicitud", value);
                 }
             }
         }

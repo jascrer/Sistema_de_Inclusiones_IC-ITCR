@@ -44,7 +44,7 @@ namespace ITCR.RestServiciosWebDatos
         public bool VerificarEstudiante(string pCarne, string pPin)
         {
             IMetodosLogin _metLogin = new MetodosLogin();
-            return _metLogin.VerificarEstudiante(pCarne,pPin,0);
+            return _metLogin.VerificarUsuario(pCarne,pPin,0);
         }
 
         #endregion

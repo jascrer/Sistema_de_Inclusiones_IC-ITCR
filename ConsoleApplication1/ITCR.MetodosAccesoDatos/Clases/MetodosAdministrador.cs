@@ -49,6 +49,37 @@ namespace ITCR.MetodosAccesoDatos.Clases
         {
             return null;
         }
+
+        /**
+         * Retorna el ultimo periodo
+         **/
+        public Periodo UltimoPeriodo()
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                SIFPeriodo _sifPeriodo = (from _sifPeriodos in _objConexionBase.SIFPeriodoes
+                                          where _sifPeriodos.txt_estado == "En Curso"
+                                          select _sifPeriodos).First();
+                _objConexionBase.Connection.Close();
+
+                Periodo _objPeriodo = new Periodo();
+                _objPeriodo.Id_Periodo = _sifPeriodo.id_Periodo;
+                _objPeriodo.Fec_Fin = _sifPeriodo.fec_fin;
+                _objPeriodo.Fec_Inicio = _sifPeriodo.fec_inicio;
+                _objPeriodo.Num_Anno = _sifPeriodo.num_anno;
+                _objPeriodo.Num_Periodo = (int) _sifPeriodo.num_periodo;
+                _objPeriodo.Txt_Estado = _sifPeriodo.txt_estado;
+                _objPeriodo.Txt_Modalidad = _sifPeriodo.txt_modalidad;
+
+                return _objPeriodo;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         /**
          * Define un periodo para la aceptacion de solicitudes.
          **/

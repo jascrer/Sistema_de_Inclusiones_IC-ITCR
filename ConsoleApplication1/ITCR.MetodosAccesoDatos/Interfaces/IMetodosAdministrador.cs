@@ -36,6 +36,11 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         bool AgregarRegla(Regla pRegla);
 
         /**
+         * Retorna el ultimo periodo
+         **/
+        Periodo UltimoPeriodo();
+
+        /**
          * Define un periodo para la aceptacion de solicitudes.
          **/
         bool DefinirPeriodoSolicitud(Periodo pPeriodo);

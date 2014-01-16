@@ -71,6 +71,15 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          **/
         bool GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud);
 
+        /// <summary>
+        /// Guarda los grupos de una solicitud
+        /// </summary>
+        /// <param name="pSolicitud"></param>
+        /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
+        /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
+        /// <returns></returns>
+        string GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos);
+
         /**
          * Modifica los grupos especificados en una solicitud
          **/

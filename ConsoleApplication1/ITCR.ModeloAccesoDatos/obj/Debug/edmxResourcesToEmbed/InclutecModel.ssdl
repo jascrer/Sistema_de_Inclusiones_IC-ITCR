@@ -152,7 +152,7 @@
     <Key>
       <PropertyRef Name="id_Datos_Estudiante" />
     </Key>
-    <Property Name="id_Datos_Estudiante" Type="int" Nullable="false" />
+    <Property Name="id_Datos_Estudiante" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="num_cursosfaltantes" Type="int" Nullable="false" />
     <Property Name="num_creditosactuales" Type="int" Nullable="false" />
     <Property Name="tim_horamatricula" Type="time" Nullable="false" />
@@ -275,13 +275,13 @@
   </Association>
   <Association Name="FK_Grupo_Por_Solicitud_Grupo">
     <End Role="SIFGrupo" Type="Inclutec_BDModel.Store.SIFGrupo" Multiplicity="1" />
-    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="0..1" />
+    <End Role="SIFGrupo_Por_Solicitud" Type="Inclutec_BDModel.Store.SIFGrupo_Por_Solicitud" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIFGrupo">
         <PropertyRef Name="id_Grupo" />
       </Principal>
       <Dependent Role="SIFGrupo_Por_Solicitud">
-        <PropertyRef Name="id_Grupo_Por_Solicitud" />
+        <PropertyRef Name="FK_Grupo_idGrupo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -345,26 +345,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="SIT_SP_Insertar_Auto_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SIT_SP_Insertar_Auto_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cod_Curso" Type="varchar" Mode="In" />
     <Parameter Name="nom_Curso" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="SIT_SP_Insertar_Auto_Estudiantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+  <Function Name="SIT_SP_Insertar_Auto_Estudiantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Apellido1" Type="varchar" Mode="In" />
     <Parameter Name="Apellido2" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="SIT_SP_Insertar_Auto_Grupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner" />
-  <Function Name="SIT_SP_Insertar_Auto_Plan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+  <Function Name="SIT_SP_Insertar_Auto_Grupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SIT_SP_Insertar_Auto_Plan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_Plan" Type="int" Mode="In" />
     <Parameter Name="nom_Carrera" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="SIT_SP_Insertar_Auto_Profesor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+  <Function Name="SIT_SP_Insertar_Auto_Profesor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Apellido1" Type="varchar" Mode="In" />
     <Parameter Name="Apellido2" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="SIT_SP_Insertar_Estudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="db_owner">
+  <Function Name="SIT_SP_Insertar_Estudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_Carnet" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="Apellido1" Type="varchar" Mode="In" />
@@ -374,7 +375,6 @@
     <Parameter Name="Correo" Type="varchar" Mode="In" />
     <Parameter Name="id_Plan" Type="int" Mode="In" />
   </Function>
-  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />

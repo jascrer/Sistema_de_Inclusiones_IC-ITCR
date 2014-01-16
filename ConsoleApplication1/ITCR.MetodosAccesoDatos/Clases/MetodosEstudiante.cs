@@ -227,6 +227,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                         _objHorario.Txt_Hora_Inicio = _sitHorario.tim_hora_inicio.ToString();
                         _grupo.Li_Horarios.AddLast(_objHorario);
                     }
+                    _sifGrupoLista.AddLast(_grupo);
                 }
                 _objConexionBase.Connection.Close();
                 return _sifGrupoLista;
@@ -403,6 +404,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _sifSolicitud.txt_estado = pSolicitud.Txt_Estado;
                 _sifSolicitud.txt_motivo = pSolicitud.Txt_Motivo;
                 _sifSolicitud.grupo_aceptado = 0;
+                _sifSolicitud.fec_creacion = pSolicitud.Fec_Creacion;
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
                 _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
 
@@ -424,7 +426,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
         /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
         /// <returns></returns>
-        public bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
+        public string GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
         {
             try
             {
@@ -442,11 +444,11 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
                 _objConexionBase.SaveChanges();
                 _objConexionBase.Connection.Close();
-                return true;
+                return "Guardado";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                return ex.Message + "\n"+ex.StackTrace+"\n\n"+ex.InnerException;
             }
         }
 
