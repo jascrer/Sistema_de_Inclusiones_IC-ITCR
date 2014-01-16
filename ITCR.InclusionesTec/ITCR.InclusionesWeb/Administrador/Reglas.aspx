@@ -5,4 +5,7 @@
 
 <h2>Reglas del Sistema</h2>
 
+<div class="center">
+</div>
+
 </asp:Content>

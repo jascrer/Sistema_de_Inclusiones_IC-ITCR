@@ -67,6 +67,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtAnio;
         
         /// <summary>
+        /// Control reqAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqAnio;
+        
+        /// <summary>
         /// Control lblFechaInicio.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
         
         /// <summary>
+        /// Control reqInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqInicio;
+        
+        /// <summary>
         /// Control lblFechaFinal.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaFinal;
+        
+        /// <summary>
+        /// Control reqFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFin;
         
         /// <summary>
         /// Control btnDefinirPeriodo.

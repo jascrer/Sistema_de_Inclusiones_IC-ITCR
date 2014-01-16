@@ -13,5 +13,15 @@ namespace ITCR.InclusionesWeb.Administrador
         {
 
         }
+
+        protected void btnDefinirPeriodo_Click(object sender, EventArgs e)
+        {
+            //GET datos para creacion de periodo
+            string txt_Modalidad = ddlModalidad.SelectedValue;//"S"
+            int num_Periodo = int.Parse(ddlPeriodo.SelectedValue);//
+            int num_Anio = int.Parse(txtAnio.Text);
+            string txt_FechaInicio = txtFechaInicio.Text;
+            string txt_FechaFin = txtFechaFinal.Text;
+        }
     }
 }

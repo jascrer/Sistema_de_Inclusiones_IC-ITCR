@@ -13,5 +13,9 @@ namespace ITCR.InclusionesWeb.Administrador
         {
 
         }
+        protected void btnAgregarExcepcion_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

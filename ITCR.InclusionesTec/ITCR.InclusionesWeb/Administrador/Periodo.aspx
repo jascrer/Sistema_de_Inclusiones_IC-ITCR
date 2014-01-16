@@ -46,20 +46,30 @@
         <p>
             <asp:Label ID="lblAnio" runat="server" AssociatedControlID="txtAnio" >A&ntilde;o: </asp:Label>
             <asp:TextBox ID="txtAnio" runat="server" TextMode="Number" ></asp:TextBox>
+            <asp:RequiredFieldValidator ID="reqAnio" runat="server" ControlToValidate="txtAnio"
+                CssClass="failureNotification" ErrorMessage="El año es obligatorio."
+                ToolTip="El año es obligatorio." ValidationGroup="valPeriodo">*</asp:RequiredFieldValidator>
         </p>
         <p>
             <asp:Label ID="lblFechaInicio" runat="server" AssociatedControlID="txtFechaInicio" >Fecha de inicio: </asp:Label>
             <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" ></asp:TextBox>
+            <asp:RequiredFieldValidator ID="reqInicio" runat="server" ControlToValidate="txtFechaInicio"
+                CssClass="failureNotification" ErrorMessage="La fecha de inicio es obligatoria."
+                ToolTip="La fecha de inicio es obligatoria." ValidationGroup="valPeriodo">*</asp:RequiredFieldValidator>
 
             <asp:Label ID="lblFechaFinal" runat="server" AssociatedControlID="txtFechaFinal" >Fecha de fin: </asp:Label>
             <asp:TextBox ID="txtFechaFinal" runat="server" TextMode="Date" ></asp:TextBox>
+            <asp:RequiredFieldValidator ID="reqFin" runat="server" ControlToValidate="txtFechaFinal"
+                CssClass="failureNotification" ErrorMessage="La fecha de fin es obligatoria."
+                ToolTip="La fecha de fin es obligatoria." ValidationGroup="valPeriodo">*</asp:RequiredFieldValidator>
         </p>
     </fieldset>
 </p>
 </div>
 <p class="submitButton">
     <asp:Button ID="btnDefinirPeriodo" runat="server" CssClass="submitInput" CommandName="DefPeriodo" 
-        Text="Definir periodo" ValidationGroup="valPeriodo"/>
+        Text="Definir periodo" ValidationGroup="valPeriodo" 
+        onclick="btnDefinirPeriodo_Click"/>
 </p>
 
 </asp:Content>

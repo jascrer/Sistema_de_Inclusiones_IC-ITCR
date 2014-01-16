@@ -153,8 +153,11 @@ first child of the left and right table columns */
     background-color: #e2e2e2;
     color: #4e5766;
     padding: 8px 0px 0px 0px;
-    margin: 0px auto;
+    /*margin: 0px auto;*/
+    height: 50px;
+    margin: 0px auto 20px auto;
     text-align: center;
+    vertical-align: center;
     line-height: normal;
     display: block;
 }
