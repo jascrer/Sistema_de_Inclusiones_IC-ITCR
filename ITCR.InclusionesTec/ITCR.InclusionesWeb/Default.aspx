@@ -43,7 +43,9 @@
             </p>
         </fieldset>
         <p class="submitButton">
-            <asp:Button ID="btnInicioSesion" runat="server" CssClass="submitInput" CommandName="Login" Text="Iniciar sesión" ValidationGroup="valInicioSesion"/>
+            <asp:Button ID="btnInicioSesion" runat="server" CssClass="submitInput" 
+                CommandName="Login" Text="Iniciar sesión" ValidationGroup="valInicioSesion" 
+                onclick="btnInicioSesion_Click"/>
         </p>
     </div>
 </asp:Content>
