@@ -13,3 +13,8 @@ C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTe
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.ClasesComunes.csprojResolveAssemblyReference.cache
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.dll
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.ClasesComunes.csprojResolveAssemblyReference.cache
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb

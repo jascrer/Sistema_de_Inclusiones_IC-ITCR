@@ -12,39 +12,39 @@
         <legend>Datos Personales</legend>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblNombreCompleto">Nombre Completo: </asp:Label>
-            <asp:Label ID="lblNombreCompleto" runat="server">ROJAS VALVERDE JUAN JOSE</asp:Label>
+            <asp:Label ID="lblNombreCompleto" runat="server"></asp:Label>
         </p>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblCarnet" >Carnet: </asp:Label>
-            <asp:Label ID="lblCarnet" runat="server" >200813008</asp:Label>
+            <asp:Label ID="lblCarnet" runat="server" ></asp:Label>
         </p>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblCarrera" >Carrera: </asp:Label>
-            <asp:Label ID="lblCarrera" runat="server">INGENIERIA EN COMPUTACION</asp:Label>
+            <asp:Label ID="lblCarrera" runat="server"></asp:Label>
         </p>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblSede" >Sede: </asp:Label>
-            <asp:Label ID="lblSede" runat="server" >CARTAGO</asp:Label>
+            <asp:Label ID="lblSede" runat="server" ></asp:Label>
         </p>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblPlan" >Plan: </asp:Label>
-            <asp:Label ID="lblPlan" runat="server" >409</asp:Label>
+            <asp:Label ID="lblPlan" runat="server" ></asp:Label>
         </p>
         <p>
             <asp:Label runat="server" AssociatedControlID="lblCitaMatricula" >Cita de Matr&iacute;cula: </asp:Label>
-            <asp:Label ID="lblCitaMatricula" runat="server" >08:00:00</asp:Label>
+            <asp:Label ID="lblCitaMatricula" runat="server" ></asp:Label>
         </p>
         <p>
             <asp:Label ID="lblTelefono" runat="server" AssociatedControlID="txtTelefono">Tel&eacute;fono Domicilio:</asp:Label>
-            <asp:TextBox ID="txtTelefono" runat="server" CssClass="textEntry" >22924768</asp:TextBox>
+            <asp:TextBox ID="txtTelefono" runat="server" CssClass="textEntry" ></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblCelular" runat="server" AssociatedControlID="txtCelular">Tel&eacute;fono Celular:</asp:Label>
-            <asp:TextBox ID="txtCelular" runat="server" CssClass="textEntry" >85032291</asp:TextBox>
+            <asp:TextBox ID="txtCelular" runat="server" CssClass="textEntry" ></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblCorreo" runat="server" AssociatedControlID="txtCorreo" >Correo Electr&oacute;nico:</asp:Label>
-            <asp:TextBox ID="txtCorreo" runat="server" CssClass="textEntry">anairinac@gmail.com</asp:TextBox>
+            <asp:TextBox ID="txtCorreo" runat="server" CssClass="textEntry"></asp:TextBox>
         </p>
     </fieldset>
 
