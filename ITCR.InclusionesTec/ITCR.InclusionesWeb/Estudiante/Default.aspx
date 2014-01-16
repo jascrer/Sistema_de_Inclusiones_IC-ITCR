@@ -19,25 +19,25 @@
             <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server">
                 <Header>Pendientes</Header>
                 <Content>
-                    Bla
+                    -- Sin Solicitudes Pendientes --
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">
                 <Header>Anuladas</Header>
                 <Content>
-                    Bla
+                    -- Sin Solicitudes Anuladas --
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server">
                 <Header>Aprobadas</Header>
                 <Content>
-                    Bla
+                    -- Sin Solicitudes Aprobadas --
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane4" runat="server">
                 <Header>Rechazadas</Header>
                 <Content>
-                    Bla
+                    -- Sin Solicitudes Rechazadas --
                 </Content>
             </ajaxToolkit:AccordionPane>
         </Panes>
