@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class FormularioRestriccionesActivity extends Activity {
@@ -44,6 +45,7 @@ public class FormularioRestriccionesActivity extends Activity {
 				//Intent para la creacion de la nueva activity
 				Intent _intSiguiente = new Intent(FormularioRestriccionesActivity.this,InicioActivity.class);
 				//_intSiguiente.putExtra(_sEXTRA_MESSAGE, _sDataBundle);
+				Toast.makeText(getApplicationContext(), "Solicitud enviada", Toast.LENGTH_LONG).show();
 				startActivity(_intSiguiente);
 			}
 			

@@ -29,6 +29,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.itcr.inclutec.R;
+import com.google.gson.Gson;
+import com.itcr.inclutec.clases_comunes.Estudiante;
 
 @SuppressLint("NewApi")
 public class FormularioDPActivity extends Activity {
@@ -72,6 +74,7 @@ public class FormularioDPActivity extends Activity {
 		    new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante/?id="+_sCarnet);
 		del.setHeader("content-type", "application/json");
 		JSONObject respJSON, respJSON2;
+		Estudiante _eActual;
 		
 		try
 		{
@@ -81,14 +84,15 @@ public class FormularioDPActivity extends Activity {
 		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONObject("ObtenerInformacionEstudianteResult");
+		        _eActual = new Gson().fromJson(respJSON2.toString(),Estudiante.class);
 		        
-		        _PERSONALES[0] = respJSON2.getString("Nom_Nombre");
-		        _PERSONALES[1] = respJSON2.getString("Txt_Apellido1");
-		        _PERSONALES[2] = respJSON2.getString("Txt_Apellido2");
-		        _PERSONALES[3] = respJSON2.getString("Num_Telefono");
-		        _PERSONALES[4] = respJSON2.getString("Num_Celular");
-		        _PERSONALES[5] = respJSON2.getString("Dir_Email");
-		        _PERSONALES[6] = respJSON2.getString("Id_Plan_Estudios");
+		        _PERSONALES[0] = _eActual.getNom_Nombre();
+		        _PERSONALES[1] = _eActual.getTxt_Apellido1();
+		        _PERSONALES[2] = _eActual.getTxt_Apellido2();
+		        _PERSONALES[3] = _eActual.getNum_Telefono();
+		        _PERSONALES[4] = _eActual.getNum_Celular();
+		        _PERSONALES[5] = _eActual.getDir_Email();
+		        _PERSONALES[6] = ""+_eActual.getId_Plan_Estudios();
 		}
 		catch(Exception ex)
 		{
