@@ -57,7 +57,26 @@
                     </p>
 
                     <!-- ACA VA LA TABLA DE EXCEPCIONES -->
-                    <asp:Table ID="tblExcepciones" runat="server" ></asp:Table>
+                    <asp:Table ID="tblExcepciones" runat="server" Width="100%">
+                        <asp:TableHeaderRow>
+                            <asp:TableHeaderCell Text="Carnet" Width="10%"/>
+                            <asp:TableHeaderCell Text="Curso" Width="10%"/>
+                            <asp:TableHeaderCell Text="Grupo" Width="10%"/>
+                            <asp:TableHeaderCell Width="10%"/>
+                        </asp:TableHeaderRow>
+                        <asp:TableRow>
+                            <asp:TableCell Text="200813008" />
+                            <asp:TableCell Text="IC7811" />
+                            <asp:TableCell Text="2" />
+                            <asp:TableCell> <asp:Button runat="server" ID="butEdit" Text="Editar" /> <asp:Button runat="server" ID="butDel" Text="Eliminar" /> </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell Text="200966799" />
+                            <asp:TableCell Text="IC8039" />
+                            <asp:TableCell Text="40" />
+                            <asp:TableCell> <asp:Button runat="server" ID="Button1" Text="Editar" /> <asp:Button runat="server" ID="Button2" Text="Eliminar" /> </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
 
                 </Content>
             </ajaxToolkit:AccordionPane>
