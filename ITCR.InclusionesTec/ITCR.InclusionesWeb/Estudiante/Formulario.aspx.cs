@@ -58,12 +58,10 @@ namespace ITCR.InclusionesWeb.Estudiante
             foreach (var _cursoActual in _cursos)
             {
                 ListItem _item = new ListItem();
-                _item.Value = _cursoActual.Cod_Curso;
+                _item.Value = _cursoActual.Id_Curso.ToString();
                 _item.Text = _cursoActual.Txt_Curso;
                 ddlCursos.Items.Add(_item);
             }
-            ddlCursos.Items.FindByText("INTRODUCCION A LA PROGRAMACION").Selected = true;
-            //lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
 
             Session["Estudiante"] = _estudianteNuevo;
             Session["Plan"] = _planNuevo;
@@ -71,15 +69,12 @@ namespace ITCR.InclusionesWeb.Estudiante
 
         protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if (!Page.IsPostBack)
-            {
-                lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
-            }*/
-            lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
-
-            //Mostrar codigo del curso
-
-            //Mostrar tabla de grupos del curso
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            Ado.ClasesComunes.Estudiante _estudianteDatos = (Ado.ClasesComunes.Estudiante)Session["Estudiante"];
+            LinkedList<Curso> _cursos = new LinkedList<Curso>();
+            _cursos = _metEstudiante.ObtenerCursosEstudiante(_estudianteDatos.Id_Carnet, null);
+            int Num_CursoSeleccionado = int.Parse(ddlCursos.SelectedValue);
+            lblCodigoCursoSeleccionado.Text = Num_CursoSeleccionado.ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
