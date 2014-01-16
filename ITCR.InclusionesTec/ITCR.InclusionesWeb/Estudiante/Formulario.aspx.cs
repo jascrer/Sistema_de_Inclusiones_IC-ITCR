@@ -20,7 +20,7 @@ namespace ITCR.InclusionesWeb.Estudiante
         protected void Page_Load(object sender, EventArgs e)
         {
             //GET datos estudiante con un carnet
-            string Txt_Carnet = "200966799";
+            string Txt_Carnet = (string)Session["NUsuario"];
 
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             //Revisamos si el estudiante existe en la bd local
