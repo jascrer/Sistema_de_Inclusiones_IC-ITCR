@@ -9,13 +9,20 @@
     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
         <Items>
             <asp:MenuItem NavigateUrl="~/Administrador/Default.aspx" Text="Inicio"/>
-            <asp:MenuItem NavigateUrl="~/Administrador/Reglas.aspx" Text="Reglas"/>
-            <asp:MenuItem Text="Herramientas">
+            <asp:MenuItem NavigateUrl="~/Administrador/Reglas.aspx" Text="Reglas">
+                <asp:MenuItem NavigateUrl="~/Administrador/Reglas.aspx" Text="Reglas de asignación" />
+                <asp:MenuItem NavigateUrl="~/Administrador/Excepciones.aspx" Text="Excepciones" />
+            </asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Administrador/Periodo.aspx" Text="Herramientas">
                 <asp:MenuItem NavigateUrl="~/Administrador/Periodo.aspx" Text="Periodo de recepción" />
                 <asp:MenuItem NavigateUrl="~/Administrador/Asignacion.aspx" Text="Asignación automática de cupos" />
                 <asp:MenuItem NavigateUrl="~/Administrador/Notificaciones.aspx" Text="Notificaciones" />
             </asp:MenuItem>
-            <asp:MenuItem NavigateUrl="~/Administrador/Consultas.aspx" Text="Consultas"/>
+            <asp:MenuItem NavigateUrl="~/Administrador/ConsultaPeriodo.aspx" Text="Consultas">
+                <asp:MenuItem NavigateUrl="~/Administrador/ConsultaPeriodo.aspx" Text="Periodos" />
+                <asp:MenuItem NavigateUrl="~/Administrador/Solicitudes.aspx" Text="Solicitudes de inclusión" />
+                <asp:MenuItem NavigateUrl="~/Administrador/Sugerencias.aspx" Text="Sugerencias de apertura de grupos" />
+            </asp:MenuItem>
         </Items>
     </asp:Menu>
 </asp:Content>

@@ -59,14 +59,23 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Administrador\Asignacion.aspx" />
+    <Content Include="Administrador\ConsultaPeriodo.aspx" />
     <Content Include="Administrador\Consultas.aspx" />
     <Content Include="Administrador\Default.aspx" />
+    <Content Include="Administrador\Excepciones.aspx" />
     <Content Include="Administrador\Notificaciones.aspx" />
     <Content Include="Administrador\Periodo.aspx" />
     <Content Include="Administrador\Reglas.aspx" />
+    <Content Include="Administrador\Solicitudes.aspx" />
+    <Content Include="Administrador\Sugerencias.aspx" />
     <Content Include="Estudiante\Default.aspx" />
     <Content Include="Estudiante\Formulario.aspx" />
+    <Content Include="Images\table_select_row.png" />
+    <Content Include="Images\table_row_delete.png" />
+    <Content Include="Images\table_edit.png" />
     <Content Include="Images\logoTECBLANCO.png" />
+    <Content Include="Images\table_move_row_down.png" />
+    <Content Include="Images\table_move_row_up.png" />
     <Content Include="Styles\Estilo.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -129,6 +138,13 @@
     <Compile Include="Administrador\Asignacion.aspx.designer.cs">
       <DependentUpon>Asignacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\ConsultaPeriodo.aspx.cs">
+      <DependentUpon>ConsultaPeriodo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ConsultaPeriodo.aspx.designer.cs">
+      <DependentUpon>ConsultaPeriodo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\Consultas.aspx.cs">
       <DependentUpon>Consultas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +158,13 @@
     </Compile>
     <Compile Include="Administrador\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Excepciones.aspx.cs">
+      <DependentUpon>Excepciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Excepciones.aspx.designer.cs">
+      <DependentUpon>Excepciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Notificaciones.aspx.cs">
       <DependentUpon>Notificaciones.aspx</DependentUpon>
@@ -163,6 +186,20 @@
     </Compile>
     <Compile Include="Administrador\Reglas.aspx.designer.cs">
       <DependentUpon>Reglas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Solicitudes.aspx.cs">
+      <DependentUpon>Solicitudes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Solicitudes.aspx.designer.cs">
+      <DependentUpon>Solicitudes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Sugerencias.aspx.cs">
+      <DependentUpon>Sugerencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Sugerencias.aspx.designer.cs">
+      <DependentUpon>Sugerencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
