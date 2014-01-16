@@ -69,7 +69,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Guarda la solicitud creada por el _sifeEstudiante
          **/
-        bool GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud);
+        Solicitud GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud);
 
         /// <summary>
         /// Guarda los grupos de una solicitud

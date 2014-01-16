@@ -135,6 +135,7 @@
     </p>
     <p class="submitButton">
         <asp:Button ID="Button1" runat="server" CssClass="center" CommandName="SendForm" 
-            Text="Enviar solicitud" ValidationGroup="valSolicitud"/>
+            Text="Enviar solicitud" ValidationGroup="valSolicitud" 
+            onclick="Button1_Click"/>
     </p>
 </asp:Content>

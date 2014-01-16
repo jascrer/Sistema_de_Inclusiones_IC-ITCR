@@ -393,7 +393,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /**
          * Guarda la solicitud creada por el _sifeEstudiante
          **/
-        public bool GuardarSolicitud(string pEstudiante, int pPeriodo, 
+        public Solicitud GuardarSolicitud(string pEstudiante, int pPeriodo, 
             Solicitud pSolicitud)
         {
             try
@@ -412,10 +412,11 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _objConexionBase.AddToSIFSolicituds(_sifSolicitud);
                 _objConexionBase.SaveChanges();
                 _objConexionBase.Connection.Close();
-                return true;
+                pSolicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                return pSolicitud;
             }catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 

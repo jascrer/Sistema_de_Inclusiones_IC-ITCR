@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using AjaxControlToolkit;
+
 #region Librerias Inclutec
 using ITCR.Ado.ClasesComunes;
 using ITCR.MetodosAccesoDatos.Clases;
@@ -62,6 +64,9 @@ namespace ITCR.InclusionesWeb.Estudiante
             }
             ddlCursos.Items.FindByText("INTRODUCCION A LA PROGRAMACION").Selected = true;
             //lblCodigoCursoSeleccionado.Text = ddlCursos.SelectedValue;
+
+            Session["Estudiante"] = _estudianteNuevo;
+            Session["Plan"] = _planNuevo;
         }
 
         protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +80,36 @@ namespace ITCR.InclusionesWeb.Estudiante
             //Mostrar codigo del curso
 
             //Mostrar tabla de grupos del curso
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Ado.ClasesComunes.Estudiante _estudianteDatos = (Ado.ClasesComunes.Estudiante)Session["Estudiante"];
+            PlanEstudios _planEstudios = (PlanEstudios)Session["Plan"];
+
+            IMetodosAdministrador _metAdmin = new MetodosAdministrador();
+            Periodo _perUltimo = _metAdmin.UltimoPeriodo();
+
+            Solicitud _solicitudNueva = new Solicitud();
+            _solicitudNueva.Fec_Creacion = DateTime.Now;
+            _solicitudNueva.Txt_Comentario = txtComentario.Text;
+            _solicitudNueva.txt_Curso = ddlCursos.SelectedValue;
+            _solicitudNueva.Txt_Estado = "PENDIENTE";
+            _solicitudNueva.Txt_Motivo = "";
+
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            _metEstudiante.GuardarDatosEstudiantes(_estudianteDatos, _planEstudios.Id_Plan_Estudios);
+
+            if ((_perUltimo.Fec_Inicio <= _solicitudNueva.Fec_Creacion) &&
+                (_perUltimo.Fec_Fin >= _solicitudNueva.Fec_Creacion))
+            {
+                _metEstudiante.GuardarSolicitud(_estudianteDatos.Id_Carnet, _perUltimo.Id_Periodo, _solicitudNueva);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Error al crear la solicitud",
+                    "alert('Su solicitud no pudo ser procesada, ya que no fue realizada dentro del periodo de recepción",true);
+            }
         }   
             
     }
