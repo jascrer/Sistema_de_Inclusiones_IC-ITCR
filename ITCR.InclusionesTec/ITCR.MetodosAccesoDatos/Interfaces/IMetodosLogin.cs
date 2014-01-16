@@ -22,6 +22,6 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Metodo que devuelve si la combinacion carne y pin
          * existe en la base de datos.
          **/
-        bool VerificarEstudiante(string pUsuario, string pPassword, int FuncionarioEstudiante);
+        bool VerificarUsuario(string pUsuario, string pPassword, int FuncionarioEstudiante);
     }
 }

@@ -31,7 +31,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
          * Metodo que devuelve si la combinacion carne y pin
          * existe en la base de datos.
          **/
-        public bool VerificarEstudiante(string pUsuario, string pPassword, int FuncionarioEstudiante)
+        public bool VerificarUsuario(string pUsuario, string pPassword, int FuncionarioEstudiante)
         {
             wsDar.AdmisionyRegistro _objConexionDar = new wsDar.AdmisionyRegistro();
 

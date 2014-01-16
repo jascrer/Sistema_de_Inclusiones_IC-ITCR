@@ -24,10 +24,16 @@ namespace ITCR.Ado.ClasesComunes
         #region Propiedades
 
         /// <summary>
-        /// Identificador/código del curso
+        /// Identificador del curso
         /// </summary>
         [DataMember]
         public int Id_Curso { get; set; }
+
+        /// <summary>
+        /// Código del curso
+        /// </summary>
+        [DataMember]
+        public string Cod_Curso { get; set; }
 
         /// <summary>
         /// Nombre del curso

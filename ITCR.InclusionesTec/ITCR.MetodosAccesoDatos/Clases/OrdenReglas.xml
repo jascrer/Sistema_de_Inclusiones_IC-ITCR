@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Reglas>
-  <Regla posicion="1" nombre="Carnet de Oro" storedprocedure="" >
-    <param name="" tipo=""/>
+  <Regla posicion="1" nombre="Carnet de Oro" storedprocedure="carnet()">
+    <param nombre="Anios" />
   </Regla>
-  <Regla posicion="2" nombre="Próximo a graduación" storedprocedure="" />
-  <Regla posicion="3" nombre="Cursos insuficientes" storedprocedure="" />
-  <Regla posicion="4" nombre="Excepciones" storedprocedure="" />
-  <Regla posicion="5" nombre="Por cita de matricula" storedprocedure="" />
+  <Regla posicion="2" nombre="Proximo a graduacion" storedprocedure="graduacion()" />
+  <Regla posicion="3" nombre="Cursos insuficientes" storedprocedure="insuficiencia()" />
+  <Regla posicion="4" nombre="Excepciones" storedprocedure="excepciones()" />
+  <Regla posicion="5" nombre="Por cita de matricula" storedprocedure="citamatricula()" />
 </Reglas>

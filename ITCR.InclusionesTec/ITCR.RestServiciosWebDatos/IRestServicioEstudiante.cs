@@ -28,19 +28,10 @@ using ITCR.Ado.ClasesComunes;
 
 namespace ITCR.RestServiciosWebDatos
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRestServicioEstudiante" in both code and config file together.
+    
     [ServiceContract]
     public interface IRestServicioEstudiante
     {
-        /**
-         * Crea un nuevo estudiante en la base de datos.
-         * Si el estudiante se creo exitosamente o 
-         * ya exitia en la base de datos: retorna verdadero.
-         * Si no retorna falso.
-         **/
-        [OperationContract]
-        [WebInvoke(UriTemplate = "/estudiante", Method = "POST")]
-        bool CrearEstudiante(Estudiante pEstudiante);
 
         /**
          * Devuelve la informacion del estudiante al que 
@@ -50,7 +41,16 @@ namespace ITCR.RestServiciosWebDatos
         [WebGet(UriTemplate = "/estudiante/?id={pId}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
-        string ObtenerInformacionEstudiante(int pId);
+        Estudiante ObtenerInformacionEstudiante(string pId);
+
+        /**
+         * Devuelve la lista de cursos del semestre
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/cursos",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Curso> ObtenerCursos();
 
         /**
          * Actualiza los datos de contacto del estudiante especificado.
@@ -58,7 +58,24 @@ namespace ITCR.RestServiciosWebDatos
          * Retorna falso en caso contrario.
          **/
         [OperationContract]
-        [WebInvoke(UriTemplate = "/estudiante", Method = "PUT")]
+        [WebInvoke(UriTemplate = "/estudiante", Method = "PUT",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle=WebMessageBodyStyle.Wrapped)]
         bool ActualizarContacto(Estudiante pEstudiante);
+
+        /**
+         * Crea un nuevo estudiante en la base de datos.
+         * Si el estudiante se creo exitosamente o 
+         * ya exitia en la base de datos: retorna verdadero.
+         * Si no retorna falso.
+         **/
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/estudiante/?plan={pPlanEstudios}", Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool CrearEstudiante(Estudiante pEstudiante, int pPlanEstudios);
+
     }
 }

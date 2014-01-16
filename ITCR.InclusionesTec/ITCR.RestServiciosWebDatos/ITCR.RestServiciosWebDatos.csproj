@@ -110,6 +110,10 @@
       <Project>{146288B6-4D66-4A4A-851D-7F444EF3550F}</Project>
       <Name>ITCR.ClasesComunes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ITCR.MetodosAccesoDatos\ITCR.MetodosAccesoDatos.csproj">
+      <Project>{D7D02D6B-4CEE-4754-B772-641B7C8AB036}</Project>
+      <Name>ITCR.MetodosAccesoDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITCR.ModeloAccesoDatos\ITCR.AdoModeloAcDatos.csproj">
       <Project>{E7748A12-5149-475A-AB4F-D9994038EDBD}</Project>
       <Name>ITCR.AdoModeloAcDatos</Name>

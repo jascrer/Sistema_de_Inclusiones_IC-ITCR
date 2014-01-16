@@ -44,37 +44,46 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Retorna los cursos matriculados del _sifeEstudiante
          **/
-        LinkedList<string> ObtenerCursosEstudiante(string pCarnet, string pModalidad);
+        LinkedList<Curso> ObtenerCursosEstudiante(string pCarnet, string pModalidad);
 
         /**
          * Retorna la lista con los grupos a los que se le puede hacer inclusion
          **/
-        LinkedList<string> ObtenerGruposParaInclusion(string pCarnet);
+        LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso);
 
         /**
          * Retorna las solicitudes hechas por el _sifeEstudiante
          **/
-        LinkedList<string> ObtenerSolicitudesEstudiante(string pCarnet);
+        LinkedList<Solicitud> ObtenerSolicitudesEstudiante(string pCarnet);
 
         /**
          * Retorna los grupos especificados en una inclusion
          **/
-        LinkedList<string> ObtenerGruposInclusion(Solicitud pSolicitud);
+        LinkedList<Grupo_Por_Solicitud> ObtenerGruposInclusion(Solicitud pSolicitud);
 
         /**
          * Guarda los datos del Estudiante en la base de datos
          **/
-        bool GuardarDatosEstudiantes(Estudiante pEstudiante);
+        bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios);
 
         /**
          * Guarda la solicitud creada por el _sifeEstudiante
          **/
         bool GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud);
 
+        /// <summary>
+        /// Guarda los grupos de una solicitud
+        /// </summary>
+        /// <param name="pSolicitud"></param>
+        /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
+        /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
+        /// <returns></returns>
+        string GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos);
+
         /**
          * Modifica los grupos especificados en una solicitud
          **/
-        bool ModificiarSolicitud(Solicitud pSolicitud);
+        bool ModificiarSolicitud(Solicitud pSolicitud, LinkedList<int> pEliminados);
 
         /**
          * Anula la solicitud especificada

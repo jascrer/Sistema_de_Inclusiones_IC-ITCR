@@ -31,11 +31,6 @@ namespace ITCR.Ado.ClasesComunes
         public int Num_Prioridad { get; set; }
 
         /// <summary>
-        /// Corresponde al estado de Grupo_Por_Solicitud
-        /// </summary>
-        public string Txt_Estado { get; set; }
-
-        /// <summary>
         /// Corresponde al grupo de Grupo_Por_Solicitud
         /// </summary>
         public Grupo Id_Grupo { get; set; }
