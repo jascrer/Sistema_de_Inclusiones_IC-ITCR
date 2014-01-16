@@ -2,6 +2,13 @@ package com.itcr.inclutec;
 
 import java.util.ArrayList;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +36,13 @@ public class FormularioDPActivity extends Activity {
 	private final String _sNAVEGACION[]=
 			new String[]{"INICIO", "FORMULARIO", "SALIR"};
 	private final String _PERSONALES[]=
-			new String[]{"numCarne", "nombre", "apellido1", "apellido2", "tel", "cel", "email", "plan"};
+			new String[]{"nombre",
+			"apellido1",
+			"apellido2",
+			"telefono",
+			"celular",
+			"email",
+			"plan"};
 	private ActionBarDrawerToggle _Toggle;
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
 	String _sCarnet;
@@ -52,21 +66,49 @@ public class FormularioDPActivity extends Activity {
 				android.R.id.text1,_sNAVEGACION));
 		
 		crearNavegacion(this, _lvDrawer, _dlDrawerLayout);
+		//////////////////////////////////////////////////////////////////////
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpGet del =
+		    new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante/?id="+_sCarnet);
+		del.setHeader("content-type", "application/json");
+		JSONObject respJSON, respJSON2;
 		
+		try
+		{
+		        HttpResponse resp = httpClient.execute(del);
+		        String respStr = EntityUtils.toString(resp.getEntity());
+		        Log.e("ServicioRest",respStr);
+		        
+		        respJSON = new JSONObject(respStr);
+		        respJSON2 = respJSON.getJSONObject("ObtenerInformacionEstudianteResult");
+		        
+		        _PERSONALES[0] = respJSON2.getString("Nom_Nombre");
+		        _PERSONALES[1] = respJSON2.getString("Txt_Apellido1");
+		        _PERSONALES[2] = respJSON2.getString("Txt_Apellido2");
+		        _PERSONALES[3] = respJSON2.getString("Num_Telefono");
+		        _PERSONALES[4] = respJSON2.getString("Num_Celular");
+		        _PERSONALES[5] = respJSON2.getString("Dir_Email");
+		        _PERSONALES[6] = respJSON2.getString("Id_Plan_Estudios");
+		}
+		catch(Exception ex)
+		{
+		        Log.e("ServicioRest","Error!", ex);
+		}
+		////////////////////////////////////////////////////////////
 		final TextView _tvNombre = (TextView)findViewById(R.id.textViewNombre);
-		//_tvNombre.setText(_PERSONALES[1] + " " +_PERSONALES[2] + " " + _PERSONALES[3]);
+		_tvNombre.setText(_PERSONALES[0] + " " +_PERSONALES[1] + " " + _PERSONALES[2]);
 		final TextView _tvCarnet = (TextView)findViewById(R.id.textViewCarnet);
-		//_tvCarnet.setText(_PERSONALES[0]);
+		_tvCarnet.setText(_sCarnet);
 		
 		final EditText _edtTelefono = (EditText)findViewById(R.id.editTextTelefono);
 		final EditText _edtCelular = (EditText)findViewById(R.id.editTextCelular);
 		final EditText _edtEmail = (EditText)findViewById(R.id.editTextEmail);
-		//_edtTelefono.setText(_PERSONALES[4]);
-		//_edtCelular.setText(_PERSONALES[5]);
-		//_edtEmail.setText(_PERSONALES[6]);
+		_edtTelefono.setText(_PERSONALES[3]);
+		_edtCelular.setText(_PERSONALES[4]);
+		_edtEmail.setText(_PERSONALES[5]);
 		
 		final TextView _tvPlan = (TextView)findViewById(R.id.textViewPlan);
-		//_tvPlan.setText(_PERSONALES[7]);
+		_tvPlan.setText(_PERSONALES[6]);
 		
 		final Button _btnIngresar = (Button)findViewById(R.id.buttonSend);
 		_btnIngresar.setOnClickListener(new OnClickListener(){

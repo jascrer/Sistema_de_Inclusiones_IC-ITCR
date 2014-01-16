@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
 
 		//Campos de texto para el login
 		final TextView _txtCarne = (TextView)findViewById(R.id.editText1);
-		//final TextView _txtPin = (TextView)findViewById(R.id.editText2);
+		final TextView _txtPin = (TextView)findViewById(R.id.editText2);
 		
 		//Boton de ingreso
 		final Button _btnIngresar = (Button)findViewById(R.id.button1);
@@ -64,7 +64,8 @@ public class LoginActivity extends Activity {
 				 * por ahora solo habra el paso del carne del estudiante.
 				 */
 				String _sCarne = _txtCarne.getText().toString();
-				boolean _bExiste = callWebErvice(_sCarne);
+				String _sPin = _txtPin.getText().toString();
+				boolean _bExiste = callWebErvice(_sCarne, _sPin);
 				
 				if(_bExiste){
 					//Intent para la creacion de la nueva activity
@@ -85,10 +86,10 @@ public class LoginActivity extends Activity {
 			
 		});
 	}
-	boolean callWebErvice(String _sCarne){
+	boolean callWebErvice(String _sCarne, String _sPin){
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet del =
-		    new HttpGet("http://10.0.2.2:3740/RestServicioLogin.svc/login/?carne="+_sCarne+"&pin=0000");
+		    new HttpGet("http://10.0.2.2:3740/RestServicioLogin.svc/login/?carne="+_sCarne+"&pin="+_sPin);
 		del.setHeader("content-type", "application/json");
 		
 		boolean resultCli = false;
