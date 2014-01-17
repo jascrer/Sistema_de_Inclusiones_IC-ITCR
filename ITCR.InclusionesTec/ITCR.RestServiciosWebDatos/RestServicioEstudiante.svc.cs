@@ -68,9 +68,10 @@ namespace ITCR.RestServiciosWebDatos
          * Retorna verdadero en caso de actualizarse correctamente.
          * Retorna falso en caso contrario.
          **/
-        public bool ActualizarContacto(Estudiante pEstudiante)
+        public bool ActualizarContacto(Estudiante pEstudiante, int pPlanEstudios)
         {
-            return true;
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.GuardarDatosEstudiantes(pEstudiante, pPlanEstudios);
         }
 
         /**

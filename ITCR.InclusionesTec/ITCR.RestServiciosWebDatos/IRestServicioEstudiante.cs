@@ -62,7 +62,7 @@ namespace ITCR.RestServiciosWebDatos
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle=WebMessageBodyStyle.Wrapped)]
-        bool ActualizarContacto(Estudiante pEstudiante);
+        bool ActualizarContacto(Estudiante pEstudiante, int pPlanEstudios);
 
         /**
          * Crea un nuevo estudiante en la base de datos.
