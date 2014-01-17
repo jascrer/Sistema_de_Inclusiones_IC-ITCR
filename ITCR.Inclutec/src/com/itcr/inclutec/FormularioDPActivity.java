@@ -1,9 +1,11 @@
 package com.itcr.inclutec;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -37,6 +39,7 @@ import android.widget.Toast;
 import com.example.itcr.inclutec.R;
 import com.google.gson.Gson;
 import com.itcr.inclutec.clases_comunes.Estudiante;
+import com.itcr.inclutec.clases_comunes.PlanEstudios;
 
 @SuppressLint("NewApi")
 public class FormularioDPActivity extends Activity {
@@ -55,9 +58,10 @@ public class FormularioDPActivity extends Activity {
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
 	String _sCarnet;
 	HttpClient httpClient = new DefaultHttpClient();
-	HttpGet _getDatos;
+	HttpGet _getDatos, _getPlan;
 	HttpPut _putContacto;
 	Estudiante _eActual;
+	PlanEstudios _pActual;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -82,17 +86,27 @@ public class FormularioDPActivity extends Activity {
 		
 		_getDatos = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante/?id="+_sCarnet);
 		_getDatos.setHeader("content-type", "application/json");
-		JSONObject respJSON, respJSON2;
+		_getPlan = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/plan/?id="+_sCarnet);
+		_getPlan.setHeader("content-type", "application/json");
+		JSONObject respJSON, respJSON2, respJSON3, respJSON4;
 		
 		try
 		{
 		        HttpResponse resp = httpClient.execute(_getDatos);
 		        String respStr = EntityUtils.toString(resp.getEntity());
-		        Log.e("ServicioRest",respStr);
+		        Log.e("ServicioRestDatos",respStr);
+		        
+		        HttpResponse resp2 = httpClient.execute(_getPlan);
+		        String respStr2 = EntityUtils.toString(resp2.getEntity());
+		        Log.e("ServicioRestPlan",respStr2);
 		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONObject("ObtenerInformacionEstudianteResult");
 		        _eActual = new Gson().fromJson(respJSON2.toString(),Estudiante.class);
+		        
+		        respJSON3 = new JSONObject(respStr2);
+		        respJSON4 = respJSON3.getJSONObject("ObtenerPlanEstudiosResult");
+		        _pActual = new Gson().fromJson(respJSON4.toString(),PlanEstudios.class);
 		        
 		        _PERSONALES[0] = _eActual.getNom_Nombre();
 		        _PERSONALES[1] = _eActual.getTxt_Apellido1();
@@ -100,7 +114,7 @@ public class FormularioDPActivity extends Activity {
 		        _PERSONALES[3] = _eActual.getNum_Telefono();
 		        _PERSONALES[4] = _eActual.getNum_Celular();
 		        _PERSONALES[5] = _eActual.getDir_Email();
-		        _PERSONALES[6] = ""+_eActual.getId_Plan_Estudios();
+		        _PERSONALES[6] = ""+_pActual.getId_Plan_Estudios();
 		}
 		catch(Exception ex)
 		{
@@ -140,21 +154,33 @@ public class FormularioDPActivity extends Activity {
 				_eActual.setNum_Celular(_sCel);
 				_eActual.setNum_Telefono(_sTel);
 				
+				
 				_putContacto = new HttpPut("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante");
 				_putContacto.setHeader("content-type", "application/json");
 				
 				Gson _gEstudiante = new Gson();
+				
+				JSONObject _jsonDatos = new JSONObject();
 				try {
-					StringEntity _jsonEstudiante = new StringEntity(_gEstudiante.toJson(_eActual));
-				    _putContacto.setEntity(_jsonEstudiante);
-				    Log.e("Estudiante Tel",_eActual.getNum_Telefono());
+					JSONObject _jEstudiante = new JSONObject(_gEstudiante.toJson(_eActual));
+					_jsonDatos.put("pEstudiante", _jEstudiante);
+					_jsonDatos.put("pPlanEstudios", _pActual.getId_Plan_Estudios());
+					
+					StringEntity _jsonEstudiante = new StringEntity(_jsonDatos.toString());
+					_putContacto.setEntity(_jsonEstudiante);
 				    HttpResponse resp = httpClient.execute(_putContacto);
 				    String respStr = EntityUtils.toString(resp.getEntity());
 				    Log.e("respStr", respStr);
-				 
-				       /* if(respStr.equals("true"))
-				            Log.e("Actualizar contacto", "OK");
-				        	Toast.makeText(getApplicationContext(), "Datos actualizados", Toast.LENGTH_LONG); */
+					
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedEncodingException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
