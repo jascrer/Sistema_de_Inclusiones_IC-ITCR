@@ -3,9 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Reglas del Sistema</h2>
+    <h2>Reglas del Sistema</h2>
+    
+    <p>
+        En esta p&aacute;gina se gestionan las reglas de negocio del sistema de inclusiones, que son utilizadas en el proceso de asignaci&oacute;n autom&aacute;tica
+        para determinar los cupos de los grupos para las solicitudes recibidas.
+    </p>
 
-<div class="center">
-</div>
+    <div class="center">
+        <fieldset>
+            <legend>Reglas</legend>
+        </fieldset>
+    </div>
 
 </asp:Content>

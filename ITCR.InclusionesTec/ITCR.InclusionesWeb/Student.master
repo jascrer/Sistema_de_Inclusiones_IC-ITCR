@@ -9,7 +9,10 @@
     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
         <Items>
             <asp:MenuItem NavigateUrl="~/Estudiante/Default.aspx" Text="Inicio"/>
-            <asp:MenuItem NavigateUrl="~/Estudiante/Formulario.aspx" Text="Formulario"/>
+            <asp:MenuItem NavigateUrl="~/Estudiante/Formulario.aspx" Text="Solicitudes">
+                <asp:MenuItem NavigateUrl="~/Estudiante/Formulario.aspx" Text="Nuevo formulario"/>
+                <asp:MenuItem NavigateUrl="~/Estudiante/Consultas.aspx" Text="Consultar solicitudes"/>
+            </asp:MenuItem>
         </Items>
     </asp:Menu>
 </asp:Content>

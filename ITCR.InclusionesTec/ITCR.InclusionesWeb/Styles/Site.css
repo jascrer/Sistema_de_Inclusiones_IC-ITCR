@@ -117,7 +117,7 @@ first child of the left and right table columns */
     margin: 0px;
     padding: 0px;
     background: #4b6c9e url('../Images/logoTECBLANCO.png') no-repeat 5% 10%;
-    background-size: 300px 50px;
+    background-size: 270px 50px;
     width: 100%;
     height: 200px;
 }
@@ -397,7 +397,14 @@ div.accountInfo
 .tabla {
 	margin: 50px auto 50px auto;
 	width: 100%;
+	border: 1px solid #172E55;
+	border-radius: 5px;
 }
+
+.tabla tr, .tabla tr td {
+	border: 1px solid #172E55;
+}
+
 
 /* MISC  
 ----------------------------------------------------------*/

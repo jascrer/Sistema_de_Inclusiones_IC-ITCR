@@ -6,6 +6,14 @@
     <h2>Consultar periodos de recepci&oacute;n</h2>
     <div class="center">
     
+        <p>
+            La siguiente tabla muestra el periodo actual de recepci&oacute;n de solicitudes de inlusi&oacute;n.
+        </p>
+        <p class="center">
+            <asp:Label ID="lblSinPeriodo" runat="server" ></asp:Label>
+        </p>
+        <asp:Table ID="tblPeriodo" runat="server" ></asp:Table>
+
     </div>
 
 </asp:Content>

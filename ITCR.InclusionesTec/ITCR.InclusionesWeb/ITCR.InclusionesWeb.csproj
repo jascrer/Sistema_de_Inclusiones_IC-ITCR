@@ -68,8 +68,12 @@
     <Content Include="Administrador\Reglas.aspx" />
     <Content Include="Administrador\Solicitudes.aspx" />
     <Content Include="Administrador\Sugerencias.aspx" />
+    <Content Include="Estudiante\Consultas.aspx" />
     <Content Include="Estudiante\Default.aspx" />
     <Content Include="Estudiante\Formulario.aspx" />
+    <Content Include="Images\table_export.png" />
+    <Content Include="Images\table_go.png" />
+    <Content Include="Images\table_refresh.png" />
     <Content Include="Images\table_select_row.png" />
     <Content Include="Images\table_row_delete.png" />
     <Content Include="Images\table_edit.png" />
@@ -207,6 +211,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiante\Consultas.aspx.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Estudiante\Consultas.aspx.designer.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Estudiante\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

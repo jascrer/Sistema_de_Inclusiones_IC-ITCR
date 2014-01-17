@@ -18,7 +18,7 @@ namespace ITCR.InclusionesWeb.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtAnio.Text = DateTime.Now.Year.ToString();
         }
 
         protected void btnDefinirPeriodo_Click(object sender, EventArgs e)

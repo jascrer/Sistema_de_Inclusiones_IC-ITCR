@@ -32,7 +32,7 @@
             </p>
             <p>
                 <asp:Label ID="lblContrasena" runat="server" AssociatedControlID="txtContrasena">Contrase&ntilde;a:</asp:Label>
-                <asp:TextBox ID="txtContrasena" runat="server" CssClass="passwordEntry"></asp:TextBox>
+                <asp:TextBox ID="txtContrasena" runat="server" TextMode="Password" CssClass="passwordEntry"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="reqContrasena" runat="server" ControlToValidate="txtContrasena"
                     CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria."
                     ToolTip="La contraseña es obligatoria." ValidationGroup="valInicioSesion">*</asp:RequiredFieldValidator>
