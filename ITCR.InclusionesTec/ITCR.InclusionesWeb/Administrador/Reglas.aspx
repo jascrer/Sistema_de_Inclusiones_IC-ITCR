@@ -13,6 +13,32 @@
     <div class="center">
         <fieldset>
             <legend>Reglas</legend>
+            
+            <asp:Table ID="tblReglas" runat="server" ></asp:Table>
+            <!--
+                * Activar/Desactivar regla
+                * Subir
+                * Bajar
+             -->
+        </fieldset>
+        <fieldset>
+             <legend>Agregar reglas al sistema</legend>
+             <p>
+                Para agregar una regla a la tabla, llene la siguiente informaci&oacute;n y haga click en el bot&oacute;n de "Agregar regla".
+             </p>
+             <p>
+                <asp:Label ID="lblNombreRegla" runat="server" AssociatedControlID="txtNombreRegla" >Nombre de la regla: </asp:Label>
+                <asp:TextBox ID="txtNombreRegla" runat="server"  CssClass="textEntry" ></asp:TextBox>
+             </p>
+             <p>
+                <asp:Label ID="lblNombreProcedimiento" runat="server" AssociatedControlID="txtNombreProcedimiento" >Nombre del procedimiento: </asp:Label>
+                <asp:TextBox ID="txtNombreProcedimiento" runat="server" CssClass="textEntry" ></asp:TextBox>
+             </p>
+             <p class="submitButton">
+                    <asp:Button ID="btnAgregarRegla" runat="server" CssClass="submitInput" 
+                        CommandName="AgregarRegla" Text="Agregar regla" ValidationGroup="valAgregarRegla" />
+             </p>
+
         </fieldset>
     </div>
 

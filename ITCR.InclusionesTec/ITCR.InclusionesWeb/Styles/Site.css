@@ -367,7 +367,7 @@ fieldset label.inline
     display: inline;
 }
 
-legend 
+fieldset legend 
 {
     color: #172E55;
     font-size: 1.1em;
@@ -381,10 +381,26 @@ input.textEntry
     border: 1px solid #ccc;
 }
 
-input.passwordEntry 
+fieldset p input.textEntry,
+fieldset p select,
+fieldset p input[type='number'],
+fieldset p input[type='text'],
+fieldset p input[type='date'],
+fieldset p input[type='password']
 {
-    width: 320px;
+    border-radius: 5px;
+    width: 200px;
     border: 1px solid #ccc;
+    float: left;
+}
+
+fieldset p label {
+	position: relative;
+    clear: left;
+    float: left;
+    width: 50%;
+    margin-right: 5px;
+    text-align: right;
 }
 
 div.accountInfo
@@ -475,13 +491,17 @@ div.accountInfo
 
 .submitButton
 {
+    display: block;
+    clear: both;
     margin: auto;
+    margin-top: 10px;
     text-align: center;
     padding-right: 10px;
 }
 
 .submitInput 
 {
+    margin-top: 20px;
     border-radius: 5px;
     padding: 10px;
     font-size: 14px;
