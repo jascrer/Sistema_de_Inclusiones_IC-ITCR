@@ -44,6 +44,15 @@ namespace ITCR.RestServiciosWebDatos
         Estudiante ObtenerInformacionEstudiante(string pId);
 
         /**
+         * Devuelve el plan de estudios de un estudiante.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/plan/?id={pCarnet}",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        PlanEstudios ObtenerPlanEstudios(string pCarnet);
+
+        /**
          * Devuelve la lista de cursos del semestre
          **/
         [OperationContract]
