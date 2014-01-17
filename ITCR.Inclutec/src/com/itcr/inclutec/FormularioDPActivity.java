@@ -1,12 +1,17 @@
 package com.itcr.inclutec;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
@@ -27,6 +32,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itcr.inclutec.R;
 import com.google.gson.Gson;
@@ -48,6 +54,10 @@ public class FormularioDPActivity extends Activity {
 	private ActionBarDrawerToggle _Toggle;
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
 	String _sCarnet;
+	HttpClient httpClient = new DefaultHttpClient();
+	HttpGet _getDatos;
+	HttpPut _putContacto;
+	Estudiante _eActual;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -69,16 +79,14 @@ public class FormularioDPActivity extends Activity {
 		
 		crearNavegacion(this, _lvDrawer, _dlDrawerLayout);
 		//////////////////////////////////////////////////////////////////////
-		HttpClient httpClient = new DefaultHttpClient();
-		HttpGet del =
-		    new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante/?id="+_sCarnet);
-		del.setHeader("content-type", "application/json");
+		
+		_getDatos = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante/?id="+_sCarnet);
+		_getDatos.setHeader("content-type", "application/json");
 		JSONObject respJSON, respJSON2;
-		Estudiante _eActual;
 		
 		try
 		{
-		        HttpResponse resp = httpClient.execute(del);
+		        HttpResponse resp = httpClient.execute(_getDatos);
 		        String respStr = EntityUtils.toString(resp.getEntity());
 		        Log.e("ServicioRest",respStr);
 		        
@@ -127,6 +135,30 @@ public class FormularioDPActivity extends Activity {
 				_sDataBundle.add(_sTel);
 				_sDataBundle.add(_sCel);
 				_sDataBundle.add(_sEmail);
+				
+				_eActual.setDir_Email(_sEmail);
+				_eActual.setNum_Celular(_sCel);
+				_eActual.setNum_Telefono(_sTel);
+				
+				_putContacto = new HttpPut("http://10.0.2.2:3740/RestServicioEstudiante.svc/estudiante");
+				_putContacto.setHeader("content-type", "application/json");
+				
+				Gson _gEstudiante = new Gson();
+				try {
+					StringEntity _jsonEstudiante = new StringEntity(_gEstudiante.toJson(_eActual));
+				    _putContacto.setEntity(_jsonEstudiante);
+				    Log.e("Estudiante Tel",_eActual.getNum_Telefono());
+				    HttpResponse resp = httpClient.execute(_putContacto);
+				    String respStr = EntityUtils.toString(resp.getEntity());
+				    Log.e("respStr", respStr);
+				 
+				       /* if(respStr.equals("true"))
+				            Log.e("Actualizar contacto", "OK");
+				        	Toast.makeText(getApplicationContext(), "Datos actualizados", Toast.LENGTH_LONG); */
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				//Intent para la creacion de la nueva activity
 				Intent _intSiguiente = new Intent(FormularioDPActivity.this,FormularioCursosActivity.class);
