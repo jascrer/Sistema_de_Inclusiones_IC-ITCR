@@ -91,7 +91,6 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _estEstudiante.Txt_Apellido1 = _sifEstudiante.txt_apellido_1;
                     _estEstudiante.Txt_Apellido2 = _sifEstudiante.txt_apellido_2;
                     _estEstudiante.Dir_Email = _sifEstudiante.dir_email;
-
                 }
                 else
                 {
@@ -190,7 +189,6 @@ namespace ITCR.MetodosAccesoDatos.Clases
             }
         }
 
-
         /**
          * Retorna la lista con los grupos a los que se le puede hacer inclusion
          **/
@@ -242,7 +240,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
          * Retorna las solicitudes hechas por el _sifeEstudiante
          * y que se encuentran pendientes.
          **/
-        public LinkedList<Solicitud> ObtenerSolicitudesEstudiante(string pCarnet)
+        public LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo)
         {
             try
             {
@@ -250,7 +248,119 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
                 var _dataSolicitudes = from _sifSolicitudes in _objConexionBase.SIFSolicituds
                                        where _sifSolicitudes.FK_Estudiante_carnet == pCarnet
+                                       && _sifSolicitudes.FK_Periodo_idPeriodo == pPeriodo
                                        && _sifSolicitudes.txt_estado == "PENDIENTE"
+                                       select _sifSolicitudes;
+
+                LinkedList<Solicitud> _liSolicitudes = new LinkedList<Solicitud>();
+
+                foreach (SIFSolicitud _sifSolicitud in _dataSolicitudes)
+                {
+                    Solicitud _solicitud = new Solicitud();
+                    _solicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                    _solicitud.Fec_Creacion = _sifSolicitud.fec_creacion;
+                    _solicitud.Txt_Comentario = _sifSolicitud.txt_comentario;
+                    _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
+                    _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
+                    _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                }
+
+                _objConexionBase.Connection.Close();
+                return _liSolicitudes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /**
+         * Retorna las solicitudes anuladas hechas por el _sifeEstudiante
+         **/
+        public LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                var _dataSolicitudes = from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                       where _sifSolicitudes.FK_Estudiante_carnet == pCarnet
+                                       && _sifSolicitudes.FK_Periodo_idPeriodo == pPeriodo
+                                       && _sifSolicitudes.txt_estado == "ANULADA"
+                                       select _sifSolicitudes;
+
+                LinkedList<Solicitud> _liSolicitudes = new LinkedList<Solicitud>();
+
+                foreach (SIFSolicitud _sifSolicitud in _dataSolicitudes)
+                {
+                    Solicitud _solicitud = new Solicitud();
+                    _solicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                    _solicitud.Fec_Creacion = _sifSolicitud.fec_creacion;
+                    _solicitud.Txt_Comentario = _sifSolicitud.txt_comentario;
+                    _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
+                    _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
+                    _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                }
+
+                _objConexionBase.Connection.Close();
+                return _liSolicitudes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /**
+         * Retorna las solicitudes aprobadas hechas por el _sifeEstudiante
+         **/
+        public LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                var _dataSolicitudes = from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                       where _sifSolicitudes.FK_Estudiante_carnet == pCarnet
+                                       && _sifSolicitudes.FK_Periodo_idPeriodo == pPeriodo
+                                       && _sifSolicitudes.txt_estado == "APROBADA"
+                                       select _sifSolicitudes;
+
+                LinkedList<Solicitud> _liSolicitudes = new LinkedList<Solicitud>();
+
+                foreach (SIFSolicitud _sifSolicitud in _dataSolicitudes)
+                {
+                    Solicitud _solicitud = new Solicitud();
+                    _solicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                    _solicitud.Fec_Creacion = _sifSolicitud.fec_creacion;
+                    _solicitud.Txt_Comentario = _sifSolicitud.txt_comentario;
+                    _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
+                    _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
+                    _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                }
+
+                _objConexionBase.Connection.Close();
+                return _liSolicitudes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /**
+         * Retorna las solicitudes reprobadas hechas por el _sifeEstudiante
+         **/
+        public LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                var _dataSolicitudes = from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                       where _sifSolicitudes.FK_Estudiante_carnet == pCarnet
+                                       && _sifSolicitudes.FK_Periodo_idPeriodo == pPeriodo
+                                       && _sifSolicitudes.txt_estado == "REPROBADA"
                                        select _sifSolicitudes;
 
                 LinkedList<Solicitud> _liSolicitudes = new LinkedList<Solicitud>();
@@ -348,45 +458,40 @@ namespace ITCR.MetodosAccesoDatos.Clases
         public bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
-            if (_metEstudiante.EstudianteExiste(pEstudiante.Id_Carnet)) 
+            _objConexionBase = new Inclutec_BDEntities();
+            try
             {
+                if (_metEstudiante.EstudianteExiste(pEstudiante.Id_Carnet))
+                {
+                    SIFEstudiante _sifEstudiante = (from _sifEstudiantes in _objConexionBase.SIFEstudiantes
+                                                   where _sifEstudiantes.id_Carnet == pEstudiante.Id_Carnet
+                                                   select _sifEstudiantes).First();
+                    _sifEstudiante.dir_email = pEstudiante.Dir_Email;
+                    _sifEstudiante.num_celular = pEstudiante.Num_Celular;
+                    _sifEstudiante.num_telefono = pEstudiante.Num_Telefono;
+                }
+                else
+                {
+                    SIFEstudiante _sifeEstudiante = new SIFEstudiante();
+                    _sifeEstudiante.id_Carnet = pEstudiante.Id_Carnet;
+                    _sifeEstudiante.nom_nombre = pEstudiante.Nom_Nombre;
+                    _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_Apellido1;
+                    _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_Apellido2;
+                    _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
+                    _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
+                    _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
+                    _sifeEstudiante.FK_PlanEstudios_idPlanEstudios = pPlanEstudios;
+
+                    _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
+                }
+
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
                 return true;
             }
-            else
+            catch (Exception)
             {
-                try
-                {
-                    _objConexionBase = new Inclutec_BDEntities();
-
-                    var _Verificacion = from _sifEstudiantes in _objConexionBase.SIFEstudiantes
-                                        where _sifEstudiantes.id_Carnet == pEstudiante.Id_Carnet
-                                        select _sifEstudiantes;
-
-                    if (_Verificacion.Count() == 0)
-                    {
-                        SIFEstudiante _sifeEstudiante = new SIFEstudiante();
-                        _sifeEstudiante.id_Carnet = pEstudiante.Id_Carnet;
-                        _sifeEstudiante.nom_nombre = pEstudiante.Nom_Nombre;
-                        _sifeEstudiante.txt_apellido_1 = pEstudiante.Txt_Apellido1;
-                        _sifeEstudiante.txt_apellido_2 = pEstudiante.Txt_Apellido2;
-                        _sifeEstudiante.num_telefono = pEstudiante.Num_Telefono;
-                        _sifeEstudiante.num_celular = pEstudiante.Num_Celular;
-                        _sifeEstudiante.dir_email = pEstudiante.Dir_Email;
-                        _sifeEstudiante.FK_PlanEstudios_idPlanEstudios = pPlanEstudios;
-
-                        _objConexionBase.AddToSIFEstudiantes(_sifeEstudiante);
-                        _objConexionBase.SaveChanges();
-
-                    }
-
-                    _objConexionBase.Connection.Close();
-
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
@@ -427,7 +532,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
         /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
         /// <returns></returns>
-        public string GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
+        public bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
         {
             try
             {
@@ -445,11 +550,11 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
                 _objConexionBase.SaveChanges();
                 _objConexionBase.Connection.Close();
-                return "Guardado";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message + "\n"+ex.StackTrace+"\n\n"+ex.InnerException;
+                return false;
             }
         }
 

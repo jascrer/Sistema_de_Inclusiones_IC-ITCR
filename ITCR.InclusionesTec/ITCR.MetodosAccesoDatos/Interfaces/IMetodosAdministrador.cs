@@ -20,6 +20,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
 {
     public interface IMetodosAdministrador
     {
+        #region Metodos
         /**
          * Devuelve la lista de solicitudes del periodo.
          **/
@@ -29,11 +30,6 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Devuelve la lista de sugerencias para nuevos grupos.
          **/
         LinkedList<string> ObtenerReporteSugerencias();
-
-        /**
-         * Agrega una regla al negocio.
-         **/
-        bool AgregarRegla(Regla pRegla);
 
         /**
          * Retorna el ultimo periodo
@@ -49,6 +45,11 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Modifica el estado del periodo.
          **/
         bool ModificarEstadoPeriodo(int pPeriodo, string pEstado);
+
+        /**
+         * Agrega una regla al negocio.
+         **/
+        bool AgregarRegla(Regla pRegla);
         
         /**
          * Modifica el orden de las reglas establecido
@@ -64,7 +65,12 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Elimina una regla del negocio.
          **/
-        bool EliminarRegla(Regla pRegla);
-        
+        bool DesactivarRegla(Regla pRegla);
+
+        /**
+         * Retorna la informacion de todas las reglas.
+         **/
+        LinkedList<Regla> ObtenerInformacionReglas();
+        #endregion
     }
 }

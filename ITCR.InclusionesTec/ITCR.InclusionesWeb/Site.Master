@@ -19,12 +19,8 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <LoggedInTemplate>
-                        Bienvenido/a, <span class="bold"><asp:Label ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
+                Bienvenido/a, <span class="bold"><asp:Label ID="HeadLoginName" runat="server" /></span>
+                <a href="../Default.aspx">Cerrar Sesion</a>
             </div>
         </div>
         <div class="hideSkiplink">

@@ -48,6 +48,19 @@ namespace ITCR.Ado.ClasesComunes
         #region Constructores
         /// <summary>
         /// Constructor de la clase.
+        /// No recibe parametros.
+        /// </summary>
+        public Regla()
+        {
+            _iPosicion = 0;
+            _sEstado = "";
+            _sNombre = "";
+            _sStoredProcedure = "";
+            _liParametros = new LinkedList<Parametro>();
+        }
+
+        /// <summary>
+        /// Constructor de la clase.
         /// </summary>
         /// <param name="pPosicion"></param>
         /// <param name="pNombre"></param>

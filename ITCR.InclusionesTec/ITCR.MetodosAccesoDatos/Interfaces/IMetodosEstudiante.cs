@@ -20,6 +20,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
 {
     public interface IMetodosEstudiante
     {
+        #region Metodos
         /**
          * Retorna true si el Estudiante existe en la base de la aplicacion
          * Retorna false en caso contrario.
@@ -52,9 +53,24 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso);
 
         /**
-         * Retorna las solicitudes hechas por el _sifeEstudiante
+         * Retorna las solicitudes pendientes hechas por el _sifeEstudiante
          **/
-        LinkedList<Solicitud> ObtenerSolicitudesEstudiante(string pCarnet);
+        LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo);
+
+        /**
+         * Retorna las solicitudes anuladas hechas por el _sifeEstudiante
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo);
+
+        /**
+         * Retorna las solicitudes aprobadas hechas por el _sifeEstudiante
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo);
+
+        /**
+         * Retorna las solicitudes reprobadas hechas por el _sifeEstudiante
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo);
 
         /**
          * Retorna los grupos especificados en una inclusion
@@ -78,7 +94,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// <param name="pGrupos">Debe ir ordenada en cuanto a prioridad, 
         /// entre mayor la prioridad, mas antes tiene que ir el grupo</param>
         /// <returns></returns>
-        string GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos);
+        bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos);
 
         /**
          * Modifica los grupos especificados en una solicitud
@@ -89,6 +105,6 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Anula la solicitud especificada
          **/
         bool AnularSolicitud(Solicitud pSolicitud);
-
+        #endregion
     }
 }

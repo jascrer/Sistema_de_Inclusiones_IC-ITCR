@@ -28,6 +28,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
         #region Atributos
         wsDar.AdmisionyRegistro _objConexionWS;
         Inclutec_BDEntities _objConexionBase;
+        IXmlEditor _xmlEditor;
         #endregion
 
         #region Constructores
@@ -132,12 +133,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool AgregarRegla(Regla pRegla)
         {
-            XmlDocument _xmlEditor = new XmlDocument();
-            _xmlEditor.Load("OrdenReglas.xml");
-
-            //XmlElement _xmlElemento = _xmlEditor.CreateElement(_sNODOSXML[0]);
-
-            //XmlAttribute _xmlAtributo = _xmlEditor.CreateAttribute();
+            _xmlEditor = new XmlEditor("OrdenReglas.xml");
+            _xmlEditor.AgregarRegla(pRegla);
             return true;
         }
 
@@ -147,12 +144,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool ModificarOrdenReglas(LinkedList<Regla> pReglas)
         {
-            XmlDocument _xmlEditor = new XmlDocument();
-            _xmlEditor.Load("OrdenReglas.xml");
-
-            XmlNode _xmlNodo = _xmlEditor.DocumentElement;
-
-            
+            _xmlEditor = new XmlEditor("OrdenReglas.xml");
+            _xmlEditor.ModificarPrioridadReglas(pReglas);
             return true;
         }
 
@@ -161,19 +154,32 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool ModificarProcedimientoRegla(Regla pNombreProcedimiento, string pProcedimiento)
         {
+            _xmlEditor = new XmlEditor("OrdenReglas.xml");
+            _xmlEditor.ModificarProcedureRegla(pNombreProcedimiento);
             return true;
         }
 
         /**
          * Elimina una regla del negocio.
          **/
-        public bool EliminarRegla(Regla pRegla)
+        public bool DesactivarRegla(Regla pRegla)
         {
+            _xmlEditor = new XmlEditor("OrdenReglas.xml");
+            _xmlEditor.DeshabilitarRegla(pRegla);
             return true;
+        }
+        
+        /**
+         * Retorna la informacion de todas las reglas.
+         **/
+        public LinkedList<Regla> ObtenerInformacionReglas()
+        {
+            _xmlEditor = new XmlEditor("OrdenReglas.xml");
+            return _xmlEditor.ObtenerListaReglas();
         }
         #endregion
 
-        #region
+        #region Constantes
         #endregion
 
         #region Propiedades

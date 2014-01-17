@@ -14,7 +14,9 @@ namespace ITCR.InclusionesWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["TipoUsuario"] = "";
+            Session["NUsuario"] = "";
+            Session["Nombre"] = "";
         }
 
         protected void btnInicioSesion_Click(object sender, EventArgs e)
@@ -28,10 +30,14 @@ namespace ITCR.InclusionesWeb
                 switch (Int32.Parse(ddlTipoUsuario.SelectedValue))
                 {
                     case 0:
-                        
+                        IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+                        Ado.ClasesComunes.Estudiante _estAlumno = _metEstudiante.ObtenerDatosEstudiante(txtNombreUsuario.Text,
+                                                                        _metEstudiante.EstudianteExiste(txtNombreUsuario.Text));
+                        Session["Nombre"] = _estAlumno.Nom_Nombre + " " + _estAlumno.Txt_Apellido1 + " " + _estAlumno.Txt_Apellido2;
                         Response.Redirect("~/Estudiante/Default.aspx");
                         break;
                     case 1:
+                        Session["Nombre"] = txtNombreUsuario.Text;
                         Response.Redirect("~/Administrador/Default.aspx");
                         break;
                     default:

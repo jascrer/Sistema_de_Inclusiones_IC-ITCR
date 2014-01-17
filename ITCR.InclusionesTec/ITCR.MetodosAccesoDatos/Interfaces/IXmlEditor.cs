@@ -47,6 +47,12 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /// </summary>
         /// <param name="pRegla"></param>
         bool DeshabilitarRegla(Regla pRegla);
+
+        /// <summary>
+        /// Retorna la informacion de todas las reglas.
+        /// </summary>
+        /// <returns></returns>
+        LinkedList<Regla> ObtenerListaReglas();
         #endregion
     }
 }
