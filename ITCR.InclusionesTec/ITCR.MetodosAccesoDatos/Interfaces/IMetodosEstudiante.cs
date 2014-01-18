@@ -40,7 +40,7 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         /**
          * Retorna la cita de matricula del estudiante
          **/
-
+        string ObtenerCitaMatricula(string pCarnet);
 
         /**
          * Retorna los cursos matriculados del _sifeEstudiante

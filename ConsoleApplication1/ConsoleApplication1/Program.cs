@@ -30,11 +30,18 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            IXmlEditor _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            LinkedList<Regla> lista = _xmlEditor.ObtenerListaReglas();
-            foreach (Regla regla in lista)
+            wsDar.AdmisionyRegistro _admin = new wsDar.AdmisionyRegistro();
+            /*DataSet _tipoMatricula = _admin.TIPOS_MATRICULA_Buscar();
+            foreach (DataRow _row in _tipoMatricula.Tables[0].Rows)
             {
-                Console.WriteLine(regla.Nombre);
+                Console.WriteLine(_row["IDE_MATRICULA"].ToString() + _row["DSC_MATRICULA"].ToString());
+            }
+            */
+            DataSet _citasMatricula = _admin.CITASMATRICULA_Buscar("201030612", "1", "", "2013", "S", "1");
+            Console.WriteLine(_citasMatricula.Tables[0].Rows.Count);
+            foreach (DataRow _especificas in _citasMatricula.Tables[0].Rows)
+            {
+                Console.WriteLine(_especificas["FEC_MATRICULA"]);
             }
             Console.ReadLine();
         }

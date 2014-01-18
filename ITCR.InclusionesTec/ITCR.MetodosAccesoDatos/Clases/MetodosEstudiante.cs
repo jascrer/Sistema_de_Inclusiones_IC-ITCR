@@ -161,6 +161,34 @@ namespace ITCR.MetodosAccesoDatos.Clases
         }
 
         /**
+         * Retorna la cita de matricula del estudiante
+         **/
+        public string ObtenerCitaMatricula(string pCarnet)
+        {
+            _objConexionWS = new wsDar.AdmisionyRegistro();
+            DataSet _dsCitasMatricula =
+                _objConexionWS.CITASMATRICULA_Buscar(pCarnet, "1", "", "2013", "S", ObtenerPeriodoActual());
+            return _dsCitasMatricula.Tables[0].Rows[0]["FEC_MATRICULA"].ToString();
+        }
+
+        //Obtiene el periodo actual sea el 1 o 2 del a
+        private string ObtenerPeriodoActual()
+        {
+            switch (DateTime.Now.Month)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    return "1";
+                default:
+                    return "2";
+            }
+        }
+
+        /**
          * Retorna los cursos matriculados del _sifeEstudiante
          * Temporalmente retorna todos los cursos de la carrera
          **/

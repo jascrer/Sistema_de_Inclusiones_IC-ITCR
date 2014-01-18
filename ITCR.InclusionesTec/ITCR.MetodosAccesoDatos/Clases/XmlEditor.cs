@@ -74,7 +74,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
             _xmlElemento.Attributes.Append(_xmlAtributo);
 
             _xmlAtributo = _xmlEditor.CreateAttribute(_sATRIBUTOSREGLA[3]);
-            _xmlAtributo.Value = pRegla.Estado;
+            _xmlAtributo.Value = "habilitada";
             _xmlElemento.Attributes.Append(_xmlAtributo);
 
             //Agrega los parametros del stored procedure a la regla
