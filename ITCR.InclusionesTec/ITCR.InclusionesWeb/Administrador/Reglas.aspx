@@ -14,7 +14,7 @@
         <fieldset>
             <legend>Reglas</legend>
             
-            <asp:Table ID="tblReglas" runat="server" ></asp:Table>
+            <asp:Table ID="tblReglas" runat="server" CssClass="tabla" ></asp:Table>
             <!--
                 * Activar/Desactivar regla
                 * Subir

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
@@ -10,17 +10,19 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
+    <form id="Form1" runat="server">
     <div class="page">
         <div class="header">
+            <div class="loginDisplay">
+                <asp:Label ID="Bienvenido" runat="server" />
+                <span class="bold"><asp:Label ID="HeadLoginName" runat="server" /></span>
+                <asp:HyperLink ID="Cerrar" runat="server" NavigateUrl="~/Default.aspx"></asp:HyperLink>
+            </div>
             <div class="title">
                 <h1>
                     Inclutec
                 </h1>
-            </div>
-            <div class="loginDisplay">
-                Bienvenido/a, <span class="bold"><asp:Label ID="HeadLoginName" runat="server" /></span>
-                <a href="../Default.aspx">Cerrar Sesion</a>
+                <span>Sistema Automatizado de Inclusiones</span>
             </div>
         </div>
         <div class="hideSkiplink">

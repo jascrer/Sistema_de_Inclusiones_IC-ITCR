@@ -11,7 +11,20 @@ namespace ITCR.InclusionesWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HeadLoginName.Text = (string)Session["Nombre"];
+            try
+            {
+                if (!((string)Session["Nombre"]).Equals(""))
+                {
+                    Bienvenido.Text = "Bienvenido/a, ";
+                    HeadLoginName.Text = (string)Session["Nombre"];
+                    Cerrar.Text = "Cerrar Sesión";
+                }
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }

@@ -124,14 +124,59 @@ first child of the left and right table columns */
 
 .header h1
 {
+    width: 100%;
     font-weight: 700;
     margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
+    color: #ccc;
+    text-shadow: -1px -1px #000;
     border: none;
     line-height: 2em;
-    font-size: 2em;
+    font-size: 4em;
+    margin-bottom: -20px;
 }
+
+.title span {
+    color: #ccc;
+    font-size: 1.2em;
+}
+
+.title
+{
+    clear: both;
+    float: center;
+    display: block;
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
+    /*padding-top: 30px;*/
+    min-height: 100%;
+}
+
+.loginDisplay
+{
+    display: block;
+    float: right;
+    font-size: 1.1em;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
 
 .main
 {
@@ -444,40 +489,6 @@ div.accountInfo
     clear: both;
 }
 
-.title
-{
-    display: block;
-    float: center;
-    text-align: center;
-    vertical-align: center;
-    width: auto;
-    height: 100%;
-}
-
-.loginDisplay
-{
-    font-size: 1.1em;
-    display: block;
-    text-align: right;
-    padding: 10px;
-    color: White;
-}
-
-.loginDisplay a:link
-{
-    color: white;
-}
-
-.loginDisplay a:visited
-{
-    color: white;
-}
-
-.loginDisplay a:hover
-{
-    color: white;
-}
-
 .failureNotification
 {
     font-size: 1.2em;
@@ -553,8 +564,4 @@ div.accountInfo
 	/* W3C Markup, IE10 Release Preview */ 
 	background-image: linear-gradient(to bottom, #FFFFFF 0%, #999999 100%);
 	/*-----------------------------*/
-}
-
-.submitInput:hover {
-	
 }
