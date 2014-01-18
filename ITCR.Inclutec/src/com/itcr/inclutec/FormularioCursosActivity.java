@@ -2,14 +2,27 @@ package com.itcr.inclutec;
 
 import java.util.ArrayList;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.example.itcr.inclutec.R;
 import com.example.itcr.inclutec.R.layout;
 import com.example.itcr.inclutec.R.menu;
+import com.google.gson.Gson;
+import com.itcr.inclutec.clases_comunes.Curso;
+import com.itcr.inclutec.clases_comunes.Estudiante;
+import com.itcr.inclutec.clases_comunes.PlanEstudios;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +42,9 @@ public class FormularioCursosActivity extends Activity {
 	private final String _sMATRICULADOS[]=
 			new String[]{"Investigación de Operaciones"};
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
+	ArrayList<String> _alCursos = new ArrayList<String>();
+	HttpClient httpClient = new DefaultHttpClient();
+	HttpGet _getCursos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +59,36 @@ public class FormularioCursosActivity extends Activity {
         Intent intent = getIntent();
         final ArrayList<String> _sDataBundle = intent.getStringArrayListExtra(FormularioDPActivity._sEXTRA_MESSAGE);
         
+        _getCursos = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/cursos");
+		_getCursos.setHeader("content-type", "application/json");
+		JSONObject respJSON;
+		JSONArray respJSON2;
+		
+		try
+		{
+		        HttpResponse resp = httpClient.execute(_getCursos);
+		        String respStr = EntityUtils.toString(resp.getEntity());
+		        Log.e("ServicioRestCursos",respStr);
+		     
+		        respJSON = new JSONObject(respStr);
+		        respJSON2 = respJSON.getJSONArray("ObtenerCursosResult");
+		        Log.e("Cursos",respJSON2.toString());
+		        
+		        for(int i = 0; i<respJSON2.length(); i++){
+		        	JSONObject _jCurso = respJSON2.getJSONObject(i);
+		        	Curso _cCurso = new Gson().fromJson(_jCurso.toString(),Curso.class);
+		        	_alCursos.add(_cCurso.getTxt_Curso());
+		        }
+		        
+		}
+		catch(Exception ex)
+		{
+		        Log.e("ServicioRest","Error!", ex);
+		}
+        
         final AutoCompleteTextView _actvCursos;
         _actvCursos = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
-        ArrayAdapter _aaCursos = new ArrayAdapter (this,android.R.layout.simple_list_item_1,_sCURSOS);
+        ArrayAdapter _aaCursos = new ArrayAdapter (this,android.R.layout.simple_list_item_1,_alCursos);
         _actvCursos.setAdapter(_aaCursos);
         
         final ListView _lvMatriculados;
@@ -63,7 +106,7 @@ public class FormularioCursosActivity extends Activity {
 				_sDataBundle.add(_sCurso);
 				
 				//Intent para la creacion de la nueva activity
-				Intent _intSiguiente = new Intent(FormularioCursosActivity.this,FormularioRestriccionesActivity.class);
+				Intent _intSiguiente = new Intent(FormularioCursosActivity.this,FormularioComentarioActivity.class);
 				_intSiguiente.putExtra(_sEXTRA_MESSAGE, _sDataBundle);
 				startActivity(_intSiguiente);
 			}
