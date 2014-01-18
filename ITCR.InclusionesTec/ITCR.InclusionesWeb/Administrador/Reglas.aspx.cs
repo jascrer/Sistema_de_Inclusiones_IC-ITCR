@@ -17,16 +17,10 @@ namespace ITCR.InclusionesWeb.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LinkedList<string> Lis_NombreReglas = new LinkedList<string>();
-
             //Obtengo los datos del xml
             IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
-            LinkedList<Regla> Lis_Reglas = _metAdministrador.ObtenerInformacionReglas();
-            var Lis_ReglasOrdenadas = Lis_Reglas.OrderBy(r => r.Posicion);
-            LinkedList<string> lista = new LinkedList<string>();
-            lista.AddLast("a");
-            lista.AddLast("b");
-            lista.AddLast("c");
+            LinkedList<Regla> _lisReglas = _metAdministrador.ObtenerInformacionReglas();
+            var _lisReglasOrdenadas = _lisReglas.OrderBy(r => r.Posicion);
 
             //Lleno la tabla de reglas
             TableHeaderRow Row_Encabezado = new TableHeaderRow();//-- Encabezado de tabla
@@ -41,15 +35,21 @@ namespace ITCR.InclusionesWeb.Administrador
             Row_Encabezado.Cells.Add(Cel_Encabezado3);
             tblReglas.Rows.Add(Row_Encabezado);
 
-            foreach (var regla in lista)
-            {//-- Filas por regla
+            for (int i = 0; i < _lisReglasOrdenadas.Count(); i++)
+            {
+                int index = i + 1;
                 TableRow Row_Regla = new TableRow();
                 TableCell Cel_Nombre = new TableCell(); //-- Nombre de regla
-                Cel_Nombre.Text = regla;
+                Cel_Nombre.Text = _lisReglasOrdenadas.ElementAt(i).Nombre;
                 Row_Regla.Cells.Add(Cel_Nombre);
 
                 TableCell Cel_Activo = new TableCell();
                 CheckBox chbActivar = new CheckBox(); //-- Activar o desactivar
+                chbActivar.ID = index.ToString();
+                if (_lisReglasOrdenadas.ElementAt(i).Estado == "habilitada")
+                {
+                    chbActivar.Checked = true;
+                }
                 Cel_Activo.Controls.Add(chbActivar);
                 Row_Regla.Cells.Add(Cel_Activo);
 
@@ -59,12 +59,16 @@ namespace ITCR.InclusionesWeb.Administrador
                 btnSubir.ImageUrl = "../Images/table_move_row_up.png";
                 btnSubir.AlternateText = "Subir";
                 btnSubir.ToolTip = "Subir";
+                btnSubir.CommandArgument = index.ToString();
+                btnSubir.Click += new ImageClickEventHandler(btnSubir_Click);
                 Cel_Acciones.Controls.Add(btnSubir);
 
                 ImageButton btnBajar = new ImageButton(); //-- Decrementar prioridad
                 btnBajar.ImageUrl = "../Images/table_move_row_down.png";
                 btnBajar.AlternateText = "Bajar";
                 btnBajar.ToolTip = "Bajar";
+                btnBajar.CommandArgument = index.ToString();
+                btnBajar.Click += new ImageClickEventHandler(btnBajar_Click);
                 Cel_Acciones.Controls.Add(btnBajar);
 
                 Row_Regla.Cells.Add(Cel_Acciones);
@@ -72,5 +76,57 @@ namespace ITCR.InclusionesWeb.Administrador
             }
 
         }
+
+        protected void btnSubir_Click(object sender, EventArgs e)
+        {
+            ImageButton boton = sender as ImageButton;
+            TableCell celda = boton.Parent as TableCell;
+            TableRow fila = celda.Parent as TableRow;
+            int indexActual = tblReglas.Rows.GetRowIndex(fila);
+            int indexNuevo = indexActual - 1;
+            if (indexNuevo!=0)
+            {
+                tblReglas.Rows.Remove(fila);
+                tblReglas.Rows.AddAt(indexNuevo, fila);
+                IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+            }
+            else
+            {
+                //label.Text = "no se mueve";
+            }
+        }
+
+        protected void btnBajar_Click(object sender, EventArgs e)
+        {
+            ImageButton boton = sender as ImageButton;
+            TableCell celda = boton.Parent as TableCell;
+            TableRow fila = celda.Parent as TableRow;
+            int indexActual = tblReglas.Rows.GetRowIndex(fila);
+            int indexNuevo = indexActual + 1;
+            if (indexNuevo != tblReglas.Rows.Count)
+            {
+                tblReglas.Rows.Remove(fila);
+                tblReglas.Rows.AddAt(indexNuevo, fila);
+            }
+            else
+            {
+                //label.Text = "no se mueve";
+            }
+
+            //int rowIndex = int.Parse(((ImageButton)sender).CommandArgument);
+            //int newIndex = rowIndex + 1;
+            //Label label = new Label();
+            //if(newIndex!=tblReglas.Rows.Count)
+            //{
+            //    label.Text = rowIndex.ToString() + "->" + newIndex;
+            //}
+            //else
+            //{
+            //    label.Text = "no se mueve";
+            //}
+            //tblReglas.Rows[rowIndex].Cells[2].Controls.Add(label);
+        }
+
+        
     }
 }
