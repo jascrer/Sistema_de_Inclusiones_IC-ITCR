@@ -50,7 +50,7 @@ namespace ITCR.RestServiciosWebDatos
         public bool CrearEstudiante(Estudiante pEstudiante, int pPlanEstudios)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
-            return _metEstudiante.GuardarDatosEstudiantes(pEstudiante,pPlanEstudios);
+            return _metEstudiante.GuardarDatosEstudiantes(pEstudiante, pPlanEstudios);
         }
 
         /**
@@ -64,13 +64,32 @@ namespace ITCR.RestServiciosWebDatos
         }
 
         /**
+        * Devuelve el plan de estudios de un estudiante.
+        **/
+        public PlanEstudios ObtenerPlanEstudios(string pCarnet)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerPlanEstudios(pCarnet, _metEstudiante.EstudianteExiste(pCarnet));
+        }
+
+        /**
+         * Devuelve un string con la cita de matricula
+         **/
+        public string ObtenerCitaMatricula(string pCarnet)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerCitaMatricula(pCarnet);
+        }
+
+        /**
          * Actualiza los datos de contacto del estudiante especificado.
          * Retorna verdadero en caso de actualizarse correctamente.
          * Retorna falso en caso contrario.
          **/
-        public bool ActualizarContacto(Estudiante pEstudiante)
+        public bool ActualizarContacto(Estudiante pEstudiante, int pPlanEstudios)
         {
-            return true;
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.GuardarDatosEstudiantes(pEstudiante, pPlanEstudios);
         }
 
         /**
@@ -80,7 +99,95 @@ namespace ITCR.RestServiciosWebDatos
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             //Temporalmente tiene "" como parametros.
-            return _metEstudiante.ObtenerCursosEstudiante("","");
+            return _metEstudiante.ObtenerCursosEstudiante("", "");
+        }
+
+        #region Obtener Solicitudes
+        /**
+         * Devuelve las solicitudes pendientes.
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerSolicitudesPendientes(pCarnet, pPeriodo);
+        }
+
+        /**
+         * Devuelve las solicitudes anuladas.
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerSolicitudesAnuladas(pCarnet, pPeriodo);
+        }
+
+        /**
+         * Devuelve las solicitudes aprobadas.
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerSolicitudesAprobadas(pCarnet, pPeriodo);
+        }
+
+        /**
+         * Devuelve las solicitudes reprobadas.
+         **/
+        LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerSolicitudesReprobadas(pCarnet, pPeriodo);
+        }
+        #endregion
+
+        /**
+         * Devuelve el periodo
+         **/
+        public Periodo ObtenerPeriodo()
+        {
+            IMetodosAdministrador _metAdmin = new MetodosAdministrador();
+            return _metAdmin.UltimoPeriodo();
+        }
+
+        /**
+         * Anula la solicitud especificada
+         **/
+        public bool AnularSolicitud(Solicitud pSolicitud)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.AnularSolicitud(pSolicitud);
+        }
+
+        /**
+         * Crea una nueva solicitud en la base de datos
+         **/
+        public bool GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            IMetodosAdministrador _metAdmin = new MetodosAdministrador();
+            Periodo _perUltimo = _metAdmin.UltimoPeriodo();
+
+            pSolicitud.Txt_Estado = "PENDIENTE";
+
+            if ((_perUltimo.Fec_Inicio <= pSolicitud.Fec_Creacion) &&
+                (_perUltimo.Fec_Fin >= pSolicitud.Fec_Creacion))
+            {
+                _metEstudiante.GuardarSolicitud(pEstudiante, pPeriodo, pSolicitud);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /**
+         * Guarda la relacion entre el grupo y la solicitud
+         **/
+        bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.GuardarGruposSolicitud(pSolicitud, pGrupos);
         }
         #endregion
 

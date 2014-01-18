@@ -44,6 +44,24 @@ namespace ITCR.RestServiciosWebDatos
         Estudiante ObtenerInformacionEstudiante(string pId);
 
         /**
+         * Devuelve el plan de estudios de un estudiante.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/plan/?id={pCarnet}",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        PlanEstudios ObtenerPlanEstudios(string pCarnet);
+
+        /**
+         * Devuelve un string con la cita de matricula
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/cita/?carnet={pCarnet}",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        string ObtenerCitaMatricula(string pCarnet);
+
+        /**
          * Devuelve la lista de cursos del semestre
          **/
         [OperationContract]
@@ -51,6 +69,53 @@ namespace ITCR.RestServiciosWebDatos
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Curso> ObtenerCursos();
+
+        #region Obtener Solicitudes
+        /**
+         * Devuelve las solicitudes pendientes.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/pendiente",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo);
+
+        /**
+         * Devuelve las solicitudes anuladas.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/anulada",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo);
+
+        /**
+         * Devuelve las solicitudes aprobadas.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/aprobada",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo);
+
+        /**
+         * Devuelve las solicitudes reprobadas.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/reprobada",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo);
+        #endregion
+
+        /**
+         * Devuelve el periodo
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/periodo",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        Periodo ObtenerPeriodo();
 
         /**
          * Actualiza los datos de contacto del estudiante especificado.
@@ -61,8 +126,18 @@ namespace ITCR.RestServiciosWebDatos
         [WebInvoke(UriTemplate = "/estudiante", Method = "PUT",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle=WebMessageBodyStyle.Wrapped)]
-        bool ActualizarContacto(Estudiante pEstudiante);
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool ActualizarContacto(Estudiante pEstudiante, int pPlanEstudios);
+
+        /**
+         * Anula la solicitud especificada
+         **/
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/solicitud", Method = "PUT",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool AnularSolicitud(Solicitud pSolicitud);
 
         /**
          * Crea un nuevo estudiante en la base de datos.
@@ -77,5 +152,24 @@ namespace ITCR.RestServiciosWebDatos
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool CrearEstudiante(Estudiante pEstudiante, int pPlanEstudios);
 
+        /**
+         * Crea una nueva solicitud en la base de datos
+         **/
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/solicitud/crear/?estudiante={pEstudiante}&periodo={pPeriodo}", Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool GuardarSolicitud(string pEstudiante, int pPeriodo, Solicitud pSolicitud);
+
+        /**
+         * Guarda la relacion entre el grupo y la solicitud
+         **/
+        [OperationContract]
+        [WebInvoke(UriTemplate = "solicitud/crear/grupos", Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos);
     }
 }
