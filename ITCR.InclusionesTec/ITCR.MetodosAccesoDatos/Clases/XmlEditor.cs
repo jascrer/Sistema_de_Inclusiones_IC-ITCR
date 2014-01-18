@@ -223,7 +223,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     Regla _regla = new Regla();
                     _regla.Posicion = Int32.Parse(_xmlNodo.Attributes[_sATRIBUTOSREGLA[0]].Value);
                     _regla.Nombre = _xmlNodo.Attributes[_sATRIBUTOSREGLA[1]].Value;
-                    _regla.StoredProcedure = _xmlNodo[_sATRIBUTOSREGLA[2]].Value;
+                    _regla.StoredProcedure = _xmlNodo.Attributes[_sATRIBUTOSREGLA[2]].Value;
                     _regla.Estado = _xmlNodo.Attributes[_sATRIBUTOSREGLA[3]].Value;
                     _liReglas.AddLast(_regla);
                 }

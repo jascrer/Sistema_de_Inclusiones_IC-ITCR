@@ -220,7 +220,6 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 LinkedList<Regla> _liReglas = new LinkedList<Regla>();
                 foreach (XmlNode _xmlNodo in _liNodos)
                 {
-                    Console.WriteLine(_xmlNodo.Attributes[_sATRIBUTOSREGLA[1]].Value);
                     Regla _regla = new Regla();
                     _regla.Posicion = Int32.Parse(_xmlNodo.Attributes[_sATRIBUTOSREGLA[0]].Value);
                     _regla.Nombre = _xmlNodo.Attributes[_sATRIBUTOSREGLA[1]].Value;
