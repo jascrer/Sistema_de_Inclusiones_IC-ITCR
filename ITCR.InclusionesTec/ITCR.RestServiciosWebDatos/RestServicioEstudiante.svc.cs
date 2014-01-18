@@ -66,7 +66,7 @@ namespace ITCR.RestServiciosWebDatos
          /**
          * Devuelve el plan de estudios de un estudiante.
          **/
-        PlanEstudios ObtenerPlanEstudios(string pCarnet)
+        public PlanEstudios ObtenerPlanEstudios(string pCarnet)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.ObtenerPlanEstudios(pCarnet, _metEstudiante.EstudianteExiste(pCarnet));
