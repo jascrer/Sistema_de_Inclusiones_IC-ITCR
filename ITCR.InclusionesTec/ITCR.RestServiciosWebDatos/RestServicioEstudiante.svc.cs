@@ -106,7 +106,7 @@ namespace ITCR.RestServiciosWebDatos
         /**
          * Devuelve las solicitudes pendientes.
          **/
-        LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo)
+        public LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.ObtenerSolicitudesPendientes(pCarnet, pPeriodo);
@@ -115,7 +115,7 @@ namespace ITCR.RestServiciosWebDatos
         /**
          * Devuelve las solicitudes anuladas.
          **/
-        LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo)
+        public LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.ObtenerSolicitudesAnuladas(pCarnet, pPeriodo);
@@ -124,7 +124,7 @@ namespace ITCR.RestServiciosWebDatos
         /**
          * Devuelve las solicitudes aprobadas.
          **/
-        LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo)
+        public LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.ObtenerSolicitudesAprobadas(pCarnet, pPeriodo);
@@ -133,7 +133,7 @@ namespace ITCR.RestServiciosWebDatos
         /**
          * Devuelve las solicitudes reprobadas.
          **/
-        LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo)
+        public LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.ObtenerSolicitudesReprobadas(pCarnet, pPeriodo);
@@ -184,7 +184,7 @@ namespace ITCR.RestServiciosWebDatos
         /**
          * Guarda la relacion entre el grupo y la solicitud
          **/
-        bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
+        public bool GuardarGruposSolicitud(Solicitud pSolicitud, LinkedList<Grupo> pGrupos)
         {
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.GuardarGruposSolicitud(pSolicitud, pGrupos);

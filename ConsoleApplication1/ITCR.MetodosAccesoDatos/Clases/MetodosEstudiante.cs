@@ -582,7 +582,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _objConexionBase.Connection.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

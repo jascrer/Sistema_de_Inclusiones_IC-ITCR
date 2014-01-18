@@ -177,6 +177,66 @@ namespace ITCR.MetodosAccesoDatos.Clases
             _xmlEditor = new XmlEditor("OrdenReglas.xml");
             return _xmlEditor.ObtenerListaReglas();
         }
+
+        /**
+         * Crea una excepcion.
+         **/
+        public bool CrearExcepcion(int pPeriodo, int pCurso,
+            int pGrupo, string pEstudiante)
+        {
+            try
+            {
+                SITExcepcion _sitExcepcion = new SITExcepcion();
+                _sitExcepcion.FK_Curso_idCurso = pCurso;
+                _sitExcepcion.FK_Estudiante_carnet = pEstudiante;
+                _sitExcepcion.FK_Grupo_idGrupo = pGrupo;
+                _sitExcepcion.FK_Periodo_idPeriodo = pPeriodo;
+
+                _objConexionBase = new Inclutec_BDEntities();
+                _objConexionBase.AddToSITExcepcions(_sitExcepcion);
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /**
+         * Retorna la lista de excepciones del periodo
+         **/
+        public LinkedList<Excepcion> ObtenerListaExcepciones(int pPeriodo)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                var _sitExcepciones = from _sifExcepciones in _objConexionBase.SITExcepcions
+                                        where _sifExcepciones.FK_Periodo_idPeriodo == pPeriodo
+                                        select _sifExcepciones;
+                _objConexionBase.Connection.Close();
+                LinkedList<Excepcion> _liExcepciones = new LinkedList<Excepcion>();
+                foreach (SITExcepcion _sitExcepcion in _sitExcepciones)
+                {
+                    Excepcion _excepcion = new Excepcion();
+                    _excepcion.Id_Curso = _sitExcepcion.FK_Curso_idCurso;
+                    _excepcion.Id_Estudiante = _sitExcepcion.FK_Estudiante_carnet;
+                    _excepcion.Id_Excepcion = _sitExcepcion.id_Excepcion;
+                    _excepcion.Id_Grupo = _sitExcepcion.FK_Grupo_idGrupo;
+                    _excepcion.Id_Periodo = _sitExcepcion.FK_Periodo_idPeriodo;
+
+                    _liExcepciones.AddLast(_excepcion);
+                }
+
+
+                return _liExcepciones;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Constantes

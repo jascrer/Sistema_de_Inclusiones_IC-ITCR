@@ -71,6 +71,17 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
          * Retorna la informacion de todas las reglas.
          **/
         LinkedList<Regla> ObtenerInformacionReglas();
+
+        /**
+         * Crea una excepcion.
+         **/
+        bool CrearExcepcion(int pPeriodo, int pCurso, 
+            int pGrupo, string pEstudiante);
+
+        /**
+         * Retorna la lista de excepciones del periodo
+         **/
+        LinkedList<Excepcion> ObtenerListaExcepciones(int pPeriodo);
         #endregion
     }
 }
