@@ -349,7 +349,27 @@ BEGIN
 END 	
 GO
 
-
+CREATE PROCEDURE SIF_SP_Insertar_Auto_Regla
+	@Nombre varchar(25),
+	@Prioridad int,
+	@Estado varchar(15)
+AS
+BEGIN
+	INSERT INTO SIFRegla
+		( 
+			txt_nombre,
+			num_prioridad,
+			txt_estado
+		) 
+	VALUES
+		(
+			@Nombre,
+			@Prioridad,
+			@Estado
+		)	
+	SET NOCOUNT OFF
+END 	
+GO
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -655,3 +675,9 @@ EXEC SIT_SP_Insertar_Auto_Profesor 'CASTRO','MORA','JOSE'
 EXEC SIT_SP_Insertar_Auto_Profesor 'MORA','ROJAS','DIEGO'
 
 EXEC SIT_SP_Insertar_Auto_Grupo
+
+EXEC SIF_SP_Ins_Auto_Regla 'Excepciones',1,'habilitada'
+EXEC SIF_SP_Ins_Auto_Regla 'Carnet de Oro',2,'deshabilitada'
+EXEC SIF_SP_Ins_Auto_Regla 'Proximo a Graduacion',3,'habilitada'
+EXEC SIF_SP_Ins_Auto_Regla 'Cursos Insuficientes',4,'habilitada'
+EXEC SIF_SP_Ins_Auto_Regla 'Cita de Matricula',5,'habilitada'
