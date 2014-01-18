@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Inicio de Estudiante" Language="C#" MasterPageFile="~/Student.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ITCR.InclusionesWeb.Estudiante.Default" %>
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -20,6 +21,28 @@
                 <Header>Pendientes</Header>
                 <Content>
                     -- Sin Solicitudes Pendientes --
+                    <asp:Button runat="server" ID="button1" Text="Editar"></asp:Button>
+                    
+                    <ajaxToolkit:modalpopupextender id="ModalPopupExtender1" runat="server" 
+	                    cancelcontrolid="btnCancel" okcontrolid="btnOkay" 
+	                    targetcontrolid="button1" popupcontrolid="Panel1" 
+	                    popupdraghandlecontrolid="PopupHeader" drag="true" 
+	                    backgroundcssclass="ModalPopupBG">
+                    </ajaxToolkit:modalpopupextender>
+
+                    <asp:panel id="Panel1" style="display: none" runat="server">
+	                    <div class="HellowWorldPopup">
+                                    <div class="PopupHeader" id="PopupHeader">Header</div>
+                                    <div class="PopupBody">
+                                        <p>This is a simple modal dialog</p>
+                                    </div>
+                                    <div class="Controls">
+                                        <input id="btnOkay" type="button" value="Done" />
+                                        <input id="btnCancel" type="button" value="Cancel" />
+		                    </div>
+                            </div>
+                    </asp:panel>
+                    
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">
