@@ -46,6 +46,14 @@ namespace ITCR.Ado.ClasesComunes
         #endregion
 
         #region Constructores
+        public Regla()
+        {
+            _iPosicion = 0;
+            _sNombre = "";
+            _sStoredProcedure = "";
+            _liParametros = new LinkedList<Parametro>();
+        }
+
         /// <summary>
         /// Constructor de la clase.
         /// </summary>

@@ -207,6 +207,35 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 return false;
             }
         }
+
+        /// <summary>
+        /// Retorna la informacion de todas las reglas.
+        /// </summary>
+        /// <returns></returns>
+        public LinkedList<Regla> ObtenerListaReglas()
+        {
+            try
+            {
+                XmlNodeList _liNodos = _xmlEditor.SelectNodes(_sNODOSXML[0]);
+                LinkedList<Regla> _liReglas = new LinkedList<Regla>();
+                foreach (XmlNode _xmlNodo in _liNodos)
+                {
+                    Console.WriteLine(_xmlNodo.Attributes[_sATRIBUTOSREGLA[1]].Value);
+                    Regla _regla = new Regla();
+                    _regla.Posicion = Int32.Parse(_xmlNodo.Attributes[_sATRIBUTOSREGLA[0]].Value);
+                    _regla.Nombre = _xmlNodo.Attributes[_sATRIBUTOSREGLA[1]].Value;
+                    _regla.StoredProcedure = _xmlNodo.Attributes[_sATRIBUTOSREGLA[2]].Value;
+                    _regla.Estado = _xmlNodo.Attributes[_sATRIBUTOSREGLA[3]].Value;
+                    _liReglas.AddLast(_regla);
+                }
+
+                return _liReglas;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Constantes
