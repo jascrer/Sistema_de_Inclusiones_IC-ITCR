@@ -11,6 +11,7 @@ using ITCR.MetodosAccesoDatos.Clases;
 using ITCR.MetodosAccesoDatos.Interfaces;
 #endregion
 
+using AjaxControlToolkit;
 
 namespace ITCR.InclusionesWeb.Administrador
 {
@@ -23,24 +24,34 @@ namespace ITCR.InclusionesWeb.Administrador
 
         protected void btnDefinirPeriodo_Click(object sender, EventArgs e)
         {
-            //GET datos para creacion de periodo
-            string txt_Modalidad = ddlModalidad.SelectedValue;//"S"
-            int num_Periodo = int.Parse(ddlPeriodo.SelectedValue);//
-            int num_Anio = int.Parse(txtAnio.Text);
-            string txt_FechaInicio = txtFechaInicio.Text;
-            string txt_FechaFin = txtFechaFinal.Text;
-
-            Ado.ClasesComunes.Periodo _periodoNuevo = new Ado.ClasesComunes.Periodo();
-            _periodoNuevo.Txt_Modalidad = txt_Modalidad;
-            _periodoNuevo.Num_Periodo = num_Periodo;
-            _periodoNuevo.Num_Anno = num_Anio;
-            _periodoNuevo.Fec_Inicio = DateTime.Parse(txt_FechaInicio + " 00:00:00");
-            _periodoNuevo.Fec_Fin = DateTime.Parse(txt_FechaFin + " 00:00:00");
-            _periodoNuevo.Txt_Estado = "En Curso";
-
-            //Guardar en BD
             IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
-            _metAdministrador.DefinirPeriodoSolicitud(_periodoNuevo);
+            if (_metAdministrador.UltimoPeriodo() == null)
+            {
+                //GET datos para creacion de periodo
+                string txt_Modalidad = ddlModalidad.SelectedValue;//"S"
+                int num_Periodo = int.Parse(ddlPeriodo.SelectedValue);//
+                int num_Anio = int.Parse(txtAnio.Text);
+                string txt_FechaInicio = txtFechaInicio.Text;
+                string txt_FechaFin = txtFechaFinal.Text;
+
+                Ado.ClasesComunes.Periodo _periodoNuevo = new Ado.ClasesComunes.Periodo();
+                _periodoNuevo.Txt_Modalidad = txt_Modalidad;
+                _periodoNuevo.Num_Periodo = num_Periodo;
+                _periodoNuevo.Num_Anno = num_Anio;
+                _periodoNuevo.Fec_Inicio = DateTime.Parse(txt_FechaInicio + " 00:00:00");
+                _periodoNuevo.Fec_Fin = DateTime.Parse(txt_FechaFin + " 00:00:00");
+                _periodoNuevo.Txt_Estado = "En Curso";
+
+                //Guardar en BD
+                _metAdministrador.DefinirPeriodoSolicitud(_periodoNuevo);
+            }
+            else
+            {
+                // Ya hay un periodo definido y en curso
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Error al crear el periodo",
+                    "alert('El periodo no fue creado, ya que existe un periodo de asignación en curso.');", true);
+            }
+            
 
         }
     }

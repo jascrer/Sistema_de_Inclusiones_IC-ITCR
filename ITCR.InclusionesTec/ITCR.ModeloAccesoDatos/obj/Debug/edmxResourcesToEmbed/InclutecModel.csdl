@@ -8,11 +8,11 @@
     <EntitySet Name="SIFPeriodoes" EntityType="Inclutec_BDModel.SIFPeriodo" />
     <EntitySet Name="SIFPlanEstudios" EntityType="Inclutec_BDModel.SIFPlanEstudio" />
     <EntitySet Name="SIFProfesors" EntityType="Inclutec_BDModel.SIFProfesor" />
+    <EntitySet Name="SIFReglas" EntityType="Inclutec_BDModel.SIFRegla" />
     <EntitySet Name="SIFSolicituds" EntityType="Inclutec_BDModel.SIFSolicitud" />
     <EntitySet Name="SITDatos_Estudiante" EntityType="Inclutec_BDModel.SITDatos_Estudiante" />
     <EntitySet Name="SITExcepcions" EntityType="Inclutec_BDModel.SITExcepcion" />
     <EntitySet Name="SITHorarios" EntityType="Inclutec_BDModel.SITHorario" />
-    <EntitySet Name="sysdiagrams" EntityType="Inclutec_BDModel.sysdiagram" />
     <AssociationSet Name="FK_Excepcion_Curso" Association="Inclutec_BDModel.FK_Excepcion_Curso">
       <End Role="SIFCurso" EntitySet="SIFCursoes" />
       <End Role="SITExcepcion" EntitySet="SITExcepcions" />
@@ -151,6 +151,16 @@
     <Property Name="dir_correo" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="SIFGrupoes" Relationship="Inclutec_BDModel.FK_Grupo_Profesor" FromRole="SIFProfesor" ToRole="SIFGrupo" />
   </EntityType>
+  <EntityType Name="SIFRegla">
+    <Key>
+      <PropertyRef Name="id_Regla" />
+    </Key>
+    <Property Name="id_Regla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="txt_nombre" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="txt_script" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="num_prioridad" Type="Int32" Nullable="false" />
+    <Property Name="txt_estado" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+  </EntityType>
   <EntityType Name="SIFSolicitud">
     <Key>
       <PropertyRef Name="id_Solicitud" />
@@ -204,16 +214,6 @@
     <Property Name="tim_hora_fin" Type="Time" Nullable="false" />
     <Property Name="FK_Grupo_idGrupo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="SIFGrupo" Relationship="Inclutec_BDModel.FK_Horario_Grupo" FromRole="SITHorario" ToRole="SIFGrupo" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Excepcion_Curso">
     <End Role="SIFCurso" Type="Inclutec_BDModel.SIFCurso" Multiplicity="1" />

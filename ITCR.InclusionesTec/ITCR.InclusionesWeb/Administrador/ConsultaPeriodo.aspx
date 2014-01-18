@@ -12,7 +12,7 @@
         <p class="center">
             <asp:Label ID="lblSinPeriodo" runat="server" ></asp:Label>
         </p>
-        <asp:Table ID="tblPeriodo" runat="server" ></asp:Table>
+        <asp:Table ID="tblPeriodo" runat="server" CssClass="tabla" ></asp:Table>
 
     </div>
 
