@@ -49,6 +49,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         protected global::System.Web.UI.WebControls.Panel Pan_Alerta;
         
         /// <summary>
+        /// Control btnCloseModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnCloseModal;
+        
+        /// <summary>
         /// Control lblPopupHeader.
         /// </summary>
         /// <remarks>

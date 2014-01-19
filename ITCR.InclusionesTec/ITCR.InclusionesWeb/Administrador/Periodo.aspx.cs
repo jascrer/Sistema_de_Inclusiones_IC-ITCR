@@ -59,7 +59,7 @@ namespace ITCR.InclusionesWeb.Administrador
 
         }
 
-        protected void btnOK_Click(object sender, EventArgs e)
+        protected void btnCloseModal_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }

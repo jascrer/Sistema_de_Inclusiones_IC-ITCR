@@ -17,37 +17,38 @@ namespace ITCR.InclusionesWeb.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                //Obtengo los datos del xml
-                IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
-                LinkedList<Regla> _lisReglas = _metAdministrador.ObtenerInformacionReglas();
-                var _lisReglasOrdenadas = _lisReglas.OrderBy(r => r.Posicion);
 
-                Session["Li_Reglas"] = _lisReglas;
-                //Lleno la tabla de reglas
-                TableHeaderRow Row_Encabezado = new TableHeaderRow();//-- Encabezado de tabla
-                TableHeaderCell Cel_Encabezado1 = new TableHeaderCell();
-                Cel_Encabezado1.Text = "Regla de negocio";
-                Row_Encabezado.Cells.Add(Cel_Encabezado1);
-                TableHeaderCell Cel_Encabezado2 = new TableHeaderCell();
-                Cel_Encabezado2.Text = "Activa";
-                Row_Encabezado.Cells.Add(Cel_Encabezado2);
-                TableHeaderCell Cel_Encabezado3 = new TableHeaderCell();
-                Cel_Encabezado3.Text = "Acciones";
-                Row_Encabezado.Cells.Add(Cel_Encabezado3);
+            //Obtengo los datos del xml
+            IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+            LinkedList<Regla> _lisReglas = _metAdministrador.ObtenerInformacionReglas();
+            Session["LISTA_REGLAS"] = _lisReglas;
+            if(_lisReglas != null)
+            {
+                var _lisReglasOrdenadas = _lisReglas.OrderBy(r => r.Posicion);//-- Ordeno la lista por prioridad
+
+                //-- Encabezado de la tabla
+                TableHeaderRow Row_Encabezado = new TableHeaderRow();
+                TableHeaderCell Cel_EncabezadoNombre = new TableHeaderCell();
+                Cel_EncabezadoNombre.Text = "Nombre de Regla";
+                TableHeaderCell Cel_EncabezadoEstado = new TableHeaderCell();
+                Cel_EncabezadoEstado.Text = "Estado";
+                TableHeaderCell Cel_EncabezadoAcciones = new TableHeaderCell();
+                Cel_EncabezadoAcciones.Text = "Acciones";
                 tblReglas.Rows.Add(Row_Encabezado);
 
-                for (int i = 0; i < _lisReglasOrdenadas.Count(); i++)
+                //-- Agrego las filas a la tabla
+
+                foreach(var _regla in _lisReglasOrdenadas)
                 {
-                    int index = i + 1;
                     TableRow Row_Regla = new TableRow();
+
                     TableCell Cel_Nombre = new TableCell(); //-- Nombre de regla
-                    Cel_Nombre.Text = _lisReglasOrdenadas.ElementAt(i).Nombre;
+                    Cel_Nombre.Text = _regla.Nombre;
                     Row_Regla.Cells.Add(Cel_Nombre);
 
                     TableCell Cel_Activo = new TableCell();
                     CheckBox chbActivar = new CheckBox(); //-- Activar o desactivar
-                    chbActivar.ID = index.ToString();
-                    if (_lisReglasOrdenadas.ElementAt(i).Estado == "habilitada")
+                    if (_regla.Estado == "habilitada")
                     {
                         chbActivar.Checked = true;
                     }
@@ -60,7 +61,6 @@ namespace ITCR.InclusionesWeb.Administrador
                     btnSubir.ImageUrl = "../Images/table_move_row_up.png";
                     btnSubir.AlternateText = "Subir";
                     btnSubir.ToolTip = "Subir";
-                    btnSubir.CommandArgument = index.ToString();
                     btnSubir.Click += new ImageClickEventHandler(btnSubir_Click);
                     Cel_Acciones.Controls.Add(btnSubir);
 
@@ -68,13 +68,21 @@ namespace ITCR.InclusionesWeb.Administrador
                     btnBajar.ImageUrl = "../Images/table_move_row_down.png";
                     btnBajar.AlternateText = "Bajar";
                     btnBajar.ToolTip = "Bajar";
-                    btnBajar.CommandArgument = index.ToString();
                     btnBajar.Click += new ImageClickEventHandler(btnBajar_Click);
                     Cel_Acciones.Controls.Add(btnBajar);
 
                     Row_Regla.Cells.Add(Cel_Acciones);
                     tblReglas.Rows.Add(Row_Regla);
                 }
+            }
+            else
+            {
+                TableRow Row_SinReglas = new TableRow();
+                TableCell Cel_SinReglas = new TableCell();
+                Cel_SinReglas.Text = "Se ha producido un error y la tabla no ha podido ser llenada";
+                Row_SinReglas.Cells.Add(Cel_SinReglas);
+                tblReglas.Rows.Add(Row_SinReglas);
+            }
         }
 
         protected void btnSubir_Click(object sender, EventArgs e)
@@ -82,34 +90,56 @@ namespace ITCR.InclusionesWeb.Administrador
             ImageButton boton = sender as ImageButton;
             TableCell celda = boton.Parent as TableCell;
             TableRow fila = celda.Parent as TableRow;
+            string nombreRegla = fila.Cells[0].Text;
             int indexActual = tblReglas.Rows.GetRowIndex(fila);
             int indexNuevo = indexActual - 1;
             if (indexNuevo != 0)
             {
-                //tblReglas.Rows.Remove(fila);
-                //tblReglas.Rows.AddAt(indexNuevo, fila);
-                LinkedList<Regla> Li_Reglas = (LinkedList<Regla>)Session["Li_Reglas"];
-                foreach (Regla _regla in Li_Reglas)
+                IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+                LinkedList<Regla> _lisReglas = (LinkedList<Regla>)Session["LISTA_REGLAS"];
+                Regla _reglaSube = new Regla();
+                Regla _reglaBaja = new Regla();
+
+                foreach(Regla _regla in _lisReglas)//-- Obtengo las reglas por modificar
                 {
-                    if (_regla.Posicion.Equals(indexActual))
+                    if(_regla.Posicion.Equals(indexActual))
                     {
-                        foreach (Regla _reglaBajar in Li_Reglas)
-                        {
-                            if (_regla.Posicion.Equals(indexNuevo))
-                            {
-                                _regla.Posicion = indexActual; // -- Modifica fila que baja
-                            }
-                            _regla.Posicion = indexNuevo;// -- Modifica fila que sube
-                        }
+                        _reglaSube = _regla;
                     }
-                    IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
-                    _metAdministrador.ModificarOrdenReglas(Li_Reglas);
-                    Session["Li_Reglas"] = Li_Reglas;
+                    if(_regla.Posicion.Equals(indexNuevo))
+                    {
+                        _reglaBaja = _regla;
+                    }
                 }
+
+                _lisReglas.Remove(_reglaSube);//-- Borro reglas de lista
+                _lisReglas.Remove(_reglaBaja);
+
+                _reglaSube.Posicion = indexNuevo;//-- Cambio las posiciones
+                _reglaBaja.Posicion = indexActual;
+
+                _lisReglas.AddLast(_reglaSube);//-- Agrego a la lista
+                _lisReglas.AddLast(_reglaBaja);
+
+                bool _resultado = _metAdministrador.ModificarOrdenReglas(_lisReglas);
+
+                if(_resultado)
+                {
+                    Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+                }
+                else
+                {
+                    lblPopupHeader.Text = "Error";
+                    lblPopupBody.Text = "La prioridad de la regla no fue modificada.";
+                    Pop_Alerta.Show();
+                }
+                
             }
             else
             {
-                //label.Text = "no se mueve";
+                lblPopupHeader.Text = "Error";
+                lblPopupBody.Text = "La regla ya tiene la prioridad máxima.";
+                Pop_Alerta.Show();
             }
         }
 
@@ -118,33 +148,85 @@ namespace ITCR.InclusionesWeb.Administrador
             ImageButton boton = sender as ImageButton;
             TableCell celda = boton.Parent as TableCell;
             TableRow fila = celda.Parent as TableRow;
+            string nombreRegla = fila.Cells[0].Text;
             int indexActual = tblReglas.Rows.GetRowIndex(fila);
             int indexNuevo = indexActual + 1;
             if (indexNuevo != tblReglas.Rows.Count)
             {
-                tblReglas.Rows.Remove(fila);
-                tblReglas.Rows.AddAt(indexNuevo, fila);
+                IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+                LinkedList<Regla> _lisReglas = (LinkedList<Regla>)Session["LISTA_REGLAS"];
+                Regla _reglaBaja = new Regla();
+                Regla _reglaSube = new Regla();
+
+                foreach (Regla _regla in _lisReglas)//-- Obtengo las reglas por modificar
+                {
+                    if (_regla.Posicion.Equals(indexActual))//-- Aca el nombre sube o baja no tiene sentido
+                    {
+                        _reglaBaja = _regla;
+                    }
+                    if (_regla.Posicion.Equals(indexNuevo))
+                    {
+                        _reglaSube = _regla;
+                    }
+                }
+
+                _lisReglas.Remove(_reglaSube);//-- Borro reglas de lista
+                _lisReglas.Remove(_reglaBaja);
+
+                _reglaSube.Posicion = indexActual;//-- Cambio las posiciones
+                _reglaBaja.Posicion = indexNuevo;
+
+                _lisReglas.AddLast(_reglaSube);//-- Agrego a la lista
+                _lisReglas.AddLast(_reglaBaja);
+
+                bool _resultado = _metAdministrador.ModificarOrdenReglas(_lisReglas);
+
+                if (_resultado)
+                {
+                    Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+                }
+                else
+                {
+                    lblPopupHeader.Text = "Error";
+                    lblPopupBody.Text = "La prioridad de la regla no fue modificada.";
+                    Pop_Alerta.Show();
+                }
+
             }
             else
             {
-                //label.Text = "no se mueve";
+                lblPopupHeader.Text = "Error";
+                lblPopupBody.Text = "La regla ya tiene la prioridad mínima.";
+                Pop_Alerta.Show();
             }
-
-            //int rowIndex = int.Parse(((ImageButton)sender).CommandArgument);
-            //int newIndex = rowIndex + 1;
-            //Label label = new Label();
-            //if(newIndex!=tblReglas.Rows.Count)
-            //{
-            //    label.Text = rowIndex.ToString() + "->" + newIndex;
-            //}
-            //else
-            //{
-            //    label.Text = "no se mueve";
-            //}
-            //tblReglas.Rows[rowIndex].Cells[2].Controls.Add(label);
         }
 
         protected void btnAgregarRegla_Click(object sender, EventArgs e)
+        {
+            //Intento agregar regla al sistema
+            IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+            Regla _reglaNueva = new Regla();
+            _reglaNueva.Posicion = tblReglas.Rows.Count;
+            _reglaNueva.Nombre = txtNombreRegla.Text;
+            _reglaNueva.StoredProcedure = txtNombreProcedimiento.Text;
+            _reglaNueva.Estado = "habilitada";
+            bool _resultado = _metAdministrador.AgregarRegla(_reglaNueva);
+            if(_resultado)
+            {
+                lblPopupHeader.Text = "Regla agregada";
+                lblPopupBody.Text = "La regla fue agregada exitosamente al sistema.";
+                Pop_Alerta.Show();
+            }
+            else
+            {
+                lblPopupHeader.Text = "Error al agregar regla";
+                lblPopupBody.Text = "Ocurrió un error al intentar agregar la regla al sistema.";
+                Pop_Alerta.Show();
+            }
+            //Page.Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnCloseModal_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }

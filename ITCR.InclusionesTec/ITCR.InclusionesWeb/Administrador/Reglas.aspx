@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="Reglas del Sistema" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="Reglas.aspx.cs" Inherits="ITCR.InclusionesWeb.Administrador.Reglas" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <ajaxToolkit:ToolkitScriptManager ID="ToolKitManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
 
     <h2>Reglas del Sistema</h2>
     
@@ -11,11 +14,29 @@
     </p>
 
     <div class="center">
-        <fieldset>
-            <legend>Reglas</legend>
-            
-            <asp:Table ID="tblReglas" runat="server" CssClass="tabla" ></asp:Table>
-        </fieldset>
+
+        <ajaxToolkit:ModalPopupExtender ID="Pop_Alerta" runat="server" OkControlID="btnOK"
+                PopupControlID="Pan_Alerta" PopupDragHandleControlID="PopupHeader" Drag="true"
+                BackgroundCssClass="ModalPopupBG" TargetControlID="HiddenForModal" >
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Button runat="server" ID="HiddenForModal" style="display: none" />
+        <asp:Panel ID="Pan_Alerta" style="display:none" runat="server" >
+            <div class="modalInsider">
+                <asp:ImageButton ID="btnCloseModal" runat="server" ImageUrl="../Images/close_modal.png" OnClick="btnCloseModal_Click" />
+                <div class="PopupHeader">
+                    <asp:Label ID="lblPopupHeader" runat="server"></asp:Label>
+                </div>
+                <div class="PopupBody">
+                    <asp:Label ID="lblPopupBody" runat="server"></asp:Label>
+                </div>
+                <div class="Controls">
+                    <input id="btnOK" type="button" value="OK" style="display:none" class="submitInput"/>
+		        </div>
+            </div>
+        </asp:Panel>
+ 
+        <asp:Table ID="tblReglas" runat="server" CssClass="tabla" ></asp:Table>
+
         <fieldset>
              <legend>Agregar reglas al sistema</legend>
              <p>

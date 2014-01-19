@@ -22,5 +22,9 @@ namespace ITCR.InclusionesWeb.Administrador
             lblPopupBody.Text = "El proceso no ha sido implementado.";
             Pop_Alerta.Show();
         }
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+        }
     }
 }

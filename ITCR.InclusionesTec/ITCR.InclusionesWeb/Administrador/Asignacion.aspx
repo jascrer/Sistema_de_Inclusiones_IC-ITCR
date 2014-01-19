@@ -23,6 +23,7 @@
         <asp:Button runat="server" ID="HiddenForModal" style="display: none" />
         <asp:Panel ID="Pan_Alerta" style="display:none" runat="server" >
             <div class="modalInsider">
+                <asp:ImageButton ID="btnCloseModal" runat="server" ImageUrl="../Images/close_modal.png" OnClick="btnCloseModal_Click" />
                 <div class="PopupHeader">
                     <asp:Label ID="lblPopupHeader" runat="server"></asp:Label>
                 </div>
@@ -30,7 +31,7 @@
                     <asp:Label ID="lblPopupBody" runat="server"></asp:Label>
                 </div>
                 <div class="Controls">
-                    <input id="btnOK" type="button" value="OK" class="submitInput" />
+                    <input id="btnOK" type="button" value="OK" style="display:none" class="submitInput"/>
 		        </div>
             </div>
         </asp:Panel>

@@ -350,6 +350,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SIF_SP_Insertar_Auto_Regla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Prioridad" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SIT_SP_Insertar_Auto_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cod_Curso" Type="varchar" Mode="In" />
           <Parameter Name="nom_Curso" Type="varchar" Mode="In" />
