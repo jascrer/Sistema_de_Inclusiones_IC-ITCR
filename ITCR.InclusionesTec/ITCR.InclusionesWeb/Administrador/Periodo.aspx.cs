@@ -44,15 +44,24 @@ namespace ITCR.InclusionesWeb.Administrador
 
                 //Guardar en BD
                 _metAdministrador.DefinirPeriodoSolicitud(_periodoNuevo);
+                lblPopupHeader.Text = "Periodo Definido";
+                lblPopupBody.Text = "El periodo de recepción de solicitudes ha sido definido de manera exitosa dentro del sistema.";
+                Pop_Alerta.Show();
             }
             else
             {
                 // Ya hay un periodo definido y en curso
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Error al crear el periodo",
-                    "alert('El periodo no fue creado, ya que existe un periodo de asignación en curso.');", true);
+                lblPopupHeader.Text = "Error al definir el periodo";
+                lblPopupBody.Text = "El periodo no fue creado, ya que existe un periodo de asignación en curso.";
+                Pop_Alerta.Show();
             }
             
 
+        }
+
+        protected void btnOK_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }
     }
 }

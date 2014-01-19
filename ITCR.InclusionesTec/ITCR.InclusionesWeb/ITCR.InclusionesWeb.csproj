@@ -60,7 +60,6 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Administrador\Asignacion.aspx" />
     <Content Include="Administrador\ConsultaPeriodo.aspx" />
-    <Content Include="Administrador\Consultas.aspx" />
     <Content Include="Administrador\Default.aspx" />
     <Content Include="Administrador\Excepciones.aspx" />
     <Content Include="Administrador\Notificaciones.aspx" />
@@ -148,13 +147,6 @@
     </Compile>
     <Compile Include="Administrador\ConsultaPeriodo.aspx.designer.cs">
       <DependentUpon>ConsultaPeriodo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administrador\Consultas.aspx.cs">
-      <DependentUpon>Consultas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrador\Consultas.aspx.designer.cs">
-      <DependentUpon>Consultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

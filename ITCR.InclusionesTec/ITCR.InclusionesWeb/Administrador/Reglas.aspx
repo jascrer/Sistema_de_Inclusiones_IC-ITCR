@@ -15,11 +15,6 @@
             <legend>Reglas</legend>
             
             <asp:Table ID="tblReglas" runat="server" CssClass="tabla" ></asp:Table>
-            <!--
-                * Activar/Desactivar regla
-                * Subir
-                * Bajar
-             -->
         </fieldset>
         <fieldset>
              <legend>Agregar reglas al sistema</legend>
@@ -29,13 +24,23 @@
              <p>
                 <asp:Label ID="lblNombreRegla" runat="server" AssociatedControlID="txtNombreRegla" >Nombre de la regla: </asp:Label>
                 <asp:TextBox ID="txtNombreRegla" runat="server"  CssClass="textEntry" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqNombre" runat="server" ControlToValidate="txtNombreRegla"
+                CssClass="failureNotification" ErrorMessage="El nombre es obligatorio."
+                ToolTip="El nombre es obligatorio." ValidationGroup="valAgregarRegla">*</asp:RequiredFieldValidator>
              </p>
              <p>
                 <asp:Label ID="lblNombreProcedimiento" runat="server" AssociatedControlID="txtNombreProcedimiento" >Nombre del procedimiento: </asp:Label>
                 <asp:TextBox ID="txtNombreProcedimiento" runat="server" CssClass="textEntry" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqProcedimiento" runat="server" ControlToValidate="txtNombreProcedimiento"
+                CssClass="failureNotification" ErrorMessage="El procedimiento almacenado es obligatorio."
+                ToolTip="El procedimiento almacenado es obligatorio." ValidationGroup="valAgregarRegla">*</asp:RequiredFieldValidator>
              </p>
+             <span class="failureNotification">
+                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
+             </span>
+             <asp:ValidationSummary ID="valSum" runat="server" CssClass="failureNotification" ValidationGroup="valAgregarRegla" />
              <p class="submitButton">
-                    <asp:Button ID="btnAgregarRegla" runat="server" CssClass="submitInput" 
+                    <asp:Button ID="btnAgregarRegla" runat="server" CssClass="submitInput" OnClick="btnAgregarRegla_Click"
                         CommandName="AgregarRegla" Text="Agregar regla" ValidationGroup="valAgregarRegla" />
              </p>
 

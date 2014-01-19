@@ -144,6 +144,9 @@ namespace ITCR.InclusionesWeb.Administrador
             //tblReglas.Rows[rowIndex].Cells[2].Controls.Add(label);
         }
 
-        
+        protected void btnAgregarRegla_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+        }
     }
 }

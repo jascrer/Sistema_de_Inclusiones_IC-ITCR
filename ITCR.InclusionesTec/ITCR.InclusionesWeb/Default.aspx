@@ -38,8 +38,8 @@
                     ToolTip="La contraseña es obligatoria." ValidationGroup="valInicioSesion">*</asp:RequiredFieldValidator>
             </p>
             <p>
-                <asp:CheckBox ID="chbRecordarme" runat="server" />
-                <asp:Label ID="lblRecordarme" runat="server" AssociatedControlID="chbRecordarme" CssClass="inline">Recordarme en esta computadora</asp:Label>
+                <asp:CheckBox ID="chbRecordarme" runat="server" CssClass="" />
+                <asp:Label ID="lblRecordarme" runat="server" AssociatedControlID="chbRecordarme" CssClass="inline center">Recordarme en esta computadora</asp:Label>
             </p>
         </fieldset>
         <p class="submitButton">

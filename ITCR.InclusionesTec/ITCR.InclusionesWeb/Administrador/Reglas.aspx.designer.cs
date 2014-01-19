@@ -40,6 +40,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtNombreRegla;
         
         /// <summary>
+        /// Control reqNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNombre;
+        
+        /// <summary>
         /// Control lblNombreProcedimiento.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,33 @@ namespace ITCR.InclusionesWeb.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreProcedimiento;
+        
+        /// <summary>
+        /// Control reqProcedimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqProcedimiento;
+        
+        /// <summary>
+        /// Control FailureText.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal FailureText;
+        
+        /// <summary>
+        /// Control valSum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valSum;
         
         /// <summary>
         /// Control btnAgregarRegla.

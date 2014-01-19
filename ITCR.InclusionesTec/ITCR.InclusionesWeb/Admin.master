@@ -19,9 +19,9 @@
                 <asp:MenuItem NavigateUrl="~/Administrador/Notificaciones.aspx" Text="Notificaciones" />
             </asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Administrador/ConsultaPeriodo.aspx" Text="Consultas">
-                <asp:MenuItem NavigateUrl="~/Administrador/ConsultaPeriodo.aspx" Text="Periodos" />
-                <asp:MenuItem NavigateUrl="~/Administrador/Solicitudes.aspx" Text="Solicitudes de inclusión" />
-                <asp:MenuItem NavigateUrl="~/Administrador/Sugerencias.aspx" Text="Sugerencias de apertura de grupos" />
+                <asp:MenuItem NavigateUrl="~/Administrador/ConsultaPeriodo.aspx" Text="Consulta de periodo" />
+                <asp:MenuItem NavigateUrl="~/Administrador/Solicitudes.aspx" Text="Consulta de solicitudes" />
+                <asp:MenuItem NavigateUrl="~/Administrador/Sugerencias.aspx" Text="Consulta de sugerencias" />
             </asp:MenuItem>
         </Items>
     </asp:Menu>
