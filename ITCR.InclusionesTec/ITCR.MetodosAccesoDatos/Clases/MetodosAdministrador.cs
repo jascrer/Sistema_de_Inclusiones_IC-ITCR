@@ -236,8 +236,27 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public LinkedList<Regla> ObtenerInformacionReglas()
         {
-            _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            return _xmlEditor.ObtenerListaReglas();
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                var _Reglas = from _sifReglas in _objConexionBase.SIFReglas
+                              select _sifReglas;
+                LinkedList<Regla> _liReglas = new LinkedList<Regla>();
+                foreach (SIFRegla _sifRegla in _Reglas)
+                {
+                    Regla _regla = new Regla();
+                    _regla.Nombre = _sifRegla.txt_nombre;
+                    _regla.Estado = _sifRegla.txt_estado;
+                    _regla.Posicion = _sifRegla.num_prioridad;
+                    _regla.StoredProcedure = _sifRegla.txt_script;
+                    _liReglas.AddLast(_regla);
+                }
+                return _liReglas;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /**
