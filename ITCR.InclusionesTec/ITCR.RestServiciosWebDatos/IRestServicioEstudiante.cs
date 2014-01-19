@@ -109,6 +109,24 @@ namespace ITCR.RestServiciosWebDatos
         #endregion
 
         /**
+         * Devuelve los grupos de una solicitud.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/cursos/?solicitud={pSolicitud}",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Grupo_Por_Solicitud> ObtenerGruposSolicitud(int pSolicitud);
+
+        /**
+         * Devuelve los grupos de un curso especifico.
+         **/
+        [OperationContract]
+        [WebGet(UriTemplate = "/solicitud/cursos/?curso={pCurso}",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        LinkedList<Grupo> ObtenerGruposCurso(int pCurso);
+
+        /**
          * Devuelve el periodo
          **/
         [OperationContract]

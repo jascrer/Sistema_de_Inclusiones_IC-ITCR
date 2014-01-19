@@ -171,7 +171,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
             return _dsCitasMatricula.Tables[0].Rows[0]["FEC_MATRICULA"].ToString();
         }
 
-        //Obtiene el periodo actual sea el 1 o 2 del a
+        //Obtiene el periodo actual sea el 1 o 2 del anio
         private string ObtenerPeriodoActual()
         {
             switch (DateTime.Now.Month)
@@ -259,6 +259,36 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 return _sifGrupoLista;
             }
             catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /**
+         * Obtiene la solicitud especificada por el id
+         **/
+        public Solicitud ObtenerSolicitudEspecificada(int pSolicitud)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                SIFSolicitud _sifSolicitud = (from _sifSolicitudes in _objConexionBase.SIFSolicituds
+                                              where _sifSolicitudes.id_Solicitud == pSolicitud
+                                              select _sifSolicitudes).First();
+                _objConexionBase.Connection.Close();
+
+                Solicitud _solicitud = new Solicitud();
+                _solicitud.Fec_Creacion = _sifSolicitud.fec_creacion;
+                _solicitud.Id_GrupoAceptado = _sifSolicitud.grupo_aceptado;
+                _solicitud.Id_Solicitud = _sifSolicitud.id_Solicitud;
+                _solicitud.Txt_Comentario = _sifSolicitud.txt_comentario;
+                _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
+                _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
+
+                return _solicitud;
+            }
+            catch(Exception)
             {
                 return null;
             }

@@ -141,6 +141,32 @@ namespace ITCR.RestServiciosWebDatos
         #endregion
 
         /**
+         * Devuelve los grupos de una solicitud.
+         **/
+        public LinkedList<Grupo_Por_Solicitud> ObtenerGruposSolicitud(int pSolicitud)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            Solicitud _objSolicitud = _metEstudiante.ObtenerSolicitudEspecificada(pSolicitud);
+            if (_objSolicitud != null)
+            {
+                return _metEstudiante.ObtenerGruposInclusion(_objSolicitud);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /**
+         * Devuelve los grupos de un curso especifico.
+         **/
+        public LinkedList<Grupo> ObtenerGruposCurso(int pCurso)
+        {
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            return _metEstudiante.ObtenerGruposParaInclusion(pCurso);
+        }
+
+        /**
          * Devuelve el periodo
          **/
         public Periodo ObtenerPeriodo()
@@ -189,6 +215,7 @@ namespace ITCR.RestServiciosWebDatos
             IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
             return _metEstudiante.GuardarGruposSolicitud(pSolicitud, pGrupos);
         }
+        
         #endregion
 
         #region Propiedades

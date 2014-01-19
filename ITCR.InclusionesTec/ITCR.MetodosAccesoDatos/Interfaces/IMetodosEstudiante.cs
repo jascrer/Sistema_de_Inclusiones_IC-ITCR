@@ -53,6 +53,11 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         LinkedList<Grupo> ObtenerGruposParaInclusion(int pCurso);
 
         /**
+         * Obtiene la solicitud especificada por el id
+         **/
+        Solicitud ObtenerSolicitudEspecificada(int pSolicitud);
+
+        /**
          * Retorna las solicitudes pendientes hechas por el _sifeEstudiante
          **/
         LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo);
