@@ -106,7 +106,7 @@ public class FormularioCursosActivity extends Activity {
 				_sDataBundle.add(_sCurso);
 				
 				//Intent para la creacion de la nueva activity
-				Intent _intSiguiente = new Intent(FormularioCursosActivity.this,FormularioComentarioActivity.class);
+				Intent _intSiguiente = new Intent(FormularioCursosActivity.this,FormularioRestriccionesActivity.class);
 				_intSiguiente.putExtra(_sEXTRA_MESSAGE, _sDataBundle);
 				startActivity(_intSiguiente);
 			}

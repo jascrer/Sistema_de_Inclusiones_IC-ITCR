@@ -53,15 +53,17 @@ public class FormularioDPActivity extends Activity {
 			"telefono",
 			"celular",
 			"email",
-			"plan"};
+			"plan",
+			"cita"};
 	private ActionBarDrawerToggle _Toggle;
 	public final static String _sEXTRA_MESSAGE = "com.itcr.inclutec.MESSAGE";
 	String _sCarnet;
 	HttpClient httpClient = new DefaultHttpClient();
-	HttpGet _getDatos, _getPlan;
+	HttpGet _getDatos, _getPlan, _getCita;
 	HttpPut _putContacto;
 	Estudiante _eActual;
 	PlanEstudios _pActual;
+	String _sCita;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -88,7 +90,9 @@ public class FormularioDPActivity extends Activity {
 		_getDatos.setHeader("content-type", "application/json");
 		_getPlan = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/plan/?id="+_sCarnet);
 		_getPlan.setHeader("content-type", "application/json");
-		JSONObject respJSON, respJSON2, respJSON3, respJSON4;
+		_getCita = new HttpGet("http://10.0.2.2:3740/RestServicioEstudiante.svc/cita/?carnet="+_sCarnet);
+		_getCita.setHeader("content-type", "application/json");
+		JSONObject respJSON, respJSON2, respJSON3, respJSON4, respJSON5, respJSON6;
 		
 		try
 		{
@@ -100,6 +104,10 @@ public class FormularioDPActivity extends Activity {
 		        String respStr2 = EntityUtils.toString(resp2.getEntity());
 		        Log.e("ServicioRestPlan",respStr2);
 		        
+		        HttpResponse resp3 = httpClient.execute(_getCita);
+		        String respStr3 = EntityUtils.toString(resp3.getEntity());
+		        Log.e("ServicioRestCita",respStr3);
+		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONObject("ObtenerInformacionEstudianteResult");
 		        _eActual = new Gson().fromJson(respJSON2.toString(),Estudiante.class);
@@ -108,6 +116,10 @@ public class FormularioDPActivity extends Activity {
 		        respJSON4 = respJSON3.getJSONObject("ObtenerPlanEstudiosResult");
 		        _pActual = new Gson().fromJson(respJSON4.toString(),PlanEstudios.class);
 		        
+		        respJSON5 = new JSONObject(respStr3);
+		        respJSON6 = respJSON5.getJSONObject("ObtenerCitaMatriculaResult");
+		        _sCita = new Gson().fromJson(respJSON4.toString(),String.class);
+		        
 		        _PERSONALES[0] = _eActual.getNom_Nombre();
 		        _PERSONALES[1] = _eActual.getTxt_Apellido1();
 		        _PERSONALES[2] = _eActual.getTxt_Apellido2();
@@ -115,6 +127,7 @@ public class FormularioDPActivity extends Activity {
 		        _PERSONALES[4] = _eActual.getNum_Celular();
 		        _PERSONALES[5] = _eActual.getDir_Email();
 		        _PERSONALES[6] = ""+_pActual.getId_Plan_Estudios();
+		        _PERSONALES[7] = _sCita;
 		}
 		catch(Exception ex)
 		{

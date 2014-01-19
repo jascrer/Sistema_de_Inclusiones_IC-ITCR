@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
-public class FormularioComentarioActivity extends Activity {
+public class FormularioRestriccionesActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class FormularioComentarioActivity extends Activity {
 				//_sDataBundle.add(_sCurso);
 				
 				//Intent para la creacion de la nueva activity
-				Intent _intSiguiente = new Intent(FormularioComentarioActivity.this,InicioActivity.class);
+				Intent _intSiguiente = new Intent(FormularioRestriccionesActivity.this,InicioActivity.class);
 				//_intSiguiente.putExtra(_sEXTRA_MESSAGE, _sDataBundle);
 				Toast.makeText(getApplicationContext(), "Solicitud enviada", Toast.LENGTH_LONG).show();
 				startActivity(_intSiguiente);
