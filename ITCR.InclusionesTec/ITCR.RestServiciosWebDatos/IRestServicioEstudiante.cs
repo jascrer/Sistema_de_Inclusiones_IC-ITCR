@@ -75,16 +75,16 @@ namespace ITCR.RestServiciosWebDatos
          * Devuelve las solicitudes pendientes.
          **/
         [OperationContract]
-        [WebGet(UriTemplate = "/solicitud/pendiente",
+        [WebGet(UriTemplate = "/solicitud/pendiente/?estudiante={pCarnet}&periodo={pPeriodo}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Solicitud> ObtenerSolicitudesPendientes(string pCarnet, int pPeriodo);
-
+        
         /**
          * Devuelve las solicitudes anuladas.
          **/
         [OperationContract]
-        [WebGet(UriTemplate = "/solicitud/anulada",
+        [WebGet(UriTemplate = "/solicitud/anulada/?estudiante={pCarnet}&periodo={pPeriodo}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Solicitud> ObtenerSolicitudesAnuladas(string pCarnet, int pPeriodo);
@@ -93,7 +93,7 @@ namespace ITCR.RestServiciosWebDatos
          * Devuelve las solicitudes aprobadas.
          **/
         [OperationContract]
-        [WebGet(UriTemplate = "/solicitud/aprobada",
+        [WebGet(UriTemplate = "/solicitud/aprobada/?estudiante={pCarnet}&periodo={pPeriodo}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Solicitud> ObtenerSolicitudesAprobadas(string pCarnet, int pPeriodo);
@@ -102,7 +102,7 @@ namespace ITCR.RestServiciosWebDatos
          * Devuelve las solicitudes reprobadas.
          **/
         [OperationContract]
-        [WebGet(UriTemplate = "/solicitud/reprobada",
+        [WebGet(UriTemplate = "/solicitud/reprobada/?estudiante={pCarnet}&periodo={pPeriodo}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Solicitud> ObtenerSolicitudesReprobadas(string pCarnet, int pPeriodo);
