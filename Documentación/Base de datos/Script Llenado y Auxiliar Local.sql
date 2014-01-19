@@ -676,8 +676,8 @@ EXEC SIT_SP_Insertar_Auto_Profesor 'MORA','ROJAS','DIEGO'
 
 EXEC SIT_SP_Insertar_Auto_Grupo
 
-EXEC SIF_SP_Ins_Auto_Regla 'Excepciones',1,'habilitada'
-EXEC SIF_SP_Ins_Auto_Regla 'Carnet de Oro',2,'deshabilitada'
-EXEC SIF_SP_Ins_Auto_Regla 'Proximo a Graduacion',3,'habilitada'
-EXEC SIF_SP_Ins_Auto_Regla 'Cursos Insuficientes',4,'habilitada'
-EXEC SIF_SP_Ins_Auto_Regla 'Cita de Matricula',5,'habilitada'
+EXEC SIF_SP_Insertar_Auto_Regla 'Excepciones',1,'habilitada'
+EXEC SIF_SP_Insertar_Auto_Regla 'Carnet de Oro',2,'deshabilitada'
+EXEC SIF_SP_Insertar_Auto_Regla 'Proximo a Graduacion',3,'habilitada'
+EXEC SIF_SP_Insertar_Auto_Regla 'Cursos Insuficientes',4,'habilitada'
+EXEC SIF_SP_Insertar_Auto_Regla 'Cita de Matricula',5,'habilitada'

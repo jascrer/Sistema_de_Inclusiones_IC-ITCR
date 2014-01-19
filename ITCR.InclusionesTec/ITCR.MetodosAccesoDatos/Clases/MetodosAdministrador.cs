@@ -133,9 +133,24 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool AgregarRegla(Regla pRegla)
         {
-            _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            _xmlEditor.AgregarRegla(pRegla);
-            return true;
+            try
+            {
+                SIFRegla _sifRegla = new SIFRegla();
+                _sifRegla.num_prioridad = pRegla.Posicion;
+                _sifRegla.txt_estado = pRegla.Estado;
+                _sifRegla.txt_nombre = pRegla.Nombre;
+                _sifRegla.txt_script = pRegla.StoredProcedure;
+
+                _objConexionBase = new Inclutec_BDEntities();
+                _objConexionBase.AddToSIFReglas(_sifRegla);
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /**
@@ -144,9 +159,32 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool ModificarOrdenReglas(LinkedList<Regla> pReglas)
         {
-            _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            _xmlEditor.ModificarPrioridadReglas(pReglas);
-            return true;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                var _liReglas = from _sifReglas in _objConexionBase.SIFReglas
+                                select _sifReglas;
+
+                foreach(SIFRegla _sifRegla in _liReglas)
+                {
+                    foreach (Regla _regla in pReglas)
+                    {
+                        if (_sifRegla.txt_nombre.Equals(_regla.Nombre))
+                        {
+                            _sifRegla.num_prioridad = _regla.Posicion;
+                            break;
+                        }
+                    }
+                }
+
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /**
@@ -154,9 +192,21 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool ModificarProcedimientoRegla(Regla pNombreProcedimiento, string pProcedimiento)
         {
-            _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            _xmlEditor.ModificarProcedureRegla(pNombreProcedimiento);
-            return true;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                SIFRegla _sifRegla = (from _sifReglas in _objConexionBase.SIFReglas
+                                      where _sifReglas.txt_nombre == pNombreProcedimiento.Nombre
+                                      select _sifReglas).First();
+                _sifRegla.txt_script = pProcedimiento;
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /**
@@ -164,9 +214,21 @@ namespace ITCR.MetodosAccesoDatos.Clases
          **/
         public bool DesactivarRegla(Regla pRegla)
         {
-            _xmlEditor = new XmlEditor("OrdenReglas.xml");
-            _xmlEditor.DeshabilitarRegla(pRegla);
-            return true;
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+                SIFRegla _sifRegla = (from _sifReglas in _objConexionBase.SIFReglas
+                                    where _sifReglas.txt_nombre == pRegla.Nombre
+                                    select _sifReglas).First();
+                _sifRegla.txt_estado = "deshabilitada";
+                _objConexionBase.SaveChanges();
+                _objConexionBase.Connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         
         /**
