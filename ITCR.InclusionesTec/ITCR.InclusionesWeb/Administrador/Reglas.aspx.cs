@@ -30,10 +30,13 @@ namespace ITCR.InclusionesWeb.Administrador
                 TableHeaderRow Row_Encabezado = new TableHeaderRow();
                 TableHeaderCell Cel_EncabezadoNombre = new TableHeaderCell();
                 Cel_EncabezadoNombre.Text = "Nombre de Regla";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoNombre);
                 TableHeaderCell Cel_EncabezadoEstado = new TableHeaderCell();
                 Cel_EncabezadoEstado.Text = "Estado";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoEstado);
                 TableHeaderCell Cel_EncabezadoAcciones = new TableHeaderCell();
                 Cel_EncabezadoAcciones.Text = "Acciones";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoAcciones);
                 tblReglas.Rows.Add(Row_Encabezado);
 
                 //-- Agrego las filas a la tabla
@@ -206,7 +209,7 @@ namespace ITCR.InclusionesWeb.Administrador
             //Intento agregar regla al sistema
             IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
             Regla _reglaNueva = new Regla();
-            _reglaNueva.Posicion = tblReglas.Rows.Count;
+            _reglaNueva.Posicion = tblReglas.Rows.Count-1;
             _reglaNueva.Nombre = txtNombreRegla.Text;
             _reglaNueva.StoredProcedure = txtNombreProcedimiento.Text;
             _reglaNueva.Estado = "habilitada";

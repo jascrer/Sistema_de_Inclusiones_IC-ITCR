@@ -511,8 +511,10 @@ div.accountInfo
 
 .failureNotification
 {
+    clear: both;
     font-size: 1.2em;
     color: Red;
+    display: block;
 }
 
 .bold

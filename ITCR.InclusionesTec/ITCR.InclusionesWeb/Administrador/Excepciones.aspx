@@ -47,10 +47,19 @@
             </p>
             <p>
                 <asp:Label ID="lblCurso" runat="server" AssociatedControlID="ddlCurso" >Seleccione el c&oacute;digo del curso:</asp:Label>
-                <asp:DropDownList ID="ddlCurso" runat="server" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlCurso" runat="server" AutoPostBack="True" 
+                        onselectedindexchanged="ddlCurso_SelectedIndexChanged" >
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="reqCursos" runat="server" ControlToValidate="ddlCurso" 
+                    ErrorMessage="Seleccione un curso." ValidationGroup="valAgregarExcepcion">*</asp:RequiredFieldValidator>
+
+                <asp:Label ID="labelGrupo" runat="server"></asp:Label>
 
                 <asp:Label ID="lblGrupo" runat="server" AssociatedControlID="ddlGrupo" >Digite el c&oacute;digo del curso:</asp:Label>
-                <asp:DropDownList ID="ddlGrupo" runat="server" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlGrupo" runat="server" AutoPostBack="True" AppendDataBoundItems="true" >
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="reqGrupo" runat="server" ControlToValidate="ddlGrupo"
+                    ErrorMessage="Seleccione un grupo." ValidationGroup="valAgregarExcepcion">*</asp:RequiredFieldValidator>
             </p>
 
             <span class="failureNotification">

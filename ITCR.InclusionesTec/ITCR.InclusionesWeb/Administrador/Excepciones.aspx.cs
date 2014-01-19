@@ -31,15 +31,20 @@ namespace ITCR.InclusionesWeb.Administrador
                 {
                     //-- Encabezado de la tabla
 
+
                     TableHeaderRow Row_Encabezado = new TableHeaderRow();
                     TableHeaderCell Cel_EncabezadoEstudiante = new TableHeaderCell();
                     Cel_EncabezadoEstudiante.Text = "Estudiante";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoEstudiante);
                     TableHeaderCell Cel_EncabezadoCurso = new TableHeaderCell();
                     Cel_EncabezadoCurso.Text = "Curso";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoCurso);
                     TableHeaderCell Cel_EncabezadoGrupo = new TableHeaderCell();
                     Cel_EncabezadoGrupo.Text = "Grupo";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoGrupo);
                     TableHeaderCell Cel_EncabezadoAcciones = new TableHeaderCell();
                     Cel_EncabezadoAcciones.Text = "Acciones";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoAcciones);
                     tblExcepciones.Rows.Add(Row_Encabezado);
 
                     //-- Agrego filas a la tabla
@@ -81,9 +86,6 @@ namespace ITCR.InclusionesWeb.Administrador
                     tblExcepciones.Rows.Add(Row_SinExcepciones);
                 }
 
-
-
-
                 //Encuentra cursos y llena el autocomplete
                 IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
                 LinkedList<Curso> _cursos = new LinkedList<Curso>();
@@ -99,17 +101,67 @@ namespace ITCR.InclusionesWeb.Administrador
             }
         }
 
+        protected void ddlCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListItem _curso = ddlCurso.SelectedItem;
+            
+            if (_curso.Value != "0")
+            {
+                IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+                LinkedList<Grupo> _lisGrupos = _metEstudiante.ObtenerGruposParaInclusion(int.Parse(_curso.Value));
+
+                ddlGrupo.Items.Clear();
+                ddlGrupo.DataSource = _lisGrupos;
+                ddlGrupo.DataValueField = "Id_Grupo";
+                ddlGrupo.DataTextField = "Num_Grupo";
+                ddlGrupo.DataBind();
+            }
+            else
+            {
+                ddlGrupo.Items.Clear();                
+            }
+
+        }
+
         protected void btnAgregarExcepcion_Click(object sender, EventArgs e)
         {
-            lblPopupHeader.Text = "Excepcion Agregada";
-            lblPopupBody.Text = "La excepcion ha sido agregada correctamente al sistema.";
-            Pop_Alerta.Show();
-            //Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+            IMetodosAdministrador _metAdministrador = new MetodosAdministrador();
+            string _carnet = txtCarnet.Text;
+            int _idCurso = int.Parse(ddlCurso.SelectedValue);
+            int _idGrupo = int.Parse(ddlGrupo.SelectedValue);
+
+            Ado.ClasesComunes.Periodo _periodoActual = new Ado.ClasesComunes.Periodo();
+            _periodoActual = _metAdministrador.UltimoPeriodo();
+
+            if(_periodoActual != null)
+            {
+                bool _resultado = _metAdministrador.CrearExcepcion(_periodoActual.Id_Periodo, _idCurso, _idGrupo, _carnet);
+
+                if(_resultado)
+                {
+                    lblPopupHeader.Text = "Excepcion Agregada";
+                    lblPopupBody.Text = "La excepcion ha sido agregada correctamente al sistema.";
+                    Pop_Alerta.Show();
+                }
+                else
+                {
+                    lblPopupHeader.Text = "Error al agregar excepcion";
+                    lblPopupBody.Text = "La excepcion no pudo ser agregada al sistema.";
+                    Pop_Alerta.Show();
+                }
+            }
+            else
+            {
+                lblPopupHeader.Text = "Error al agregar excepcion";
+                lblPopupBody.Text = "No existe un periodo de recepcion definido aún.";
+                Pop_Alerta.Show();
+            }
         }
 
         protected void btnCloseModal_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }
+
     }
 }

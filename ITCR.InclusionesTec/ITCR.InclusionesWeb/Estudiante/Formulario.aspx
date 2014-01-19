@@ -55,7 +55,9 @@
         <p>
             <asp:Label ID="lblCursos" runat="server" AssociatedControlID="ddlCursos" >Curso por solicitar: </asp:Label>
             <asp:DropDownList ID="ddlCursos" runat="server" 
-                OnSelectedIndexChanged="ddlCursos_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                OnSelectedIndexChanged="ddlCursos_SelectedIndexChanged" AutoPostBack="true">
+                <asp:ListItem Selected="true" Value="-1" Text="-- Escoja un curso --" ></asp:ListItem>
+            </asp:DropDownList>
             <asp:Label ID="lblCodigoCursoSeleccionado" runat="server"></asp:Label>
         </p>
         <p>

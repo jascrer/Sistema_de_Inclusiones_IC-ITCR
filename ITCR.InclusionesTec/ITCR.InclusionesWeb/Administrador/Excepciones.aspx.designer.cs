@@ -130,6 +130,24 @@ namespace ITCR.InclusionesWeb.Administrador {
         protected global::System.Web.UI.WebControls.DropDownList ddlCurso;
         
         /// <summary>
+        /// Control reqCursos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCursos;
+        
+        /// <summary>
+        /// Control labelGrupo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelGrupo;
+        
+        /// <summary>
         /// Control lblGrupo.
         /// </summary>
         /// <remarks>
@@ -146,6 +164,15 @@ namespace ITCR.InclusionesWeb.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGrupo;
+        
+        /// <summary>
+        /// Control reqGrupo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqGrupo;
         
         /// <summary>
         /// Control FailureText.
