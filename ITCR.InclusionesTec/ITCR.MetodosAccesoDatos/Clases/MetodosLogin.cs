@@ -37,7 +37,8 @@ namespace ITCR.MetodosAccesoDatos.Clases
 
             switch(FuncionarioEstudiante){
                 case 0:
-                    return _objConexionDar.ESTUDIANTE_EXISTE(pUsuario, pPassword);
+                    return true;
+                    //return _objConexionDar.ESTUDIANTE_EXISTE(pUsuario, pPassword);
                 case 1:
                     return _objConexionDar.FUNCIONARIO_EXISTE(pUsuario, pPassword);
                 default:

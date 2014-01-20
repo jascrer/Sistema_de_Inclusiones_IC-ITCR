@@ -121,7 +121,7 @@ namespace ITCR.RestServiciosWebDatos
          * Devuelve los grupos de un curso especifico.
          **/
         [OperationContract]
-        [WebGet(UriTemplate = "/solicitud/cursos/?curso={pCurso}",
+        [WebGet(UriTemplate = "/solicitud/grupos/?curso={pCurso}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
         LinkedList<Grupo> ObtenerGruposCurso(int pCurso);

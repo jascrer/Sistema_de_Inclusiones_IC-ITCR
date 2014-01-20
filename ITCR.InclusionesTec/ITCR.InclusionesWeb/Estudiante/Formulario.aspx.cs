@@ -58,7 +58,7 @@ namespace ITCR.InclusionesWeb.Estudiante
                 lblCarrera.Text = _planNuevo.Nom_Carrera;
                 lblSede.Text = Txt_Sede;
                 lblPlan.Text = _planNuevo.Id_Plan_Estudios.ToString();
-                lblCitaMatricula.Text = Txt_CitaMatricula;
+                //lblCitaMatricula.Text = Txt_CitaMatricula;
                 txtTelefono.Text = _estudianteNuevo.Num_Telefono;
                 txtCelular.Text = _estudianteNuevo.Num_Celular;
                 txtCorreo.Text = _estudianteNuevo.Dir_Email;
@@ -160,7 +160,7 @@ namespace ITCR.InclusionesWeb.Estudiante
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void ddlCurso_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int _curso = int.Parse(ddlCursos.SelectedValue);
 

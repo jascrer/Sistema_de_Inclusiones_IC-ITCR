@@ -23,7 +23,7 @@ namespace ITCR.InclusionesWeb
         {
             Session["TipoUsuario"] = ddlTipoUsuario.SelectedValue;
             Session["NUsuario"] = txtNombreUsuario.Text;
-            
+
             IMetodosLogin _metLogin = new MetodosLogin();
             if (_metLogin.VerificarUsuario(txtNombreUsuario.Text, txtContrasena.Text, Int32.Parse(ddlTipoUsuario.SelectedValue)))
             {
