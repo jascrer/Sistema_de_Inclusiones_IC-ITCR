@@ -29,8 +29,7 @@ namespace ITCR.InclusionesWeb.Administrador
 
                 if(_lisExcepciones.Count != 0)
                 {
-                    //-- Encabezado de la tabla
-
+                    #region Encabezado de la tabla
 
                     TableHeaderRow Row_Encabezado = new TableHeaderRow();
                     TableHeaderCell Cel_EncabezadoEstudiante = new TableHeaderCell();
@@ -47,6 +46,9 @@ namespace ITCR.InclusionesWeb.Administrador
                     Row_Encabezado.Cells.Add(Cel_EncabezadoAcciones);
                     tblExcepciones.Rows.Add(Row_Encabezado);
 
+                    #endregion
+
+                    #region Llenado de tabla
                     //-- Agrego filas a la tabla
                     foreach(var _excepcion in _lisExcepciones)
                     {
@@ -76,6 +78,7 @@ namespace ITCR.InclusionesWeb.Administrador
 
                         tblExcepciones.Rows.Add(Row_Excepcion);
                     }
+                    #endregion
                 }
                 else
                 {
@@ -86,7 +89,7 @@ namespace ITCR.InclusionesWeb.Administrador
                     tblExcepciones.Rows.Add(Row_SinExcepciones);
                 }
 
-                //Encuentra cursos y llena el autocomplete
+                #region Encuentra cursos y llena el autocomplete
                 IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
                 LinkedList<Curso> _cursos = new LinkedList<Curso>();
                 _cursos = _metEstudiante.ObtenerCursosEstudiante("", null);
@@ -98,6 +101,7 @@ namespace ITCR.InclusionesWeb.Administrador
                     _item.Text = _cursoActual.Txt_Curso;
                     ddlCurso.Items.Add(_item);
                 }
+                #endregion
             }
         }
 

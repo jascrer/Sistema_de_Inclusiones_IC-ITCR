@@ -15,52 +15,51 @@
 
     <ajaxToolkit:ToolkitScriptManager ID="ToolKitManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
     
+    <ajaxToolkit:ModalPopupExtender ID="Pop_Alerta" runat="server" OkControlID="btnOK"
+                PopupControlID="Pan_Alerta" PopupDragHandleControlID="PopupHeader" Drag="true"
+                BackgroundCssClass="ModalPopupBG" TargetControlID="HiddenForModal" >
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Button runat="server" ID="HiddenForModal" style="display: none" />
+    <asp:Panel ID="Pan_Alerta" style="display:none" runat="server" >
+        <div class="modalInsider">
+            <asp:ImageButton ID="btnCloseModal" runat="server" ImageUrl="../Images/close_modal.png" OnClick="btnCloseModal_Click" />
+            <div class="PopupHeader">
+                <asp:Label ID="lblPopupHeader" runat="server"></asp:Label>
+            </div>
+            <div class="PopupBody">
+                <asp:Label ID="lblPopupBody" runat="server"></asp:Label>
+            </div>
+            <div class="Controls">
+                <input id="btnOK" type="button" value="OK" style="display:none" class="submitInput"/>
+		    </div>
+        </div>
+    </asp:Panel>
+    
     <ajaxToolkit:Accordion ID="acdnSolicitudes" runat="server" CssClass="center" HeaderCssClass="accordionHeader" >
         <Panes>
             <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server">
                 <Header>Pendientes</Header>
                 <Content>
-                    -- Sin Solicitudes Pendientes --
+                    <asp:Table ID="tblPendientes" runat="server" CssClass="tabla"></asp:Table>
                     <asp:Button runat="server" ID="button1" Text="Editar"></asp:Button>
-                    
-                    <ajaxToolkit:modalpopupextender id="ModalPopupExtender1" runat="server" 
-	                    cancelcontrolid="btnCancel" okcontrolid="btnOkay" 
-	                    targetcontrolid="button1" popupcontrolid="Panel1" 
-	                    popupdraghandlecontrolid="PopupHeader" drag="true" 
-	                    backgroundcssclass="ModalPopupBG">
-                    </ajaxToolkit:modalpopupextender>
-
-                    <asp:panel id="Panel1" style="display: none" runat="server">
-	                    <div class="HellowWorldPopup">
-                                    <div class="PopupHeader" id="PopupHeader">Header</div>
-                                    <div class="PopupBody">
-                                        <p>This is a simple modal dialog</p>
-                                    </div>
-                                    <div class="Controls">
-                                        <input id="btnOkay" type="button" value="Done" />
-                                        <input id="btnCancel" type="button" value="Cancel" />
-		                    </div>
-                            </div>
-                    </asp:panel>
-                    
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">
                 <Header>Anuladas</Header>
                 <Content>
-                    -- Sin Solicitudes Anuladas --
+                    <asp:Table ID="tblAnuladas" runat="server" CssClass="tabla"></asp:Table>
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server">
                 <Header>Aprobadas</Header>
                 <Content>
-                    -- Sin Solicitudes Aprobadas --
+                    <asp:Table ID="tblAprobadas" runat="server" CssClass="tabla"></asp:Table>
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane4" runat="server">
                 <Header>Rechazadas</Header>
                 <Content>
-                    -- Sin Solicitudes Rechazadas --
+                    <asp:Table ID="tblReprobadas" runat="server" CssClass="tabla"></asp:Table>
                 </Content>
             </ajaxToolkit:AccordionPane>
         </Panes>
