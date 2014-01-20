@@ -194,6 +194,7 @@ namespace ITCR.RestServiciosWebDatos
             Periodo _perUltimo = _metAdmin.UltimoPeriodo();
 
             pSolicitud.Txt_Estado = "PENDIENTE";
+            pSolicitud.Fec_Creacion = DateTime.Now;
 
             if ((_perUltimo.Fec_Inicio <= pSolicitud.Fec_Creacion) &&
                 (_perUltimo.Fec_Fin >= pSolicitud.Fec_Creacion))

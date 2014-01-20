@@ -203,13 +203,19 @@ namespace ITCR.InclusionesWeb.Estudiante
 
                     TableCell Cel_Acciones = new TableCell();
                     ImageButton btnEliminar = new ImageButton();
-                    btnEliminar.ImageUrl = "../Images/table_delete_row.png";
+                    btnEliminar.ImageUrl = "../Images/table_move_row_up.png";
                     btnEliminar.AlternateText = "Eliminar";
                     btnEliminar.Enabled = false;
                     btnEliminar.ToolTip = "Eliminar";
-                    //btnEliminar.Click += new ImageClickEventHandler(btnEliminar_Click);
                     Cel_Acciones.Controls.Add(btnEliminar);
                     Row_Excepcion.Cells.Add(Cel_Acciones);
+
+                    ImageButton btnBajar = new ImageButton(); //-- Decrementar prioridad
+                    btnBajar.ImageUrl = "../Images/table_move_row_down.png";
+                    btnBajar.AlternateText = "Bajar";
+                    btnBajar.ToolTip = "Bajar";
+                    //btnBajar.Click += new ImageClickEventHandler(btnBajar_Click);
+                    Cel_Acciones.Controls.Add(btnBajar);
 
                     tblGrupos.Rows.Add(Row_Excepcion);
                 }
