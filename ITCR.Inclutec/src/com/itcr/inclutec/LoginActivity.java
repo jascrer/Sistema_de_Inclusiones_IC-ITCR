@@ -65,8 +65,7 @@ public class LoginActivity extends Activity {
 				 */
 				String _sCarne = _txtCarne.getText().toString();
 				String _sPin = _txtPin.getText().toString();
-				//boolean _bExiste = callWebErvice(_sCarne, _sPin);
-				boolean _bExiste = true;
+				boolean _bExiste = callWebErvice(_sCarne, _sPin);
 				
 				if(_bExiste){
 					//Intent para la creacion de la nueva activity

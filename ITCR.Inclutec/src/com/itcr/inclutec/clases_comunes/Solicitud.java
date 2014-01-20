@@ -1,6 +1,6 @@
 package com.itcr.inclutec.clases_comunes;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class Solicitud {

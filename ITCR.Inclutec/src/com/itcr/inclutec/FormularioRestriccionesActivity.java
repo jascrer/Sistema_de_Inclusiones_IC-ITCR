@@ -62,12 +62,10 @@ public class FormularioRestriccionesActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				Solicitud _solNueva = new Solicitud();
-				Date _dHoy = new Date(2014, 01, 19);
-				_solNueva.setFec_Creacion(_dHoy);
-				_solNueva.setId_GrupoAceptado(0);
 				_solNueva.setTxt_Comentario(_tvComment.getText().toString());
 				_solNueva.setTxt_Curso(_sDataBundle.get(4));
 				_solNueva.setTxt_Estado("PENDIENTE");
+				_solNueva.setTxt_Motivo("bun");
 				
 				_postSolicitud = new HttpPost("http://10.0.2.2:3740/RestServicioEstudiante.svc/solicitud/crear/?estudiante="+_sDataBundle.get(0)+"&periodo=1");
 				_postSolicitud.setHeader("content-type", "application/json");
@@ -78,6 +76,7 @@ public class FormularioRestriccionesActivity extends Activity {
 				try {
 					JSONObject _jSolicitud = new JSONObject(_gSolicitud.toJson(_solNueva));
 					_jsonDatos.put("pSolicitud", _jSolicitud);
+					Log.v("Solicitud",_jsonDatos.toString());
 					
 					StringEntity _jsonSolicitud = new StringEntity(_jsonDatos.toString());
 					_postSolicitud.setEntity(_jsonSolicitud);
@@ -101,7 +100,9 @@ public class FormularioRestriccionesActivity extends Activity {
 				
 				//Intent para la creacion de la nueva activity
 				Intent _intSiguiente = new Intent(FormularioRestriccionesActivity.this,InicioActivity.class);
-				//_intSiguiente.putExtra(_sEXTRA_MESSAGE, _sDataBundle);
+				Bundle _bunInformacion = new Bundle();
+				_bunInformacion.putString("CARNE", _sDataBundle.get(0));
+				_intSiguiente.putExtras(_bunInformacion);
 				Toast.makeText(getApplicationContext(), "Solicitud enviada", Toast.LENGTH_LONG).show();
 				startActivity(_intSiguiente);
 			}
