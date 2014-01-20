@@ -1,15 +1,32 @@
 package com.itcr.inclutec;
 
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.Date;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.example.itcr.inclutec.R;
 import com.example.itcr.inclutec.R.layout;
 import com.example.itcr.inclutec.R.menu;
+import com.google.gson.Gson;
+import com.itcr.inclutec.clases_comunes.Solicitud;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +37,8 @@ import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class FormularioRestriccionesActivity extends Activity {
+	HttpClient httpClient = new DefaultHttpClient();
+	HttpPost _postSolicitud;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +51,9 @@ public class FormularioRestriccionesActivity extends Activity {
         
         Intent intent = getIntent();
         final ArrayList<String> _sDataBundle = intent.getStringArrayListExtra(FormularioDPActivity._sEXTRA_MESSAGE);
+        Log.v("DataBundle", _sDataBundle.toString());
+        
+        final TextView _tvComment = (TextView) findViewById(R.id.editTextComment);
         
         final Button _btnIngresar = (Button)findViewById(R.id.button1);
 		_btnIngresar.setOnClickListener(new OnClickListener(){
@@ -39,8 +61,43 @@ public class FormularioRestriccionesActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				//String _sCurso = _actvCursos.getText().toString();
-				//_sDataBundle.add(_sCurso);
+				Solicitud _solNueva = new Solicitud();
+				Date _dHoy = new Date(2014, 01, 19);
+				_solNueva.setFec_Creacion(_dHoy);
+				_solNueva.setId_GrupoAceptado(0);
+				_solNueva.setTxt_Comentario(_tvComment.getText().toString());
+				_solNueva.setTxt_Curso(_sDataBundle.get(4));
+				_solNueva.setTxt_Estado("PENDIENTE");
+				
+				_postSolicitud = new HttpPost("http://10.0.2.2:3740/RestServicioEstudiante.svc/solicitud/crear/?estudiante="+_sDataBundle.get(0)+"&periodo=1");
+				_postSolicitud.setHeader("content-type", "application/json");
+				
+				Gson _gSolicitud = new Gson();
+				
+				JSONObject _jsonDatos = new JSONObject();
+				try {
+					JSONObject _jSolicitud = new JSONObject(_gSolicitud.toJson(_solNueva));
+					_jsonDatos.put("pSolicitud", _jSolicitud);
+					
+					StringEntity _jsonSolicitud = new StringEntity(_jsonDatos.toString());
+					_postSolicitud.setEntity(_jsonSolicitud);
+				    HttpResponse resp = httpClient.execute(_postSolicitud);
+				    String respStr = EntityUtils.toString(resp.getEntity());
+				    Log.e("respStr", respStr);
+					
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedEncodingException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				//Intent para la creacion de la nueva activity
 				Intent _intSiguiente = new Intent(FormularioRestriccionesActivity.this,InicioActivity.class);

@@ -104,9 +104,9 @@ public class FormularioDPActivity extends Activity {
 		        String respStr2 = EntityUtils.toString(resp2.getEntity());
 		        Log.e("ServicioRestPlan",respStr2);
 		        
-		        HttpResponse resp3 = httpClient.execute(_getCita);
+		        /*HttpResponse resp3 = httpClient.execute(_getCita);
 		        String respStr3 = EntityUtils.toString(resp3.getEntity());
-		        Log.e("ServicioRestCita",respStr3);
+		        Log.e("ServicioRestCita",respStr3);*/
 		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONObject("ObtenerInformacionEstudianteResult");
@@ -116,9 +116,9 @@ public class FormularioDPActivity extends Activity {
 		        respJSON4 = respJSON3.getJSONObject("ObtenerPlanEstudiosResult");
 		        _pActual = new Gson().fromJson(respJSON4.toString(),PlanEstudios.class);
 		        
-		        respJSON5 = new JSONObject(respStr3);
+		        /*respJSON5 = new JSONObject(respStr3);
 		        respJSON6 = respJSON5.getJSONObject("ObtenerCitaMatriculaResult");
-		        _sCita = new Gson().fromJson(respJSON4.toString(),String.class);
+		        _sCita = new Gson().fromJson(respJSON6.toString(),String.class);*/
 		        
 		        _PERSONALES[0] = _eActual.getNom_Nombre();
 		        _PERSONALES[1] = _eActual.getTxt_Apellido1();
@@ -127,7 +127,7 @@ public class FormularioDPActivity extends Activity {
 		        _PERSONALES[4] = _eActual.getNum_Celular();
 		        _PERSONALES[5] = _eActual.getDir_Email();
 		        _PERSONALES[6] = ""+_pActual.getId_Plan_Estudios();
-		        _PERSONALES[7] = _sCita;
+		        //_PERSONALES[7] = _sCita;
 		}
 		catch(Exception ex)
 		{
@@ -159,6 +159,7 @@ public class FormularioDPActivity extends Activity {
 				String _sCel = _edtCelular.getText().toString();
 				String _sEmail = _edtEmail.getText().toString();
 				ArrayList<String> _sDataBundle = new ArrayList<String>();
+				_sDataBundle.add(_sCarnet);
 				_sDataBundle.add(_sTel);
 				_sDataBundle.add(_sCel);
 				_sDataBundle.add(_sEmail);
