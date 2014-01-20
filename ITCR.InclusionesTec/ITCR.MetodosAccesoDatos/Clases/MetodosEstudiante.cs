@@ -321,6 +321,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
                     _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
                     _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                    _liSolicitudes.AddLast(_solicitud);
                 }
 
                 _objConexionBase.Connection.Close();
@@ -358,6 +359,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
                     _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
                     _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                    _liSolicitudes.AddLast(_solicitud);
                 }
 
                 _objConexionBase.Connection.Close();
@@ -395,6 +397,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
                     _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
                     _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                    _liSolicitudes.AddLast(_solicitud);
                 }
 
                 _objConexionBase.Connection.Close();
@@ -432,6 +435,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                     _solicitud.Txt_Estado = _sifSolicitud.txt_estado;
                     _solicitud.Txt_Motivo = _sifSolicitud.txt_motivo;
                     _solicitud.txt_Curso = _sifSolicitud.txt_curso;
+                    _liSolicitudes.AddLast(_solicitud);
                 }
 
                 _objConexionBase.Connection.Close();
