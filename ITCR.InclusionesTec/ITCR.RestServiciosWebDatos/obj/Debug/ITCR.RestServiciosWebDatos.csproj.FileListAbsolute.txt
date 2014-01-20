@@ -83,3 +83,8 @@ C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesT
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.csprojResolveAssemblyReference.cache
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.dll
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\obj\Debug\ITCR.RestServiciosWebDatos.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\bin\Microsoft.Practices.Unity.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.RestServiciosWebDatos\bin\Microsoft.Practices.Unity.Interception.xml

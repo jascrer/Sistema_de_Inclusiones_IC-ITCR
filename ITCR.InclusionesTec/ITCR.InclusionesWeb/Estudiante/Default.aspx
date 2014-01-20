@@ -41,7 +41,6 @@
                 <Header>Pendientes</Header>
                 <Content>
                     <asp:Table ID="tblPendientes" runat="server" CssClass="tabla"></asp:Table>
-                    <asp:Button runat="server" ID="button1" Text="Editar"></asp:Button>
                 </Content>
             </ajaxToolkit:AccordionPane>
             <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">

@@ -112,7 +112,7 @@
             en esta solicitud doy permiso que no se realice ning&uacute;n tr&aacute;mite a mi nombre en este per&iacute;odo.</asp:Label>
     </p>
     <p class="submitButton">
-        <asp:Button ID="Button1" runat="server" CssClass="center" CommandName="SendForm" 
+        <asp:Button ID="Button1" runat="server" CssClass="submitInput" CommandName="SendForm" 
             Text="Enviar solicitud" ValidationGroup="valSolicitud" 
             onclick="Button1_Click"/>
     </p>

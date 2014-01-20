@@ -72,13 +72,15 @@ namespace ITCR.InclusionesWeb.Estudiante
                             Row_Pendientes.Cells.Add(Cel_Fecha);
 
                             TableCell Cel_Acciones = new TableCell();
-                            ImageButton btnEliminar = new ImageButton();
-                            btnEliminar.ImageUrl = "../Images/table_cancel_row.png";
-                            btnEliminar.AlternateText = "Anular";
-                            btnEliminar.Enabled = false;
-                            btnEliminar.ToolTip = "Anular";
-                            //btnEliminar.Click += new ImageClickEventHandler(btnEliminar_Click);
-                            Cel_Acciones.Controls.Add(btnEliminar);
+                            //Agregar las acciones por fila de regla
+                            ImageButton btnAnular = new ImageButton(); //-- Incrementar prioridad
+                            btnAnular.ImageUrl = "../Images/table_cancel_row.png";
+                            btnAnular.Enabled = false;
+                            btnAnular.AlternateText = "Anular";
+                            btnAnular.ToolTip = "Anular";
+                            btnAnular.Click += new ImageClickEventHandler(btnAnular_Click);
+                            Cel_Acciones.Controls.Add(btnAnular);
+
                             Row_Pendientes.Cells.Add(Cel_Acciones);
 
                             tblPendientes.Rows.Add(Row_Pendientes);
@@ -114,6 +116,7 @@ namespace ITCR.InclusionesWeb.Estudiante
                         TableHeaderCell Cel_EncabezadoFecha = new TableHeaderCell();
                         Cel_EncabezadoFecha.Text = "Recepción";
                         Row_Encabezado.Cells.Add(Cel_EncabezadoFecha);
+                        tblAnuladas.Rows.Add(Row_Encabezado);
 
                         #endregion
 
@@ -168,7 +171,7 @@ namespace ITCR.InclusionesWeb.Estudiante
                         TableHeaderCell Cel_EncabezadoGrupo = new TableHeaderCell();
                         Cel_EncabezadoGrupo.Text = "Grupo Aceptado";
                         Row_Encabezado.Cells.Add(Cel_EncabezadoGrupo);
-                        tblPendientes.Rows.Add(Row_Encabezado);
+                        tblAprobadas.Rows.Add(Row_Encabezado);
 
                         #endregion
 
@@ -208,7 +211,7 @@ namespace ITCR.InclusionesWeb.Estudiante
                             }
                             Row_Aprobadas.Cells.Add(Cel_Grupo);
 
-                            tblPendientes.Rows.Add(Row_Aprobadas);
+                            tblAprobadas.Rows.Add(Row_Aprobadas);
                         }
 
                         #endregion
@@ -289,9 +292,44 @@ namespace ITCR.InclusionesWeb.Estudiante
             }
         }
 
+        protected void btnAnular_Click(object sender, EventArgs e)
+        {
+            ImageButton boton = sender as ImageButton;
+            TableCell celda = boton.Parent as TableCell;
+            TableRow fila = celda.Parent as TableRow;
+            int indexActual = tblPendientes.Rows.GetRowIndex(fila);
+
+            int _idSolicitud = int.Parse(tblPendientes.Rows[indexActual].Cells[0].Text);
+            Solicitud _solicitudPorAnular = new Solicitud();
+
+            LinkedList<Solicitud> _solicitudesPendientes = (LinkedList<Solicitud>)Session["LISTA_PENDIENTES"];
+            foreach (var _solicitud in _solicitudesPendientes)
+            {
+                if (_solicitud.Id_Solicitud.Equals(_idSolicitud))
+                {
+                    _solicitudPorAnular = _solicitud;
+                }
+            }
+
+            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+            bool _resultado = _metEstudiante.AnularSolicitud(_solicitudPorAnular);
+
+            if (_resultado)
+            {
+                Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+            }
+            else
+            {
+                lblPopupHeader.Text = "Error al anular solicitud";
+                lblPopupBody.Text = "La solicitud no ha sido anulada.";
+                Pop_Alerta.Show();
+            }
+        }
+
         protected void btnCloseModal_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+            Pop_Alerta.Hide();
         }
+
     }
 }

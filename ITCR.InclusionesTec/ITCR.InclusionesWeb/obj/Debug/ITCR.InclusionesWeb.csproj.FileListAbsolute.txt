@@ -231,3 +231,8 @@ C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTe
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.Unity.xml
 C:\Users\dekk\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.Unity.Interception.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.Unity.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.InclusionesWeb\bin\Microsoft.Practices.Unity.Interception.xml

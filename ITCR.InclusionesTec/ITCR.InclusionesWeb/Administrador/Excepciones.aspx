@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="Excepciones.aspx.cs" Inherits="ITCR.InclusionesWeb.Administrador.Excepciones" %>
+﻿<%@ Page Title="Excepciones" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="Excepciones.aspx.cs" Inherits="ITCR.InclusionesWeb.Administrador.Excepciones" %>
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

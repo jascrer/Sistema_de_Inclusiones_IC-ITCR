@@ -97,3 +97,11 @@ C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesT
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\obj\Debug\ITCR.AdoAccesoDatos.csprojResolveAssemblyReference.cache
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\obj\Debug\ITCR.AccesoDatos.dll
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\obj\Debug\ITCR.AccesoDatos.pdb
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.AccesoDatos\bin\Debug\Microsoft.Practices.Unity.Interception.xml
