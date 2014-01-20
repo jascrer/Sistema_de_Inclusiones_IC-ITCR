@@ -47,8 +47,7 @@ namespace ITCR.InclusionesWeb.Estudiante
 
                 //Datos de backup
                 string Txt_Sede = "CARTAGO";
-                /*ojo*/
-                //string Txt_CitaMatricula = _metEstudiante.ObtenerCitaMatricula(Txt_Carnet);
+                string Txt_CitaMatricula = _metEstudiante.ObtenerCitaMatricula(Txt_Carnet);
                 #endregion
 
                 #region Datos Asignados
@@ -58,7 +57,7 @@ namespace ITCR.InclusionesWeb.Estudiante
                 lblCarrera.Text = _planNuevo.Nom_Carrera;
                 lblSede.Text = Txt_Sede;
                 lblPlan.Text = _planNuevo.Id_Plan_Estudios.ToString();
-                //lblCitaMatricula.Text = Txt_CitaMatricula;
+                lblCitaMatricula.Text = Txt_CitaMatricula;
                 txtTelefono.Text = _estudianteNuevo.Num_Telefono;
                 txtCelular.Text = _estudianteNuevo.Num_Celular;
                 txtCorreo.Text = _estudianteNuevo.Dir_Email;
