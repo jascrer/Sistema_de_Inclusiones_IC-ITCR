@@ -30,6 +30,8 @@ namespace ITCR.InclusionesWeb.Estudiante
                 string Txt_Carnet = (string)Session["NUsuario"];
 
                 IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+
+                #region Obtener Datos Estudiante
                 //Revisamos si el estudiante existe en la bd local
                 bool Bin_EstudianteExiste = _metEstudiante.EstudianteExiste(Txt_Carnet);
                 //Obtenemos info del estudiante
@@ -45,8 +47,11 @@ namespace ITCR.InclusionesWeb.Estudiante
 
                 //Datos de backup
                 string Txt_Sede = "CARTAGO";
-                string Txt_CitaMatricula = _metEstudiante.ObtenerCitaMatricula(Txt_Carnet);
+                /*ojo*/
+                //string Txt_CitaMatricula = _metEstudiante.ObtenerCitaMatricula(Txt_Carnet);
+                #endregion
 
+                #region Datos Asignados
                 //Asigna datos estudiante a controles
                 lblNombreCompleto.Text = _estudianteNuevo.Txt_Apellido1 + " " + _estudianteNuevo.Txt_Apellido2 + " " + _estudianteNuevo.Nom_Nombre;
                 lblCarnet.Text = _estudianteNuevo.Id_Carnet;
@@ -57,7 +62,9 @@ namespace ITCR.InclusionesWeb.Estudiante
                 txtTelefono.Text = _estudianteNuevo.Num_Telefono;
                 txtCelular.Text = _estudianteNuevo.Num_Celular;
                 txtCorreo.Text = _estudianteNuevo.Dir_Email;
+                #endregion
 
+                #region Cursos
                 //Encuentra cursos y llena el autocomplete
                 LinkedList<Curso> _cursos = new LinkedList<Curso>();
                 _cursos = _metEstudiante.ObtenerCursosEstudiante(Txt_Carnet, null);
@@ -69,10 +76,82 @@ namespace ITCR.InclusionesWeb.Estudiante
                     _item.Text = _cursoActual.Txt_Curso;
                     ddlCursos.Items.Add(_item);
                 }
+                #endregion
+
+                #region Grupos
+                LinkedList<Grupo> _liGrupos = _metEstudiante.ObtenerGruposParaInclusion(Int32.Parse(ddlCursos.SelectedValue));
+
+                if (_liGrupos.Count != 0)
+                {
+                    //-- Encabezado de la tabla
+                    TableHeaderRow Row_Encabezado = new TableHeaderRow();
+                    TableHeaderCell Cel_EncabezadoEstudiante = new TableHeaderCell();
+                    Cel_EncabezadoEstudiante.Text = "Número";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoEstudiante);
+                    TableHeaderCell Cel_EncabezadoCurso = new TableHeaderCell();
+                    Cel_EncabezadoCurso.Text = "Profesor";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoCurso);
+                    TableHeaderCell Cel_EncabezadoGrupo = new TableHeaderCell();
+                    Cel_EncabezadoGrupo.Text = "Horario";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoGrupo);
+                    TableHeaderCell Cel_EncabezadoAcciones = new TableHeaderCell();
+                    Cel_EncabezadoAcciones.Text = "Acciones";
+                    Row_Encabezado.Cells.Add(Cel_EncabezadoAcciones);
+                    tblGrupos.Rows.Add(Row_Encabezado);
+
+                    foreach (var _grupo in _liGrupos)
+                    {
+                        TableRow Row_Excepcion = new TableRow();
+
+                        TableCell Cel_Estudiante = new TableCell();
+                        Cel_Estudiante.Text = _grupo.Num_Grupo.ToString();
+                        Row_Excepcion.Cells.Add(Cel_Estudiante);
+
+                        TableCell Cel_Curso = new TableCell();
+                        Cel_Curso.Text = _metEstudiante.ObtenerProfesor(_grupo.Id_Grupo);
+                        Row_Excepcion.Cells.Add(Cel_Curso);
+
+                        TableCell Cel_Grupo = new TableCell();
+                        Cel_Grupo.Text = CrearHorario(_grupo.Li_Horarios);
+                        Row_Excepcion.Cells.Add(Cel_Grupo);
+
+                        TableCell Cel_Acciones = new TableCell();
+                        ImageButton btnEliminar = new ImageButton();
+                        btnEliminar.ImageUrl = "../Images/table_delete_row.png";
+                        btnEliminar.AlternateText = "Eliminar";
+                        btnEliminar.Enabled = false;
+                        btnEliminar.ToolTip = "Eliminar";
+                        //btnEliminar.Click += new ImageClickEventHandler(btnEliminar_Click);
+                        Cel_Acciones.Controls.Add(btnEliminar);
+                        Row_Excepcion.Cells.Add(Cel_Acciones);
+
+                        tblGrupos.Rows.Add(Row_Excepcion);
+                    }
+                }
+                else
+                {
+                    TableRow Row_SinExcepciones = new TableRow();
+                    TableCell Cel_SinExcepciones = new TableCell();
+                    Cel_SinExcepciones.Text = "No se encuentran grupos para este curso";
+                    Row_SinExcepciones.Cells.Add(Cel_SinExcepciones);
+                    tblGrupos.Rows.Add(Row_SinExcepciones);
+                }
+                #endregion
 
                 Session["Estudiante"] = _estudianteNuevo;
                 Session["Plan"] = _planNuevo;
             }
+        }
+
+        private string CrearHorario(LinkedList<Horario> pHorarios)
+        {
+            string _sHorario = "";
+            foreach (Horario _horario in pHorarios)
+            {
+                _sHorario += _horario.Txt_Dia + " " + 
+                    _horario.Txt_Hora_Inicio + " - " + 
+                    _horario.Txt_Hora_Final;
+            } return _sHorario;
         }
 
         /// <summary>
@@ -81,12 +160,66 @@ namespace ITCR.InclusionesWeb.Estudiante
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
-            int Num_CursoSeleccionado = int.Parse(ddlCursos.SelectedValue);
-            LinkedList<Grupo> _liGrupos = _metEstudiante.ObtenerGruposParaInclusion(Num_CursoSeleccionado);
-            tblGrupos.Rows.Clear();
+            int _curso = int.Parse(ddlCursos.SelectedValue);
+
+            if (ddlCursos.SelectedValue != "0")
+            {
+                IMetodosEstudiante _metEstudiante = new MetodosEstudiante();
+                LinkedList<Grupo> _lisGrupos = _metEstudiante.ObtenerGruposParaInclusion(_curso);
+
+                tblGrupos.Rows.Clear();//-- Encabezado de la tabla
+                TableHeaderRow Row_Encabezado = new TableHeaderRow();
+                TableHeaderCell Cel_EncabezadoEstudiante = new TableHeaderCell();
+                Cel_EncabezadoEstudiante.Text = "Número";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoEstudiante);
+                TableHeaderCell Cel_EncabezadoCurso = new TableHeaderCell();
+                Cel_EncabezadoCurso.Text = "Profesor";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoCurso);
+                TableHeaderCell Cel_EncabezadoGrupo = new TableHeaderCell();
+                Cel_EncabezadoGrupo.Text = "Horario";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoGrupo);
+                TableHeaderCell Cel_EncabezadoAcciones = new TableHeaderCell();
+                Cel_EncabezadoAcciones.Text = "Acciones";
+                Row_Encabezado.Cells.Add(Cel_EncabezadoAcciones);
+                tblGrupos.Rows.Add(Row_Encabezado);
+
+                foreach (var _grupo in _lisGrupos)
+                {
+                    TableRow Row_Excepcion = new TableRow();
+
+                    TableCell Cel_Estudiante = new TableCell();
+                    Cel_Estudiante.Text = _grupo.Num_Grupo.ToString();
+                    Row_Excepcion.Cells.Add(Cel_Estudiante);
+
+                    TableCell Cel_Curso = new TableCell();
+                    Cel_Curso.Text = _metEstudiante.ObtenerProfesor(_grupo.Id_Grupo);
+                    Row_Excepcion.Cells.Add(Cel_Curso);
+
+                    TableCell Cel_Grupo = new TableCell();
+                    Cel_Grupo.Text = CrearHorario(_grupo.Li_Horarios);
+                    Row_Excepcion.Cells.Add(Cel_Grupo);
+
+                    TableCell Cel_Acciones = new TableCell();
+                    ImageButton btnEliminar = new ImageButton();
+                    btnEliminar.ImageUrl = "../Images/table_delete_row.png";
+                    btnEliminar.AlternateText = "Eliminar";
+                    btnEliminar.Enabled = false;
+                    btnEliminar.ToolTip = "Eliminar";
+                    //btnEliminar.Click += new ImageClickEventHandler(btnEliminar_Click);
+                    Cel_Acciones.Controls.Add(btnEliminar);
+                    Row_Excepcion.Cells.Add(Cel_Acciones);
+
+                    tblGrupos.Rows.Add(Row_Excepcion);
+                }
+                tblGrupos.DataBind();
+            }
+            else
+            {
+                //ddlGrupo.Items.Clear();
+            }
+
         }
 
         /// <summary>
@@ -122,7 +255,12 @@ namespace ITCR.InclusionesWeb.Estudiante
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Error al crear la solicitud",
                     "alert('Su solicitud no pudo ser procesada, ya que no fue realizada dentro del periodo de recepción');",true);
             }
-        }   
+        }
+
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
+        }
             
     }
 }

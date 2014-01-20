@@ -511,6 +511,27 @@ namespace ITCR.MetodosAccesoDatos.Clases
         }
 
         /**
+         * Retorna el nombre del profesor asignado al curso.
+         **/
+        public string ObtenerProfesor(int pGrupo)
+        {
+            try
+            {
+                _objConexionBase = new Inclutec_BDEntities();
+
+                SIFProfesor _sifProfesor = (from _sifGrupos in _objConexionBase.SIFGrupoes
+                                            where _sifGrupos.id_Grupo == pGrupo
+                                            select _sifGrupos).First().SIFProfesor;
+
+                return _sifProfesor.nom_profesor;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /**
          * Guarda los datos del Estudiante en la base de datos
          **/
         public bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios)
@@ -567,7 +588,7 @@ namespace ITCR.MetodosAccesoDatos.Clases
                 _sifSolicitud.txt_estado = pSolicitud.Txt_Estado;
                 _sifSolicitud.txt_motivo = pSolicitud.Txt_Motivo;
                 _sifSolicitud.grupo_aceptado = 0;
-                _sifSolicitud.fec_creacion = pSolicitud.Fec_Creacion;
+                _sifSolicitud.fec_creacion = DateTime.Now;
                 _sifSolicitud.FK_Estudiante_carnet = pEstudiante;
                 _sifSolicitud.FK_Periodo_idPeriodo = pPeriodo;
 

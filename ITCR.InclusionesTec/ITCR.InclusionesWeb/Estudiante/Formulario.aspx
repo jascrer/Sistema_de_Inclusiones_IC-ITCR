@@ -62,31 +62,7 @@
         </p>
         <p>
             <h4>Grupos Disponibles:</h4>
-            <asp:Table ID="tblGrupos" runat="server" Width="100%">
-                <asp:TableHeaderRow>
-                    <asp:TableHeaderCell Text="Grupo" Width="10%"/>
-                    <asp:TableHeaderCell Text="Profesor" Width="10%"/>
-                    <asp:TableHeaderCell Text="Horario" Width="10%"/>
-                    <asp:TableHeaderCell Text="Sede" Width="10%"/>
-                    <asp:TableHeaderCell Text="Habilitar Grupo" Width="10%"/>
-                    <asp:TableHeaderCell Text="Cambiar Orden" Width="10%"/>
-                </asp:TableHeaderRow>
-                <asp:TableRow>
-                    <asp:TableCell Text="01" />
-                    <asp:TableCell Text="Jorge Vargas" />
-                    <asp:TableCell Text="M V 7:30 - 9:20" />
-                    <asp:TableCell Text="Cartago" />
-                    <asp:TableCell> <asp:CheckBox ID="chkHabilitado" runat="server" Checked="True"/> </asp:TableCell>
-                    <asp:TableCell> <asp:Button runat="server" ID="butDown" Text="Bajar" /> <asp:Button runat="server" ID="butUp" Text="Subir" Enabled="False" /> </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell Text="02" />
-                    <asp:TableCell Text="Jorge Vargas" />
-                    <asp:TableCell Text="M V 9:30 - 11:20" />
-                    <asp:TableCell Text="Cartago" />
-                    <asp:TableCell> <asp:CheckBox ID="CheckBox1" runat="server" Checked="True"/> </asp:TableCell>
-                    <asp:TableCell> <asp:Button runat="server" ID="Button2" Text="Bajar" Enabled="False"/> <asp:Button runat="server" ID="Button3" Text="Subir" /> </asp:TableCell>
-                </asp:TableRow>
+            <asp:Table ID="tblGrupos" runat="server" Width="100%" CssClass="tabla">
             </asp:Table>
         </p>
     </fieldset>

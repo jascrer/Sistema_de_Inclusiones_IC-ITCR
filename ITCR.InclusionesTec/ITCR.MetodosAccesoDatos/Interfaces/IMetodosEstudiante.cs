@@ -83,6 +83,11 @@ namespace ITCR.MetodosAccesoDatos.Interfaces
         LinkedList<Grupo_Por_Solicitud> ObtenerGruposInclusion(Solicitud pSolicitud);
 
         /**
+         * Retorna el nombre del profesor asignado al grupo.
+         **/
+        string ObtenerProfesor(int pGrupo);
+
+        /**
          * Guarda los datos del Estudiante en la base de datos
          **/
         bool GuardarDatosEstudiantes(Estudiante pEstudiante, int pPlanEstudios);
