@@ -17,3 +17,8 @@ C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesT
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.pdb
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
 C:\Users\Irina\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb
+C:\Users\Noldy\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.dll
+C:\Users\Noldy\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\bin\Debug\ITCR.CommonClasses.pdb
+C:\Users\Noldy\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Noldy\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.dll
+C:\Users\Noldy\Documents\GitHub\Sistema_de_Inclusiones_IC-ITCR\ITCR.InclusionesTec\ITCR.CommonClasses\obj\Debug\ITCR.CommonClasses.pdb
